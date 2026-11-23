@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Testo from './Testo.astro';
+import Foto from '../components/Foto.astro';
+import type { Lingua } from '../i18n/lingue';
+import { useT } from '../i18n/ui';
+import { luoghi, nomeLuogo } from '../data/contenuti';
+
+interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
+const { lang, voce } = Astro.props;
+const t = useT(lang);
+---
+<Testo lang={lang} pagina="dintorni" voce={voce}>
+  <div slot="prima">
+    <div class="ph entra vista"><div class="img"><Foto id="giardino/01-vista-valle" lang={lang} sizes="(min-width: 1240px) 1170px, 92vw" /></div></div>
+    <ul class="luoghi" tabindex="0" aria-label={t('scorri.dintorni')}>
+      {luoghi.map((l) => (
+        <li class="luogo">
+          <div class="ph"><span class="ph-lbl">[FOTO]</span></div>
+          <h3>{nomeLuogo(l, lang)}</h3>
+          <p>{l.minutiAuto ? `${l.minutiAuto} min ${t('auto.tempo')}` : t('foot.daFornire')}</p>
+          {l.descrizione[lang] && <p>{l.descrizione[lang]}</p>}
+        </li>
+      ))}
+    </ul>
+  </div>
+</Testo>

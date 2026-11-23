@@ -1,0 +1,17 @@
+---
+// Fila di cipressi che ondeggiano al vento (decorativa).
+// Posizioni e altezze fisse (generate una volta), così la build è sempre uguale.
+const cime = [26, 28, 19, 24, 17, 13, 12, 10, 12, 23, 26, 13, 13, 27, 24, 8, 11, 13, 16, 19, 25, 28, 15, 16, 27, 6, 17, 28, 5, 20, 15, 28, 15, 29, 10, 4, 18, 30, 25, 29, 26, 18, 28, 13];
+const passo = 1240 / cime.length;
+---
+<svg class="campo cipressi" viewBox="0 0 1240 84" preserveAspectRatio="xMidYMax slice" fill="currentColor" aria-hidden="true">
+  {cime.map((y, i) => {
+    const x = Math.round(13 + i * passo);
+    const l = 5.1 + ((i * 7) % 18) / 10; // larghezza 5.1–6.8
+    return (
+      <g transform={`translate(${x} 0)`}>
+        <path class="stelo" d={`M0 84 C-${l.toFixed(1)} 72 -${(l + 1).toFixed(1)} ${y + 30} 0 ${y} C${(l + 1).toFixed(1)} ${y + 30} ${l.toFixed(1)} 72 0 84Z`}></path>
+      </g>
+    );
+  })}
+</svg>

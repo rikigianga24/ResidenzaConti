@@ -1,27 +1,39 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import ContactForm from '../components/ContactForm.astro';
-import { useT, type Lingua } from '../i18n/ui';
-import { struttura } from '../data/struttura';
+import TestataPagina from '../components/TestataPagina.astro';
+import BottoniContatto from '../components/BottoniContatto.astro';
+import { useT } from '../i18n/ui';
+import { url, type Lingua } from '../i18n/lingue';
+import { struttura, indirizzoCompleto } from '../data/struttura';
 
-interface Props { lang: Lingua }
-const { lang } = Astro.props;
+interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
+const { lang, voce } = Astro.props;
+const d = voce.data;
 const t = useT(lang);
-const c = struttura.contatti;
+const s = struttura;
 ---
-<Base lang={lang} pagina="contatti" titolo={t('contatti.titolo')}>
-  <section class="sezione contenitore">
-    <h1>{t('contatti.titolo')}</h1>
-    <ul class="contatti">
-      {c.email && <li><a href={`mailto:${c.email}`}>{c.email}</a></li>}
-      {c.telefono && <li><a href={`tel:+${c.telefono}`}>+{c.telefono}</a> · <a href={`https://wa.me/${c.telefono}`}>WhatsApp</a></li>}
-      {c.indirizzo && <li>{c.indirizzo}</li>}
-    </ul>
-    <ContactForm lang={lang} />
-    {/* TODO: mappa */}
+<Base lang={lang} pagina="contatti" seoTitolo={d.seoTitolo} descrizione={d.descrizione}>
+  <TestataPagina titolo={d.titolo} intro={d.intro} />
+  <section class="sec sec-0">
+    <div class="wrap">
+      <BottoniContatto lang={lang} lungo email booking={false} />
+      {s.bookingUrl && <p class="p"><a class="link" href={s.bookingUrl} rel="noopener">{t('cta.booking')}</a></p>}
+      <div class="dotazioni">
+        <section>
+          <h2>{t('foot.contatti')}</h2>
+          <ul>
+            <li>WhatsApp / {t('cta.chiama')}: <a href={`tel:${s.telefono}`}>{s.telefonoLeggibile}</a></li>
+            <li><a href={`mailto:${s.email}`}>{s.email}</a></li>
+            <li><a href={s.instagram} rel="noopener">Instagram</a> · <a href={s.tiktok} rel="noopener">TikTok</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>{t('foot.indirizzo')}</h2>
+          <p>{indirizzoCompleto}</p>
+          <a class="link" href={url('arrivare', lang)}>{t('pag.arrivare')}</a>
+        </section>
+      </div>
+    </div>
   </section>
 </Base>
-
-<style>
-  .contatti { list-style: none; padding: 0; margin-bottom: 2rem; }
-</style>

@@ -1,0 +1,44 @@
+---
+// Unica rotta per tutte le pagine in tutte le lingue.
+// getStaticPaths genera lingua × pagina usando gli slug tradotti di i18n/lingue.ts,
+// poi sceglie la vista giusta. Ogni pagina deve avere src/content/{lingua}/{pagina}.md.
+import type { GetStaticPaths } from 'astro';
+import { getEntry } from 'astro:content';
+import { LINGUE, PAGINE, percorso, type Lingua, type Pagina } from '../i18n/lingue';
+import Home from '../views/Home.astro';
+import Casa from '../views/Casa.astro';
+import Galleria from '../views/Galleria.astro';
+import Storia from '../views/Storia.astro';
+import Dintorni from '../views/Dintorni.astro';
+import Disponibilita from '../views/Disponibilita.astro';
+import Recensioni from '../views/Recensioni.astro';
+import Arrivare from '../views/Arrivare.astro';
+import Faq from '../views/Faq.astro';
+import Contatti from '../views/Contatti.astro';
+import Testo from '../views/Testo.astro';
+
+export const getStaticPaths = (async () => {
+  const percorsi = [];
+  for (const lang of LINGUE) {
+    for (const pagina of PAGINE) {
+      const voce = await getEntry('pagine', `${lang}/${pagina}`);
+      if (!voce) throw new Error(`Manca il testo: src/content/${lang}/${pagina}.md`);
+      percorsi.push({ params: { percorso: percorso(pagina, lang) }, props: { lang, pagina, voce } });
+    }
+  }
+  return percorsi;
+}) satisfies GetStaticPaths;
+
+const { lang, pagina, voce } = Astro.props as { lang: Lingua; pagina: Pagina; voce: NonNullable<Awaited<ReturnType<typeof getEntry<'pagine', string>>>> };
+---
+{pagina === 'home' && <Home lang={lang} voce={voce} />}
+{pagina === 'casa' && <Casa lang={lang} voce={voce} />}
+{pagina === 'galleria' && <Galleria lang={lang} voce={voce} />}
+{pagina === 'storia' && <Storia lang={lang} voce={voce} />}
+{pagina === 'dintorni' && <Dintorni lang={lang} voce={voce} />}
+{pagina === 'disponibilita' && <Disponibilita lang={lang} voce={voce} />}
+{pagina === 'recensioni' && <Recensioni lang={lang} voce={voce} />}
+{pagina === 'arrivare' && <Arrivare lang={lang} voce={voce} />}
+{pagina === 'faq' && <Faq lang={lang} voce={voce} />}
+{pagina === 'contatti' && <Contatti lang={lang} voce={voce} />}
+{(pagina === 'privacy' || pagina === 'cookie') && <Testo lang={lang} pagina={pagina} voce={voce} contatti={false} />}

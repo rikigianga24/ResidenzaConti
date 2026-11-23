@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import TestataPagina from '../components/TestataPagina.astro';
+import ChiamataContatti from '../components/ChiamataContatti.astro';
+import type { Lingua } from '../i18n/lingue';
+
+interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
+const { lang, voce } = Astro.props;
+const d = voce.data;
+---
+<Base lang={lang} pagina="faq" seoTitolo={d.seoTitolo} descrizione={d.descrizione}>
+  <TestataPagina titolo={d.titolo} intro={d.intro} />
+  <section class="sec sec-0">
+    <div class="wrap faq">
+      {d.domande?.map((q) => (
+        <details>
+          <summary>{q.d}</summary>
+          <p>{q.r}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+  <ChiamataContatti lang={lang} />
+</Base>

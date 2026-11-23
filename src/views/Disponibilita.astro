@@ -1,0 +1,81 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import TestataPagina from '../components/TestataPagina.astro';
+import BottoniContatto from '../components/BottoniContatto.astro';
+import type { Lingua } from '../i18n/lingue';
+import { useT } from '../i18n/ui';
+import { prezzi } from '../data/contenuti';
+
+interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
+const { lang, voce } = Astro.props;
+const d = voce.data;
+const t = useT(lang);
+const daFornire = t('foot.daFornire');
+const euro = new Intl.NumberFormat(lang, { style: 'currency', currency: prezzi.valuta, maximumFractionDigits: 0 });
+// 'MM-GG' → "12 giu" nella lingua della pagina
+const giorno = (mmgg: string) => {
+  const [m, g] = mmgg.split('-').map(Number);
+  return new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(Date.UTC(2000, m - 1, g)));
+};
+---
+<Base lang={lang} pagina="disponibilita" seoTitolo={d.seoTitolo} descrizione={d.descrizione}>
+  <TestataPagina titolo={d.titolo} intro={d.intro} />
+
+  <section class="sec sec-0" aria-labelledby="tit-cal">
+    <div class="wrap">
+      <h2 class="h2 h2-piccolo" id="tit-cal">{t('cal.titolo')}</h2>
+      {/* Il calendario legge /disponibilita.json, generato sul server da scripts/sync-ical.ts.
+          Senza JavaScript resta visibile il messaggio qui sotto. */}
+      <div
+        class="cal"
+        id="calendario"
+        data-lang={lang}
+        data-libero={t('cal.libero')}
+        data-occupato={t('cal.occupato')}
+        data-precedente={t('cal.precedente')}
+        data-successivo={t('cal.successivo')}
+        data-aggiornato={t('cal.aggiornato')}
+        data-errore={t('cal.nonDisponibile')}
+      >
+        <p class="muted">{t('cal.nonDisponibile')}</p>
+      </div>
+      <ul class="legenda">
+        <li><span></span>{t('cal.libero')}</li>
+        <li><span class="occ"></span>{t('cal.occupato')}</li>
+      </ul>
+      <p class="p muted">{t('cal.indicativo')}</p>
+      <BottoniContatto lang={lang} lungo />
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="tit-prezzi">
+    <div class="wrap">
+      <h2 class="h2 h2-piccolo" id="tit-prezzi">{t('prezzi.titolo')}</h2>
+      <div class="tabella-box">
+        <table class="tabella">
+          <thead>
+            <tr><th scope="col">{t('prezzi.stagione')}</th><th scope="col">{t('prezzi.periodo')}</th><th scope="col">{t('prezzi.daPartire')}</th><th scope="col">{t('prezzi.minimo')}</th></tr>
+          </thead>
+          <tbody>
+            {prezzi.stagioni.map((s) => (
+              <tr>
+                <th scope="row">{s.nome[lang]}</th>
+                <td>{s.periodi.length ? s.periodi.map((p) => `${giorno(p.dal)} – ${giorno(p.al)}`).join(', ') : daFornire}</td>
+                <td>{s.prezzoDa != null ? `${euro.format(s.prezzoDa)} ${t('prezzi.aNotte')}` : daFornire}</td>
+                <td>{s.notteMinime != null ? `${s.notteMinime} ${t('prezzi.notti')}` : daFornire}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="p muted">{t('prezzi.nota')}</p>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import { avviaCalendario } from '../scripts/calendario';
+  const el = document.getElementById('calendario');
+  if (el) avviaCalendario(el);
+</script>

@@ -1,0 +1,7 @@
+---
+// Barra fissa in basso su telefono: WhatsApp e Chiama sempre a portata di pollice.
+import BottoniContatto from './BottoniContatto.astro';
+import type { Lingua } from '../i18n/lingue';
+interface Props { lang: Lingua }
+---
+<BottoniContatto lang={Astro.props.lang} class="dock" />

@@ -1,20 +1,35 @@
 ---
-import { useT, type Lingua } from '../i18n/ui';
+import { url, type Lingua, type Pagina } from '../i18n/lingue';
+import { useT, nomePagina } from '../i18n/ui';
 import { struttura } from '../data/struttura';
 
 interface Props { lang: Lingua }
-const t = useT(Astro.props.lang);
-const anno = new Date().getFullYear();
+const { lang } = Astro.props;
+const t = useT(lang);
+const s = struttura;
+const info: Pagina[] = ['galleria', 'recensioni', 'arrivare', 'faq', 'privacy', 'cookie'];
 ---
-<footer class="footer">
-  <div class="contenitore">
-    <p>{struttura.nome} · {struttura.localita}</p>
-    {/* TODO: CIN (codice identificativo nazionale) obbligatorio per legge negli annunci */}
-    <p>© {anno} {struttura.nome}. {t('footer.diritti')}.</p>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <span class="brand">Residenza Conti</span>
+      <p>{s.indirizzo.via}</p>
+      <p>{s.indirizzo.cap} {s.indirizzo.citta} ({s.indirizzo.provincia})</p>
+    </div>
+    <div>
+      <h2>{t('foot.contatti')}</h2>
+      <p><a href={`tel:${s.telefono}`}>{s.telefonoLeggibile}</a></p>
+      <p><a href={`mailto:${s.email}`}>{s.email}</a></p>
+      <p><a href={s.instagram} rel="noopener">Instagram</a>, <a href={s.tiktok} rel="noopener">TikTok</a></p>
+    </div>
+    <nav aria-label={t('foot.info')}>
+      <h2>{t('foot.info')}</h2>
+      <ul>{info.map((p) => <li><a href={url(p, lang)}>{nomePagina(p, lang)}</a></li>)}</ul>
+    </nav>
+    <div>
+      {/* CIN e CIR: esposizione obbligatoria */}
+      <p>CIN {s.cin || t('foot.daFornire')}</p>
+      <p>CIR {s.cir || t('foot.daFornire')}</p>
+    </div>
   </div>
 </footer>
-
-<style>
-  .footer { border-top: 1px solid var(--c-bordo); padding: 2rem 0; font-size: .9rem; margin-top: 3rem; }
-  p { margin: .25rem 0; }
-</style>

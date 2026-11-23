@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Testo from './Testo.astro';
+import Foto from '../components/Foto.astro';
+import IconaNatura from '../components/IconaNatura.astro';
+import { getEntry } from 'astro:content';
+import type { Lingua } from '../i18n/lingue';
+
+interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
+const { lang, voce } = Astro.props;
+const s = (await getEntry('pagine', `${lang}/home`))!.data.storia!;
+const nature = [
+  { nome: 'viale', foto: 'casa/05-viale-cipressi', titolo: s.viale },
+  { nome: 'cappella', foto: 'casa/03-cappella', titolo: s.cappella },
+  { nome: 'portico', foto: 'casa/04-portico', titolo: s.portico },
+] as const;
+---
+<Testo lang={lang} pagina="storia" voce={voce}>
+  <ul class="valle">
+    {nature.map((n) => (
+      <li class="natura">
+        <div class="ph entra"><div class="img"><Foto id={n.foto} lang={lang} /></div></div>
+        <h3><IconaNatura nome={n.nome} />{n.titolo}</h3>
+      </li>
+    ))}
+  </ul>
+</Testo>

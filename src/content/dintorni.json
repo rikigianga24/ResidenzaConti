@@ -1,0 +1,10 @@
+{
+  "_nota": "Tempi in auto e descrizioni: [DA FORNIRE / da verificare]. Foto: solo foto proprie o con licenza.",
+  "luoghi": [
+    { "id": "castiglion-fiorentino", "nome": "Castiglion Fiorentino", "minutiAuto": null, "descrizione": { "it": "", "en": "", "de": "", "fr": "" } },
+    { "id": "montecchio", "nome": "Montecchio", "minutiAuto": null, "descrizione": { "it": "", "en": "", "de": "", "fr": "" } },
+    { "id": "cortona", "nome": { "it": "Cortona", "en": "Cortona", "de": "Cortona", "fr": "Cortone" }, "minutiAuto": null, "descrizione": { "it": "", "en": "", "de": "", "fr": "" } },
+    { "id": "arezzo", "nome": "Arezzo", "minutiAuto": null, "descrizione": { "it": "", "en": "", "de": "", "fr": "" } },
+    { "id": "valdichiana", "nome": "Valdichiana", "minutiAuto": null, "descrizione": { "it": "", "en": "", "de": "", "fr": "" } }
+  ]
+}

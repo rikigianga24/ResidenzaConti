@@ -1,0 +1,21 @@
+---
+// Blocco finale "Scriveteci le date", ripetuto in fondo alle pagine interne.
+import BottoniContatto from './BottoniContatto.astro';
+import { getEntry } from 'astro:content';
+import type { Lingua } from '../i18n/lingue';
+import { struttura } from '../data/struttura';
+
+interface Props { lang: Lingua }
+const { lang } = Astro.props;
+const home = await getEntry('pagine', `${lang}/home`);
+const c = home!.data.contatti!;
+---
+<section class="sec">
+  <div class="wrap contatti">
+    <div>
+      <h2 class="h2">{c.titolo}</h2>
+      <p class="p">{c.testo} {struttura.bookingUrl && <a href={struttura.bookingUrl} rel="noopener">{c.bookingTesto}</a>}</p>
+    </div>
+    <BottoniContatto lang={lang} lungo />
+  </div>
+</section>

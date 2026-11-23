@@ -1,39 +1,112 @@
 ---
-// Layout comune: <head> SEO, header con menu e cambio lingua, footer.
+// Layout comune: <head> SEO (title, description, canonical, hreflang, Open Graph,
+// schema.org), testata, footer e barra contatti su telefono.
 import '../styles/global.css';
+import { getImage } from 'astro:assets';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { lingue, rotte, type Lingua, type Pagina } from '../i18n/ui';
+import Dock from '../components/Dock.astro';
+import { LINGUE, LINGUA_DEFAULT, url, type Lingua, type Pagina } from '../i18n/lingue';
+import { useT } from '../i18n/ui';
+import { foto } from '../data/foto';
+import { struttura } from '../data/struttura';
+import { recensioni } from '../data/contenuti';
 
 interface Props {
   lang: Lingua;
   pagina: Pagina;
-  titolo: string;
-  descrizione?: string;
+  seoTitolo: string;
+  descrizione: string;
+  /** foto per l'anteprima su WhatsApp/social */
+  fotoOg?: string;
+  /** dati strutturati schema.org (solo in home) */
+  schema?: boolean;
+  noindex?: boolean;
 }
-const { lang, pagina, titolo, descrizione = '' } = Astro.props;
-const titoloCompleto = pagina === 'home' ? titolo : `${titolo} · Residenza Conti`;
+const { lang, pagina, seoTitolo, descrizione, fotoOg = 'piscina/01-piscina-ulivi', schema = false, noindex = false } = Astro.props;
+const t = useT(lang);
+const sito = Astro.site!;
+const canonico = new URL(url(pagina, lang), sito).href;
+const locale = { it: 'it_IT', en: 'en_GB', de: 'de_DE', fr: 'fr_FR' }[lang];
+
+// immagine Open Graph 1200×630 generata in build
+const og = await getImage({ src: foto(fotoOg).src, width: 1200, height: 630, fit: 'cover', format: 'jpg' });
+const ogUrl = new URL(og.src, sito).href;
+
+// schema.org: VacationRental (Google lo usa per le case vacanza)
+const s = struttura;
+const datiStrutturati = schema && {
+  '@context': 'https://schema.org',
+  '@type': 'VacationRental',
+  name: s.nome,
+  description: descrizione,
+  url: new URL(url('home', lang), sito).href,
+  image: [ogUrl],
+  telephone: s.telefono,
+  email: s.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: s.indirizzo.via,
+    postalCode: s.indirizzo.cap,
+    addressLocality: s.indirizzo.citta,
+    addressRegion: s.indirizzo.provincia,
+    addressCountry: s.indirizzo.paese,
+  },
+  ...(s.coordinate && { geo: { '@type': 'GeoCoordinates', latitude: s.coordinate.lat, longitude: s.coordinate.lng } }),
+  containsPlace: {
+    '@type': 'Accommodation',
+    additionalType: 'EntirePlace',
+    numberOfBedrooms: s.alloggio.camere,
+    numberOfBathroomsTotal: s.alloggio.bagni,
+    occupancy: { '@type': 'QuantitativeValue', value: s.alloggio.ospitiMax },
+    floorSize: { '@type': 'QuantitativeValue', value: s.alloggio.metriQuadri, unitCode: 'MTK' },
+    amenityFeature: ['privatePool', 'wifi', 'kitchen', 'freeParking', 'barbecueGrill', 'outdoorGrill']
+      .map((name) => ({ '@type': 'LocationFeatureSpecification', name, value: true })),
+  },
+  petsAllowed: false,
+  ...(recensioni.punteggioMedio && recensioni.numeroRecensioni && {
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: recensioni.punteggioMedio, bestRating: 10, ratingCount: recensioni.numeroRecensioni },
+  }),
+  sameAs: [s.instagram, s.tiktok, s.bookingUrl].filter(Boolean),
+};
 ---
 <!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{titoloCompleto}</title>
-    {descrizione && <meta name="description" content={descrizione} />}
-    <link rel="canonical" href={new URL(rotte[pagina][lang], Astro.site)} />
+    <title>{seoTitolo}</title>
+    <meta name="description" content={descrizione} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonico} />
     {/* hreflang: dice a Google quale pagina corrisponde in ogni lingua */}
-    {(Object.keys(lingue) as Lingua[]).map((l) => (
-      <link rel="alternate" hreflang={l} href={new URL(rotte[pagina][l], Astro.site)} />
-    ))}
-    <link rel="alternate" hreflang="x-default" href={new URL(rotte[pagina].it, Astro.site)} />
+    {LINGUE.map((l) => <link rel="alternate" hreflang={l} href={new URL(url(pagina, l), sito).href} />)}
+    <link rel="alternate" hreflang="x-default" href={new URL(url(pagina, LINGUA_DEFAULT), sito).href} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/cardo-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/dm-sans-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <meta name="theme-color" content="#EEEAE1" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Residenza Conti" />
+    <meta property="og:title" content={seoTitolo} />
+    <meta property="og:description" content={descrizione} />
+    <meta property="og:url" content={canonico} />
+    <meta property="og:locale" content={locale} />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    {datiStrutturati && <script type="application/ld+json" set:html={JSON.stringify(datiStrutturati)} />}
   </head>
   <body>
-    <Header lang={lang} pagina={pagina} />
-    <main>
-      <slot />
-    </main>
-    <Footer lang={lang} />
+    <div class="rc">
+      <a class="salta" href="#contenuto">{t('nav.salta')}</a>
+      <Header lang={lang} pagina={pagina} />
+      <main id="contenuto">
+        <slot />
+      </main>
+      <Footer lang={lang} />
+      <Dock lang={lang} />
+    </div>
   </body>
 </html>

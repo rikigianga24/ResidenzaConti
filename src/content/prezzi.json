@@ -1,0 +1,9 @@
+{
+  "_nota": "Prezzi per stagione [DA FORNIRE]. date: 'MM-GG'. prezzoDa: euro a notte, null = da fornire.",
+  "valuta": "EUR",
+  "stagioni": [
+    { "id": "bassa", "nome": { "it": "Bassa stagione", "en": "Low season", "de": "Nebensaison", "fr": "Basse saison" }, "periodi": [], "prezzoDa": null, "notteMinime": null },
+    { "id": "media", "nome": { "it": "Media stagione", "en": "Mid season", "de": "Zwischensaison", "fr": "Moyenne saison" }, "periodi": [], "prezzoDa": null, "notteMinime": null },
+    { "id": "alta", "nome": { "it": "Alta stagione", "en": "High season", "de": "Hauptsaison", "fr": "Haute saison" }, "periodi": [], "prezzoDa": null, "notteMinime": null }
+  ]
+}

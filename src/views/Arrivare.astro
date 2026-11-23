@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Testo from './Testo.astro';
+import Icona from '../components/Icona.astro';
+import type { Lingua } from '../i18n/lingue';
+import { useT } from '../i18n/ui';
+import { struttura, indirizzoCompleto } from '../data/struttura';
+
+interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
+const { lang, voce } = Astro.props;
+const t = useT(lang);
+// Niente embed di Google Maps (cookie e IP verso terzi): solo link esterni.
+// Con le coordinate i link puntano al punto esatto, altrimenti all'indirizzo.
+const c = struttura.coordinate;
+const q = c ? `${c.lat},${c.lng}` : indirizzoCompleto;
+const google = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+const apple = c ? `https://maps.apple.com/?ll=${c.lat},${c.lng}&q=${encodeURIComponent(struttura.nome)}` : `https://maps.apple.com/?address=${encodeURIComponent(indirizzoCompleto)}`;
+---
+<Testo lang={lang} pagina="arrivare" voce={voce}>
+  <div slot="prima">
+    <p class="p"><b>{indirizzoCompleto}</b></p>
+    {/* TODO: immagine statica della mappa (es. esportata da OpenStreetMap) in src/assets */}
+    <div class="ph mappa"><span class="ph-lbl">[DA FORNIRE: immagine statica della mappa]</span></div>
+    <div class="ctas spazio-sopra">
+      <a class="btn btn-filo" href={google} rel="noopener"><Icona nome="mappa" class="ic" />{t('mappa.google')}</a>
+      <a class="btn btn-filo" href={apple} rel="noopener"><Icona nome="mappa" class="ic" />{t('mappa.apple')}</a>
+    </div>
+  </div>
+</Testo>

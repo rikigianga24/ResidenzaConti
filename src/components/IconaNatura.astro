@@ -1,0 +1,14 @@
+---
+// Icone animate delle tre "nature" della storia: viale, cappella, portico.
+interface Props { nome: 'viale' | 'cappella' | 'portico' }
+const { nome } = Astro.props;
+---
+{nome === 'viale' && (
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a a-spiga"><path class="miele" d="M17 42 C13 34 13 20 17 6 C21 20 21 34 17 42Z"></path><path d="M17 42 C13 34 13 20 17 6 C21 20 21 34 17 42Z"></path></g><g class="a a-spiga d2"><path d="M31 42 C27 34 27 22 31 10 C35 22 35 34 31 42Z"></path></g><path d="M8 44 H40"></path></svg>
+)}
+{nome === 'cappella' && (
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 4 V12 M20.5 7.5 H27.5"></path><path d="M10 24 L24 13 L38 24"></path><path d="M13 22 V43 H35 V22"></path><g class="a a-grappolo"><path class="miele" d="M20 26 a4 4 0 0 1 8 0 v4 h-8 Z"></path><path d="M24 22 V26 M20 30 h8 M24 30 v2"></path></g><path d="M20 43 V38 a4 4 0 0 1 8 0 V43"></path></svg>
+)}
+{nome === 'portico' && (
+  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 H44 M6 12 V42 M42 12 V42 M4 42 H44"></path><path d="M10 42 V26 a6 6 0 0 1 12 0 V42 M26 42 V26 a6 6 0 0 1 12 0 V42"></path><g class="a a-grappolo"><path d="M24 12 V16"></path><path class="miele" d="M21 16 h6 l-1 6 h-4 Z"></path></g></svg>
+)}

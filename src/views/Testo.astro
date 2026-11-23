@@ -1,0 +1,23 @@
+---
+// Pagina di solo testo (privacy, cookie, storia senza foto, ecc.): titolo + Markdown.
+import { render, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import TestataPagina from '../components/TestataPagina.astro';
+import ChiamataContatti from '../components/ChiamataContatti.astro';
+import type { Lingua, Pagina } from '../i18n/lingue';
+
+interface Props { lang: Lingua; pagina: Pagina; voce: CollectionEntry<'pagine'>; contatti?: boolean }
+const { lang, pagina, voce, contatti = true } = Astro.props;
+const { Content } = await render(voce);
+---
+<Base lang={lang} pagina={pagina} seoTitolo={voce.data.seoTitolo} descrizione={voce.data.descrizione}>
+  <TestataPagina titolo={voce.data.titolo} intro={voce.data.intro} />
+  <section class="sec sec-0">
+    <div class="wrap">
+      <slot name="prima" />
+      <div class="prosa"><Content /></div>
+      <slot />
+    </div>
+  </section>
+  {contatti && <ChiamataContatti lang={lang} />}
+</Base>

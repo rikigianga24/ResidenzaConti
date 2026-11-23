@@ -4,3 +4,6 @@ dist/
 .env
 .env.*
 .DS_Store
+# generato sul server dal job iCal
+public/disponibilita.json
+*.tmp

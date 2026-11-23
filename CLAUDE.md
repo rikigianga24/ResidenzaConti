@@ -2,35 +2,46 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-Sito statico della casa vacanze Residenza Conti (Castiglion Fiorentino, AR), che sostituisce il vecchio sito WordPress su www.residenzaconti.it. Costruito con Astro 7 (output statico) e TypeScript strict, senza framework UI né CSS esterni. Testi, commenti e nomi nel codice sono in italiano.
+Sito statico della casa vacanze Residenza Conti (Val di Chio, Castiglion Fiorentino), che sostituisce il vecchio sito WordPress. **Prima di ogni modifica leggere `residenzaconti.md`**: è il documento di progetto, con dati della struttura, obiettivi, vincoli GDPR e sicurezza, tono dei testi e istruzioni per Claude (§12).
+
+## Regole operative (da residenzaconti.md §12)
+
+- Tutto in italiano: risposte, commenti, commit. Comandi per l'utente in sintassi **PowerShell** (lavora su Windows).
+- Modifiche grandi: prima un piano da approvare. **Chiedere prima di installare pacchetti.**
+- Commit a lavoro finito; il push lo fa il proprietario, salvo richiesta esplicita.
+- Non inventare dati della struttura (prezzi, distanze, recensioni, storia): lasciare `[DA FORNIRE]` (EN `[TO BE PROVIDED]`, DE `[FOLGT]`, FR `[À FOURNIR]`).
+- Ogni testo nuovo va scritto in tutte e 4 le lingue (it, en, de, fr), oppure segnalato come da tradurre. Le traduzioni attuali EN/DE/FR sono bozze da far rivedere a una persona.
 
 ## Comandi
 
-```bash
-npm run dev       # server di sviluppo (http://localhost:4321)
+```powershell
+npm run dev       # sviluppo, http://localhost:4321
 npm run build     # astro check (tipi) + build statica in dist/
-npm run preview   # serve dist/ in locale
-npm run check     # solo controllo tipi
+npm run preview   # serve dist/ (redirect vecchi URL inclusi)
+node scripts/sync-ical.ts   # job iCal; richiede ICAL_URL e OUTPUT_FILE nell'ambiente
 ```
 
-Non ci sono test: `npm run build` è la verifica di riferimento.
+Non ci sono test: la verifica è `npm run build`, con 0 errori di `astro check`. La prima build elabora tutte le foto (AVIF lento, ~2 min); le successive usano la cache in `node_modules/.astro`.
 
 ## Architettura
 
-- **i18n**: italiano senza prefisso (`/`), inglese sotto `/en/` (config in `astro.config.mjs`). `src/i18n/ui.ts` contiene:
-  - `rotte`: mappa chiave logica della pagina → slug per lingua (gli slug sono tradotti, es. `/appartamento` ↔ `/en/apartment`);
-  - `ui`: dizionari dei testi, con chiavi tipizzate su `it`.
+- **Routing unico**: `src/pages/[...percorso].astro` genera lingua × pagina in `getStaticPaths` e sceglie la vista in `src/views/`. Le chiavi pagina e gli slug tradotti stanno in `src/i18n/lingue.ts` (`ROTTE`). Per costruire un URL usare sempre `url(pagina, lang)`. L'italiano non ha prefisso; le altre lingue sono sotto `/en/`, `/de/`, `/fr/`.
+- **Aggiungere una pagina**:
+  1. voce in `ROTTE`;
+  2. chiave `pag.<chiave>` nei 4 dizionari di `src/i18n/ui.ts`;
+  3. `src/content/{it,en,de,fr}/<chiave>.md`;
+  4. vista in `src/views/` e ramo in `[...percorso].astro`.
   
-  Per aggiungere una pagina o un testo bisogna aggiornare entrambe le lingue.
-- **Viste vs pagine**: il markup vive in `src/views/*.astro`, che riceve la prop `lang`. I file in `src/pages/` e `src/pages/en/` sono wrapper di una riga (`<V lang="it" />`). Aggiungere una pagina = vista + due wrapper + voce in `rotte` + chiave `nav.*` in `ui` (se va nel menu, anche in `Header.astro`).
-- **Layout** `src/layouts/Base.astro`: gestisce canonical e `hreflang` (incluso `x-default`) a partire da `rotte`, quindi ogni pagina deve passare la sua chiave `pagina`.
-- **Dati struttura** `src/data/struttura.ts`: fonte unica per i dati fattuali (m², posti letto, servizi, contatti). Le viste leggono da qui e non devono avere i dati scritti dentro.
-- **Galleria** `src/components/Galleria.astro`: carica con `import.meta.glob` tutte le immagini in `src/assets/galleria/` (ordinate per nome file) e le ottimizza in build con `astro:assets` (webp, srcset). Per aggiungere foto basta copiarle nella cartella, senza ridurle a mano.
-- **Redirect** dei vecchi URL WordPress (`/dettaglio`, `/en/dettaglio-appartamento`, `/en/contatti`) in `astro.config.mjs`: vanno mantenuti per la SEO.
-- **Stili**: variabili in `src/styles/global.css`, il resto in `<style>` scoped nei componenti.
-
-## Aperti (TODO nel codice)
-
-- Il form contatti (`ContactForm.astro`) non ha ancora un backend: `action="#"`.
-- Mancano i contatti reali, il CIN nel footer, i testi descrittivi e la mappa.
-- La documentazione di prodotto arriverà in `residenzaconti.md`.
+  `getStaticPaths` va in errore se manca un file di lingua.
+- **Testi**:
+  - Collezione `pagine` (`src/content.config.ts`, schema Zod): un `.md` per pagina e lingua. Il frontmatter contiene SEO (`seoTitolo`, `descrizione`), titoli e testi strutturati (la home è quasi tutta frontmatter); il corpo Markdown è la prosa.
+  - Le etichette brevi dell'interfaccia sono in `src/i18n/ui.ts`: le chiavi sono tipizzate su `it`, quindi le altre lingue devono averle tutte.
+- **Dati**:
+  - `src/data/struttura.ts` è la fonte unica dei dati fattuali (indirizzo, telefono, CIN/CIR, Booking URL; stringa vuota = da fornire). I componenti nascondono le parti che dipendono da un dato vuoto, per esempio i pulsanti Booking.
+  - JSON curati a mano in `src/content/` (`prezzi.json`, `recensioni.json`, `dintorni.json`), tipizzati in `src/data/contenuti.ts`.
+- **Foto**: `src/assets/foto/{casa,giardino,piscina,...}/`, con catalogo e alt nelle 4 lingue in `src/data/foto.ts`. La build fallisce se una foto non ha la sua voce. Si usano sempre con `<Foto id="area/nome" lang={lang} />` (Picture AVIF/WebP). Le foto dei dintorni del vecchio sito sono state escluse perché probabilmente coperte da copyright.
+- **Calendario**: unico JavaScript del sito (`src/scripts/calendario.ts`). Legge `/disponibilita.json`, generato sul VPS da `scripts/sync-ical.ts` (solo date occupate, link iCal in `.env`). Il JSON non è nel repo. Senza file o senza JS resta un messaggio di ripiego.
+- **CSP restrittiva** (`deploy/nginx.conf`: `script-src 'self'; style-src 'self'`). Niente `style="..."`, `<style>` o script inline nel markup: i ritardi delle animazioni sono classi `nth-child` in `global.css`. La config Astro forza CSS e script in file esterni (`inlineStylesheets: 'never'`, `assetsInlineLimit: 0`). Unica eccezione ammessa: il JSON-LD di schema.org.
+- **Stili**: tutto in `src/styles/global.css`, che è il CSS del prototipo Claude Design "Residenza Conti – prototipo sito", palette Vigna. È mobile first, con breakpoint a 720, 1040 e 1240 px (menu completo solo da 1240). Le animazioni usano solo transform/opacity e sono tutte spente con `prefers-reduced-motion`. Font self-hosted in `public/fonts/` (OFL).
+- **Redirect dei vecchi URL WordPress**: `src/i18n/redirect.mjs` (per Astro) e `deploy/nginx.conf` (301 reali) vanno tenuti allineati.
+- **Deploy**: si carica `dist/` sul VPS. Escludere `disponibilita.json` da eventuali `rsync --delete`, oppure scriverlo fuori dalla cartella sincronizzata.

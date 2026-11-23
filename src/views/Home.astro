@@ -1,27 +1,175 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import Galleria from '../components/Galleria.astro';
-import { useT, url, type Lingua } from '../i18n/ui';
+import Foto from '../components/Foto.astro';
+import Icona from '../components/Icona.astro';
+import IconaNatura from '../components/IconaNatura.astro';
+import Servizi from '../components/Servizi.astro';
+import Cipressi from '../components/Cipressi.astro';
+import BottoniContatto from '../components/BottoniContatto.astro';
+import { url, type Lingua } from '../i18n/lingue';
+import { useT } from '../i18n/ui';
+import { struttura } from '../data/struttura';
+import { luoghi, nomeLuogo, recensioni, recensioniPerLingua } from '../data/contenuti';
 
-interface Props { lang: Lingua }
-const { lang } = Astro.props;
+interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
+const { lang, voce } = Astro.props;
+const d = voce.data;
 const t = useT(lang);
+const hero = d.hero!, nastro = d.nastro!, sempre = d.sempre!, storia = d.storia!, fuori = d.fuori!, casa = d.casa!, dint = d.dintorni!, cont = d.contatti!;
+const parole = (s: string) => s.split(' ');
+const fotoStanze = ['casa/07-soggiorno-cucina', 'casa/09-camera-1', null, 'casa/13-camera-2-travi', 'casa/06-soggiorno'];
+const recInEvidenza = recensioniPerLingua(lang)[0];
 ---
-<Base lang={lang} pagina="home" titolo={t('home.titolo')} descrizione={t('home.sottotitolo')}>
+<Base lang={lang} pagina="home" seoTitolo={d.seoTitolo} descrizione={d.descrizione} schema>
   <section class="hero">
-    <div class="contenitore">
-      <h1>{t('home.titolo')}</h1>
-      <p>{t('home.sottotitolo')}</p>
-      <a class="bottone" href={url('contatti', lang)}>{t('home.cta')}</a>
+    <div class="wrap hero-grid">
+      <div>
+        <h1 class="h1">
+          <span class="riga riga1">{parole(hero.riga1).map((w, i) => <>{i > 0 && ' '}<span class="w">{w}</span></>)}</span>
+          <span class="riga riga2">{parole(hero.riga2).map((w, i) => <>{i > 0 && ' '}<span class="w">{w}</span></>)}</span>
+        </h1>
+        <p class="sub">{hero.sottotitolo}</p>
+        <BottoniContatto lang={lang} lungo booking={!!struttura.bookingUrl} />
+      </div>
+      <div class="arco-box">
+        <div class="arco">
+          <div class="img"><Foto id="casa/01-casa-e-viale" lang={lang} sizes="(min-width: 1040px) 40vw, 92vw" subito /></div>
+        </div>
+        <div class="badge" aria-hidden="true">
+          <svg class="giro" viewBox="0 0 150 150">
+            <defs><path id="cerchio" d="M75 75 m-56 0 a56 56 0 1 1 112 0 a56 56 0 1 1 -112 0"></path></defs>
+            <text font-family="DM Sans, sans-serif" font-size="13.2" font-weight="600" letter-spacing="1.6"><textPath href="#cerchio">{t('badge.giro')}</textPath></text>
+          </svg>
+          <Icona nome="foglia" class="foglia" />
+        </div>
+      </div>
+    </div>
+
+    <div class="nastro" aria-hidden="true">
+      <div class="nastro-in">
+        {[0, 1].map(() => (
+          <ul>{nastro.map((v) => <li>{v}<Icona nome="fogliaNastro" /></li>)}</ul>
+        ))}
+      </div>
     </div>
   </section>
-  {/* TODO: sezioni "La nostra struttura" e "Scopri la Val di Chio" */}
-  <section class="sezione contenitore">
-    <Galleria limite={6} testoVuoto={t('galleria.vuota')} />
+
+  <section class="sec">
+    <div class="wrap sempre">
+      <div>
+        <h2 class="h2">{sempre.titolo}</h2>
+        <p class="citazione">“{sempre.citazione}”</p>
+        <p class="p">{sempre.testo}</p>
+      </div>
+      <div class="ph entra"><div class="img"><Foto id="casa/04-portico" lang={lang} sizes="(min-width: 1040px) 55vw, 92vw" /></div></div>
+    </div>
+  </section>
+
+  <section class="sec scuro" id="storia">
+    <div class="wrap">
+      <h2 class="h2">{storia.titolo}</h2>
+      <p class="lead">{storia.testo}</p>
+      <p class="dafornire">{storia.daFornire}</p>
+      <Cipressi />
+      <ul class="valle">
+        <li class="natura">
+          <div class="ph entra"><div class="img"><Foto id="casa/05-viale-cipressi" lang={lang} /></div></div>
+          <h3><IconaNatura nome="viale" />{storia.viale}</h3>
+        </li>
+        <li class="natura">
+          <div class="ph entra"><div class="img"><Foto id="casa/03-cappella" lang={lang} /></div></div>
+          <h3><IconaNatura nome="cappella" />{storia.cappella}</h3>
+        </li>
+        <li class="natura">
+          <div class="ph entra"><div class="img"><Foto id="casa/02-casa-portico-esterno" lang={lang} /></div></div>
+          <h3><IconaNatura nome="portico" />{storia.portico}</h3>
+        </li>
+      </ul>
+      <p class="motto">{storia.motto}</p>
+      <a class="link" href={url('storia', lang)}>{t('link.storia')}</a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2 class="h2">{fuori.titolo}</h2>
+      <p class="lead">{fuori.testo}</p>
+      <Servizi servizi={fuori.servizi} />
+    </div>
+  </section>
+
+  <section class="sec sec-0" id="casa">
+    <div class="wrap">
+      <h2 class="h2">{casa.titolo}</h2>
+      <p class="lead">{casa.testo}</p>
+      <ul class="scorri" tabindex="0" aria-label={t('scorri.casa')}>
+        {casa.stanze.map((testo, i) => (
+          <li class="stanza">
+            <figure>
+              <div class="ph entra">
+                {fotoStanze[i]
+                  ? <div class="img"><Foto id={fotoStanze[i]!} lang={lang} sizes="(min-width: 1040px) 31vw, (min-width: 720px) 44vw, 78vw" /></div>
+                  : <span class="ph-lbl">[FOTO DA FORNIRE]</span>}
+              </div>
+              <figcaption>{testo}</figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+      <div class="onesta">
+        {casa.onesta.map((o) => <p><b>{o.titolo}</b> {o.testo}</p>)}
+      </div>
+      <a class="link" href={url('casa', lang)}>{t('link.tuttoCasa')}</a>
+    </div>
+  </section>
+
+  <section class="sec" id="dintorni">
+    <div class="wrap">
+      <h2 class="h2">{dint.titolo}</h2>
+      <p class="lead">{dint.testo}</p>
+      <div class="ph entra vista"><div class="img"><Foto id="giardino/01-vista-valle" lang={lang} sizes="(min-width: 1240px) 1170px, 92vw" /></div></div>
+      <ul class="luoghi" tabindex="0" aria-label={t('scorri.dintorni')}>
+        {luoghi.map((l) => (
+          <li class="luogo">
+            <div class="ph"><span class="ph-lbl">[FOTO]</span></div>
+            <h3>{nomeLuogo(l, lang)}</h3>
+            <p>{l.minutiAuto ? `${l.minutiAuto} min ${t('auto.tempo')}` : t('foot.daFornire')}</p>
+          </li>
+        ))}
+      </ul>
+      <a class="link" href={url('dintorni', lang)}>{t('link.dintorni')}</a>
+    </div>
+  </section>
+
+  <section class="sec sec-0">
+    <div class="wrap">
+      <div class="rec">
+        <h2 class="h2 h2-piccolo">{t('rec.titolo')}</h2>
+        {recInEvidenza ? (
+          <>
+            <blockquote lang={recInEvidenza.lingua !== 'altro' ? recInEvidenza.lingua : undefined}>“{recInEvidenza.testo}”</blockquote>
+            <p class="muted">{recInEvidenza.nome}, {recInEvidenza.paese}, {recInEvidenza.data}</p>
+          </>
+        ) : (
+          <p>{t('rec.nessuna')}</p>
+        )}
+        <div class="voto">
+          <b>{recensioni.punteggioMedio ?? '[–]'}</b>
+          <span>{t('rec.media')}</span>
+        </div>
+        <a class="link" href={url('recensioni', lang)}>{t('pag.recensioni')}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-0" id="contatti">
+    <div class="wrap contatti">
+      <div>
+        <h2 class="h2">{cont.titolo}</h2>
+        <p class="p">{cont.testo} {struttura.bookingUrl && <a href={struttura.bookingUrl} rel="noopener">{cont.bookingTesto}</a>}</p>
+      </div>
+      <BottoniContatto lang={lang} lungo email />
+    </div>
   </section>
 </Base>
-
-<style>
-  .hero { padding: 6rem 0; text-align: center; background: var(--c-bordo); }
-  h1 { font-size: clamp(2rem, 6vw, 3.5rem); margin: 0 0 .5rem; }
-</style>

@@ -1,0 +1,50 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import TestataPagina from '../components/TestataPagina.astro';
+import ChiamataContatti from '../components/ChiamataContatti.astro';
+import { NOMI_LINGUE, type Lingua } from '../i18n/lingue';
+import { useT } from '../i18n/ui';
+import { struttura } from '../data/struttura';
+import { recensioni, recensioniPerLingua } from '../data/contenuti';
+
+interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
+const { lang, voce } = Astro.props;
+const d = voce.data;
+const t = useT(lang);
+const lista = recensioniPerLingua(lang);
+const meseAnno = (aaaamm: string) => {
+  const [a, m] = aaaamm.split('-').map(Number);
+  return new Intl.DateTimeFormat(lang, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(Date.UTC(a, m - 1, 1)));
+};
+---
+<Base lang={lang} pagina="recensioni" seoTitolo={d.seoTitolo} descrizione={d.descrizione}>
+  <TestataPagina titolo={d.titolo} intro={d.intro} />
+  <section class="sec sec-0">
+    <div class="wrap">
+      <div class="rec">
+        <div class="voto">
+          <b>{recensioni.punteggioMedio ?? '[–]'}</b>
+          <span>{t('rec.media')}</span>
+        </div>
+        {struttura.bookingUrl
+          ? <a class="link" href={struttura.bookingUrl} rel="noopener">{t('link.recensioniBooking')}</a>
+          : <p>{t('foot.daFornire')} Booking.com URL</p>}
+      </div>
+      {lista.length === 0 ? (
+        <p class="p">{t('rec.nessuna')}</p>
+      ) : (
+        <ul class="lista-rec">
+          {lista.map((r) => (
+            <li>
+              <blockquote lang={r.lingua !== 'altro' ? r.lingua : undefined}>“{r.testo}”</blockquote>
+              <p>{r.nome}, {r.paese}, {meseAnno(r.data)} · {r.punteggio}/10</p>
+              {r.lingua !== lang && r.lingua !== 'altro' && <p>{t('rec.lingua')} {NOMI_LINGUE[r.lingua]}</p>}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+  <ChiamataContatti lang={lang} />
+</Base>

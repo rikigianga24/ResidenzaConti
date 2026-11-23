@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import { LINGUE, url } from '../i18n/lingue';
+import { useT } from '../i18n/ui';
+const t = useT('it');
+---
+<Base lang="it" pagina="home" seoTitolo={`${t('404.titolo')} | Residenza Conti`} descrizione={t('404.testo')} noindex>
+  <section class="sec">
+    <div class="wrap">
+      <h1 class="h1">{t('404.titolo')}</h1>
+      <p class="lead">{t('404.testo')}</p>
+      <ul class="lang">
+        {LINGUE.map((l) => <li><a href={url('home', l)} lang={l}>{useT(l)('404.home')}</a></li>)}
+      </ul>
+    </div>
+  </section>
+</Base>

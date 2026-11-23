@@ -1,34 +1,38 @@
 ---
-import { lingue, rotte, useT, url, type Lingua, type Pagina } from '../i18n/ui';
+import Icona from './Icona.astro';
+import BottoniContatto from './BottoniContatto.astro';
+import { LINGUE, url, type Lingua, type Pagina } from '../i18n/lingue';
+import { useT, nomePagina } from '../i18n/ui';
 
 interface Props { lang: Lingua; pagina: Pagina }
 const { lang, pagina } = Astro.props;
 const t = useT(lang);
-const voci: Pagina[] = ['home', 'appartamento', 'galleria', 'contatti'];
+// menu principale su desktop (il resto è nel footer e nel menu su telefono)
+const principali: Pagina[] = ['casa', 'storia', 'dintorni', 'disponibilita'];
+const tutte: Pagina[] = ['home', 'casa', 'galleria', 'storia', 'dintorni', 'disponibilita', 'recensioni', 'arrivare', 'faq', 'contatti'];
+const corrente = (p: Pagina) => (p === pagina ? 'page' : undefined);
 ---
-<header class="header">
-  <div class="contenitore riga">
-    <a class="logo" href={url('home', lang)}>Residenza Conti</a>
-    <nav aria-label="Menu">
-      <ul>
-        {voci.map((p) => (
-          <li><a href={url(p, lang)} aria-current={p === pagina ? 'page' : undefined}>{t(`nav.${p}`)}</a></li>
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href={url('home', lang)}>Residenza Conti</a>
+    <nav class="nav" aria-label={t('nav.principale')}>
+      {principali.map((p) => <a href={url(p, lang)} aria-current={corrente(p)}>{nomePagina(p, lang)}</a>)}
+    </nav>
+    <div class="dx">
+      <ul class="lang" aria-label={t('nav.lingua')}>
+        {LINGUE.map((l) => (
+          <li><a href={url(pagina, l)} lang={l} hreflang={l} aria-current={l === lang ? 'true' : undefined}>{l.toUpperCase()}</a></li>
         ))}
       </ul>
-    </nav>
-    <ul class="lingue">
-      {(Object.keys(lingue) as Lingua[]).filter((l) => l !== lang).map((l) => (
-        <li><a href={rotte[pagina][l]} hreflang={l} lang={l}>{l.toUpperCase()}</a></li>
-      ))}
-    </ul>
+      <details class="menu-mob">
+        <summary aria-label={t('nav.menu')}><Icona nome="menu" /></summary>
+        <nav aria-label={t('nav.principale')}>
+          <ul>
+            {tutte.map((p) => <li><a href={url(p, lang)} aria-current={corrente(p)}>{nomePagina(p, lang)}</a></li>)}
+          </ul>
+        </nav>
+      </details>
+    </div>
+    <BottoniContatto lang={lang} class="hdr-cta" />
   </div>
 </header>
-
-<style>
-  .header { border-bottom: 1px solid var(--c-bordo); }
-  .riga { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; padding-block: 1rem; }
-  .logo { font-family: var(--font-titoli); font-size: 1.25rem; text-decoration: none; color: inherit; margin-right: auto; }
-  ul { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
-  nav a { text-decoration: none; color: inherit; }
-  nav a[aria-current='page'] { color: var(--c-accento); font-weight: 600; }
-</style>

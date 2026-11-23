@@ -1,0 +1,51 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import TestataPagina from '../components/TestataPagina.astro';
+import ChiamataContatti from '../components/ChiamataContatti.astro';
+import Foto from '../components/Foto.astro';
+import type { Lingua } from '../i18n/lingue';
+import { useT, type ChiaveUi } from '../i18n/ui';
+import { tutteLeFoto, type Area } from '../data/foto';
+
+interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
+const { lang, voce } = Astro.props;
+const d = voce.data;
+const t = useT(lang);
+const aree: Area[] = ['casa', 'giardino', 'piscina', 'dintorni', 'stagioni'];
+// per ogni foto anche una versione grande (1800px) da aprire al clic
+const gruppi = await Promise.all(
+  aree.map(async (area) => ({
+    area,
+    foto: await Promise.all(
+      tutteLeFoto.filter((f) => f.area === area).map(async (f) => ({
+        ...f,
+        grande: (await getImage({ src: f.src, width: Math.min(1800, f.src.width), format: 'webp' })).src,
+      })),
+    ),
+  })),
+);
+---
+<Base lang={lang} pagina="galleria" seoTitolo={d.seoTitolo} descrizione={d.descrizione}>
+  <TestataPagina titolo={d.titolo} intro={d.intro} />
+  <section class="sec sec-0">
+    <div class="wrap">
+      {gruppi.map((g) => (
+        <section class="area" aria-labelledby={`area-${g.area}`}>
+          <h2 class="h2 h2-piccolo" id={`area-${g.area}`}>{t(`galleria.${g.area}` as ChiaveUi)}</h2>
+          {g.foto.length > 0 ? (
+            <ul class="griglia">
+              {g.foto.map((f) => (
+                <li><a href={f.grande}><Foto id={f.id} lang={lang} sizes="(min-width: 1040px) 25vw, (min-width: 720px) 33vw, 50vw" /></a></li>
+              ))}
+            </ul>
+          ) : (
+            <p class="muted">{t('foot.daFornire')}</p>
+          )}
+        </section>
+      ))}
+    </div>
+  </section>
+  <ChiamataContatti lang={lang} />
+</Base>

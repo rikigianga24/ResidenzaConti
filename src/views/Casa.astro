@@ -1,0 +1,43 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import TestataPagina from '../components/TestataPagina.astro';
+import ChiamataContatti from '../components/ChiamataContatti.astro';
+import Foto from '../components/Foto.astro';
+import { url, type Lingua } from '../i18n/lingue';
+import { useT } from '../i18n/ui';
+import { struttura } from '../data/struttura';
+import { tutteLeFoto } from '../data/foto';
+
+interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
+const { lang, voce } = Astro.props;
+const d = voce.data;
+const t = useT(lang);
+const { Content } = await render(voce);
+const interni = tutteLeFoto.filter((f) => f.area === 'casa' && /-(soggiorno|cucina|cottura|camera)/.test(f.id));
+---
+<Base lang={lang} pagina="casa" seoTitolo={d.seoTitolo} descrizione={d.descrizione} fotoOg="casa/07-soggiorno-cucina">
+  <TestataPagina titolo={d.titolo} intro={d.intro} />
+  <section class="sec sec-0">
+    <div class="wrap">
+      <ul class="scorri" tabindex="0" aria-label={t('scorri.casa')}>
+        {interni.map((f) => (
+          <li class="stanza"><div class="ph"><div class="img"><Foto id={f.id} lang={lang} sizes="(min-width: 1040px) 31vw, (min-width: 720px) 44vw, 78vw" /></div></div></li>
+        ))}
+      </ul>
+      <div class="prosa"><Content /></div>
+      <div class="dotazioni">
+        {d.dotazioni?.map((g) => (
+          <section>
+            <h2>{g.titolo}</h2>
+            <ul>{g.voci.map((v) => <li>{v}</li>)}</ul>
+          </section>
+        ))}
+      </div>
+      {/* CIN e CIR anche qui, oltre che nel footer (obbligo di legge negli annunci) */}
+      <p class="codici">CIN {struttura.cin || t('foot.daFornire')} · CIR {struttura.cir || t('foot.daFornire')}</p>
+      <a class="link" href={url('galleria', lang)}>{t('link.galleria')}</a>
+    </div>
+  </section>
+  <ChiamataContatti lang={lang} />
+</Base>

@@ -1,0 +1,29 @@
+---
+// Foto ottimizzata: <picture> con AVIF/WebP in più larghezze e alt nella lingua della pagina.
+import { Picture } from 'astro:assets';
+import { foto } from '../data/foto';
+import type { Lingua } from '../i18n/lingue';
+
+interface Props {
+  id: string;
+  lang: Lingua;
+  /** attributo sizes: quanto è larga la foto nella pagina */
+  sizes?: string;
+  /** true per le foto visibili subito (hero): niente lazy load */
+  subito?: boolean;
+  class?: string;
+}
+const { id, lang, sizes = '(min-width: 1040px) 33vw, 80vw', subito = false, class: classe } = Astro.props;
+const f = foto(id);
+---
+<Picture
+  src={f.src}
+  alt={f.alt[lang]}
+  formats={['avif', 'webp']}
+  widths={[480, 800, 1200, 1800].filter((w) => w <= f.src.width)}
+  sizes={sizes}
+  loading={subito ? 'eager' : 'lazy'}
+  fetchpriority={subito ? 'high' : 'auto'}
+  decoding="async"
+  class={classe}
+/>

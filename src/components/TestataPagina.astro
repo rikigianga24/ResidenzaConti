@@ -1,0 +1,11 @@
+---
+// Titolo e introduzione delle pagine interne.
+interface Props { titolo: string; intro?: string }
+const { titolo, intro } = Astro.props;
+---
+<header class="testata-pag">
+  <div class="wrap">
+    <h1 class="h1">{titolo}</h1>
+    {intro && <p class="lead">{intro}</p>}
+  </div>
+</header>
