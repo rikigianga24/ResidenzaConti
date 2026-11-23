@@ -1,0 +1,20 @@
+---
+import { useT, type Lingua } from '../i18n/ui';
+import { struttura } from '../data/struttura';
+
+interface Props { lang: Lingua }
+const t = useT(Astro.props.lang);
+const anno = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="contenitore">
+    <p>{struttura.nome} · {struttura.localita}</p>
+    {/* TODO: CIN (codice identificativo nazionale) obbligatorio per legge negli annunci */}
+    <p>© {anno} {struttura.nome}. {t('footer.diritti')}.</p>
+  </div>
+</footer>
+
+<style>
+  .footer { border-top: 1px solid var(--c-bordo); padding: 2rem 0; font-size: .9rem; margin-top: 3rem; }
+  p { margin: .25rem 0; }
+</style>

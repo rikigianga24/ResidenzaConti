@@ -1,0 +1,18 @@
+/* Stili base: variabili colore/tipografia in un punto solo */
+:root {
+  --c-sfondo: #fbf8f3;
+  --c-testo: #2b2620;
+  --c-accento: #7a5c3e;
+  --c-bordo: #e4dccf;
+  --larghezza: 72rem;
+  --font: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-titoli: Georgia, 'Times New Roman', serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--c-sfondo); color: var(--c-testo); font-family: var(--font); line-height: 1.6; }
+h1, h2, h3 { font-family: var(--font-titoli); line-height: 1.2; }
+a { color: var(--c-accento); }
+img { max-width: 100%; height: auto; display: block; }
+.contenitore { max-width: var(--larghezza); margin: 0 auto; padding: 0 1rem; }
+.sezione { padding: 3rem 0; }
+.bottone { display: inline-block; padding: .75rem 1.5rem; background: var(--c-accento); color: #fff; text-decoration: none; border: 0; border-radius: .25rem; font: inherit; cursor: pointer; }

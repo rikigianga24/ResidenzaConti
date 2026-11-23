@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { useT, type Lingua } from '../i18n/ui';
+import { struttura, servizi } from '../data/struttura';
+
+interface Props { lang: Lingua }
+const { lang } = Astro.props;
+const t = useT(lang);
+const s = struttura;
+---
+<Base lang={lang} pagina="appartamento" titolo={t('appartamento.titolo')}>
+  <section class="sezione contenitore">
+    <h1>{t('appartamento.titolo')}</h1>
+    <p>{s.metriQuadri} m² · {s.camere} 🛏 · {s.bagni} 🛁 · {s.postiLetto} 👤 · 🏊 {s.piscina}</p>
+    {/* TODO: descrizione testuale */}
+    <h2>{t('appartamento.servizi')}</h2>
+    <ul>{servizi[lang].map((v) => <li>{v}</li>)}</ul>
+  </section>
+</Base>

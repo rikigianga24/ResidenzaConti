@@ -1,0 +1,34 @@
+---
+import { lingue, rotte, useT, url, type Lingua, type Pagina } from '../i18n/ui';
+
+interface Props { lang: Lingua; pagina: Pagina }
+const { lang, pagina } = Astro.props;
+const t = useT(lang);
+const voci: Pagina[] = ['home', 'appartamento', 'galleria', 'contatti'];
+---
+<header class="header">
+  <div class="contenitore riga">
+    <a class="logo" href={url('home', lang)}>Residenza Conti</a>
+    <nav aria-label="Menu">
+      <ul>
+        {voci.map((p) => (
+          <li><a href={url(p, lang)} aria-current={p === pagina ? 'page' : undefined}>{t(`nav.${p}`)}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <ul class="lingue">
+      {(Object.keys(lingue) as Lingua[]).filter((l) => l !== lang).map((l) => (
+        <li><a href={rotte[pagina][l]} hreflang={l} lang={l}>{l.toUpperCase()}</a></li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<style>
+  .header { border-bottom: 1px solid var(--c-bordo); }
+  .riga { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; padding-block: 1rem; }
+  .logo { font-family: var(--font-titoli); font-size: 1.25rem; text-decoration: none; color: inherit; margin-right: auto; }
+  ul { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+  nav a { text-decoration: none; color: inherit; }
+  nav a[aria-current='page'] { color: var(--c-accento); font-weight: 600; }
+</style>
