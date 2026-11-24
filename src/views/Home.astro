@@ -4,37 +4,46 @@ import Base from '../layouts/Base.astro';
 import Foto from '../components/Foto.astro';
 import Icona from '../components/Icona.astro';
 import IconaNatura from '../components/IconaNatura.astro';
+import NomeHero from '../components/NomeHero.astro';
 import Servizi from '../components/Servizi.astro';
 import Cipressi from '../components/Cipressi.astro';
 import BottoniContatto from '../components/BottoniContatto.astro';
 import { url, type Lingua } from '../i18n/lingue';
 import { useT } from '../i18n/ui';
 import { struttura } from '../data/struttura';
+import { esisteFoto } from '../data/foto';
 import { luoghi, nomeLuogo, recensioni, recensioniPerLingua } from '../data/contenuti';
 
 interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
 const { lang, voce } = Astro.props;
 const d = voce.data;
 const t = useT(lang);
-const hero = d.hero!, nastro = d.nastro!, sempre = d.sempre!, storia = d.storia!, fuori = d.fuori!, casa = d.casa!, dint = d.dintorni!, cont = d.contatti!;
-const parole = (s: string) => s.split(' ');
+const hero = d.hero!, nastro = d.nastro!, valle = d.valle!, casa = d.casa!, fuori = d.fuori!, storia = d.storia!, dint = d.dintorni!, cont = d.contatti!;
+
+// Foto dell'hero: quella serale con le luci accese, se è stata aggiunta;
+// finché non c'è, la casa vista dal viale.
+const fotoHero = esisteFoto('casa/00-casa-sera') ? 'casa/00-casa-sera' : 'casa/01-casa-e-viale';
+// Le tre carte della valle: natura, passeggiate, rilassamento
+const carteValle = [
+  { icona: 'ulivo', foto: 'giardino/06-tramonto-ulivi' },
+  { icona: 'viale', foto: 'casa/05-viale-cipressi' },
+  { icona: 'amaca', foto: 'giardino/04-amaca' },
+] as const;
 const fotoStanze = ['casa/07-soggiorno-cucina', 'casa/09-camera-1', null, 'casa/13-camera-2-travi', 'casa/06-soggiorno'];
 const recInEvidenza = recensioniPerLingua(lang)[0];
 ---
-<Base lang={lang} pagina="home" seoTitolo={d.seoTitolo} descrizione={d.descrizione} schema>
+<Base lang={lang} pagina="home" seoTitolo={d.seoTitolo} descrizione={d.descrizione} fotoOg={fotoHero} schema>
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <h1 class="h1">
-          <span class="riga riga1">{parole(hero.riga1).map((w, i) => <>{i > 0 && ' '}<span class="w">{w}</span></>)}</span>
-          <span class="riga riga2">{parole(hero.riga2).map((w, i) => <>{i > 0 && ' '}<span class="w">{w}</span></>)}</span>
-        </h1>
+        <p class="eyebrow">{hero.eyebrow}</p>
+        <NomeHero />
         <p class="sub">{hero.sottotitolo}</p>
         <BottoniContatto lang={lang} lungo booking={!!struttura.bookingUrl} />
       </div>
       <div class="arco-box">
         <div class="arco">
-          <div class="img"><Foto id="casa/01-casa-e-viale" lang={lang} sizes="(min-width: 1040px) 40vw, 92vw" subito /></div>
+          <div class="img"><Foto id={fotoHero} lang={lang} sizes="(min-width: 1040px) 40vw, 92vw" subito /></div>
         </div>
         <div class="badge" aria-hidden="true">
           <svg class="giro" viewBox="0 0 150 150">
@@ -55,47 +64,21 @@ const recInEvidenza = recensioniPerLingua(lang)[0];
     </div>
   </section>
 
-  <section class="sec">
-    <div class="wrap sempre">
-      <div>
-        <h2 class="h2">{sempre.titolo}</h2>
-        <p class="citazione">“{sempre.citazione}”</p>
-        <p class="p">{sempre.testo}</p>
-      </div>
-      <div class="ph entra"><div class="img"><Foto id="casa/04-portico" lang={lang} sizes="(min-width: 1040px) 55vw, 92vw" /></div></div>
-    </div>
-  </section>
-
-  <section class="sec scuro" id="storia">
+  <section class="sec" id="valle">
     <div class="wrap">
-      <h2 class="h2">{storia.titolo}</h2>
-      <p class="lead">{storia.testo}</p>
-      <p class="dafornire">{storia.daFornire}</p>
-      <Cipressi />
+      <h2 class="h2">{valle.titolo}</h2>
+      <p class="lead">{valle.testo}</p>
+      <div class="ph entra vista"><div class="img"><Foto id="giardino/01-vista-valle" lang={lang} sizes="(min-width: 1240px) 1170px, 92vw" /></div></div>
       <ul class="valle">
-        <li class="natura">
-          <div class="ph entra"><div class="img"><Foto id="casa/05-viale-cipressi" lang={lang} /></div></div>
-          <h3><IconaNatura nome="viale" />{storia.viale}</h3>
-        </li>
-        <li class="natura">
-          <div class="ph entra"><div class="img"><Foto id="casa/03-cappella" lang={lang} /></div></div>
-          <h3><IconaNatura nome="cappella" />{storia.cappella}</h3>
-        </li>
-        <li class="natura">
-          <div class="ph entra"><div class="img"><Foto id="casa/02-casa-portico-esterno" lang={lang} /></div></div>
-          <h3><IconaNatura nome="portico" />{storia.portico}</h3>
-        </li>
+        {valle.punti.map((p, i) => (
+          <li class="natura">
+            <div class="ph entra"><div class="img"><Foto id={carteValle[i].foto} lang={lang} /></div></div>
+            <h3><IconaNatura nome={carteValle[i].icona} />{p.titolo}</h3>
+            <p>{p.testo}</p>
+          </li>
+        ))}
       </ul>
-      <p class="motto">{storia.motto}</p>
-      <a class="link" href={url('storia', lang)}>{t('link.storia')}</a>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="wrap">
-      <h2 class="h2">{fuori.titolo}</h2>
-      <p class="lead">{fuori.testo}</p>
-      <Servizi servizi={fuori.servizi} />
+      <p class="motto">{valle.motto}</p>
     </div>
   </section>
 
@@ -124,11 +107,41 @@ const recInEvidenza = recensioniPerLingua(lang)[0];
     </div>
   </section>
 
+  <section class="sec">
+    <div class="wrap">
+      <h2 class="h2">{fuori.titolo}</h2>
+      <p class="lead">{fuori.testo}</p>
+      <Servizi servizi={fuori.servizi} />
+    </div>
+  </section>
+
+  <section class="sec scuro" id="storia">
+    <div class="wrap">
+      <h2 class="h2">{storia.titolo}</h2>
+      <p class="lead lead-largo">{storia.testo}</p>
+      <Cipressi />
+      <ul class="valle">
+        <li class="natura">
+          <div class="ph entra"><div class="img"><Foto id="casa/05-viale-cipressi" lang={lang} /></div></div>
+          <h3><IconaNatura nome="viale" />{storia.viale}</h3>
+        </li>
+        <li class="natura">
+          <div class="ph entra"><div class="img"><Foto id="casa/03-cappella" lang={lang} /></div></div>
+          <h3><IconaNatura nome="cappella" />{storia.cappella}</h3>
+        </li>
+        <li class="natura">
+          <div class="ph entra"><div class="img"><Foto id="casa/02-casa-portico-esterno" lang={lang} /></div></div>
+          <h3><IconaNatura nome="portico" />{storia.portico}</h3>
+        </li>
+      </ul>
+      <a class="link" href={url('storia', lang)}>{t('link.storia')}</a>
+    </div>
+  </section>
+
   <section class="sec" id="dintorni">
     <div class="wrap">
       <h2 class="h2">{dint.titolo}</h2>
-      <p class="lead">{dint.testo}</p>
-      <div class="ph entra vista"><div class="img"><Foto id="giardino/01-vista-valle" lang={lang} sizes="(min-width: 1240px) 1170px, 92vw" /></div></div>
+      <p class="lead lead-largo">{dint.testo}</p>
       <ul class="luoghi" tabindex="0" aria-label={t('scorri.dintorni')}>
         {luoghi.map((l) => (
           <li class="luogo">

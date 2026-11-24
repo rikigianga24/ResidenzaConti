@@ -18,7 +18,7 @@ Sito statico della casa vacanze Residenza Conti (Val di Chio, Castiglion Fiorent
 npm run dev       # sviluppo, http://localhost:4321
 npm run build     # astro check (tipi) + build statica in dist/
 npm run preview   # serve dist/ (redirect vecchi URL inclusi)
-node scripts/sync-ical.ts   # job iCal; richiede ICAL_URL e OUTPUT_FILE nell'ambiente
+node scripts/sync-ical.ts   # job iCal; richiede ICAL_URL e OUTPUT_FILE (dove farlo girare: da decidere, vedi Calendario)
 ```
 
 Non ci sono test: la verifica è `npm run build`, con 0 errori di `astro check`. La prima build elabora tutte le foto (AVIF lento, ~2 min); le successive usano la cache in `node_modules/.astro`.
@@ -34,14 +34,14 @@ Non ci sono test: la verifica è `npm run build`, con 0 errori di `astro check`.
   
   `getStaticPaths` va in errore se manca un file di lingua.
 - **Testi**:
-  - Collezione `pagine` (`src/content.config.ts`, schema Zod): un `.md` per pagina e lingua. Il frontmatter contiene SEO (`seoTitolo`, `descrizione`), titoli e testi strutturati (la home è quasi tutta frontmatter); il corpo Markdown è la prosa.
+  - Collezione `pagine` (`src/content.config.ts`, schema Zod): un `.md` per pagina e lingua. Il frontmatter contiene SEO (`seoTitolo`, `descrizione`), titoli e testi strutturati (la home è quasi tutta frontmatter; ordine delle sezioni in `src/views/Home.astro`: hero, valle, casa, spazio, storia, dintorni, recensioni, contatti); il corpo Markdown è la prosa.
   - Le etichette brevi dell'interfaccia sono in `src/i18n/ui.ts`: le chiavi sono tipizzate su `it`, quindi le altre lingue devono averle tutte.
 - **Dati**:
   - `src/data/struttura.ts` è la fonte unica dei dati fattuali (indirizzo, telefono, CIN/CIR, Booking URL; stringa vuota = da fornire). I componenti nascondono le parti che dipendono da un dato vuoto, per esempio i pulsanti Booking.
   - JSON curati a mano in `src/content/` (`prezzi.json`, `recensioni.json`, `dintorni.json`), tipizzati in `src/data/contenuti.ts`.
-- **Foto**: `src/assets/foto/{casa,giardino,piscina,...}/`, con catalogo e alt nelle 4 lingue in `src/data/foto.ts`. La build fallisce se una foto non ha la sua voce. Si usano sempre con `<Foto id="area/nome" lang={lang} />` (Picture AVIF/WebP). Le foto dei dintorni del vecchio sito sono state escluse perché probabilmente coperte da copyright.
-- **Calendario**: unico JavaScript del sito (`src/scripts/calendario.ts`). Legge `/disponibilita.json`, generato sul VPS da `scripts/sync-ical.ts` (solo date occupate, link iCal in `.env`). Il JSON non è nel repo. Senza file o senza JS resta un messaggio di ripiego.
-- **CSP restrittiva** (`deploy/nginx.conf`: `script-src 'self'; style-src 'self'`). Niente `style="..."`, `<style>` o script inline nel markup: i ritardi delle animazioni sono classi `nth-child` in `global.css`. La config Astro forza CSS e script in file esterni (`inlineStylesheets: 'never'`, `assetsInlineLimit: 0`). Unica eccezione ammessa: il JSON-LD di schema.org.
-- **Stili**: tutto in `src/styles/global.css`, che è il CSS del prototipo Claude Design "Residenza Conti – prototipo sito", palette Vigna. È mobile first, con breakpoint a 720, 1040 e 1240 px (menu completo solo da 1240). Le animazioni usano solo transform/opacity e sono tutte spente con `prefers-reduced-motion`. Font self-hosted in `public/fonts/` (OFL).
-- **Redirect dei vecchi URL WordPress**: `src/i18n/redirect.mjs` (per Astro) e `deploy/nginx.conf` (301 reali) vanno tenuti allineati.
-- **Deploy**: si carica `dist/` sul VPS. Escludere `disponibilita.json` da eventuali `rsync --delete`, oppure scriverlo fuori dalla cartella sincronizzata.
+- **Foto**: `src/assets/foto/{casa,giardino,piscina,...}/`, con catalogo e alt nelle 4 lingue in `src/data/foto.ts`. La build fallisce se una foto non ha la sua voce. L'hero usa `casa/00-casa-sera` (foto serale con le luci accese) se il file esiste, altrimenti `casa/01-casa-e-viale`. Si usano sempre con `<Foto id="area/nome" lang={lang} />` (Picture AVIF/WebP). Le foto dei dintorni del vecchio sito sono state escluse perché probabilmente coperte da copyright.
+- **Calendario**: unico JavaScript del sito (`src/scripts/calendario.ts`). Legge `/disponibilita.json`, prodotto da `scripts/sync-ical.ts` (solo date occupate, link iCal mai nel repo). Il JSON non è nel repo. Con Cloudflare Pages non c'è un cron sul server: serve una Pages Function con cache o un Worker pianificato, ancora da scrivere. Senza file o senza JS resta un messaggio di ripiego.
+- **CSP restrittiva** (`public/_headers`: `script-src 'self'; style-src 'self'`). Niente `style="..."`, `<style>` o script inline nel markup: i ritardi delle animazioni sono classi `nth-child` in `global.css`. La config Astro forza CSS e script in file esterni (`inlineStylesheets: 'never'`, `assetsInlineLimit: 0`). Unica eccezione ammessa: il JSON-LD di schema.org.
+- **Stili**: tutto in `src/styles/global.css`, che parte dal CSS del prototipo Claude Design "Residenza Conti – prototipo sito", con palette cipresso/crema/legno/oro (variabili in `:root`; contrasti verificati WCAG AA). È mobile first, con breakpoint a 720, 1040 e 1240 px (menu completo solo da 1240). Le animazioni usano solo transform/opacity e sono tutte spente con `prefers-reduced-motion`. Font self-hosted in `public/fonts/` (OFL): Fraunces per i titoli, Parisienne solo per il nome nell'hero (`NomeHero.astro`), DM Sans per il testo.
+- **Redirect dei vecchi URL WordPress**: `src/i18n/redirect.mjs` (per Astro) e `public/_redirects` (301 reali su Cloudflare Pages) vanno tenuti allineati.
+- **Hosting**: Cloudflare Pages (build `npm run build`, cartella `dist`), dominio su IONOS. Header e cache in `public/_headers`.

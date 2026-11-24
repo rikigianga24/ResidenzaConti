@@ -34,6 +34,12 @@ const interni = tutteLeFoto.filter((f) => f.area === 'casa' && /-(soggiorno|cuci
           </section>
         ))}
       </div>
+      {d.regole && d.regole.length > 0 && (
+        <section class="regole" aria-labelledby="tit-regole">
+          <h2 class="h2 h2-piccolo" id="tit-regole">{t('casa.regole')}</h2>
+          <ul>{d.regole.map((r) => <li>{r}</li>)}</ul>
+        </section>
+      )}
       {/* CIN e CIR anche qui, oltre che nel footer (obbligo di legge negli annunci) */}
       <p class="codici">CIN {struttura.cin || t('foot.daFornire')} · CIR {struttura.cir || t('foot.daFornire')}</p>
       <a class="link" href={url('galleria', lang)}>{t('link.galleria')}</a>

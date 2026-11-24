@@ -5,7 +5,11 @@ titolo: Häufige Fragen
 intro: Antworten auf die Fragen, die man uns am häufigsten stellt. Für alles andere schreiben Sie uns gern.
 domande:
   - d: Wann sind Check-in und Check-out?
-    r: "[FOLGT]"
+    r: Check-in ist ab 16:00 Uhr, Check-out bis 10:00 Uhr. Bitte teilen Sie uns Ihre Ankunftszeit im Voraus mit.
+  - d: Was brauche ich beim Check-in?
+    r: Einen Lichtbildausweis und eine Kreditkarte. Gäste unter 18 Jahren können nur in Begleitung eines Elternteils oder gesetzlichen Vormunds einchecken.
+  - d: Darf man feiern?
+    r: Nein, die Unterkunft steht für Junggesellenabschiede und ähnliche Feiern nicht zur Verfügung.
   - d: Sind Haustiere erlaubt?
     r: Leider nein, Haustiere sind nicht erlaubt.
   - d: Gibt es eine Klimaanlage?

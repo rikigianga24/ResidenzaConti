@@ -19,7 +19,7 @@ export default defineConfig({
     // CSS sempre in file esterni: permette una Content-Security-Policy senza 'unsafe-inline'
     inlineStylesheets: 'never',
   },
-  // Redirect dei vecchi URL WordPress. In produzione li fa nginx con un vero 301
-  // (deploy/nginx.conf); questi servono per `astro preview` e come rete di sicurezza.
+  // Redirect dei vecchi URL WordPress. In produzione li fa Cloudflare Pages con un vero 301
+  // (public/_redirects); questi servono per `astro preview` e come rete di sicurezza.
   redirects: redirectVecchiSito,
 });

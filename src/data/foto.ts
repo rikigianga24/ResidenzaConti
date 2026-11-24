@@ -155,6 +155,13 @@ const catalogo: Record<string, VoceFoto> = {
     en: 'The lawn with cypress trees and the edge of the pond',
     de: 'Die Wiese mit Zypressen und dem Rand des Teichs',
     fr: 'La pelouse avec les cyprès et le bord du bassin' } },
+  // Foto serale della casa con le luci accese (hero). Da aggiungere come
+  // src/assets/foto/casa/00-casa-sera.jpg: appena il file c'è, la home la usa da sola.
+  'casa/00-casa-sera': { area: 'casa', alt: {
+    it: 'La casa di sera, con tutte le luci accese',
+    en: 'The house in the evening, with all the lights on',
+    de: 'Das Haus am Abend, alle Lichter an',
+    fr: 'La maison le soir, toutes lumières allumées' } },
 };
 
 export interface Foto {
@@ -179,4 +186,9 @@ export function foto(id: string): Foto {
   const f = tutteLeFoto.find((x) => x.id === id);
   if (!f) throw new Error(`Foto non trovata: ${id}`);
   return f;
+}
+
+/** true se la foto è presente in src/assets/foto (le voci del catalogo senza file sono ammesse). */
+export function esisteFoto(id: string): boolean {
+  return tutteLeFoto.some((x) => x.id === id);
 }

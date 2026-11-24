@@ -17,17 +17,21 @@ const pagine = defineCollection({
     intro: z.string().optional(),
 
     // --- solo home ---
-    hero: z.object({ riga1: z.string(), riga2: z.string(), sottotitolo: z.string() }).optional(),
+    hero: z.object({ eyebrow: z.string(), sottotitolo: z.string() }).optional(),
     nastro: z.array(z.string()).optional(),
-    sempre: z.object({ titolo: z.string(), citazione: z.string(), testo: z.string() }).optional(),
+    valle: z.object({
+      titolo: z.string(),
+      testo: z.string(),
+      motto: z.string(),
+      // tre carte con foto ad arco: natura, passeggiate, rilassamento
+      punti: z.array(testoBreve).length(3),
+    }).optional(),
     storia: z.object({
       titolo: z.string(),
       testo: z.string(),
-      daFornire: z.string(),
       viale: z.string(),
       cappella: z.string(),
       portico: z.string(),
-      motto: z.string(),
     }).optional(),
     fuori: z.object({
       titolo: z.string(),
@@ -46,6 +50,9 @@ const pagine = defineCollection({
 
     // --- pagina La casa ---
     dotazioni: z.array(z.object({ titolo: z.string(), voci: z.array(z.string()) })).optional(),
+
+    // regole della casa (pagina La casa)
+    regole: z.array(z.string()).optional(),
 
     // --- pagina FAQ ---
     domande: z.array(z.object({ d: z.string(), r: z.string() })).optional(),

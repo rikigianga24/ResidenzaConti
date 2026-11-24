@@ -5,7 +5,11 @@ titolo: Questions fréquentes
 intro: Les réponses aux questions qu'on nous pose le plus souvent. Pour tout le reste, écrivez-nous.
 domande:
   - d: À quelle heure sont l'arrivée et le départ ?
-    r: "[À FOURNIR]"
+    r: L'arrivée se fait à partir de 16 h, le départ avant 10 h. Merci de nous indiquer à l'avance votre heure d'arrivée.
+  - d: Que faut-il à l'arrivée ?
+    r: Une pièce d'identité avec photo et une carte de crédit. Les hôtes de moins de 18 ans ne peuvent s'enregistrer que s'ils sont accompagnés d'un parent ou d'un tuteur légal.
+  - d: Peut-on organiser des fêtes ?
+    r: Non, l'établissement n'est pas disponible pour les enterrements de vie de jeune fille ou de garçon et autres fêtes similaires.
   - d: Les animaux sont-ils admis ?
     r: Malheureusement non, les animaux ne sont pas admis.
   - d: Y a-t-il la climatisation ?

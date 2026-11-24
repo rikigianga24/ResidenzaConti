@@ -1,0 +1,28 @@
+---
+// Nome "Residenza Conti" nell'hero: corsivo, una lettera alla volta, con un ramo
+// d'ulivo che cresce sotto. Tutte le animazioni usano solo transform e opacity
+// (stili in global.css) e si spengono con prefers-reduced-motion.
+const riga1 = 'Residenza'.split('');
+const riga2 = 'Conti'.split('');
+---
+<h1 class="nome" aria-label="Residenza Conti">
+  <span class="riga r1" aria-hidden="true">{riga1.map((c) => <span class="l">{c}</span>)}</span>
+  <span class="riga r2" aria-hidden="true">{riga2.map((c) => <span class="l">{c}</span>)}</span>
+</h1>
+<svg class="ramo" viewBox="-6 -10 396 76" fill="none" aria-hidden="true">
+  <path class="gambo" d="M4 34 C 70 6, 150 60, 230 30 C 300 2, 330 12, 356 26" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    <g class="f1" transform="translate(24.2 27.9) rotate(-48.9)"><ellipse class="fg" cx="12" cy="0" rx="12" ry="4.2"></ellipse></g>
+    <g class="f2" transform="translate(66.8 26.5) rotate(42.9)"><ellipse class="fg" cx="12" cy="0" rx="12" ry="4.2"></ellipse></g>
+    <g class="f3" transform="translate(111.8 32.8) rotate(-28.7)"><ellipse class="fg" cx="12" cy="0" rx="12" ry="4.2"></ellipse></g>
+    <g class="f4" transform="translate(158.4 38.8) rotate(42.0)"><ellipse class="fg" cx="12" cy="0" rx="12" ry="4.2"></ellipse></g>
+    <g class="f5" transform="translate(206.0 36.6) rotate(-48.5)"><ellipse class="fg" cx="12" cy="0" rx="12" ry="4.2"></ellipse></g>
+    <g class="f6" transform="translate(253.5 21.5) rotate(20.4)"><ellipse class="fg" cx="12" cy="0" rx="12" ry="4.2"></ellipse></g>
+    <g class="f7" transform="translate(283.2 14.1) rotate(-47.5)"><ellipse class="fg" cx="12" cy="0" rx="12" ry="4.2"></ellipse></g>
+    <g class="f8" transform="translate(307.1 12.2) rotate(38.9)"><ellipse class="fg" cx="12" cy="0" rx="12" ry="4.2"></ellipse></g>
+    <g class="f9" transform="translate(326.7 14.4) rotate(-25.4)"><ellipse class="fg" cx="12" cy="0" rx="12" ry="4.2"></ellipse></g>
+    <g class="f10" transform="translate(343.1 19.7) rotate(60.8)"><ellipse class="fg" cx="12" cy="0" rx="12" ry="4.2"></ellipse></g>
+    <g class="f11" transform="translate(353.6 24.8) rotate(-10.4)"><ellipse class="fg" cx="12" cy="0" rx="12" ry="4.2"></ellipse></g>
+    <g class="o1" transform="translate(89.0 31.1)"><ellipse class="oliva" cx="0" cy="8" rx="3.6" ry="5.2"></ellipse></g>
+    <g class="o2" transform="translate(182.1 41.2)"><ellipse class="oliva" cx="0" cy="8" rx="3.6" ry="5.2"></ellipse></g>
+    <g class="o3" transform="translate(315.2 14.6)"><ellipse class="oliva" cx="0" cy="8" rx="3.6" ry="5.2"></ellipse></g>
+</svg>

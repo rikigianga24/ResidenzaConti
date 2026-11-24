@@ -1,5 +1,6 @@
 // Dati fattuali della struttura: fonte unica per pagine, footer, SEO e schema.org.
 // Fonte: residenzaconti.md, sezione 1. Stringa vuota = [DA FORNIRE].
+// Orari e ospiti (4, non 6) aggiornati dal doc "Residenza Conti" del 24/11/2026.
 export const struttura = {
   nome: 'Residenza Conti',
   indirizzo: {
@@ -17,18 +18,18 @@ export const struttura = {
   email: 'info.residenzaconti@gmail.com',
   instagram: 'https://www.instagram.com/residenza_conti/',
   tiktok: 'https://www.tiktok.com/@residenzaconti',
-  bookingUrl: '' as string, // [DA FORNIRE: URL pagina struttura su Booking.com]
-  cin: '' as string, // [DA FORNIRE]
-  cir: '' as string, // [DA FORNIRE]
+  bookingUrl: 'https://www.booking.com/hotel/it/residenza-conti-provincia-di-arezzo.it.html' as string,
+  cin: 'IT051012C2CPCFWOEM' as string,
+  cir: '051012LTN0190' as string,
   alloggio: {
     metriQuadri: 75,
-    ospitiMax: 6,
+    ospitiMax: 4,
     camere: 2,
     bagni: 1,
     piscina: '6×3 m',
   },
-  checkIn: '' as string, // [DA FORNIRE]
-  checkOut: '' as string, // [DA FORNIRE]
+  checkIn: '16:00' as string,
+  checkOut: '10:00' as string,
 } as const;
 
 /** Link WhatsApp con messaggio precompilato. */
