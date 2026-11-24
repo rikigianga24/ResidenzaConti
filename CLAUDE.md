@@ -17,7 +17,7 @@ Sito statico della casa vacanze Residenza Conti (Val di Chio, Castiglion Fiorent
 ```powershell
 npm run dev       # sviluppo, http://localhost:4321
 npm run build     # astro check (tipi) + build statica in dist/
-npm run preview   # serve dist/ (redirect vecchi URL inclusi)
+npm run preview   # serve dist/ (senza i redirect dei vecchi URL, che li fa Cloudflare)
 node scripts/sync-ical.ts   # job iCal; richiede ICAL_URL e OUTPUT_FILE (dove farlo girare: da decidere, vedi Calendario)
 ```
 
@@ -43,5 +43,5 @@ Non ci sono test: la verifica è `npm run build`, con 0 errori di `astro check`.
 - **Calendario**: unico JavaScript del sito (`src/scripts/calendario.ts`). Legge `/disponibilita.json`, prodotto da `scripts/sync-ical.ts` (solo date occupate, link iCal mai nel repo). Il JSON non è nel repo. Con Cloudflare Pages non c'è un cron sul server: serve una Pages Function con cache o un Worker pianificato, ancora da scrivere. Senza file o senza JS resta un messaggio di ripiego.
 - **CSP restrittiva** (`public/_headers`: `script-src 'self'; style-src 'self'`). Niente `style="..."`, `<style>` o script inline nel markup: i ritardi delle animazioni sono classi `nth-child` in `global.css`. La config Astro forza CSS e script in file esterni (`inlineStylesheets: 'never'`, `assetsInlineLimit: 0`). Unica eccezione ammessa: il JSON-LD di schema.org.
 - **Stili**: tutto in `src/styles/global.css`, che parte dal CSS del prototipo Claude Design "Residenza Conti – prototipo sito", con palette cipresso/crema/legno/oro (variabili in `:root`; contrasti verificati WCAG AA). È mobile first, con breakpoint a 720, 1040 e 1240 px (menu completo solo da 1240). Le animazioni usano solo transform/opacity e sono tutte spente con `prefers-reduced-motion`. Font self-hosted in `public/fonts/` (OFL): Fraunces per i titoli, Parisienne solo per il nome nell'hero (`NomeHero.astro`), DM Sans per il testo.
-- **Redirect dei vecchi URL WordPress**: `src/i18n/redirect.mjs` (per Astro) e `public/_redirects` (301 reali su Cloudflare Pages) vanno tenuti allineati.
+- **Redirect dei vecchi URL WordPress**: solo in `public/_redirects`, una regola per percorso (Cloudflare tratta `/x` e `/x/` come lo stesso percorso). Non metterli anche in `redirects` di `astro.config.mjs`: l'adapter che Cloudflare aggiunge in deploy li accoda a `_redirects` e il deploy fallisce con "Duplicate rule".
 - **Hosting**: Cloudflare Pages (build `npm run build`, cartella `dist`), dominio su IONOS. Header e cache in `public/_headers`.

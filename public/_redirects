@@ -1,7 +1,7 @@
 # Redirect 301 dai vecchi URL WordPress (Cloudflare Pages, finisce in dist/_redirects).
 # Una sola regola per percorso: Cloudflare tratta /x e /x/ come lo stesso percorso,
 # quindi scrivere entrambe le varianti dà "Duplicate rule" e blocca il deploy.
-# Tenere allineato con src/i18n/redirect.mjs.
+# Unica fonte dei redirect: non duplicarli in astro.config.mjs (vedi CLAUDE.md).
 /dettaglio /casa/ 301
 /en/dettaglio-appartamento /en/the-house/ 301
 /en/dettaglio /en/the-house/ 301
