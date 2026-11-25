@@ -1,15 +1,18 @@
 ---
-// Dintorni: guida della Val di Chio. Apertura panoramica, storia della valle, due itinerari
-// (card fotografiche + sezioni di approfondimento + PDF), schede "Da non perdere", link alla mappa.
-// I dati (schede e itinerari) sono in src/content/dintorni.json: i campi null non vengono mostrati.
+// Dintorni: guida della Val di Chio e itinerari in Toscana e Umbria.
+// Apertura panoramica, storia della valle, quattro itinerari (card fotografiche + sezioni di approfondimento
+// con tappe, mappa, sapori, consigli e fonti ufficiali + PDF), schede "Da non perdere", link alla mappa.
+// I dati sono in src/content/dintorni.json: i campi null non vengono mostrati.
 import type { CollectionEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import ChiamataContatti from '../components/ChiamataContatti.astro';
 import Foto from '../components/Foto.astro';
 import CardFoto from '../components/CardFoto.astro';
+import IconaTema from '../components/IconaTema.astro';
+import MappaItinerario from '../components/MappaItinerario.astro';
 import type { Lingua } from '../i18n/lingue';
 import { useT, type ChiaveUi } from '../i18n/ui';
-import { itinerari, schede, nomeScheda, linkIndicazioni, type Scheda, type Tappa } from '../data/contenuti';
+import { itinerari, schede, nomeScheda, linkIndicazioni, type Scheda, type Tappa, type Itinerario } from '../data/contenuti';
 
 interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
 const { lang, voce } = Astro.props;
@@ -18,17 +21,19 @@ const g = d.guida!;
 const t = useT(lang);
 
 const scheda = (id: string): Scheda => schede.find((s) => s.id === id)!;
-/** nome, testo e mappa di una tappa (da scheda collegata o propri) */
+/** nome, testo, mappa e stima di una tappa (da scheda collegata o propri) */
 function dettaglio(tp: Tappa) {
   if (tp.scheda) {
     const s = scheda(tp.scheda);
-    return { nome: nomeScheda(s, lang), testo: s.descrizione[lang] as string | null, mappa: s.mappa as string | null, categoria: s.categoria };
+    return { nome: nomeScheda(s, lang), testo: s.descrizione[lang] as string | null, mappa: s.mappa as string | null, km: s.km, minuti: s.minuti, url: s.url ?? null };
   }
-  return { nome: tp.nome![lang], testo: (tp.testo ? tp.testo[lang] : null) as string | null, mappa: (tp.mappa ?? null) as string | null, categoria: null };
+  return { nome: tp.nome![lang], testo: (tp.testo ? tp.testo[lang] : null) as string | null, mappa: (tp.mappa ?? null) as string | null, km: null as number | null, minuti: null as number | null, url: null as string | null };
 }
 const numero = (n: number) => String(n).padStart(2, '0');
+const tappeGiorno = (it: Itinerario, giorno: 1 | 2) => it.tappe.filter((x) => (x.giorno ?? 1) === giorno);
+const vetrina = schede.filter((s) => s.vetrina);
 
-// dati strutturati: i due itinerari (TouristTrip) e i luoghi da non perdere
+// dati strutturati: gli itinerari (TouristTrip) e i luoghi da non perdere
 const datiStrutturati = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -45,7 +50,7 @@ const datiStrutturati = {
     {
       '@type': 'ItemList',
       name: g.nonPerdereTitolo,
-      itemListElement: schede.map((s, i) => ({
+      itemListElement: vetrina.map((s, i) => ({
         '@type': 'ListItem',
         position: i + 1,
         item: { '@type': 'TouristAttraction', name: nomeScheda(s, lang), description: s.descrizione[lang] },
@@ -93,79 +98,158 @@ const datiStrutturati = {
             etichetta={`${t('it.scopri')}: ${it.titolo[lang]}`}
             sizes="(min-width: 1040px) 560px, 92vw"
             class={`itin-card itin-card--${it.numero}`}
-          />
+          >
+            <Fragment slot="extra">
+              {it.luoghi && <p class="card-luoghi">{it.luoghi[lang]}</p>}
+              {it.temi && <ul class="temi">{it.temi.map((x) => <li><IconaTema tema={x} />{t(`tema.${x}` as ChiaveUi)}</li>)}</ul>}
+              {it.viaggio && <p class="card-viaggio">{t('it.daResidenza')}: {t('it.fino')} ≈ {it.viaggio.minutiMax} {t('it.minAuto')} · {t('it.giro')} ≈ {it.viaggio.km} km</p>}
+            </Fragment>
+          </CardFoto>
         ))}
       </div>
     </div>
   </section>
 
-  {itinerari.map((it) => (
-    <section class={`sec itin itin--${it.numero}`} id={`itinerario-${it.numero}`} aria-labelledby={`itin-tit-${it.numero}`}>
-      <div class="wrap itin-grid">
-        <div class="itin-intro">
-          <p class="itin-num" aria-hidden="true">{numero(it.numero)}</p>
-          <p class="eyebrow">{t('cat.itinerario')} {numero(it.numero)}</p>
-          <h2 class="h2" id={`itin-tit-${it.numero}`}>{it.titolo[lang]}</h2>
-          <p class="lead">{it.descrizione[lang]}</p>
-          <h3 class="itin-sub">{t('it.ideale')}</h3>
-          <ul class="tag">
-            {it.ideale[lang].map((x) => <li>{x}</li>)}
-          </ul>
-          <div class="itin-pdf">
-            <a class="btn btn-vino" href={it.pdf[lang]} download>{t('it.pdf')}</a>
-            <p class="itin-qr">{g.qrNota}</p>
+  {itinerari.map((it) => {
+    const giorno2 = tappeGiorno(it, 2);
+    return (
+      <section class={`sec itin itin--${it.numero}`} id={`itinerario-${it.numero}`} aria-labelledby={`itin-tit-${it.numero}`}>
+        <div class="wrap">
+          <div class="itin-grid">
+            <div class="itin-intro">
+              <p class="itin-num" aria-hidden="true">{numero(it.numero)}</p>
+              <p class="eyebrow">{t('cat.itinerario')} {numero(it.numero)}</p>
+              <h2 class="h2" id={`itin-tit-${it.numero}`}>{it.titolo[lang]}</h2>
+              <p class="lead">{it.descrizione[lang]}</p>
+              {it.temi && <ul class="temi temi-chiari">{it.temi.map((x) => <li><IconaTema tema={x} />{t(`tema.${x}` as ChiaveUi)}</li>)}</ul>}
+              {it.viaggio && <p class="itin-viaggio">{t('it.daResidenza')}: {t('it.fino')} ≈ {it.viaggio.minutiMax} {t('it.minAuto')} · {t('it.giro')} ≈ {it.viaggio.km} km (≈ {Math.floor(it.viaggio.minutiGiro / 60)} h{it.viaggio.minutiGiro % 60 ? ` ${it.viaggio.minutiGiro % 60} min` : ''})</p>}
+              {it.intro && it.intro[lang].map((p) => <p class="p">{p}</p>)}
+              <h3 class="itin-sub">{t('it.ideale')}</h3>
+              <ul class="tag">
+                {it.ideale[lang].map((x) => <li>{x}</li>)}
+              </ul>
+              <div class="itin-pdf">
+                <a class="btn btn-vino" href={it.pdf[lang]} download>{t('it.pdf')}</a>
+                <p class="itin-qr">{g.qrNota}</p>
+              </div>
+            </div>
+            <div class="itin-tappe">
+              <h3 class="itin-sub">{t('it.giornata')} · {t('it.tappe')}</h3>
+              <ol class="tappe">
+                {tappeGiorno(it, 1).map((tp) => {
+                  const x = dettaglio(tp);
+                  const p = tp.percorso;
+                  return (
+                    <li class="tappa">
+                      <h4 class="tappa-nome">{x.nome}{tp.facoltativa && <span class="badge-opz">{t('it.facoltativa')}</span>}</h4>
+                      {x.minuti && <p class="tappa-stima">≈ {x.minuti} {t('it.minAuto')} · {x.km} km {t('it.daTaragnano')}</p>}
+                      {x.testo && <p class="tappa-txt">{x.testo}</p>}
+                      {p && (
+                        <dl class="percorso">
+                          {p.lunghezza && <div><dt>{t('dati.lunghezza')}</dt><dd>{p.lunghezza}</dd></div>}
+                          {p.dislivello && <div><dt>{t('dati.dislivello')}</dt><dd>{p.dislivello}</dd></div>}
+                          {p.difficolta && <div><dt>{t('dati.difficolta')}</dt><dd>{p.difficolta[lang]}</dd></div>}
+                          {p.durata && <div><dt>{t('dati.durata')}</dt><dd>{p.durata}</dd></div>}
+                          {p.tipologia && <div><dt>{t('dati.tipologia')}</dt><dd>{p.tipologia[lang]}</dd></div>}
+                          {p.partenza && <div><dt>{t('dati.partenza')}</dt><dd>{p.partenza}</dd></div>}
+                        </dl>
+                      )}
+                      <p class="tappa-link">
+                        {x.mappa && <a href={linkIndicazioni(x.mappa)} rel="noopener">{t('it.indicazioni')}</a>}
+                        {x.url && <a href={x.url} rel="noopener">{t('it.approfondisci')}</a>}
+                        {p?.traccia && <a href={p.traccia} rel="noopener">{t('dati.traccia')}</a>}
+                      </p>
+                    </li>
+                  );
+                })}
+              </ol>
+              {tappeGiorno(it, 1).some((x) => x.scheda && scheda(x.scheda).coord) && (
+                <div class="itin-mappa">
+                  <h3 class="itin-sub">{t('it.mappaTit')}</h3>
+                  <MappaItinerario lang={lang} itinerario={it} giorno={1} />
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-        <div class="itin-tappe">
-          <h3 class="itin-sub">{t('it.tappe')}</h3>
-          <ol class="tappe">
-            {it.tappe.map((tp) => {
-              const x = dettaglio(tp);
-              const p = tp.percorso;
-              return (
-                <li class="tappa">
-                  <h4 class="tappa-nome">{x.nome}</h4>
-                  {x.testo && <p class="tappa-txt">{x.testo}</p>}
-                  {p && (
-                    <dl class="percorso">
-                      {p.lunghezza && <div><dt>{t('dati.lunghezza')}</dt><dd>{p.lunghezza}</dd></div>}
-                      {p.dislivello && <div><dt>{t('dati.dislivello')}</dt><dd>{p.dislivello}</dd></div>}
-                      {p.difficolta && <div><dt>{t('dati.difficolta')}</dt><dd>{p.difficolta[lang]}</dd></div>}
-                      {p.durata && <div><dt>{t('dati.durata')}</dt><dd>{p.durata}</dd></div>}
-                      {p.tipologia && <div><dt>{t('dati.tipologia')}</dt><dd>{p.tipologia[lang]}</dd></div>}
-                      {p.partenza && <div><dt>{t('dati.partenza')}</dt><dd>{p.partenza}</dd></div>}
-                    </dl>
-                  )}
-                  <p class="tappa-link">
-                    {x.mappa && <a href={linkIndicazioni(x.mappa)} rel="noopener">{t('it.indicazioni')}</a>}
-                    {p?.traccia && <a href={p.traccia} rel="noopener">{t('dati.traccia')}</a>}
-                  </p>
-                </li>
-              );
-            })}
-          </ol>
-          {it.assaggi && (
-            <div class="assaggi">
-              <h3 class="itin-sub">{it.assaggi.titolo[lang]}</h3>
-              <p>{it.assaggi.testo[lang]}</p>
+
+          {giorno2.length > 0 && it.giorno2 && (
+            <div class="itin-giorno2">
+              <h3 class="itin-g2-tit">{it.giorno2.titolo[lang]}</h3>
+              <p class="itin-g2-nota">{it.giorno2.nota[lang]}</p>
+              <div class="itin-grid itin-grid-2">
+                <ol class="tappe">
+                  {giorno2.map((tp) => {
+                    const x = dettaglio(tp);
+                    return (
+                      <li class="tappa">
+                        <h4 class="tappa-nome">{x.nome}{tp.facoltativa && <span class="badge-opz">{t('it.facoltativa')}</span>}</h4>
+                        {x.minuti && <p class="tappa-stima">≈ {x.minuti} {t('it.minAuto')} · {x.km} km {t('it.daTaragnano')}</p>}
+                        {x.testo && <p class="tappa-txt">{x.testo}</p>}
+                        <p class="tappa-link">
+                          {x.mappa && <a href={linkIndicazioni(x.mappa)} rel="noopener">{t('it.indicazioni')}</a>}
+                          {x.url && <a href={x.url} rel="noopener">{t('it.approfondisci')}</a>}
+                        </p>
+                      </li>
+                    );
+                  })}
+                </ol>
+                <div class="itin-mappa">
+                  <MappaItinerario lang={lang} itinerario={it} giorno={2} />
+                </div>
+              </div>
             </div>
           )}
+
+          {it.gastronomia && (
+            <div class="gastro">
+              <h3 class="gastro-tit">{it.gastronomia.titolo[lang]}</h3>
+              <p class="gastro-intro">{it.gastronomia.intro[lang]}</p>
+              <ul class="prodotti">
+                {it.gastronomia.prodotti.map((pr) => (
+                  <li class="prodotto">
+                    <h4>{pr.nome[lang]}</h4>
+                    <p>{pr.testo[lang]}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {it.consigli && (
+            <div class="consigli">
+              <h3 class="itin-sub">{t('it.consigli')}</h3>
+              <ul>
+                {it.consigli[lang].map((c) => <li>{c}</li>)}
+              </ul>
+            </div>
+          )}
+
+          {it.fonti && (
+            <div class="fonti">
+              <h3 class="itin-sub">{t('it.fonti')}</h3>
+              <ul>
+                {it.fonti.map((f) => <li><a href={f.url} rel="noopener">{typeof f.nome === 'string' ? f.nome : f.nome[lang]}</a></li>)}
+              </ul>
+              <p class="fonti-nota">{t('it.fontiNota')}</p>
+            </div>
+          )}
+          <p class="torna"><a class="link" href="#itinerari">{t('it.tornaSu')}</a></p>
         </div>
-      </div>
-    </section>
-  ))}
+      </section>
+    );
+  })}
 
   <section class="sec" id="da-non-perdere">
     <div class="wrap">
       <h2 class="h2">{g.nonPerdereTitolo}</h2>
       <p class="lead lead-largo">{g.nonPerdereIntro}</p>
       <ul class="schede">
-        {schede.map((s) => (
+        {vetrina.map((s) => (
           <li class={`scheda scheda--${s.categoria}`}>
             <p class="scheda-cat">{t(`cat.${s.categoria}` as ChiaveUi)}</p>
             <h3 class="scheda-nome">{nomeScheda(s, lang)}</h3>
             <p class="scheda-txt">{s.descrizione[lang]}</p>
-            {s.minutiAuto && <p class="scheda-auto">{s.minutiAuto} min {t('auto.tempo')}</p>}
+            {s.minuti && <p class="scheda-auto">≈ {s.minuti} {t('it.minAuto')} · {s.km} km {t('it.daTaragnano')}</p>}
             <a class="scheda-link" href={linkIndicazioni(s.mappa)} rel="noopener">{t('it.indicazioni')} <span aria-hidden="true">→</span></a>
           </li>
         ))}

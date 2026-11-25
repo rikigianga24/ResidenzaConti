@@ -423,7 +423,7 @@ img { max-width: 100%; height: auto; display: block; }
 .itin--1 { background: color-mix(in srgb, var(--terracotta) 14%, var(--avorio)); }
 .itin--2 { background: color-mix(in srgb, var(--salvia) 18%, var(--avorio)); }
 .itin-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
-.itin-num { margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 6rem; line-height: .8; color: color-mix(in srgb, var(--bruno) 22%, transparent); }
+.itin-num { margin: 0 0 14px; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 6rem; line-height: .8; color: color-mix(in srgb, var(--bruno) 22%, transparent); }
 .itin--1 .itin-num { color: color-mix(in srgb, var(--terracotta) 55%, transparent); }
 .itin--2 .itin-num { color: color-mix(in srgb, var(--salvia) 70%, transparent); }
 .itin-sub { margin: 28px 0 12px; font-size: .75rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
@@ -466,6 +466,60 @@ img { max-width: 100%; height: auto; display: block; }
 .scheda-link { margin-top: 18px; align-self: flex-start; color: var(--avorio); font-weight: 600; font-size: .875rem; letter-spacing: .06em; text-transform: uppercase; text-underline-offset: 5px; }
 .scheda-link:hover { color: var(--bianco); }
 .mappa-box { display: flex; flex-direction: column; gap: 20px; padding-top: 40px; border-top: 1px solid var(--linea); }
+
+/* ===== itinerari: indicatori, tappe, mappa, sapori, consigli, fonti ===== */
+.card-luoghi { margin: 10px 0 0; font-size: .8125rem; line-height: 1.45; color: var(--pietra); }
+.temi { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 12px 0 0; padding: 0; list-style: none; }
+.temi li { display: inline-flex; align-items: center; gap: 6px; font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.ico-tema { width: 18px; height: 18px; flex: none; }
+.temi-chiari { margin: 18px 0 0; color: var(--terracotta-scuro); }
+.card-viaggio { margin: 12px 0 0; font-size: .8125rem; line-height: 1.4; color: var(--avorio); }
+.itin-viaggio { margin: 14px 0 18px; font-size: .9375rem; font-weight: 600; }
+.itin--1 .temi-chiari { color: var(--terracotta-scuro); } .itin--2 .temi-chiari, .itin--4 .temi-chiari { color: var(--salvia-scuro); } .itin--3 .temi-chiari { color: var(--bruno); }
+.itin--3 { background: color-mix(in srgb, var(--pietra) 55%, var(--avorio)); }
+.itin--3 .itin-num { color: color-mix(in srgb, var(--bruno) 25%, transparent); }
+.itin--3 .tag li { border-color: var(--bruno); }
+.itin--3 .tappa::before { border-color: var(--bruno); }
+.itin--3 .btn-vino { background: var(--bruno); border-color: var(--bruno); }
+.itin--3 .btn-vino:hover { background: var(--bruno-profondo); border-color: var(--bruno-profondo); }
+.itin--4 { background: color-mix(in srgb, var(--salvia) 18%, var(--avorio)); }
+.itin--4 .itin-num { color: color-mix(in srgb, var(--salvia) 70%, transparent); }
+.badge-opz { display: inline-block; margin-left: 10px; padding: 2px 9px; border: 1px solid currentColor; border-radius: 999px; font-family: 'DM Sans', system-ui, sans-serif; font-size: .6875rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; vertical-align: middle; color: var(--muted); }
+.tappa-stima { margin: 0 0 6px; font-size: .8125rem; font-weight: 600; letter-spacing: .04em; color: var(--terracotta-scuro); }
+.itin--2 .tappa-stima, .itin--4 .tappa-stima { color: var(--salvia-scuro); }
+.itin--3 .tappa-stima { color: var(--bruno); }
+.itin-mappa { margin-top: 28px; }
+.mappa-it { margin: 0; }
+.mappa-it svg { display: block; width: 100%; height: auto; background: color-mix(in srgb, var(--avorio) 75%, transparent); border: 1px solid var(--linea); }
+.mappa-linea { fill: none; stroke: var(--terracotta-scuro); stroke-width: 1.5; stroke-dasharray: 5 5; }
+.itin--2 .mappa-linea, .itin--4 .mappa-linea { stroke: var(--salvia-scuro); }
+.itin--3 .mappa-linea { stroke: var(--bruno); }
+.mappa-punto { fill: var(--terracotta-scuro); stroke: var(--avorio); stroke-width: 2; }
+.itin--2 .mappa-punto, .itin--4 .mappa-punto { fill: var(--salvia-scuro); }
+.itin--3 .mappa-punto { fill: var(--bruno); }
+.mappa-opz, .itin .mappa-punto.mappa-opz { fill: var(--avorio); stroke: var(--bruno); stroke-width: 1.5; }
+.mappa-casa { fill: var(--bruno); stroke: var(--avorio); stroke-width: 1.5; }
+.mappa-nome { font-family: 'DM Sans', system-ui, sans-serif; font-size: 19px; font-weight: 500; fill: var(--bruno); paint-order: stroke; stroke: var(--avorio); stroke-width: 4px; stroke-linejoin: round; }
+.mappa-nome-casa { font-weight: 700; }
+.link-mappa { margin-top: 12px; }
+@media (min-width: 720px) { .mappa-nome { font-size: 15px; } }
+.itin-giorno2 { margin-top: 56px; padding-top: 36px; border-top: 1px solid var(--linea); }
+.itin-g2-tit { margin: 0 0 8px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 2rem; line-height: 1.1; }
+.itin-g2-nota { margin: 0 0 28px; max-width: 60ch; color: var(--muted); }
+.itin-grid-2 .itin-mappa { margin-top: 0; }
+.gastro { margin-top: 64px; }
+.gastro-tit { margin: 0 0 8px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 2.125rem; line-height: 1.1; }
+.gastro-intro { margin: 0 0 28px; max-width: 60ch; }
+.prodotti { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--linea); }
+.prodotto { padding: 20px 0; border-bottom: 1px solid var(--linea); }
+.prodotto h4 { margin: 0 0 6px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 1.5rem; line-height: 1.15; }
+.prodotto p { margin: 0; max-width: 60ch; font-size: .9688rem; }
+.consigli, .fonti { margin-top: 40px; max-width: 70ch; }
+.consigli ul, .fonti ul { margin: 0; padding-left: 1.1em; }
+.consigli li { margin: 0 0 10px; }
+.fonti li { margin: 0 0 6px; }
+.fonti-nota { margin: 14px 0 0; font-size: .875rem; color: var(--muted); }
+.torna { margin: 40px 0 0; }
 
 /* comparsa allo scorrere (solo dove il browser supporta le scroll-driven animations):
    dissolvenza, piccolo movimento verticale, scala appena accennata. Su Firefox restano ferme e visibili. */
@@ -513,7 +567,7 @@ img { max-width: 100%; height: auto; display: block; }
   .valle.inverso > li:nth-child(2) { margin-top: 0; }
   .valle.inverso > li:nth-child(3) { margin-top: 72px; }
   .itin-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
-  .itin-card--2 { margin-top: 56px; }
+  .itin-card:nth-child(even) { margin-top: 56px; }
   .masonry { column-count: 3; column-gap: 14px; }
   .mas { margin-bottom: 14px; }
   .apertura { min-height: 70svh; }
@@ -551,6 +605,10 @@ img { max-width: 100%; height: auto; display: block; }
   .itin-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0 48px; }
   .itin-intro { grid-column: 1 / 6; }
   .itin-tappe { grid-column: 6 / 13; padding-top: 12px; }
+  .itin-grid-2 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .itin-grid-2 > .tappe { grid-column: 1 / 7; }
+  .itin-grid-2 > .itin-mappa { grid-column: 7 / 13; }
+  .prodotti { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 56px; }
   .schede { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .tl { max-width: none; padding-left: 0; margin-top: 72px; }
   .tl::before { left: 50%; }

@@ -33,6 +33,7 @@ const { lang, foto = null, ratio = 'r-4-3', categoria, titolo, testo, tono = 'br
     {categoria && <span class="card-cat">{categoria}</span>}
     <h3 class="card-tit"><slot name="icona" />{titolo}</h3>
     {testo && <p class="card-txt">{testo}</p>}
+    <slot name="extra" />
     {cta && <span class="card-cta" aria-hidden="true">{cta}</span>}
     {href && <a class="card-link" href={href}><span class="sr">{etichetta ?? titolo}</span></a>}
   </figcaption>

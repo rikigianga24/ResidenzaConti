@@ -1,18 +1,57 @@
 {
-  "_nota": "Guida dei dintorni. Fonti verificate: visitvaldichiana.it, uffizi.it/terredegliuffizi, rondaghibellina-trail.com (25/11/2026). Campi null = non verificato: non vanno inventati (lunghezze, dislivelli, tempi in auto, tracce). Foto: solo proprie o con licenza.",
+  "_nota": "Guida dei dintorni. Fonti: Umbria Tourism, italia.it, Visit Tuscany, Visit Valdichiana, Terre di Siena, Opera della Metropolitana, UNESCO (decisione 28 COM 14B.51), letti il 25/11/2026. km e minuti: stime in auto da Taragnano calcolate con routing OpenStreetMap (OSRM), senza traffico, minuti arrotondati per eccesso a 5: indicative, da ricontrollare con il navigatore. Campi null = non verificato: non vanno inventati. Orari e biglietti non sono mai riportati: si rimanda ai siti ufficiali. Foto: solo proprie o con licenza.",
+  "origine": {
+    "nome": "Taragnano",
+    "coord": [
+      11.9803214,
+      43.3595278
+    ]
+  },
   "schede": [
     {
       "id": "castiglion-fiorentino",
       "nome": "Castiglion Fiorentino",
       "categoria": "borgo",
-      "minutiAuto": null,
+      "vetrina": true,
       "mappa": "Castiglion Fiorentino, Arezzo",
+      "url": "https://www.visitvaldichiana.it/esplora/castiglion-fiorentino/",
       "descrizione": {
-        "it": "Borgo medievale su un colle della Valdichiana, con mura duecentesche e un centro storico dominato dalla Torre del Cassero. Anche il Rinascimento ha lasciato il segno, a partire dalle Logge del Vasari.",
-        "en": "A medieval hill town in the Valdichiana, with thirteenth-century walls and a historic centre dominated by the Cassero tower. The Renaissance left its mark here too, starting with Vasari's loggia.",
-        "de": "Mittelalterliches Hügelstädtchen in der Valdichiana, mit Mauern aus dem 13. Jahrhundert und einem Zentrum, das vom Turm des Cassero überragt wird. Auch die Renaissance hat Spuren hinterlassen, allen voran die Loggia von Vasari.",
-        "fr": "Village médiéval perché sur une colline de la Valdichiana, avec des remparts du XIIIe siècle et un centre historique dominé par la tour du Cassero. La Renaissance y a aussi laissé sa marque, à commencer par la loggia de Vasari."
-      }
+        "it": "Borgo medievale su un colle della Valdichiana, con mura duecentesche e la Torre del Cassero. Nell'area del Cassero si trovano la Pinacoteca Comunale e il Percorso Archeologico Sotterraneo; le Logge del Vasari, del 1513, aprono il panorama sulla valle. C'è anche il Museo Civico Archeologico.",
+        "en": "A medieval hill town in the Valdichiana, with thirteenth-century walls and the Cassero tower. The Cassero area holds the Pinacoteca Comunale (art gallery) and the Underground Archaeological Trail; Vasari's loggia, dated 1513, opens onto the view of the valley. The Museo Civico Archeologico is here too.",
+        "de": "Mittelalterliches Hügelstädtchen in der Valdichiana, mit Mauern aus dem 13. Jahrhundert und dem Turm des Cassero. Im Bereich des Cassero befinden sich die Pinacoteca Comunale und der unterirdische archäologische Rundgang; die Loggia von Vasari von 1513 öffnet den Blick auf das Tal. Auch das Museo Civico Archeologico ist hier.",
+        "fr": "Village médiéval perché sur une colline de la Valdichiana, avec des remparts du XIIIe siècle et la tour du Cassero. Le quartier du Cassero abrite la Pinacoteca Comunale et le parcours archéologique souterrain ; la loggia de Vasari, datée de 1513, ouvre la vue sur la vallée. Le Museo Civico Archeologico se trouve aussi ici."
+      },
+      "coord": [
+        11.92378,
+        43.34172
+      ],
+      "km": 6,
+      "minuti": 10
+    },
+    {
+      "id": "val-di-chio",
+      "nome": {
+        "it": "La Val di Chio",
+        "en": "The Val di Chio",
+        "de": "Das Val di Chio",
+        "fr": "Le Val di Chio"
+      },
+      "categoria": "natura",
+      "vetrina": false,
+      "mappa": "Pieve di Chio, Castiglion Fiorentino",
+      "url": "https://www.visitvaldichiana.it/esplora/castiglion-fiorentino/",
+      "descrizione": {
+        "it": "La valle in cui si trova la Residenza: piccoli borghi di origine medievale, antiche ville agricole, la Pieve di Chio e oliveti che danno un olio franto a freddo nei frantoi della zona. Si visita senza fretta, in auto o a piedi.",
+        "en": "The valley where the Residenza stands: small villages of medieval origin, old farm villas, the Pieve di Chio and olive groves that give a cold-pressed oil in the local mills. Best enjoyed slowly, by car or on foot.",
+        "de": "Das Tal, in dem die Residenza liegt: kleine Dörfer mittelalterlichen Ursprungs, alte Landgüter, die Pieve di Chio und Olivenhaine, die ein kaltgepresstes Öl in den örtlichen Ölmühlen liefern. Am schönsten ohne Eile, mit dem Auto oder zu Fuß.",
+        "fr": "La vallée où se trouve la Residenza : petits villages d'origine médiévale, anciennes villas agricoles, la Pieve di Chio et des oliveraies qui donnent une huile pressée à froid dans les moulins de la région. À découvrir sans hâte, en voiture ou à pied."
+      },
+      "coord": [
+        11.98881,
+        43.35031
+      ],
+      "km": 2,
+      "minuti": 5
     },
     {
       "id": "montecchio-vesponi",
@@ -23,14 +62,21 @@
         "fr": "Château de Montecchio Vesponi"
       },
       "categoria": "cultura",
-      "minutiAuto": null,
+      "vetrina": true,
       "mappa": "Castello di Montecchio Vesponi, Castiglion Fiorentino",
+      "url": "https://www.visitvaldichiana.it/esplora/castiglion-fiorentino/",
       "descrizione": {
-        "it": "Fortezza privata all'ingresso della Val di Chio, lungo il sentiero che porta nella valle. Fu la dimora del capitano di ventura Giovanni Acuto. Prima di andare, verificate se e quando è visitabile.",
-        "en": "A private fortress at the entrance to the Val di Chio, along the path into the valley. It was once the home of the mercenary captain Giovanni Acuto (John Hawkwood). Check beforehand whether and when it can be visited.",
-        "de": "Private Festung am Eingang des Val di Chio, am Weg ins Tal. Sie war der Wohnsitz des Söldnerführers Giovanni Acuto (John Hawkwood). Bitte vorher klären, ob und wann eine Besichtigung möglich ist.",
-        "fr": "Forteresse privée à l'entrée du Val di Chio, sur le chemin qui mène dans la vallée. Elle fut la demeure du condottiere Giovanni Acuto (John Hawkwood). Avant d'y aller, vérifiez si et quand elle se visite."
-      }
+        "it": "Fortezza privata all'ingresso della Val di Chio, su un colle ben visibile dal paesaggio circostante. Fu la dimora del capitano di ventura Giovanni Acuto. Prima di andare, verificate se e quando è visitabile.",
+        "en": "A private fortress at the entrance to the Val di Chio, on a hill visible across the surrounding landscape. It was the home of the mercenary captain Giovanni Acuto (John Hawkwood). Check beforehand whether and when it can be visited.",
+        "de": "Private Festung am Eingang des Val di Chio, auf einem Hügel, der in der Landschaft weithin sichtbar ist. Sie war der Wohnsitz des Söldnerführers Giovanni Acuto (John Hawkwood). Bitte vorher klären, ob und wann eine Besichtigung möglich ist.",
+        "fr": "Forteresse privée à l'entrée du Val di Chio, sur une colline bien visible dans le paysage. Elle fut la demeure du condottiere Giovanni Acuto (John Hawkwood). Avant d'y aller, vérifiez si et quand elle se visite."
+      },
+      "coord": [
+        11.92792,
+        43.31665
+      ],
+      "km": 10,
+      "minuti": 15
     },
     {
       "id": "cortona",
@@ -41,27 +87,41 @@
         "fr": "Cortone"
       },
       "categoria": "borgo",
-      "minutiAuto": null,
+      "vetrina": true,
       "mappa": "Cortona, Arezzo",
+      "url": "https://www.visitvaldichiana.it/esplora/cortona/",
       "descrizione": {
-        "it": "Sulla collina: Piazza della Repubblica con il Palazzo Comunale duecentesco, il MAEC con il Lampadario Etrusco e la Tabula Cortonensis, la Fortezza del Girifalco con il suo parco di ulivi.",
-        "en": "On the hillside: Piazza della Repubblica with its thirteenth-century town hall, the MAEC museum with the Etruscan Lamp and the Tabula Cortonensis, and the Girifalco Fortress with its olive park.",
-        "de": "Auf dem Hügel: die Piazza della Repubblica mit dem Rathaus aus dem 13. Jahrhundert, das MAEC mit dem Etruskischen Leuchter und der Tabula Cortonensis und die Festung Girifalco mit ihrem Olivenpark.",
-        "fr": "Sur la colline : la Piazza della Repubblica avec son palais communal du XIIIe siècle, le MAEC avec le Lustre étrusque et la Tabula Cortonensis, la forteresse du Girifalco et son parc d'oliviers."
-      }
+        "it": "Città etrusca e medievale affacciata sulla Valdichiana: Piazza della Repubblica con il Palazzo Comunale duecentesco, il MAEC (Museo dell'Accademia Etrusca) con il Lampadario Etrusco e la Tabula Cortonensis, la Fortezza del Girifalco con il suo parco di ulivi e il panorama dal Parterre.",
+        "en": "An Etruscan and medieval town overlooking the Valdichiana: Piazza della Repubblica with its thirteenth-century town hall, the MAEC (Museum of the Etruscan Academy) with the Etruscan Lamp and the Tabula Cortonensis, the Girifalco Fortress with its olive park, and the view from the Parterre.",
+        "de": "Etruskische und mittelalterliche Stadt über der Valdichiana: die Piazza della Repubblica mit dem Rathaus aus dem 13. Jahrhundert, das MAEC (Museum der Etruskischen Akademie) mit dem Etruskischen Leuchter und der Tabula Cortonensis, die Festung Girifalco mit ihrem Olivenpark und der Blick vom Parterre.",
+        "fr": "Ville étrusque et médiévale dominant la Valdichiana : la Piazza della Repubblica avec son palais communal du XIIIe siècle, le MAEC (musée de l'Académie étrusque) avec le Lustre étrusque et la Tabula Cortonensis, la forteresse du Girifalco et son parc d'oliviers, et la vue depuis le Parterre."
+      },
+      "coord": [
+        11.98506,
+        43.2753
+      ],
+      "km": 18,
+      "minuti": 25
     },
     {
       "id": "arezzo",
       "nome": "Arezzo",
       "categoria": "cultura",
-      "minutiAuto": null,
+      "vetrina": true,
       "mappa": "Arezzo",
+      "url": "https://museiarezzo.it/affreschi-di-piero-della-francesca/",
       "descrizione": {
-        "it": "Il capoluogo della provincia, tra le città storiche della zona: una gita fuori dalla valle, da dedicare a una giornata a parte.",
-        "en": "The provincial capital, one of the historic cities of the area: a trip beyond the valley, worth a day of its own.",
-        "de": "Die Provinzhauptstadt, eine der historischen Städte der Gegend: ein Ausflug über das Tal hinaus, der einen eigenen Tag verdient.",
-        "fr": "Le chef-lieu de la province, l'une des villes historiques de la région : une excursion hors de la vallée, à consacrer à une journée entière."
-      }
+        "it": "Il capoluogo della provincia. Nella Basilica di San Francesco c'è uno dei cicli di affreschi più importanti dell'arte italiana, di Piero della Francesca (di norma si visita su prenotazione: verificate sul sito ufficiale). Poi il centro storico con Piazza Grande e il Duomo, il Museo archeologico dedicato a Gaio Cilnio Mecenate e il Crocifisso di Cimabue in San Domenico.",
+        "en": "The provincial capital. The Basilica of San Francesco holds one of the most important fresco cycles in Italian art, by Piero della Francesca (visits are normally by reservation: check the official website). Then the historic centre with Piazza Grande and the Cathedral, the archaeological museum dedicated to Gaius Cilnius Maecenas, and Cimabue's Crucifix in San Domenico.",
+        "de": "Die Provinzhauptstadt. In der Basilika San Francesco befindet sich einer der bedeutendsten Freskenzyklen der italienischen Kunst, von Piero della Francesca (Besichtigung in der Regel nur nach Reservierung: bitte auf der offiziellen Website prüfen). Dazu das historische Zentrum mit der Piazza Grande und dem Dom, das dem Gaius Cilnius Maecenas gewidmete Archäologische Museum und das Kruzifix von Cimabue in San Domenico.",
+        "fr": "Le chef-lieu de la province. La basilique San Francesco abrite l'un des plus importants cycles de fresques de l'art italien, de Piero della Francesca (visite en principe sur réservation : vérifiez sur le site officiel). Puis le centre historique avec la Piazza Grande et la cathédrale, le musée archéologique dédié à Caius Cilnius Mécène et le Crucifix de Cimabue à San Domenico."
+      },
+      "coord": [
+        11.76393,
+        43.51714
+      ],
+      "km": 36,
+      "minuti": 45
     },
     {
       "id": "parco-del-cilone",
@@ -72,14 +132,21 @@
         "fr": "Parc du Cilone"
       },
       "categoria": "natura",
-      "minutiAuto": null,
-      "mappa": "Parco del Cilone, Castiglion Fiorentino",
+      "vetrina": true,
+      "mappa": "43.340569,11.842158",
+      "url": "https://www.visitvaldichiana.it/esplora/trekking-tra-gli-antichi-mulini-della-val-di-chio/",
       "descrizione": {
         "it": "Il parco lungo il corso del Cilone, attraversato dal percorso degli Antichi Mulini: un luogo da vivere a piedi, senza fretta.",
         "en": "The park along the course of the Cilone, crossed by the Ancient Mills trail: a place to enjoy on foot, without hurry.",
         "de": "Der Park entlang des Cilone, den der Weg der alten Mühlen durchquert: ein Ort, den man zu Fuß und ohne Eile erleben sollte.",
         "fr": "Le parc qui longe le cours du Cilone, traversé par le sentier des anciens moulins : un lieu à parcourir à pied, sans se presser."
-      }
+      },
+      "coord": [
+        11.84216,
+        43.34057
+      ],
+      "km": 16,
+      "minuti": 25
     },
     {
       "id": "antichi-mulini",
@@ -90,52 +157,365 @@
         "fr": "Sentier des anciens moulins"
       },
       "categoria": "trekking",
-      "minutiAuto": null,
+      "vetrina": true,
       "mappa": "43.340569,11.842158",
+      "url": "https://www.visitvaldichiana.it/esplora/trekking-tra-gli-antichi-mulini-della-val-di-chio/",
       "descrizione": {
-        "it": "Un trekking facile di circa 10 km, con circa 35 m di dislivello, che segue il corso del Cilone. Lungo il cammino i nomi dei luoghi ricordano i mulini: Mulin Nuovo, Mulino Bianco, Mulino dello Zoppo.",
-        "en": "An easy hike of about 10 km with roughly 35 m of elevation gain, following the course of the Cilone. Along the way, place names recall the mills: Mulin Nuovo, Mulino Bianco, Mulino dello Zoppo.",
-        "de": "Eine leichte Wanderung von etwa 10 km mit rund 35 Höhenmetern, die dem Lauf des Cilone folgt. Unterwegs erinnern Ortsnamen an die Mühlen: Mulin Nuovo, Mulino Bianco, Mulino dello Zoppo.",
-        "fr": "Une randonnée facile d'environ 10 km, avec environ 35 m de dénivelé, qui suit le cours du Cilone. En chemin, les noms de lieux rappellent les moulins : Mulin Nuovo, Mulino Bianco, Mulino dello Zoppo."
-      }
+        "it": "Un trekking facile di circa 10 km, con circa 35 m di dislivello, che segue il corso del Cilone. Lungo il cammino i nomi dei luoghi ricordano i mulini: Mulin Nuovo, Mulino Bianco, Mulino dello Zoppo. Racconta quanto l'acqua abbia contato per la valle.",
+        "en": "An easy hike of about 10 km with roughly 35 m of elevation gain, following the course of the Cilone. Along the way, place names recall the mills: Mulin Nuovo, Mulino Bianco, Mulino dello Zoppo. It tells how much water has mattered to the valley.",
+        "de": "Eine leichte Wanderung von etwa 10 km mit rund 35 Höhenmetern, die dem Lauf des Cilone folgt. Unterwegs erinnern Ortsnamen an die Mühlen: Mulin Nuovo, Mulino Bianco, Mulino dello Zoppo. Sie erzählt, wie wichtig das Wasser für das Tal war.",
+        "fr": "Une randonnée facile d'environ 10 km, avec environ 35 m de dénivelé, qui suit le cours du Cilone. En chemin, les noms de lieux rappellent les moulins : Mulin Nuovo, Mulino Bianco, Mulino dello Zoppo. Elle raconte l'importance de l'eau pour la vallée."
+      },
+      "coord": [
+        11.84216,
+        43.34057
+      ],
+      "km": 16,
+      "minuti": 25
     },
     {
       "id": "monte-castiglion-maggio",
       "nome": "Monte Castiglion Maggio",
       "categoria": "natura",
-      "minutiAuto": null,
+      "vetrina": true,
       "mappa": "Monte Castiglion Maggio, Castiglion Fiorentino",
       "descrizione": {
         "it": "Il monte che delimita a ovest la Val di Chio: un riferimento per capire la forma della valle.",
         "en": "The mountain that closes the Val di Chio to the west: a landmark for understanding the shape of the valley.",
         "de": "Der Berg, der das Val di Chio im Westen begrenzt: ein Orientierungspunkt, um die Form des Tals zu verstehen.",
         "fr": "La montagne qui ferme le Val di Chio à l'ouest : un repère pour comprendre la forme de la vallée."
-      }
+      },
+      "coord": [
+        11.93939,
+        43.3653
+      ],
+      "km": 10,
+      "minuti": 25
+    },
+    {
+      "id": "montepulciano",
+      "nome": "Montepulciano",
+      "categoria": "borgo",
+      "mappa": "Montepulciano, Siena",
+      "url": "https://www.italia.it/it/toscana/cosa-fare/montepulciano",
+      "descrizione": {
+        "it": "Cittadina contesa nei secoli tra Firenze e Siena, con palazzi storici e vicoli in salita. Piazza Grande è il suo cuore, con il Palazzo Comunale e il Duomo; intorno si produce il Vino Nobile di Montepulciano DOCG, da uve Prugnolo Gentile.",
+        "en": "A town fought over for centuries by Florence and Siena, with historic palaces and steep alleys. Piazza Grande is its heart, with the Town Hall and the Cathedral; the Vino Nobile di Montepulciano DOCG, made from Prugnolo Gentile grapes, is produced around the town.",
+        "de": "Eine Stadt, um die Florenz und Siena jahrhundertelang rangen, mit historischen Palästen und ansteigenden Gassen. Die Piazza Grande ist ihr Herz, mit dem Rathaus und dem Dom; rund um die Stadt wird der Vino Nobile di Montepulciano DOCG aus Prugnolo-Gentile-Trauben erzeugt.",
+        "fr": "Ville disputée pendant des siècles entre Florence et Sienne, avec ses palais historiques et ses ruelles en pente. La Piazza Grande en est le cœur, avec l'hôtel de ville et la cathédrale ; autour de la ville on produit le Vino Nobile di Montepulciano DOCG, issu du cépage Prugnolo Gentile."
+      },
+      "coord": [
+        11.78268,
+        43.09453
+      ],
+      "km": 47,
+      "minuti": 60,
+      "vetrina": false
+    },
+    {
+      "id": "pienza",
+      "nome": "Pienza",
+      "categoria": "cultura",
+      "mappa": "Pienza, Siena",
+      "url": "https://www.italia.it/it/toscana/siena/pienza",
+      "descrizione": {
+        "it": "La \"città ideale\" del Rinascimento: Papa Pio II fece ridisegnare il borgo medievale di Corsignano e l'opera fu affidata a Bernardo Rossellino. Piazza Pio II, trapezoidale, è circondata dalla Cattedrale e dai palazzi; lungo il corso principale le botteghe vendono il pecorino.",
+        "en": "The Renaissance \"ideal city\": Pope Pius II had the medieval village of Corsignano redesigned, entrusting the work to Bernardo Rossellino. The trapezoidal Piazza Pio II is surrounded by the Cathedral and the palaces; along the main street the shops sell pecorino.",
+        "de": "Die \"Idealstadt\" der Renaissance: Papst Pius II. ließ das mittelalterliche Dorf Corsignano neu gestalten und beauftragte Bernardo Rossellino. Die trapezförmige Piazza Pio II wird von Dom und Palästen gesäumt; entlang der Hauptstraße verkaufen die Läden Pecorino.",
+        "fr": "La \"ville idéale\" de la Renaissance : le pape Pie II fit redessiner le village médiéval de Corsignano et confia l'œuvre à Bernardo Rossellino. La Piazza Pio II, trapézoïdale, est entourée par la cathédrale et les palais ; le long de la rue principale, les boutiques vendent le pecorino."
+      },
+      "coord": [
+        11.67891,
+        43.07655
+      ],
+      "km": 51,
+      "minuti": 70,
+      "vetrina": false
+    },
+    {
+      "id": "san-quirico",
+      "nome": {
+        "it": "San Quirico d'Orcia",
+        "en": "San Quirico d'Orcia",
+        "de": "San Quirico d'Orcia",
+        "fr": "San Quirico d'Orcia"
+      },
+      "categoria": "borgo",
+      "mappa": "San Quirico d'Orcia, Siena",
+      "url": "https://www.italia.it/it/toscana/cosa-fare/val-orcia",
+      "descrizione": {
+        "it": "Borgo della Val d'Orcia con un centro storico raccolto e gli Horti Leonini, giardino all'italiana nel cuore del paese. Fa parte dei borghi che compongono il paesaggio riconosciuto dall'UNESCO.",
+        "en": "A Val d'Orcia village with a compact historic centre and the Horti Leonini, an Italian garden in the heart of the town. It is one of the villages that make up the landscape recognised by UNESCO.",
+        "de": "Ein Dorf im Val d'Orcia mit einem überschaubaren historischen Zentrum und den Horti Leonini, einem italienischen Garten mitten im Ort. Es gehört zu den Dörfern, die die von der UNESCO anerkannte Landschaft ausmachen.",
+        "fr": "Village du Val d'Orcia au centre historique ramassé, avec les Horti Leonini, jardin à l'italienne au cœur du bourg. Il fait partie des villages qui composent le paysage reconnu par l'UNESCO."
+      },
+      "coord": [
+        11.60365,
+        43.0604
+      ],
+      "km": 59,
+      "minuti": 80,
+      "vetrina": false
+    },
+    {
+      "id": "bagno-vignoni",
+      "nome": "Bagno Vignoni",
+      "categoria": "borgo",
+      "mappa": "Bagno Vignoni, San Quirico d'Orcia",
+      "url": "https://www.italia.it/it/toscana/siena/san-quirico-d%27orcia/cosa-fare/bagno-vignoni-e-le-acque-termali",
+      "descrizione": {
+        "it": "Un piccolo borgo famoso per la sua piazza: al posto del selciato, al centro c'è una grande vasca di acqua termale. Una sosta breve e suggestiva, ideale prima di rientrare.",
+        "en": "A small village famous for its square: instead of paving, at the centre lies a large thermal water pool. A short, evocative stop, ideal before heading back.",
+        "de": "Ein kleines Dorf, berühmt für seinen Platz: Statt Pflaster liegt in der Mitte ein großes Thermalwasserbecken. Ein kurzer, stimmungsvoller Halt, ideal vor der Rückfahrt.",
+        "fr": "Un petit village célèbre pour sa place : au lieu des pavés, un grand bassin d'eau thermale occupe le centre. Une halte brève et évocatrice, idéale avant de rentrer."
+      },
+      "coord": [
+        11.61868,
+        43.02812
+      ],
+      "km": 65,
+      "minuti": 85,
+      "vetrina": false
+    },
+    {
+      "id": "siena",
+      "nome": {
+        "it": "Siena",
+        "en": "Siena",
+        "de": "Siena",
+        "fr": "Sienne"
+      },
+      "categoria": "cultura",
+      "mappa": "Siena",
+      "url": "https://www.italia.it/it/toscana/siena/cosa-fare/siena-centro-storico",
+      "descrizione": {
+        "it": "Città d'arte con il centro storico riconosciuto dall'UNESCO (1995). Piazza del Campo, a conchiglia, è il centro; il Palazzo Pubblico ospita il Museo Civico e la Torre del Mangia, il Duomo custodisce opere di Nicola Pisano, Donatello e Michelangelo. Dell'Opera della Metropolitana fanno parte anche Libreria Piccolomini, Museo e Battistero.",
+        "en": "An art city whose historic centre is recognised by UNESCO (1995). Shell-shaped Piazza del Campo is its centre; the Palazzo Pubblico houses the Civic Museum and the Torre del Mangia, while the Cathedral holds works by Nicola Pisano, Donatello and Michelangelo. The Opera della Metropolitana complex also includes the Piccolomini Library, the Museum and the Baptistery.",
+        "de": "Eine Kunststadt, deren Altstadt von der UNESCO anerkannt ist (1995). Die muschelförmige Piazza del Campo ist ihr Zentrum; im Palazzo Pubblico befinden sich das Stadtmuseum und der Torre del Mangia, der Dom bewahrt Werke von Nicola Pisano, Donatello und Michelangelo. Zum Komplex der Opera della Metropolitana gehören auch die Libreria Piccolomini, das Museum und das Baptisterium.",
+        "fr": "Ville d'art dont le centre historique est reconnu par l'UNESCO (1995). La Piazza del Campo, en forme de coquille, en est le centre ; le Palazzo Pubblico abrite le musée civique et la Torre del Mangia, la cathédrale conserve des œuvres de Nicola Pisano, Donatello et Michel-Ange. Le complexe de l'Opera della Metropolitana comprend aussi la Libreria Piccolomini, le musée et le baptistère."
+      },
+      "coord": [
+        11.46756,
+        43.16721
+      ],
+      "km": 73,
+      "minuti": 85,
+      "vetrina": false
+    },
+    {
+      "id": "monteriggioni",
+      "nome": "Monteriggioni",
+      "categoria": "borgo",
+      "mappa": "Monteriggioni, Siena",
+      "descrizione": {
+        "it": "Piccolo borgo fortificato medievale, racchiuso da mura e torri: si gira in poco tempo ed è una sosta facile lungo la strada tra Siena e San Gimignano.",
+        "en": "A small medieval fortified village enclosed by walls and towers: it can be seen quickly and makes an easy stop on the road between Siena and San Gimignano.",
+        "de": "Ein kleines mittelalterliches Festungsdorf, von Mauern und Türmen umschlossen: Man sieht es schnell, und es ist ein einfacher Halt auf dem Weg zwischen Siena und San Gimignano.",
+        "fr": "Petit village fortifié médiéval, enfermé dans ses remparts et ses tours : on en fait vite le tour, et c'est une halte facile sur la route entre Sienne et San Gimignano."
+      },
+      "coord": [
+        11.22359,
+        43.38998
+      ],
+      "km": 95,
+      "minuti": 85,
+      "vetrina": false
+    },
+    {
+      "id": "san-gimignano",
+      "nome": "San Gimignano",
+      "categoria": "borgo",
+      "mappa": "San Gimignano, Siena",
+      "url": "https://www.italia.it/it/toscana/siena/san-gimignano/cosa-fare/san-gimignano-e-le-sue-torri",
+      "descrizione": {
+        "it": "Il borgo delle torri: oggi ne restano 14, in origine erano 72. La Torre Grossa, la più alta (52 m, del 1311), sorge accanto al Palazzo Comunale in piazza Duomo; poco lontano c'è piazza della Cisterna. Nel Palazzo Comunale ci sono i Musei Civici e la Sala di Dante.",
+        "en": "The town of towers: 14 remain today, there were originally 72. The Torre Grossa, the tallest (52 m, from 1311), stands beside the Town Hall in Piazza Duomo; Piazza della Cisterna is not far. The Town Hall houses the Civic Museums and the Sala di Dante.",
+        "de": "Das Städtchen der Türme: Heute stehen noch 14, ursprünglich waren es 72. Die Torre Grossa, der höchste (52 m, von 1311), steht neben dem Rathaus an der Piazza Duomo; nicht weit entfernt liegt die Piazza della Cisterna. Im Rathaus befinden sich die Stadtmuseen und die Sala di Dante.",
+        "fr": "Le bourg des tours : il en reste 14 aujourd'hui, il y en avait 72 à l'origine. La Torre Grossa, la plus haute (52 m, de 1311), s'élève à côté de l'hôtel de ville sur la Piazza Duomo ; la Piazza della Cisterna n'est pas loin. L'hôtel de ville abrite les musées civiques et la Sala di Dante."
+      },
+      "coord": [
+        11.04321,
+        43.4678
+      ],
+      "km": 120,
+      "minuti": 115,
+      "vetrina": false
+    },
+    {
+      "id": "citta-di-castello",
+      "nome": "Città di Castello",
+      "categoria": "cultura",
+      "mappa": "Città di Castello, Perugia",
+      "url": "https://www.umbriatourism.it/citta-di-castello",
+      "descrizione": {
+        "it": "Città dell'Alta Valle del Tevere, a pochi chilometri dalla Toscana. In Piazza Matteotti c'è il Palazzo del Podestà; la Pinacoteca Comunale, nel rinascimentale Palazzo Vitelli alla Cannoniera, è la più importante raccolta d'arte umbra dopo quella di Perugia. È anche la città di Alberto Burri, a cui è dedicata una fondazione.",
+        "en": "A town in the Alta Valle del Tevere, a few kilometres from Tuscany. Piazza Matteotti has the Palazzo del Podestà; the Pinacoteca Comunale, housed in the Renaissance Palazzo Vitelli alla Cannoniera, is described as Umbria's most important art collection after Perugia's. It is also the town of Alberto Burri, to whom a foundation is dedicated.",
+        "de": "Eine Stadt im Alta Valle del Tevere, wenige Kilometer von der Toskana entfernt. An der Piazza Matteotti steht der Palazzo del Podestà; die Pinacoteca Comunale im Renaissance-Palazzo Vitelli alla Cannoniera gilt als bedeutendste umbrische Kunstsammlung nach der von Perugia. Es ist auch die Stadt von Alberto Burri, dem eine Stiftung gewidmet ist.",
+        "fr": "Ville de l'Alta Valle del Tevere, à quelques kilomètres de la Toscane. La Piazza Matteotti abrite le Palazzo del Podestà ; la Pinacoteca Comunale, installée dans le palais Renaissance Palazzo Vitelli alla Cannoniera, est décrite comme la plus importante collection d'art ombrien après celle de Pérouse. C'est aussi la ville d'Alberto Burri, à qui une fondation est consacrée."
+      },
+      "coord": [
+        12.24031,
+        43.45742
+      ],
+      "km": 41,
+      "minuti": 50,
+      "vetrina": false
+    },
+    {
+      "id": "montone",
+      "nome": "Montone",
+      "categoria": "borgo",
+      "mappa": "Montone, Perugia",
+      "url": "https://www.umbriatourism.it/montone",
+      "descrizione": {
+        "it": "Borgo medievale dell'Alta Valle del Tevere, tra \"I Borghi più belli d'Italia\". Legato alla famiglia Fortebracci e a Braccio da Montone, ha la chiesa gotica di San Francesco con il suo complesso museale e la Collegiata di Santa Maria e San Gregorio Magno. Si gira a piedi tra vicoli e panorami.",
+        "en": "A medieval village in the Alta Valle del Tevere, listed among \"I Borghi più belli d'Italia\". Tied to the Fortebracci family and to Braccio da Montone, it has the Gothic church of San Francesco with its museum complex and the Collegiata of Santa Maria and San Gregorio Magno. Best explored on foot, through alleys and viewpoints.",
+        "de": "Mittelalterliches Dorf im Alta Valle del Tevere, eines der \"Borghi più belli d'Italia\". Mit der Familie Fortebracci und Braccio da Montone verbunden, besitzt es die gotische Kirche San Francesco mit ihrem Museumskomplex und die Collegiata di Santa Maria e San Gregorio Magno. Man erkundet es zu Fuß, durch Gassen und Aussichtspunkte.",
+        "fr": "Village médiéval de l'Alta Valle del Tevere, classé parmi \"I Borghi più belli d'Italia\". Lié à la famille Fortebracci et à Braccio da Montone, il possède l'église gothique San Francesco avec son complexe muséal et la Collegiata Santa Maria e San Gregorio Magno. À parcourir à pied, entre ruelles et points de vue."
+      },
+      "coord": [
+        12.32644,
+        43.36237
+      ],
+      "km": 41,
+      "minuti": 55,
+      "vetrina": false
+    },
+    {
+      "id": "umbertide",
+      "nome": "Umbertide",
+      "categoria": "cultura",
+      "mappa": "Umbertide, Perugia",
+      "url": "https://www.umbriatourism.it/-/rocca-di-umbertide",
+      "descrizione": {
+        "it": "Città tra il Monte Acuto e il Tevere, con la Rocca medievale nel centro storico, simbolo della città: progettata nel 1374, ha una torre quadrata alta oltre 30 m e oggi ospita il Centro d'Arte Contemporanea. Nella chiesa di Santa Croce si conserva una Deposizione di Luca Signorelli.",
+        "en": "A town between Monte Acuto and the Tiber, with the medieval Rocca in its historic centre, the town's symbol: designed in 1374, it has a square tower over 30 m tall and now hosts the Centro d'Arte Contemporanea. The church of Santa Croce preserves a Deposition by Luca Signorelli.",
+        "de": "Eine Stadt zwischen dem Monte Acuto und dem Tiber, mit der mittelalterlichen Rocca im historischen Zentrum, dem Wahrzeichen der Stadt: 1374 entworfen, mit einem über 30 m hohen quadratischen Turm, beherbergt sie heute das Centro d'Arte Contemporanea. In der Kirche Santa Croce wird eine Kreuzabnahme von Luca Signorelli bewahrt.",
+        "fr": "Ville entre le Monte Acuto et le Tibre, avec la Rocca médiévale dans le centre historique, symbole de la cité : conçue en 1374, elle a une tour carrée de plus de 30 m et accueille aujourd'hui le Centro d'Arte Contemporanea. L'église Santa Croce conserve une Déposition de Luca Signorelli."
+      },
+      "coord": [
+        12.33662,
+        43.30564
+      ],
+      "km": 44,
+      "minuti": 55,
+      "vetrina": false
+    },
+    {
+      "id": "gubbio",
+      "nome": "Gubbio",
+      "categoria": "borgo",
+      "mappa": "Gubbio, Perugia",
+      "url": "https://www.umbriatourism.it/gubbio",
+      "descrizione": {
+        "it": "Città medievale alle pendici del Monte Ingino. Piazza Grande è dominata dal gotico Palazzo dei Consoli, che ospita il Museo Civico e le Tavole Iguvine; poi il Duomo e il Teatro Romano, costruito nel I secolo a.C.",
+        "en": "A medieval city on the slopes of Monte Ingino. Piazza Grande is dominated by the Gothic Palazzo dei Consoli, which houses the Civic Museum and the Iguvine Tablets; then the Cathedral and the Roman Theatre, begun in the 1st century BC.",
+        "de": "Mittelalterliche Stadt am Hang des Monte Ingino. Die Piazza Grande wird vom gotischen Palazzo dei Consoli beherrscht, der das Stadtmuseum und die Iguvinischen Tafeln beherbergt; dazu der Dom und das Römische Theater aus dem 1. Jahrhundert v. Chr.",
+        "fr": "Ville médiévale à flanc du Monte Ingino. La Piazza Grande est dominée par le Palazzo dei Consoli gothique, qui abrite le musée civique et les Tables d'Iguvium ; puis la cathédrale et le théâtre romain, commencé au Ier siècle av. J.-C."
+      },
+      "coord": [
+        12.5773,
+        43.35176
+      ],
+      "km": 73,
+      "minuti": 80,
+      "vetrina": false
+    },
+    {
+      "id": "castiglione-del-lago",
+      "nome": "Castiglione del Lago",
+      "categoria": "borgo",
+      "mappa": "Castiglione del Lago, Perugia",
+      "url": "https://www.umbriatourism.it/en/w/castiglione-del-lago-en",
+      "descrizione": {
+        "it": "Borgo su un promontorio affacciato sul Trasimeno, cinto da mura medievali. C'è la Rocca del Leone, con un anfiteatro all'aperto, e il lago a portata di sguardo.",
+        "en": "A village on a promontory overlooking Lake Trasimeno, ringed by medieval walls. It has the Rocca del Leone, with an open-air amphitheatre, and the lake always in view.",
+        "de": "Dorf auf einer Landzunge über dem Trasimenischen See, von mittelalterlichen Mauern umgeben. Es gibt die Rocca del Leone mit einem Freilufttheater, und der See ist immer im Blick.",
+        "fr": "Village sur un promontoire dominant le lac Trasimène, ceint de remparts médiévaux. On y trouve la Rocca del Leone, avec un amphithéâtre en plein air, et le lac toujours en vue."
+      },
+      "coord": [
+        12.04521,
+        43.12716
+      ],
+      "km": 34,
+      "minuti": 40,
+      "vetrina": false
+    },
+    {
+      "id": "passignano",
+      "nome": {
+        "it": "Passignano sul Trasimeno",
+        "en": "Passignano sul Trasimeno",
+        "de": "Passignano sul Trasimeno",
+        "fr": "Passignano sul Trasimeno"
+      },
+      "categoria": "borgo",
+      "mappa": "Passignano sul Trasimeno, Perugia",
+      "url": "https://www.umbriatourism.it/en/w/passignano-sul-trasimeno-en",
+      "descrizione": {
+        "it": "Borgo medievale sul lato nord del lago, con una passeggiata sull'acqua e la Rocca. Da qui partono anche i traghetti per l'Isola Maggiore.",
+        "en": "A medieval village on the north shore of the lake, with a lakeside promenade and the Rocca. Ferries to Isola Maggiore also leave from here.",
+        "de": "Mittelalterliches Dorf am Nordufer des Sees, mit einer Uferpromenade und der Rocca. Von hier fahren auch Fähren zur Isola Maggiore.",
+        "fr": "Village médiéval sur la rive nord du lac, avec une promenade au bord de l'eau et la Rocca. C'est aussi d'ici que partent les bacs pour l'Isola Maggiore."
+      },
+      "coord": [
+        12.13684,
+        43.18474
+      ],
+      "km": 37,
+      "minuti": 45,
+      "vetrina": false
+    },
+    {
+      "id": "isola-maggiore",
+      "nome": "Isola Maggiore",
+      "categoria": "borgo",
+      "mappa": "Isola Maggiore, Tuoro sul Trasimeno",
+      "url": "https://www.umbriatourism.it/en/w/isola-maggiore-en-1",
+      "descrizione": {
+        "it": "La seconda isola del lago e l'unica con un piccolo villaggio abitato vicino al porto: la chiesa di San Michele Arcangelo con affreschi di scuola umbra e la tradizione del merletto irlandese. Si raggiunge con i traghetti da Tuoro, Passignano e Castiglione del Lago (verificate orari e gestore).",
+        "en": "The lake's second island and the only one with a small inhabited village near the harbour: the church of San Michele Arcangelo with Umbrian-school frescoes, and the Irish lace tradition. Reached by ferry from Tuoro, Passignano and Castiglione del Lago (check timetables and operator).",
+        "de": "Die zweitgrößte Insel des Sees und die einzige mit einem kleinen bewohnten Dorf am Hafen: die Kirche San Michele Arcangelo mit Fresken der umbrischen Schule und die Tradition der irischen Spitze. Erreichbar mit Fähren ab Tuoro, Passignano und Castiglione del Lago (Fahrpläne und Betreiber bitte prüfen).",
+        "fr": "La deuxième île du lac et la seule avec un petit village habité près du port : l'église San Michele Arcangelo avec des fresques de l'école ombrienne, et la tradition de la dentelle irlandaise. On y accède en bac depuis Tuoro, Passignano et Castiglione del Lago (vérifiez horaires et exploitant)."
+      },
+      "coord": [
+        12.09139,
+        43.17533
+      ],
+      "km": 33,
+      "minuti": 45,
+      "vetrina": false
     }
   ],
   "itinerari": [
     {
-      "id": "sapori-e-borghi",
+      "id": "toscana-borghi-tradizioni-sapori",
       "numero": 1,
       "foto": "casa/05-viale-cipressi",
       "tono": "terracotta",
       "pdf": {
-        "it": "/itinerari/01-sapori-e-borghi-it.pdf",
-        "en": "/itinerari/01-flavours-and-villages-en.pdf",
-        "de": "/itinerari/01-genuss-und-doerfer-de.pdf",
-        "fr": "/itinerari/01-saveurs-et-villages-fr.pdf"
+        "it": "/itinerari/01-toscana-borghi-tradizioni-sapori-it.pdf",
+        "en": "/itinerari/01-tuscany-villages-traditions-flavours-en.pdf",
+        "de": "/itinerari/01-toskana-doerfer-traditionen-aromen-de.pdf",
+        "fr": "/itinerari/01-toscane-villages-traditions-saveurs-fr.pdf"
       },
       "titolo": {
-        "it": "Sapori e borghi",
-        "en": "Flavours and villages",
-        "de": "Genuss und Dörfer",
-        "fr": "Saveurs et villages"
+        "it": "Tra borghi, tradizioni e sapori della Toscana",
+        "en": "Villages, traditions and flavours of Tuscany",
+        "de": "Zwischen Dörfern, Traditionen und Aromen der Toskana",
+        "fr": "Entre villages, traditions et saveurs de la Toscane"
+      },
+      "luoghi": {
+        "it": "Val di Chio · Castiglion Fiorentino · Montecchio Vesponi · Cortona · Arezzo",
+        "en": "Val di Chio · Castiglion Fiorentino · Montecchio Vesponi · Cortona · Arezzo",
+        "de": "Val di Chio · Castiglion Fiorentino · Montecchio Vesponi · Cortona · Arezzo",
+        "fr": "Val di Chio · Castiglion Fiorentino · Montecchio Vesponi · Cortone · Arezzo"
       },
       "descrizione": {
-        "it": "Una giornata senza fretta tra piccoli borghi, cucina toscana, prodotti locali e panorami suggestivi.",
-        "en": "An unhurried day among small villages, Tuscan cooking, local produce and evocative views.",
-        "de": "Ein Tag ohne Eile zwischen kleinen Dörfern, toskanischer Küche, lokalen Produkten und stimmungsvollen Ausblicken.",
-        "fr": "Une journée sans hâte entre petits villages, cuisine toscane, produits locaux et panoramas envoûtants."
+        "it": "L'itinerario più vicino alla Residenza: una Toscana meno affollata, autentica, legata alla vita rurale.",
+        "en": "The itinerary closest to the Residenza: a less crowded, authentic Tuscany rooted in rural life.",
+        "de": "Die Route in nächster Nähe der Residenza: eine weniger überlaufene, authentische Toskana, verbunden mit dem Landleben.",
+        "fr": "L'itinéraire le plus proche de la Residenza : une Toscane moins fréquentée, authentique, liée à la vie rurale."
       },
       "ideale": {
         "it": [
@@ -171,72 +551,966 @@
           "Culture et traditions"
         ]
       },
+      "temi": [
+        "borghi",
+        "cultura",
+        "gastronomia",
+        "natura"
+      ],
+      "intro": {
+        "it": [
+          "Si parte da casa e quasi non si prende l'auto: la Val di Chio comincia a pochi minuti dalla Residenza, e da lì basta salire fino a Castiglion Fiorentino per avere davanti tutta la Valdichiana. È il modo più semplice per capire dove si è: una Toscana di colline, oliveti e piccoli paesi dove la vita rurale non è una scenografia.",
+          "La giornata scorre tra la campagna, i musei di Castiglion Fiorentino e le piazze di Cortona, con il tempo per fermarsi a tavola. Chi ha un altro giorno può dedicarlo ad Arezzo, la città di Piero della Francesca."
+        ],
+        "en": [
+          "You start from home and barely need the car: the Val di Chio begins a few minutes from the Residenza, and from there it is a short climb to Castiglion Fiorentino, with the whole Valdichiana spread out before you. It is the simplest way to understand where you are: a Tuscany of hills, olive groves and small towns where rural life is not a stage set.",
+          "The day moves between the countryside, the museums of Castiglion Fiorentino and the squares of Cortona, with time to linger at the table. With one more day to spare, Arezzo, the city of Piero della Francesca, is well worth it."
+        ],
+        "de": [
+          "Man startet von zu Hause und braucht kaum das Auto: Das Val di Chio beginnt wenige Minuten von der Residenza entfernt, und von dort ist es nur ein kurzer Anstieg nach Castiglion Fiorentino, mit der ganzen Valdichiana zu Füßen. So versteht man am einfachsten, wo man ist: eine Toskana aus Hügeln, Olivenhainen und kleinen Orten, in denen das Landleben keine Kulisse ist.",
+          "Der Tag verläuft zwischen Landschaft, den Museen von Castiglion Fiorentino und den Plätzen von Cortona, mit Zeit für eine Pause am Tisch. Wer noch einen Tag übrig hat, widmet ihn Arezzo, der Stadt von Piero della Francesca."
+        ],
+        "fr": [
+          "On part de la maison et on prend à peine la voiture : le Val di Chio commence à quelques minutes de la Residenza, et de là il suffit de monter à Castiglion Fiorentino pour avoir toute la Valdichiana devant soi. C'est la façon la plus simple de comprendre où l'on est : une Toscane de collines, d'oliveraies et de petits bourgs où la vie rurale n'est pas un décor.",
+          "La journée s'écoule entre la campagne, les musées de Castiglion Fiorentino et les places de Cortone, avec le temps de s'attarder à table. Avec un jour de plus, Arezzo, la ville de Piero della Francesca, mérite une journée à elle seule."
+        ]
+      },
       "tappe": [
         {
+          "scheda": "val-di-chio"
+        },
+        {
+          "scheda": "montecchio-vesponi",
+          "facoltativa": true
+        },
+        {
           "scheda": "castiglion-fiorentino"
-        },
-        {
-          "nome": {
-            "it": "Logge Vasariane e Cassero",
-            "en": "Vasari Loggia and the Cassero",
-            "de": "Vasari-Loggia und Cassero",
-            "fr": "Loggia de Vasari et Cassero"
-          },
-          "mappa": "Logge Vasariane, Castiglion Fiorentino",
-          "testo": {
-            "it": "Le Logge, costruite nel 1513 e legate al nome di Giorgio Vasari, si affacciano sulla valle. Il Cassero occupa la parte più alta del paese: dalla torre la vista arriva fino alla Val di Chio.",
-            "en": "The loggia, built in 1513 and linked to the name of Giorgio Vasari, looks out over the valley. The Cassero occupies the highest part of the town: from the tower the view reaches the Val di Chio.",
-            "de": "Die 1513 erbaute Loggia, mit dem Namen Giorgio Vasaris verbunden, öffnet sich zum Tal. Der Cassero nimmt den höchsten Teil des Ortes ein: vom Turm reicht der Blick bis ins Val di Chio.",
-            "fr": "La loggia, construite en 1513 et liée au nom de Giorgio Vasari, s'ouvre sur la vallée. Le Cassero occupe la partie la plus haute du village : depuis la tour, la vue porte jusqu'au Val di Chio."
-          }
-        },
-        {
-          "scheda": "montecchio-vesponi"
         },
         {
           "scheda": "cortona"
         },
         {
-          "nome": {
-            "it": "Rientro nella Val di Chio",
-            "en": "Back to the Val di Chio",
-            "de": "Zurück ins Val di Chio",
-            "fr": "Retour au Val di Chio"
-          },
-          "mappa": null,
-          "testo": {
-            "it": "La valle si apre appena oltre Castiglion Fiorentino: si rientra con calma, e la sera ci si ferma in giardino o in piscina.",
-            "en": "The valley opens just beyond Castiglion Fiorentino: you head back unhurried, and spend the evening in the garden or by the pool.",
-            "de": "Das Tal beginnt gleich hinter Castiglion Fiorentino: man kehrt ohne Eile zurück und verbringt den Abend im Garten oder am Pool.",
-            "fr": "La vallée s'ouvre juste après Castiglion Fiorentino : on rentre sans se presser, et le soir on reste au jardin ou à la piscine."
-          }
+          "scheda": "antichi-mulini",
+          "facoltativa": true
+        },
+        {
+          "scheda": "arezzo",
+          "giorno": 2
         }
       ],
-      "assaggi": {
+      "giorno2": {
         "titolo": {
-          "it": "Da assaggiare",
-          "en": "To taste",
-          "de": "Zum Probieren",
-          "fr": "À goûter"
+          "it": "Un'altra giornata: Arezzo",
+          "en": "Another day: Arezzo",
+          "de": "Ein anderer Tag: Arezzo",
+          "fr": "Une autre journée : Arezzo"
         },
-        "testo": {
-          "it": "Il pecorino toscano DOP, fresco o stagionato, con pane sciocco, miele e confetture; l'olio extravergine, per cui la Val di Chio è nota (franto a freddo nei frantoi della zona); e altre specialità della Valdichiana, come la Chianina e l'aglione.",
-          "en": "Tuscan pecorino DOP, fresh or aged, with unsalted bread, honey and preserves; extra virgin olive oil, for which the Val di Chio is known (cold-pressed in the local mills); and other Valdichiana specialities, such as Chianina beef and aglione.",
-          "de": "Toskanischer Pecorino DOP, frisch oder gereift, mit ungesalzenem Brot, Honig und Konfitüren; das native Olivenöl extra, für das das Val di Chio bekannt ist (kalt gepresst in den örtlichen Ölmühlen); und weitere Spezialitäten der Valdichiana, etwa Chianina-Rind und Aglione.",
-          "fr": "Le pecorino toscan DOP, frais ou affiné, avec du pain sans sel, du miel et des confitures ; l'huile d'olive extra vierge, dont le Val di Chio est réputé (pressée à froid dans les moulins de la région) ; et d'autres spécialités de la Valdichiana, comme la Chianina et l'aglione."
+        "nota": {
+          "it": "Arezzo merita una giornata a sé: è la tappa più lontana di questo itinerario.",
+          "en": "Arezzo deserves a day of its own: it is the farthest stop on this itinerary.",
+          "de": "Arezzo verdient einen eigenen Tag: Es ist die am weitesten entfernte Station dieser Route.",
+          "fr": "Arezzo mérite une journée à elle seule : c'est l'étape la plus éloignée de cet itinéraire."
         }
+      },
+      "gastronomia": {
+        "titolo": {
+          "it": "Da assaggiare in Val di Chio e Valdichiana",
+          "en": "To taste in the Val di Chio and Valdichiana",
+          "de": "Zum Probieren im Val di Chio und in der Valdichiana",
+          "fr": "À goûter dans le Val di Chio et la Valdichiana"
+        },
+        "intro": {
+          "it": "Una cucina di campagna: pane, olio, formaggi, carne di razza e piatti fatti con quello che offre la terra.",
+          "en": "Country cooking: bread, oil, cheese, prized beef and dishes made with what the land offers.",
+          "de": "Landküche: Brot, Öl, Käse, edles Rindfleisch und Gerichte aus dem, was das Land hergibt.",
+          "fr": "Une cuisine de campagne : pain, huile, fromages, viande de race et plats faits de ce que donne la terre."
+        },
+        "prodotti": [
+          {
+            "nome": {
+              "it": "Olio extravergine della Val di Chio",
+              "en": "Val di Chio extra virgin olive oil",
+              "de": "Natives Olivenöl extra aus dem Val di Chio",
+              "fr": "Huile d'olive extra vierge du Val di Chio"
+            },
+            "testo": {
+              "it": "La valle è nota per un olio franto a freddo nei frantoi della zona: gli oliveti sono parte del paesaggio.",
+              "en": "The valley is known for an oil cold-pressed in the local mills: olive groves are part of the landscape.",
+              "de": "Das Tal ist bekannt für ein Öl, das in den örtlichen Ölmühlen kalt gepresst wird: Olivenhaine gehören zur Landschaft.",
+              "fr": "La vallée est connue pour une huile pressée à froid dans les moulins de la région : les oliveraies font partie du paysage."
+            }
+          },
+          {
+            "nome": {
+              "it": "Chianina",
+              "en": "Chianina beef",
+              "de": "Chianina-Rind",
+              "fr": "Chianina"
+            },
+            "testo": {
+              "it": "Razza bovina dal manto bianco che prende il nome dalla valle: un tempo bue da lavoro, oggi allevata per la carne.",
+              "en": "A white-coated cattle breed named after the valley: once a working ox, today raised for its meat.",
+              "de": "Eine weißfellige Rinderrasse, die nach dem Tal benannt ist: früher Arbeitsochse, heute für das Fleisch gezüchtet.",
+              "fr": "Une race bovine à la robe blanche qui doit son nom à la vallée : autrefois bœuf de travail, aujourd'hui élevée pour sa viande."
+            }
+          },
+          {
+            "nome": {
+              "it": "Pecorino Toscano DOP",
+              "en": "Pecorino Toscano DOP",
+              "de": "Pecorino Toscano DOP",
+              "fr": "Pecorino Toscano DOP"
+            },
+            "testo": {
+              "it": "Formaggio di latte ovino, morbido e profumato da fresco, più deciso da stagionato. Si abbina a pane sciocco, miele, confetture e vini locali.",
+              "en": "A sheep's-milk cheese, soft and fragrant when fresh, stronger when aged. Pair it with unsalted bread, honey, preserves and local wines.",
+              "de": "Schafskäse, frisch weich und duftend, gereift kräftiger. Dazu passen ungesalzenes Brot, Honig, Konfitüren und lokale Weine.",
+              "fr": "Fromage de lait de brebis, moelleux et parfumé frais, plus marqué affiné. Il s'accompagne de pain sans sel, de miel, de confitures et de vins locaux."
+            }
+          },
+          {
+            "nome": {
+              "it": "Pane toscano e farine della Valdichiana",
+              "en": "Tuscan bread and Valdichiana flours",
+              "de": "Toskanisches Brot und Mehle der Valdichiana",
+              "fr": "Pain toscan et farines de la Valdichiana"
+            },
+            "testo": {
+              "it": "Per secoli la Valdichiana è stata il \"granaio\" della zona. Il pane toscano si fa tradizionalmente senza sale, e con le stesse farine nascono pasta, focacce e dolci.",
+              "en": "For centuries the Valdichiana was the area's \"granary\". Tuscan bread is traditionally made without salt, and the same flours give pasta, focaccia and sweets.",
+              "de": "Jahrhundertelang war die Valdichiana die \"Kornkammer\" der Gegend. Toskanisches Brot wird traditionell ohne Salz gebacken, und aus denselben Mehlen entstehen Pasta, Focaccia und Süßes.",
+              "fr": "Pendant des siècles, la Valdichiana a été le \"grenier\" de la région. Le pain toscan se fait traditionnellement sans sel, et les mêmes farines donnent pâtes, focaccias et douceurs."
+            }
+          },
+          {
+            "nome": {
+              "it": "Crostini, salumi e pici",
+              "en": "Crostini, cured meats and pici",
+              "de": "Crostini, Wurstwaren und Pici",
+              "fr": "Crostini, charcuterie et pici"
+            },
+            "testo": {
+              "it": "L'antipasto toscano per eccellenza e la pasta fatta a mano. A Cortona sono citati i pici all'aglione, a Castiglion Fiorentino la scottiglia, uno stufato di carni miste.",
+              "en": "The classic Tuscan starter and hand-made pasta. In Cortona the pici all'aglione are a local mention, in Castiglion Fiorentino the scottiglia, a stew of mixed meats.",
+              "de": "Die klassische toskanische Vorspeise und handgemachte Pasta. In Cortona werden die Pici all'aglione genannt, in Castiglion Fiorentino die Scottiglia, ein Eintopf aus gemischtem Fleisch.",
+              "fr": "L'entrée toscane par excellence et les pâtes faites à la main. À Cortone on cite les pici all'aglione, à Castiglion Fiorentino la scottiglia, un ragoût de viandes mêlées."
+            }
+          },
+          {
+            "nome": {
+              "it": "Syrah di Cortona",
+              "en": "Cortona Syrah",
+              "de": "Syrah di Cortona",
+              "fr": "Syrah de Cortone"
+            },
+            "testo": {
+              "it": "Nei vigneti intorno a Cortona nasce il Cortona DOC, da uve Syrah.",
+              "en": "The vineyards around Cortona produce Cortona DOC wine from Syrah grapes.",
+              "de": "In den Weinbergen um Cortona entsteht der Cortona DOC aus Syrah-Trauben.",
+              "fr": "Les vignobles autour de Cortone donnent le Cortona DOC, issu du cépage Syrah."
+            }
+          }
+        ]
+      },
+      "consigli": {
+        "it": [
+          "La giornata principale (Val di Chio, Castiglion Fiorentino, Cortona) fa circa 43 km e un'ora scarsa di guida in tutto: partite al mattino e fermatevi a pranzo senza fretta.",
+          "Il Percorso degli Antichi Mulini (circa 10 km a piedi) è alternativo a Cortona: scegliete una delle due cose per il pomeriggio.",
+          "Per Cassero, musei e Percorso Archeologico Sotterraneo verificate giorni e orari sui siti ufficiali prima di salire in paese. Lo stesso vale per la Basilica di San Francesco ad Arezzo, che di norma si visita su prenotazione.",
+          "Nei centri storici lasciate l'auto fuori dalle zone a traffico limitato e camminate: le vie sono in salita, portate scarpe comode.",
+          "Per un consiglio su cosa assaggiare, scriveteci su WhatsApp: ci fa piacere."
+        ],
+        "en": [
+          "The main day (Val di Chio, Castiglion Fiorentino, Cortona) covers about 43 km and just under an hour of driving in total: set off in the morning and stop for lunch without rushing.",
+          "The Ancient Mills Trail (about 10 km on foot) is an alternative to Cortona: choose one of the two for the afternoon.",
+          "For the Cassero, museums and the Underground Archaeological Trail, check days and opening times on the official websites before heading up to town. The same applies to the Basilica of San Francesco in Arezzo, normally visited by reservation.",
+          "In the historic centres leave the car outside the limited-traffic zones and walk: the streets climb, so bring comfortable shoes.",
+          "For a tip on what to taste, message us on WhatsApp: we'll be glad to help."
+        ],
+        "de": [
+          "Der Haupttag (Val di Chio, Castiglion Fiorentino, Cortona) umfasst etwa 43 km und insgesamt knapp eine Stunde Fahrt: Brechen Sie morgens auf und essen Sie ohne Eile zu Mittag.",
+          "Der Weg der alten Mühlen (etwa 10 km zu Fuß) ist eine Alternative zu Cortona: Wählen Sie für den Nachmittag eines von beiden.",
+          "Für Cassero, Museen und den unterirdischen archäologischen Rundgang prüfen Sie Tage und Öffnungszeiten auf den offiziellen Websites, bevor Sie in den Ort hinauffahren. Das Gleiche gilt für die Basilika San Francesco in Arezzo, die in der Regel nur nach Reservierung besichtigt wird.",
+          "Lassen Sie in den Altstädten das Auto außerhalb der Zonen mit beschränktem Verkehr stehen und gehen Sie zu Fuß: Die Straßen steigen an, bequeme Schuhe sind ratsam.",
+          "Für einen Tipp, was man probieren sollte, schreiben Sie uns auf WhatsApp: gern."
+        ],
+        "fr": [
+          "La journée principale (Val di Chio, Castiglion Fiorentino, Cortone) représente environ 43 km et un peu moins d'une heure de route au total : partez le matin et déjeunez sans vous presser.",
+          "Le sentier des anciens moulins (environ 10 km à pied) est une alternative à Cortone : choisissez l'un des deux pour l'après-midi.",
+          "Pour le Cassero, les musées et le parcours archéologique souterrain, vérifiez jours et horaires sur les sites officiels avant de monter au village. Même chose pour la basilique San Francesco à Arezzo, qui se visite en principe sur réservation.",
+          "Dans les centres historiques, laissez la voiture hors des zones à circulation limitée et marchez : les rues montent, prévoyez de bonnes chaussures.",
+          "Pour un conseil sur ce qu'il faut goûter, écrivez-nous sur WhatsApp : avec plaisir."
+        ]
+      },
+      "fonti": [
+        {
+          "nome": {
+            "it": "Visit Valdichiana – Castiglion Fiorentino",
+            "en": "Visit Valdichiana – Castiglion Fiorentino",
+            "de": "Visit Valdichiana – Castiglion Fiorentino",
+            "fr": "Visit Valdichiana – Castiglion Fiorentino"
+          },
+          "url": "https://www.visitvaldichiana.it/esplora/castiglion-fiorentino/"
+        },
+        {
+          "nome": {
+            "it": "Visit Valdichiana – Cortona",
+            "en": "Visit Valdichiana – Cortona",
+            "de": "Visit Valdichiana – Cortona",
+            "fr": "Visit Valdichiana – Cortone"
+          },
+          "url": "https://www.visitvaldichiana.it/esplora/cortona/"
+        },
+        {
+          "nome": {
+            "it": "Visit Valdichiana – Trekking tra gli Antichi Mulini",
+            "en": "Visit Valdichiana – Ancient Mills trek",
+            "de": "Visit Valdichiana – Wanderung zu den alten Mühlen",
+            "fr": "Visit Valdichiana – Randonnée des anciens moulins"
+          },
+          "url": "https://www.visitvaldichiana.it/esplora/trekking-tra-gli-antichi-mulini-della-val-di-chio/"
+        },
+        {
+          "nome": {
+            "it": "Comune di Castiglion Fiorentino",
+            "en": "Comune di Castiglion Fiorentino",
+            "de": "Comune di Castiglion Fiorentino",
+            "fr": "Comune di Castiglion Fiorentino"
+          },
+          "url": "https://comune.castiglionfiorentino.ar.it/"
+        },
+        {
+          "nome": {
+            "it": "Arezzo – italia.it",
+            "en": "Arezzo – italia.it",
+            "de": "Arezzo – italia.it",
+            "fr": "Arezzo – italia.it"
+          },
+          "url": "https://www.italia.it/it/toscana/arezzo"
+        },
+        {
+          "nome": {
+            "it": "Arezzo – affreschi di Piero della Francesca",
+            "en": "Arezzo – Piero della Francesca frescoes",
+            "de": "Arezzo – Fresken von Piero della Francesca",
+            "fr": "Arezzo – fresques de Piero della Francesca"
+          },
+          "url": "https://museiarezzo.it/affreschi-di-piero-della-francesca/"
+        }
+      ],
+      "viaggio": {
+        "km": 43,
+        "minutiGiro": 60,
+        "minutiMax": 25
+      }
+    },
+    {
+      "id": "umbria-autentica",
+      "numero": 2,
+      "foto": "giardino/10-prato-cipressi",
+      "tono": "salvia",
+      "pdf": {
+        "it": "/itinerari/02-umbria-autentica-it.pdf",
+        "en": "/itinerari/02-authentic-umbria-en.pdf",
+        "de": "/itinerari/02-authentisches-umbrien-de.pdf",
+        "fr": "/itinerari/02-ombrie-authentique-fr.pdf"
+      },
+      "titolo": {
+        "it": "Alla scoperta dell'Umbria autentica",
+        "en": "Discovering authentic Umbria",
+        "de": "Das authentische Umbrien entdecken",
+        "fr": "À la découverte de l'Ombrie authentique"
+      },
+      "luoghi": {
+        "it": "Città di Castello · Montone · Umbertide · Gubbio · Lago Trasimeno",
+        "en": "Città di Castello · Montone · Umbertide · Gubbio · Lake Trasimeno",
+        "de": "Città di Castello · Montone · Umbertide · Gubbio · Trasimenischer See",
+        "fr": "Città di Castello · Montone · Umbertide · Gubbio · lac Trasimène"
+      },
+      "descrizione": {
+        "it": "Borghi medievali, natura e tavola umbra: a poco più di mezz'ora dal confine, una regione che si lascia scoprire con calma.",
+        "en": "Medieval villages, nature and the Umbrian table: a region just over half an hour from the border, which reveals itself slowly.",
+        "de": "Mittelalterliche Dörfer, Natur und umbrische Tafel: eine Region, gut eine halbe Stunde von der Grenze entfernt, die sich in Ruhe entdecken lässt.",
+        "fr": "Villages médiévaux, nature et table ombrienne : une région à un peu plus d'une demi-heure de la frontière, qui se découvre sans hâte."
+      },
+      "ideale": {
+        "it": [
+          "Borghi medievali",
+          "Arte e cultura",
+          "Natura e laghi",
+          "Gastronomia",
+          "Giornate lente"
+        ],
+        "en": [
+          "Medieval villages",
+          "Art and culture",
+          "Nature and lakes",
+          "Gastronomy",
+          "Slow days"
+        ],
+        "de": [
+          "Mittelalterliche Dörfer",
+          "Kunst und Kultur",
+          "Natur und Seen",
+          "Gastronomie",
+          "Gemächliche Tage"
+        ],
+        "fr": [
+          "Villages médiévaux",
+          "Art et culture",
+          "Nature et lacs",
+          "Gastronomie",
+          "Journées lentes"
+        ]
+      },
+      "temi": [
+        "borghi",
+        "cultura",
+        "gastronomia",
+        "natura"
+      ],
+      "intro": {
+        "it": [
+          "A est della Val di Chio comincia l'Umbria. L'Alta Valle del Tevere si apre come un anfiteatro naturale: una pianura circondata da colline appenniniche, con campi che si alternano ai boschi, e lungo la strada si incontrano castelli, borghi e fortezze.",
+          "Il giro tocca tre luoghi che stanno bene insieme: Città di Castello, con la sua tradizione artistica, Montone, borgo medievale tra i più belli d'Italia, e Umbertide, con la sua Rocca. Per chi ha un altro giorno ci sono il Trasimeno, con i borghi sul lago e l'Isola Maggiore."
+        ],
+        "en": [
+          "East of the Val di Chio, Umbria begins. The Alta Valle del Tevere opens like a natural amphitheatre: a plain ringed by Apennine hills, fields alternating with woods, and along the road you meet castles, villages and fortresses.",
+          "The route links three places that go well together: Città di Castello, with its artistic tradition; Montone, one of Italy's most beautiful medieval villages; and Umbertide, with its Rocca. With another day to spare there is Lake Trasimeno, with its lakeside villages and Isola Maggiore."
+        ],
+        "de": [
+          "Östlich des Val di Chio beginnt Umbrien. Das Alta Valle del Tevere öffnet sich wie ein natürliches Amphitheater: eine Ebene, von Apenninhügeln umgeben, Felder im Wechsel mit Wäldern, und am Weg liegen Burgen, Dörfer und Festungen.",
+          "Die Route verbindet drei Orte, die gut zusammenpassen: Città di Castello mit seiner künstlerischen Tradition, Montone, eines der schönsten mittelalterlichen Dörfer Italiens, und Umbertide mit seiner Rocca. Für einen weiteren Tag bietet sich der Trasimenische See an, mit seinen Seedörfern und der Isola Maggiore."
+        ],
+        "fr": [
+          "À l'est du Val di Chio commence l'Ombrie. L'Alta Valle del Tevere s'ouvre comme un amphithéâtre naturel : une plaine entourée de collines de l'Apennin, des champs qui alternent avec les bois, et le long de la route on rencontre châteaux, villages et forteresses.",
+          "Le parcours relie trois lieux qui vont bien ensemble : Città di Castello, avec sa tradition artistique, Montone, l'un des plus beaux villages médiévaux d'Italie, et Umbertide, avec sa Rocca. Avec un autre jour, il y a le lac Trasimène, ses villages au bord de l'eau et l'Isola Maggiore."
+        ]
+      },
+      "tappe": [
+        {
+          "scheda": "citta-di-castello"
+        },
+        {
+          "scheda": "montone"
+        },
+        {
+          "scheda": "umbertide"
+        },
+        {
+          "scheda": "gubbio",
+          "facoltativa": true
+        },
+        {
+          "scheda": "castiglione-del-lago",
+          "giorno": 2
+        },
+        {
+          "scheda": "passignano",
+          "giorno": 2
+        },
+        {
+          "scheda": "isola-maggiore",
+          "giorno": 2,
+          "facoltativa": true
+        }
+      ],
+      "giorno2": {
+        "titolo": {
+          "it": "Un'altra giornata: il Lago Trasimeno",
+          "en": "Another day: Lake Trasimeno",
+          "de": "Ein anderer Tag: der Trasimenische See",
+          "fr": "Une autre journée : le lac Trasimène"
+        },
+        "nota": {
+          "it": "Il lago sta in un'altra direzione rispetto alla Valle del Tevere: è un'alternativa, meglio dedicargli un giorno a sé.",
+          "en": "The lake lies in a different direction from the Tiber valley: it is an alternative, best given a day of its own.",
+          "de": "Der See liegt in einer anderen Richtung als das Tibertal: Er ist eine Alternative, am besten mit einem eigenen Tag.",
+          "fr": "Le lac est dans une autre direction que la vallée du Tibre : c'est une alternative, à réserver à une journée à part."
+        }
+      },
+      "gastronomia": {
+        "titolo": {
+          "it": "Da assaggiare in Umbria",
+          "en": "To taste in Umbria",
+          "de": "Zum Probieren in Umbrien",
+          "fr": "À goûter en Ombrie"
+        },
+        "intro": {
+          "it": "Una cucina di terra e di bosco: tartufo, salumi, legumi e formaggi di montagna.",
+          "en": "A cuisine of earth and forest: truffles, cured meats, pulses and mountain cheeses.",
+          "de": "Eine Küche von Erde und Wald: Trüffel, Wurstwaren, Hülsenfrüchte und Bergkäse.",
+          "fr": "Une cuisine de terre et de forêt : truffes, charcuteries, légumineuses et fromages de montagne."
+        },
+        "prodotti": [
+          {
+            "nome": {
+              "it": "Tartufo",
+              "en": "Truffle",
+              "de": "Trüffel",
+              "fr": "Truffe"
+            },
+            "testo": {
+              "it": "Il tartufo nero è legato a Norcia, quello bianco all'Alta Valle del Tevere: Città di Castello cita il tartufo bianco tra i suoi prodotti.",
+              "en": "Black truffle is tied to Norcia, white truffle to the Alta Valle del Tevere: Città di Castello lists white truffle among its products.",
+              "de": "Der schwarze Trüffel gehört zu Norcia, der weiße zum Alta Valle del Tevere: Città di Castello nennt den weißen Trüffel unter seinen Produkten.",
+              "fr": "La truffe noire est liée à Norcia, la blanche à l'Alta Valle del Tevere : Città di Castello cite la truffe blanche parmi ses produits."
+            }
+          },
+          {
+            "nome": {
+              "it": "Norcineria e salumi",
+              "en": "Cured meats from Norcia",
+              "de": "Norcia-Wurstwaren",
+              "fr": "Charcuterie de Norcia"
+            },
+            "testo": {
+              "it": "La grande tradizione dei salumi norcini; a Città di Castello si cita anche il mazzafegato.",
+              "en": "The great tradition of Norcia cured meats; Città di Castello also mentions the mazzafegato sausage.",
+              "de": "Die große Tradition der Wurstwaren aus Norcia; in Città di Castello wird auch der Mazzafegato genannt.",
+              "fr": "La grande tradition de la charcuterie de Norcia ; à Città di Castello on cite aussi le mazzafegato."
+            }
+          },
+          {
+            "nome": {
+              "it": "Formaggi",
+              "en": "Cheeses",
+              "de": "Käse",
+              "fr": "Fromages"
+            },
+            "testo": {
+              "it": "Il pecorino viene dai Monti Sibillini.",
+              "en": "Pecorino comes from the Sibillini Mountains.",
+              "de": "Der Pecorino stammt aus den Monti Sibillini.",
+              "fr": "Le pecorino vient des Monts Sibyllins."
+            }
+          },
+          {
+            "nome": {
+              "it": "Legumi e farro",
+              "en": "Pulses and spelt",
+              "de": "Hülsenfrüchte und Dinkel",
+              "fr": "Légumineuses et épeautre"
+            },
+            "testo": {
+              "it": "La lenticchia di Castelluccio, la roveja di Cascia, la fagiolina del Trasimeno, e il farro: zuppe e piatti di una cucina povera e saporita.",
+              "en": "Castelluccio lentils, Cascia roveja, Trasimeno fagiolina beans, and spelt: soups and dishes from a humble, flavourful cuisine.",
+              "de": "Linsen aus Castelluccio, Roveja aus Cascia, die Fagiolina vom Trasimeno und Dinkel: Suppen und Gerichte einer einfachen, schmackhaften Küche.",
+              "fr": "La lentille de Castelluccio, la roveja de Cascia, la fagiolina du Trasimène, et l'épeautre : soupes et plats d'une cuisine simple et savoureuse."
+            }
+          },
+          {
+            "nome": {
+              "it": "Crescia e specialità locali",
+              "en": "Crescia and local specialities",
+              "de": "Crescia und lokale Spezialitäten",
+              "fr": "Crescia et spécialités locales"
+            },
+            "testo": {
+              "it": "A Gubbio la crescia, un pane piatto tradizionale; a Città di Castello la ciaccia sul panaro e il Vino Affumicato, Presidio Slow Food.",
+              "en": "In Gubbio, crescia, a traditional flatbread; in Città di Castello, ciaccia sul panaro and Vino Affumicato, a Slow Food Presidium.",
+              "de": "In Gubbio die Crescia, ein traditionelles Fladenbrot; in Città di Castello die Ciaccia sul panaro und der Vino Affumicato, ein Slow-Food-Presidio.",
+              "fr": "À Gubbio la crescia, un pain plat traditionnel ; à Città di Castello la ciaccia sul panaro et le Vino Affumicato, Présidium Slow Food."
+            }
+          },
+          {
+            "nome": {
+              "it": "Olio extravergine d'oliva DOP",
+              "en": "DOP extra virgin olive oil",
+              "de": "Natives Olivenöl extra g.U.",
+              "fr": "Huile d'olive extra vierge AOP"
+            },
+            "testo": {
+              "it": "L'olio extravergine DOP è uno dei prodotti simbolo della regione.",
+              "en": "DOP extra virgin olive oil is one of the region's emblematic products.",
+              "de": "Das native Olivenöl extra g.U. ist eines der Symbolprodukte der Region.",
+              "fr": "L'huile d'olive extra vierge AOP est l'un des produits emblématiques de la région."
+            }
+          }
+        ]
+      },
+      "consigli": {
+        "it": [
+          "Il giro principale (Città di Castello, Montone, Umbertide) è di circa 114 km e due ore e un quarto di guida complessive: la prima tappa è a circa 50 minuti da qui, quindi partite presto.",
+          "Gubbio è a circa 80 minuti dalla Residenza: aggiunta a questo giro allunga molto la giornata (circa 170 km in tutto). Meglio un giorno a sé.",
+          "Per la Pinacoteca Comunale di Città di Castello, il Palazzo dei Consoli di Gubbio e gli altri musei verificate giorni e orari sui siti ufficiali; il Teatro Romano di Gubbio segue il proprio calendario.",
+          "Per l'Isola Maggiore i traghetti partono da Tuoro, Passignano e Castiglione del Lago: controllate orari e gestore prima di partire.",
+          "Nei borghi lasciate l'auto fuori dalle zone a traffico limitato e camminate, con scarpe comode."
+        ],
+        "en": [
+          "The main loop (Città di Castello, Montone, Umbertide) is about 114 km and two and a quarter hours of driving overall: the first stop is about 50 minutes from here, so set off early.",
+          "Gubbio is about 80 minutes from the Residenza: adding it to this loop makes the day much longer (about 170 km in all). Better as a day of its own.",
+          "For Città di Castello's Pinacoteca Comunale, Gubbio's Palazzo dei Consoli and the other museums, check days and opening times on the official websites; Gubbio's Roman Theatre follows its own calendar.",
+          "For Isola Maggiore ferries leave from Tuoro, Passignano and Castiglione del Lago: check timetables and operator before you go.",
+          "In the villages leave the car outside the limited-traffic zones and walk, in comfortable shoes."
+        ],
+        "de": [
+          "Die Hauptrunde (Città di Castello, Montone, Umbertide) umfasst etwa 114 km und insgesamt gut zwei Stunden Fahrt: Die erste Station liegt etwa 50 Minuten von hier entfernt, brechen Sie also früh auf.",
+          "Gubbio ist etwa 80 Minuten von der Residenza entfernt: Es zur Runde hinzuzunehmen verlängert den Tag stark (etwa 170 km insgesamt). Besser als eigener Tag.",
+          "Für die Pinacoteca Comunale in Città di Castello, den Palazzo dei Consoli in Gubbio und die anderen Museen prüfen Sie Tage und Öffnungszeiten auf den offiziellen Websites; das Römische Theater in Gubbio hat seinen eigenen Kalender.",
+          "Zur Isola Maggiore fahren Fähren ab Tuoro, Passignano und Castiglione del Lago: Fahrplan und Betreiber vor der Abfahrt prüfen.",
+          "In den Dörfern lassen Sie das Auto außerhalb der Zonen mit beschränktem Verkehr stehen und gehen Sie zu Fuß, in bequemen Schuhen."
+        ],
+        "fr": [
+          "Le circuit principal (Città di Castello, Montone, Umbertide) fait environ 114 km et deux heures un quart de route au total : la première étape est à environ 50 minutes d'ici, partez donc tôt.",
+          "Gubbio est à environ 80 minutes de la Residenza : l'ajouter à ce circuit allonge beaucoup la journée (environ 170 km au total). Mieux vaut une journée à part.",
+          "Pour la Pinacoteca Comunale de Città di Castello, le Palazzo dei Consoli de Gubbio et les autres musées, vérifiez jours et horaires sur les sites officiels ; le théâtre romain de Gubbio suit son propre calendrier.",
+          "Pour l'Isola Maggiore, les bacs partent de Tuoro, Passignano et Castiglione del Lago : vérifiez horaires et exploitant avant de partir.",
+          "Dans les villages, laissez la voiture hors des zones à circulation limitée et marchez, en bonnes chaussures."
+        ]
+      },
+      "fonti": [
+        {
+          "nome": {
+            "it": "Umbria Tourism – Città di Castello",
+            "en": "Umbria Tourism – Città di Castello",
+            "de": "Umbria Tourism – Città di Castello",
+            "fr": "Umbria Tourism – Città di Castello"
+          },
+          "url": "https://www.umbriatourism.it/citta-di-castello"
+        },
+        {
+          "nome": {
+            "it": "Umbria Tourism – Pinacoteca Comunale",
+            "en": "Umbria Tourism – Municipal Picture Gallery",
+            "de": "Umbria Tourism – Pinacoteca Comunale",
+            "fr": "Umbria Tourism – Pinacoteca Comunale"
+          },
+          "url": "https://www.umbriatourism.it/en/w/municipal-picture-gallery-citta-di-castello"
+        },
+        {
+          "nome": {
+            "it": "Umbria Tourism – Montone",
+            "en": "Umbria Tourism – Montone",
+            "de": "Umbria Tourism – Montone",
+            "fr": "Umbria Tourism – Montone"
+          },
+          "url": "https://www.umbriatourism.it/montone"
+        },
+        {
+          "nome": {
+            "it": "Umbria Tourism – Umbertide",
+            "en": "Umbria Tourism – Umbertide",
+            "de": "Umbria Tourism – Umbertide",
+            "fr": "Umbria Tourism – Umbertide"
+          },
+          "url": "https://www.umbriatourism.it/umbertide"
+        },
+        {
+          "nome": {
+            "it": "Umbria Tourism – Gubbio",
+            "en": "Umbria Tourism – Gubbio",
+            "de": "Umbria Tourism – Gubbio",
+            "fr": "Umbria Tourism – Gubbio"
+          },
+          "url": "https://www.umbriatourism.it/gubbio"
+        },
+        {
+          "nome": {
+            "it": "Umbria Tourism – Teatro Romano di Gubbio",
+            "en": "Umbria Tourism – Roman Theatre of Gubbio",
+            "de": "Umbria Tourism – Römisches Theater Gubbio",
+            "fr": "Umbria Tourism – Théâtre romain de Gubbio"
+          },
+          "url": "https://www.umbriatourism.it/-/teatro-romano-gubbio"
+        },
+        {
+          "nome": {
+            "it": "Umbria Tourism – Lago Trasimeno",
+            "en": "Umbria Tourism – Lake Trasimeno",
+            "de": "Umbria Tourism – Trasimenischer See",
+            "fr": "Umbria Tourism – Lac Trasimène"
+          },
+          "url": "https://www.umbriatourism.it/en/live-trasimeno"
+        },
+        {
+          "nome": {
+            "it": "Umbria Tourism – cucina e sapori",
+            "en": "Umbria Tourism – food and flavours",
+            "de": "Umbria Tourism – Küche und Aromen",
+            "fr": "Umbria Tourism – cuisine et saveurs"
+          },
+          "url": "https://www.umbriatourism.it/en/flavours-of-umbria"
+        }
+      ],
+      "viaggio": {
+        "km": 114,
+        "minutiGiro": 135,
+        "minutiMax": 55
+      }
+    },
+    {
+      "id": "toscana-iconica",
+      "numero": 3,
+      "foto": "giardino/07-cipressi-giardino",
+      "tono": "bruno",
+      "pdf": {
+        "it": "/itinerari/03-toscana-iconica-it.pdf",
+        "en": "/itinerari/03-iconic-tuscany-en.pdf",
+        "de": "/itinerari/03-toskana-klassiker-de.pdf",
+        "fr": "/itinerari/03-toscane-iconique-fr.pdf"
+      },
+      "titolo": {
+        "it": "Tra colline, borghi e paesaggi senza tempo",
+        "en": "Among hills, villages and timeless landscapes",
+        "de": "Zwischen Hügeln, Dörfern und zeitlosen Landschaften",
+        "fr": "Entre collines, villages et paysages intemporels"
+      },
+      "luoghi": {
+        "it": "Montepulciano · Pienza · San Quirico d'Orcia · Bagno Vignoni · Siena · San Gimignano",
+        "en": "Montepulciano · Pienza · San Quirico d'Orcia · Bagno Vignoni · Siena · San Gimignano",
+        "de": "Montepulciano · Pienza · San Quirico d'Orcia · Bagno Vignoni · Siena · San Gimignano",
+        "fr": "Montepulciano · Pienza · San Quirico d'Orcia · Bagno Vignoni · Sienne · San Gimignano"
+      },
+      "descrizione": {
+        "it": "La Toscana più conosciuta e fotografata: la Val d'Orcia, patrimonio UNESCO, e le città d'arte del senese.",
+        "en": "The best-known, most photographed Tuscany: the Val d'Orcia, a UNESCO World Heritage landscape, and the art cities of Siena's countryside.",
+        "de": "Die bekannteste und meistfotografierte Toskana: das Val d'Orcia, UNESCO-Welterbe, und die Kunststädte rund um Siena.",
+        "fr": "La Toscane la plus connue et la plus photographiée : le Val d'Orcia, patrimoine mondial de l'UNESCO, et les villes d'art du Siennois."
+      },
+      "ideale": {
+        "it": [
+          "Paesaggi",
+          "Borghi in pietra",
+          "Città d'arte",
+          "Strade panoramiche",
+          "Cucina senese",
+          "Fotografia"
+        ],
+        "en": [
+          "Landscapes",
+          "Stone villages",
+          "Art cities",
+          "Scenic roads",
+          "Sienese cuisine",
+          "Photography"
+        ],
+        "de": [
+          "Landschaften",
+          "Dörfer aus Stein",
+          "Kunststädte",
+          "Panoramastraßen",
+          "Sienesische Küche",
+          "Fotografie"
+        ],
+        "fr": [
+          "Paysages",
+          "Villages de pierre",
+          "Villes d'art",
+          "Routes panoramiques",
+          "Cuisine siennoise",
+          "Photographie"
+        ]
+      },
+      "temi": [
+        "borghi",
+        "cultura",
+        "gastronomia",
+        "natura"
+      ],
+      "intro": {
+        "it": [
+          "È la Toscana delle cartoline: colline morbide, filari di cipressi, borghi in pietra e strade che si aprono sul paesaggio. La Val d'Orcia è stata iscritta nella Lista del Patrimonio Mondiale dell'UNESCO nel 2004 come paesaggio culturale: un territorio ridisegnato tra Trecento e Quattrocento, quando entrò nel territorio di Siena, per esprimere l'idea di buon governo, e poi dipinto dagli artisti della scuola senese.",
+          "Da qui la Val d'Orcia è una giornata piena: Montepulciano, Pienza, San Quirico e Bagno Vignoni stanno nello stesso giro. Siena, Monteriggioni e San Gimignano sono un'altra direzione e meritano un secondo giorno, magari con una notte fuori."
+        ],
+        "en": [
+          "This is the postcard Tuscany: rolling hills, rows of cypresses, stone villages and roads that open onto the landscape. The Val d'Orcia was inscribed on UNESCO's World Heritage List in 2004 as a cultural landscape: a territory redrawn in the 14th and 15th centuries, when it became part of Siena's territory, to express the idea of good government, and later painted by artists of the Sienese school.",
+          "From here the Val d'Orcia makes a full day: Montepulciano, Pienza, San Quirico and Bagno Vignoni sit on the same loop. Siena, Monteriggioni and San Gimignano lie in another direction and deserve a second day, perhaps with a night away."
+        ],
+        "de": [
+          "Das ist die Postkarten-Toskana: sanfte Hügel, Zypressenreihen, Dörfer aus Stein und Straßen, die sich zur Landschaft öffnen. Das Val d'Orcia wurde 2004 als Kulturlandschaft in die UNESCO-Welterbeliste eingetragen: ein Gebiet, das im 14. und 15. Jahrhundert, als es Teil des Territoriums von Siena wurde, neu gestaltet wurde, um die Idee guter Regierung auszudrücken, und später von Künstlern der sienesischen Schule gemalt wurde.",
+          "Von hier aus ist das Val d'Orcia ein voller Tag: Montepulciano, Pienza, San Quirico und Bagno Vignoni liegen auf derselben Runde. Siena, Monteriggioni und San Gimignano liegen in einer anderen Richtung und verdienen einen zweiten Tag, vielleicht mit Übernachtung."
+        ],
+        "fr": [
+          "C'est la Toscane des cartes postales : collines douces, rangées de cyprès, villages de pierre et routes qui s'ouvrent sur le paysage. Le Val d'Orcia a été inscrit sur la Liste du patrimoine mondial de l'UNESCO en 2004 comme paysage culturel : un territoire redessiné aux XIVe et XVe siècles, lorsqu'il fut intégré à celui de Sienne, pour exprimer l'idée de bon gouvernement, puis peint par les artistes de l'école siennoise.",
+          "Depuis ici, le Val d'Orcia fait une journée pleine : Montepulciano, Pienza, San Quirico et Bagno Vignoni sont sur la même boucle. Sienne, Monteriggioni et San Gimignano sont dans une autre direction et méritent un second jour, peut-être avec une nuit sur place."
+        ]
+      },
+      "tappe": [
+        {
+          "scheda": "montepulciano"
+        },
+        {
+          "scheda": "pienza"
+        },
+        {
+          "scheda": "san-quirico",
+          "facoltativa": true
+        },
+        {
+          "scheda": "bagno-vignoni"
+        },
+        {
+          "scheda": "siena",
+          "giorno": 2
+        },
+        {
+          "scheda": "monteriggioni",
+          "giorno": 2,
+          "facoltativa": true
+        },
+        {
+          "scheda": "san-gimignano",
+          "giorno": 2
+        }
+      ],
+      "giorno2": {
+        "titolo": {
+          "it": "Un'altra giornata: Siena e le torri",
+          "en": "Another day: Siena and the towers",
+          "de": "Ein anderer Tag: Siena und die Türme",
+          "fr": "Une autre journée : Sienne et les tours"
+        },
+        "nota": {
+          "it": "Siena, Monteriggioni e San Gimignano sono un giro lungo (circa 260 km in tutto): meglio dedicargli una giornata intera, o spezzarlo con una notte fuori.",
+          "en": "Siena, Monteriggioni and San Gimignano make a long loop (about 260 km in all): best given a whole day, or split with a night away.",
+          "de": "Siena, Monteriggioni und San Gimignano sind eine lange Runde (etwa 260 km insgesamt): am besten ein ganzer Tag, oder mit einer Übernachtung aufgeteilt.",
+          "fr": "Sienne, Monteriggioni et San Gimignano forment un long circuit (environ 260 km au total) : mieux vaut y consacrer une journée entière, ou le couper par une nuit sur place."
+        }
+      },
+      "gastronomia": {
+        "titolo": {
+          "it": "Da assaggiare tra Siena e la Val d'Orcia",
+          "en": "To taste around Siena and the Val d'Orcia",
+          "de": "Zum Probieren rund um Siena und im Val d'Orcia",
+          "fr": "À goûter autour de Sienne et du Val d'Orcia"
+        },
+        "intro": {
+          "it": "Una cucina contadina, di pane, olio e formaggi, e un vino che porta il nome di una città.",
+          "en": "A farmers' cuisine of bread, oil and cheese, and a wine named after a town.",
+          "de": "Eine bäuerliche Küche aus Brot, Öl und Käse und ein Wein, der den Namen einer Stadt trägt.",
+          "fr": "Une cuisine paysanne de pain, d'huile et de fromages, et un vin qui porte le nom d'une ville."
+        },
+        "prodotti": [
+          {
+            "nome": {
+              "it": "Pecorino di Pienza",
+              "en": "Pecorino di Pienza",
+              "de": "Pecorino di Pienza",
+              "fr": "Pecorino di Pienza"
+            },
+            "testo": {
+              "it": "Il pecorino è il prodotto che si vende nelle botteghe del corso di Pienza; si trova anche stagionato in Val d'Orcia.",
+              "en": "Pecorino is the product sold in the shops along Pienza's main street; it is also found aged across the Val d'Orcia.",
+              "de": "Pecorino ist das Produkt, das in den Läden an der Hauptstraße von Pienza verkauft wird; gereift findet man ihn auch im ganzen Val d'Orcia.",
+              "fr": "Le pecorino est le produit vendu dans les boutiques de la rue principale de Pienza ; on le trouve aussi affiné dans tout le Val d'Orcia."
+            }
+          },
+          {
+            "nome": {
+              "it": "Cinta Senese DOP",
+              "en": "Cinta Senese DOP",
+              "de": "Cinta Senese DOP",
+              "fr": "Cinta Senese DOP"
+            },
+            "testo": {
+              "it": "Razza suina allevata allo stato semibrado con prodotti locali, adatta ai salumi; è allevata anche in Val d'Orcia.",
+              "en": "A pig breed raised semi-wild on local feed, well suited to cured meats; it is also raised in the Val d'Orcia.",
+              "de": "Schweinerasse, halbwild mit lokalem Futter gehalten, gut für Wurstwaren geeignet; sie wird auch im Val d'Orcia gehalten.",
+              "fr": "Race porcine élevée en semi-liberté avec des produits locaux, adaptée à la charcuterie ; elle est aussi élevée dans le Val d'Orcia."
+            }
+          },
+          {
+            "nome": {
+              "it": "Pici",
+              "en": "Pici",
+              "de": "Pici",
+              "fr": "Pici"
+            },
+            "testo": {
+              "it": "A Siena i pici si mangono, per esempio, al ragù di cinghiale o cacio e pepe.",
+              "en": "In Siena, pici are eaten, for example, with a wild boar ragù or cacio e pepe.",
+              "de": "In Siena isst man Pici zum Beispiel mit Wildschweinragù oder Cacio e Pepe.",
+              "fr": "À Sienne, les pici se mangent, par exemple, au ragoût de sanglier ou en cacio e pepe."
+            }
+          },
+          {
+            "nome": {
+              "it": "Ribollita",
+              "en": "Ribollita",
+              "de": "Ribollita",
+              "fr": "Ribollita"
+            },
+            "testo": {
+              "it": "Piatto contadino nato per non sprecare il pane raffermo: il nome viene dal fatto che va bollita due volte.",
+              "en": "A farmers' dish born to avoid wasting stale bread: the name comes from the fact that it is boiled twice.",
+              "de": "Ein bäuerliches Gericht, entstanden, um altes Brot nicht zu verschwenden: Der Name kommt daher, dass es zweimal gekocht wird.",
+              "fr": "Plat paysan né pour ne pas gaspiller le pain rassis : le nom vient du fait qu'on la fait bouillir deux fois."
+            }
+          },
+          {
+            "nome": {
+              "it": "Olio Terre di Siena DOP",
+              "en": "Terre di Siena DOP oil",
+              "de": "Terre di Siena g.U.-Öl",
+              "fr": "Huile Terre di Siena AOP"
+            },
+            "testo": {
+              "it": "Tra gli oli extravergine DOP toscani c'è quello delle Terre di Siena.",
+              "en": "Among Tuscany's DOP extra virgin oils is the one from the Terre di Siena.",
+              "de": "Unter den toskanischen nativen Olivenölen g.U. gibt es das der Terre di Siena.",
+              "fr": "Parmi les huiles d'olive extra vierge AOP de Toscane figure celle des Terre di Siena."
+            }
+          },
+          {
+            "nome": {
+              "it": "Vino Nobile e Brunello",
+              "en": "Vino Nobile and Brunello",
+              "de": "Vino Nobile und Brunello",
+              "fr": "Vino Nobile et Brunello"
+            },
+            "testo": {
+              "it": "Il Vino Nobile di Montepulciano DOCG nasce intorno al borgo da uve Prugnolo Gentile; il Brunello di Montalcino è l'altro grande nome della zona.",
+              "en": "Vino Nobile di Montepulciano DOCG is made around the town from Prugnolo Gentile grapes; Brunello di Montalcino is the area's other great name.",
+              "de": "Der Vino Nobile di Montepulciano DOCG entsteht rund um die Stadt aus Prugnolo-Gentile-Trauben; der Brunello di Montalcino ist der andere große Name der Gegend.",
+              "fr": "Le Vino Nobile di Montepulciano DOCG naît autour de la ville à partir du cépage Prugnolo Gentile ; le Brunello di Montalcino est l'autre grand nom de la région."
+            }
+          },
+          {
+            "nome": {
+              "it": "Dolci senesi",
+              "en": "Sienese sweets",
+              "de": "Sienesische Süßspeisen",
+              "fr": "Douceurs siennoises"
+            },
+            "testo": {
+              "it": "Panforte, cavallucci, ricciarelli e cantucci con Vin Santo: ricette antiche che si trovano nei forni e nelle pasticcerie di Siena.",
+              "en": "Panforte, cavallucci, ricciarelli and cantucci with Vin Santo: old recipes found in Siena's bakeries and pastry shops.",
+              "de": "Panforte, Cavallucci, Ricciarelli und Cantucci mit Vin Santo: alte Rezepte, die man in Sienas Bäckereien und Konditoreien findet.",
+              "fr": "Panforte, cavallucci, ricciarelli et cantucci avec Vin Santo : de vieilles recettes que l'on trouve dans les fours et pâtisseries de Sienne."
+            }
+          }
+        ]
+      },
+      "consigli": {
+        "it": [
+          "La Val d'Orcia (Montepulciano, Pienza, San Quirico, Bagno Vignoni) è un giro di circa 140 km e tre ore di guida complessive: la prima tappa è a un'ora, partite al mattino e non aggiungete altro.",
+          "San Quirico d'Orcia è facoltativa: se il tempo stringe, si salta senza perdere il filo del giro. Bagno Vignoni va benissimo come ultima sosta prima di rientrare.",
+          "Siena, Monteriggioni e San Gimignano sono a un'ora e mezza e oltre dalla Residenza: per vederle con calma dedicategli un giorno intero.",
+          "Per il Duomo di Siena e gli altri monumenti verificate giorni, orari e biglietti sui siti ufficiali (il Duomo fa parte del complesso dell'Opera della Metropolitana, con biglietto unico).",
+          "Nei centri storici lasciate l'auto fuori dalle zone a traffico limitato e camminate, con scarpe comode: Pienza, Montepulciano e San Gimignano hanno vie in salita."
+        ],
+        "en": [
+          "The Val d'Orcia (Montepulciano, Pienza, San Quirico, Bagno Vignoni) is a loop of about 140 km and three hours of driving overall: the first stop is an hour away, so set off in the morning and don't add anything else.",
+          "San Quirico d'Orcia is optional: if time is short, skip it without losing the thread of the loop. Bagno Vignoni makes an excellent last stop before heading back.",
+          "Siena, Monteriggioni and San Gimignano are an hour and a half or more from the Residenza: to see them properly, give them a whole day.",
+          "For Siena Cathedral and the other monuments, check days, opening times and tickets on the official websites (the Cathedral is part of the Opera della Metropolitana complex, with a single ticket).",
+          "In the historic centres leave the car outside the limited-traffic zones and walk, in comfortable shoes: Pienza, Montepulciano and San Gimignano have steep streets."
+        ],
+        "de": [
+          "Das Val d'Orcia (Montepulciano, Pienza, San Quirico, Bagno Vignoni) ist eine Runde von etwa 140 km und insgesamt drei Stunden Fahrt: Die erste Station liegt eine Stunde entfernt, brechen Sie also morgens auf und planen Sie nichts weiter ein.",
+          "San Quirico d'Orcia ist optional: Wenn die Zeit knapp wird, lässt man es aus, ohne den Faden der Runde zu verlieren. Bagno Vignoni ist ein hervorragender letzter Halt vor der Rückfahrt.",
+          "Siena, Monteriggioni und San Gimignano liegen anderthalb Stunden oder mehr von der Residenza entfernt: Um sie in Ruhe zu sehen, widmen Sie ihnen einen ganzen Tag.",
+          "Für den Dom von Siena und die anderen Monumente prüfen Sie Tage, Öffnungszeiten und Tickets auf den offiziellen Websites (der Dom gehört zum Komplex der Opera della Metropolitana, mit Einheitsticket).",
+          "Lassen Sie in den Altstädten das Auto außerhalb der Zonen mit beschränktem Verkehr stehen und gehen Sie zu Fuß, in bequemen Schuhen: Pienza, Montepulciano und San Gimignano haben ansteigende Straßen."
+        ],
+        "fr": [
+          "Le Val d'Orcia (Montepulciano, Pienza, San Quirico, Bagno Vignoni) est une boucle d'environ 140 km et trois heures de route au total : la première étape est à une heure, partez le matin et n'ajoutez rien d'autre.",
+          "San Quirico d'Orcia est facultative : si le temps presse, on la saute sans perdre le fil de la boucle. Bagno Vignoni fait une excellente dernière halte avant de rentrer.",
+          "Sienne, Monteriggioni et San Gimignano sont à une heure et demie ou plus de la Residenza : pour les voir tranquillement, consacrez-leur une journée entière.",
+          "Pour la cathédrale de Sienne et les autres monuments, vérifiez jours, horaires et billets sur les sites officiels (la cathédrale fait partie du complexe de l'Opera della Metropolitana, avec billet unique).",
+          "Dans les centres historiques, laissez la voiture hors des zones à circulation limitée et marchez, en bonnes chaussures : Pienza, Montepulciano et San Gimignano ont des rues en pente."
+        ]
+      },
+      "fonti": [
+        {
+          "nome": {
+            "it": "Val d'Orcia – italia.it",
+            "en": "Val d'Orcia – italia.it",
+            "de": "Val d'Orcia – italia.it",
+            "fr": "Val d'Orcia – italia.it"
+          },
+          "url": "https://www.italia.it/it/toscana/cosa-fare/val-orcia"
+        },
+        {
+          "nome": {
+            "it": "UNESCO – Val d'Orcia",
+            "en": "UNESCO – Val d'Orcia",
+            "de": "UNESCO – Val d'Orcia",
+            "fr": "UNESCO – Val d'Orcia"
+          },
+          "url": "https://whc.unesco.org/en/list/1026"
+        },
+        {
+          "nome": {
+            "it": "Pienza – italia.it",
+            "en": "Pienza – italia.it",
+            "de": "Pienza – italia.it",
+            "fr": "Pienza – italia.it"
+          },
+          "url": "https://www.italia.it/it/toscana/siena/pienza"
+        },
+        {
+          "nome": {
+            "it": "Piazza Pio II – Visit Tuscany",
+            "en": "Piazza Pio II – Visit Tuscany",
+            "de": "Piazza Pio II – Visit Tuscany",
+            "fr": "Piazza Pio II – Visit Tuscany"
+          },
+          "url": "https://www.visittuscany.com/it/attrazioni/piazza-pio-ii-a-pienza/"
+        },
+        {
+          "nome": {
+            "it": "Montepulciano – italia.it",
+            "en": "Montepulciano – italia.it",
+            "de": "Montepulciano – italia.it",
+            "fr": "Montepulciano – italia.it"
+          },
+          "url": "https://www.italia.it/it/toscana/cosa-fare/montepulciano"
+        },
+        {
+          "nome": {
+            "it": "Siena, centro storico – italia.it",
+            "en": "Siena historic centre – italia.it",
+            "de": "Siena, Altstadt – italia.it",
+            "fr": "Sienne, centre historique – italia.it"
+          },
+          "url": "https://www.italia.it/it/toscana/siena/cosa-fare/siena-centro-storico"
+        },
+        {
+          "nome": {
+            "it": "Opera della Metropolitana (Duomo di Siena)",
+            "en": "Opera della Metropolitana (Siena Cathedral)",
+            "de": "Opera della Metropolitana (Dom von Siena)",
+            "fr": "Opera della Metropolitana (cathédrale de Sienne)"
+          },
+          "url": "https://operaduomo.siena.it/"
+        },
+        {
+          "nome": {
+            "it": "San Gimignano e le sue torri – italia.it",
+            "en": "San Gimignano and its towers – italia.it",
+            "de": "San Gimignano und seine Türme – italia.it",
+            "fr": "San Gimignano et ses tours – italia.it"
+          },
+          "url": "https://www.italia.it/it/toscana/siena/san-gimignano/cosa-fare/san-gimignano-e-le-sue-torri"
+        },
+        {
+          "nome": {
+            "it": "Terre di Siena – enogastronomia",
+            "en": "Terre di Siena – food and wine",
+            "de": "Terre di Siena – Essen und Trinken",
+            "fr": "Terre di Siena – gastronomie"
+          },
+          "url": "https://www.terredisiena.it/enogastronomia/"
+        }
+      ],
+      "viaggio": {
+        "km": 141,
+        "minutiGiro": 185,
+        "minutiMax": 85
       }
     },
     {
       "id": "natura-e-movimento",
-      "numero": 2,
+      "numero": 4,
       "foto": "giardino/09-aiuola",
       "tono": "salvia",
       "pdf": {
-        "it": "/itinerari/02-natura-e-movimento-it.pdf",
-        "en": "/itinerari/02-nature-and-movement-en.pdf",
-        "de": "/itinerari/02-natur-und-bewegung-de.pdf",
-        "fr": "/itinerari/02-nature-et-mouvement-fr.pdf"
+        "it": "/itinerari/04-natura-e-movimento-it.pdf",
+        "en": "/itinerari/04-nature-and-movement-en.pdf",
+        "de": "/itinerari/04-natur-und-bewegung-de.pdf",
+        "fr": "/itinerari/04-nature-et-mouvement-fr.pdf"
       },
       "titolo": {
         "it": "Natura e movimento",
@@ -329,11 +1603,26 @@
             "fr": "Santa Cristina et Taragnano"
           },
           "mappa": "Santa Cristina Taragnano, Castiglion Fiorentino",
-          "testo": null
+          "testo": {
+            "it": "Sono i nomi del luogo in cui si trova la Residenza (via Santa Cristina, località Taragnano).",
+            "en": "These are the names of the place where the Residenza stands (via Santa Cristina, locality Taragnano).",
+            "de": "Das sind die Namen des Ortes, an dem die Residenza liegt (Via Santa Cristina, Ortsteil Taragnano).",
+            "fr": "Ce sont les noms du lieu où se trouve la Residenza (via Santa Cristina, lieu-dit Taragnano)."
+          }
         },
         {
           "scheda": "monte-castiglion-maggio"
         }
+      ],
+      "luoghi": {
+        "it": "Val di Chio · Antichi Mulini · Parco del Cilone · Monte Castiglion Maggio",
+        "en": "Val di Chio · Ancient Mills · Cilone Park · Monte Castiglion Maggio",
+        "de": "Val di Chio · Alte Mühlen · Cilone-Park · Monte Castiglion Maggio",
+        "fr": "Val di Chio · Anciens moulins · Parc du Cilone · Monte Castiglion Maggio"
+      },
+      "temi": [
+        "natura",
+        "borghi"
       ]
     }
   ]
