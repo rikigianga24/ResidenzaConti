@@ -44,6 +44,7 @@ const datiStrutturati = schema && {
   description: descrizione,
   url: new URL(url('home', lang), sito).href,
   image: [ogUrl],
+  logo: new URL('/logo-rc.png', sito).href,
   telephone: s.telefono,
   email: s.email,
   address: {
@@ -86,7 +87,9 @@ const datiStrutturati = schema && {
     {/* hreflang: dice a Google quale pagina corrisponde in ogni lingua */}
     {LINGUE.map((l) => <link rel="alternate" hreflang={l} href={new URL(url(pagina, l), sito).href} />)}
     <link rel="alternate" hreflang="x-default" href={new URL(url(pagina, LINGUA_DEFAULT), sito).href} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preload" href="/fonts/cormorant-garamond-500.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/dm-sans-variable.woff2" as="font" type="font/woff2" crossorigin />
     <meta name="theme-color" content="#F4F0E7" />

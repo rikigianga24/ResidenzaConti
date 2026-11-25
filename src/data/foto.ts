@@ -159,8 +159,12 @@ const catalogo: Record<string, VoceFoto> = {
     en: 'The lawn with cypress trees and the edge of the pond',
     de: 'Die Wiese mit Zypressen und dem Rand des Teichs',
     fr: 'La pelouse avec les cyprès et le bord du bassin' } },
-  // Foto serale della casa con le luci accese (hero). Da aggiungere come
-  // src/assets/foto/casa/00-casa-sera.jpg: appena il file c'è, la home la usa da sola.
+  // Foto serale della casa con le luci accese: è l'hero della home (e la prima foto della galleria).
+  'casa/00b-casa-giardino-fontana': { area: 'casa', alt: {
+    it: 'La casa vista dal giardino, con la fontana in pietra, le palme e un cipresso',
+    en: 'The house seen from the garden, with the stone fountain, palm trees and a cypress',
+    de: 'Das Haus vom Garten aus gesehen, mit dem Steinbrunnen, Palmen und einer Zypresse',
+    fr: 'La maison vue du jardin, avec la fontaine en pierre, les palmiers et un cyprès' } },
   'casa/00-casa-sera': { area: 'casa', alt: {
     it: 'La casa di sera, con tutte le luci accese',
     en: 'The house in the evening, with all the lights on',

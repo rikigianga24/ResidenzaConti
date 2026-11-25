@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import Foto from '../components/Foto.astro';
 import IconaNatura from '../components/IconaNatura.astro';
 import NomeHero from '../components/NomeHero.astro';
+import Logo from '../components/Logo.astro';
 import Servizi from '../components/Servizi.astro';
 import Cipressi from '../components/Cipressi.astro';
 import CardFoto from '../components/CardFoto.astro';
@@ -39,6 +40,7 @@ const recInEvidenza = recensioniPerLingua(lang)[0];
   <section class="hero">
     <div class="hero-foto"><Foto id={fotoHero} lang={lang} sizes="100vw" subito larga /></div>
     <div class="wrap hero-testo">
+      <Logo lato={72} class="logo hero-logo" subito />
       <p class="eyebrow">{hero.eyebrow}</p>
       <NomeHero />
       <p class="sub">{hero.sottotitolo}</p>

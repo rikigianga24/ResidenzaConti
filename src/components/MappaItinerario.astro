@@ -1,0 +1,78 @@
+---
+// Mappa schematica di un itinerario: la Residenza e le tappe, proiettate dalle coordinate (OpenStreetMap).
+// Niente mappe di terze parti: è un SVG leggero, disegnato in build. Il pulsante apre il percorso su Google Maps.
+import type { Lingua } from '../i18n/lingue';
+import { useT } from '../i18n/ui';
+import { origine, schede, nomeScheda, linkPercorso, type Itinerario } from '../data/contenuti';
+
+interface Props { lang: Lingua; itinerario: Itinerario; giorno?: 1 | 2 }
+const { lang, itinerario, giorno = 1 } = Astro.props;
+const t = useT(lang);
+
+const tappe = itinerario.tappe.filter((x) => (x.giorno ?? 1) === giorno && x.scheda);
+const luoghi = tappe.map((x) => ({ s: schede.find((s) => s.id === x.scheda)!, facoltativa: !!x.facoltativa }));
+const punti = [{ nome: t('it.residenza'), coord: origine.coord, tipo: 'casa' as const }, ...luoghi.map((l) => ({ nome: nomeScheda(l.s, lang), coord: l.s.coord, tipo: l.facoltativa ? 'opz' as const : 'tappa' as const }))];
+
+// proiezione semplice (la longitudine si accorcia con il coseno della latitudine)
+const lat0 = origine.coord[1];
+const kx = Math.cos((lat0 * Math.PI) / 180);
+const raw = punti.map((p) => ({ ...p, x: p.coord[0] * kx, y: -p.coord[1] }));
+const xs = raw.map((p) => p.x), ys = raw.map((p) => p.y);
+const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
+const W = 640, H = 400, PX = 150, PY = 46;
+const scala = Math.min((W - 2 * PX) / Math.max(x1 - x0, 1e-6), (H - 2 * PY) / Math.max(y1 - y0, 1e-6));
+const offX = (W - (x1 - x0) * scala) / 2, offY = (H - (y1 - y0) * scala) / 2;
+const posTutte = raw.map((p) => ({ ...p, px: offX + (p.x - x0) * scala, py: offY + (p.y - y0) * scala }));
+// punti coincidenti (es. parco e percorso nello stesso luogo): un solo punto con i due nomi
+const pos: typeof posTutte = [];
+for (const p of posTutte) {
+  const gemello = pos.find((q) => Math.hypot(q.px - p.px, q.py - p.py) < 8);
+  if (gemello) gemello.nome = `${gemello.nome} · ${p.nome}`;
+  else pos.push({ ...p });
+}
+
+// etichette: si prova prima a destra del punto, poi a sinistra, poi spostate in alto o in basso, finché non si sovrappongono
+// a quelle già posizionate (larghezza stimata dai caratteri; il corpo del testo cambia con la larghezza dello schermo, vedi CSS)
+type Etichetta = (typeof pos)[number] & { lato: 'dx' | 'sx'; ly: number };
+const larghezza = (nome: string) => nome.length * 10.5 + 14;
+const posate: { x0: number; x1: number; y0: number; y1: number }[] = [];
+const scatola = (p: { px: number; py: number }, nome: string, lato: 'dx' | 'sx', ly: number) => {
+  const w = larghezza(nome);
+  const x0 = lato === 'dx' ? p.px + 6 : p.px - 6 - w;
+  return { x0, x1: x0 + w, y0: ly - 12, y1: ly + 12 };
+};
+const libera = (b: { x0: number; x1: number; y0: number; y1: number }) =>
+  b.x0 >= 4 && b.x1 <= W - 4 && posate.every((o) => b.x1 < o.x0 || b.x0 > o.x1 || b.y1 < o.y0 || b.y0 > o.y1);
+// i punti con meno spazio intorno per primi (casa e tappe più isolate dopo)
+const etichette: Etichetta[] = [];
+for (const p of pos) {
+  const prove: ['dx' | 'sx', number][] = [['dx', 0], ['sx', 0], ['dx', -24], ['sx', -24], ['dx', 24], ['sx', 24], ['dx', -48], ['sx', 48]];
+  let scelta: ['dx' | 'sx', number] = prove[0];
+  for (const [lato, dy] of prove) {
+    if (libera(scatola(p, p.nome, lato, p.py + dy))) { scelta = [lato, dy]; break; }
+  }
+  const ly = p.py + scelta[1];
+  posate.push(scatola(p, p.nome, scelta[0], ly));
+  etichette.push({ ...p, lato: scelta[0], ly });
+}
+const tracciato = pos.filter((p) => p.tipo !== 'opz');
+const linea = tracciato.map((p) => `${p.px.toFixed(1)},${p.py.toFixed(1)}`).join(' ');
+const destinazioni = luoghi.filter((l) => !l.facoltativa).map((l) => l.s.mappa);
+const link = linkPercorso(origine.coord, destinazioni.length ? destinazioni : luoghi.map((l) => l.s.mappa));
+---
+<figure class="mappa-it">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={t('it.mappaAria')}>
+    <polyline class="mappa-linea" points={linea} />
+    {etichette.map((p) => (
+      <g>
+        {p.tipo === 'casa'
+          ? <path class="mappa-casa" transform={`translate(${p.px.toFixed(1)} ${p.py.toFixed(1)})`} d="M0 -10 L10 -1 H6 V8 H-6 V-1 H-10 Z" />
+          : <circle class={p.tipo === 'opz' ? 'mappa-punto mappa-opz' : 'mappa-punto'} cx={p.px.toFixed(1)} cy={p.py.toFixed(1)} r="6" />}
+        <text class={p.tipo === 'casa' ? 'mappa-nome mappa-nome-casa' : 'mappa-nome'} x={(p.px + (p.lato === 'dx' ? 14 : -14)).toFixed(1)} y={(p.ly + 4).toFixed(1)} text-anchor={p.lato === 'dx' ? 'start' : 'end'}>{p.nome}</text>
+      </g>
+    ))}
+  </svg>
+  <figcaption>
+    <a class="link link-mappa" href={link} rel="noopener">{t('it.apriMappa')}</a>
+  </figcaption>
+</figure>

@@ -31,16 +31,16 @@ AVORIO, PIETRA, BRUNO = '#F4F0E7', '#D8CBB7', '#403B32'
 T = {
     'it': dict(itinerario='Itinerario', ideale='Ideale per', tappe='Possibili tappe', mappa='Scansiona per aprire la mappa',
                lunghezza='Lunghezza', dislivello='Dislivello', difficolta='Difficoltà', durata='Durata', tipologia='Tipologia', partenza='Partenza',
-               luogo='Residenza Conti · Val di Chio, Castiglion Fiorentino', nota='Informazioni indicative: verificate orari, aperture e condizioni dei percorsi prima di partire.', assaggi='Da assaggiare'),
+               luogo='Residenza Conti · Val di Chio, Castiglion Fiorentino', nota='Informazioni indicative: verificate orari, aperture e condizioni dei percorsi prima di partire.', assaggi='Da assaggiare', facoltativa='Facoltativa', min='min in auto', da='da Taragnano', dalla='Dalla Residenza', fino='fino a', giro='giro di', consigli='Consigli pratici', segue='Continua nella pagina seguente'),
     'en': dict(itinerario='Itinerary', ideale='Ideal for', tappe='Possible stops', mappa='Scan to open the map',
                lunghezza='Length', dislivello='Elevation gain', difficolta='Difficulty', durata='Duration', tipologia='Type', partenza='Start',
-               luogo='Residenza Conti · Val di Chio, Castiglion Fiorentino', nota='Indicative information: check opening times and trail conditions before you set off.', assaggi='To taste'),
+               luogo='Residenza Conti · Val di Chio, Castiglion Fiorentino', nota='Indicative information: check opening times and trail conditions before you set off.', assaggi='To taste', facoltativa='Optional', min='min by car', da='from Taragnano', dalla='From the Residenza', fino='up to', giro='loop of', consigli='Practical tips', segue='Continues on the next page'),
     'de': dict(itinerario='Route', ideale='Ideal für', tappe='Mögliche Stationen', mappa='Scannen, um die Karte zu öffnen',
                lunghezza='Länge', dislivello='Höhenunterschied', difficolta='Schwierigkeit', durata='Dauer', tipologia='Art', partenza='Start',
-               luogo='Residenza Conti · Val di Chio, Castiglion Fiorentino', nota='Richtwerte: Öffnungszeiten und Wegzustand bitte vor dem Aufbruch prüfen.', assaggi='Zum Probieren'),
+               luogo='Residenza Conti · Val di Chio, Castiglion Fiorentino', nota='Richtwerte: Öffnungszeiten und Wegzustand bitte vor dem Aufbruch prüfen.', assaggi='Zum Probieren', facoltativa='Optional', min='Min. mit dem Auto', da='ab Taragnano', dalla='Ab der Residenza', fino='bis zu', giro='Runde von', consigli='Praktische Tipps', segue='Fortsetzung auf der nächsten Seite'),
     'fr': dict(itinerario='Itinéraire', ideale='Idéal pour', tappe='Étapes possibles', mappa='Scannez pour ouvrir la carte',
                lunghezza='Longueur', dislivello='Dénivelé', difficolta='Difficulté', durata='Durée', tipologia='Type', partenza='Départ',
-               luogo='Residenza Conti · Val di Chio, Castiglion Fiorentino', nota='Informations indicatives : vérifiez horaires et état des sentiers avant de partir.', assaggi='À goûter'),
+               luogo='Residenza Conti · Val di Chio, Castiglion Fiorentino', nota='Informations indicatives : vérifiez horaires et état des sentiers avant de partir.', assaggi='À goûter', facoltativa='Facultative', min='min en voiture', da='depuis Taragnano', dalla='Depuis la Residenza', fino="jusqu'à", giro='boucle de', consigli='Conseils pratiques', segue='Suite page suivante'),
 }
 
 def qr_svg(url: str, colore: str) -> str:
@@ -60,31 +60,51 @@ def dettaglio(tp, lang):
     if 'scheda' in tp:
         s = SCHEDE[tp['scheda']]
         nome = s['nome'] if isinstance(s['nome'], str) else s['nome'][lang]
-        return nome, s['descrizione'][lang], s.get('mappa')
-    return tp['nome'][lang], (tp['testo'][lang] if tp.get('testo') else None), tp.get('mappa')
+        stima = (s.get('minuti'), s.get('km'))
+        return nome, s['descrizione'][lang], s.get('mappa'), stima
+    return tp['nome'][lang], (tp['testo'][lang] if tp.get('testo') else None), tp.get('mappa'), (None, None)
+
+def riga(n, tp, lang, col):
+    t = T[lang]
+    nome, testo, mappa, (minuti, km) = dettaglio(tp, lang)
+    p = tp.get('percorso')
+    dati = ''
+    if p:
+        campi = [('lunghezza', p.get('lunghezza')), ('dislivello', p.get('dislivello')),
+                 ('difficolta', p['difficolta'][lang] if p.get('difficolta') else None), ('durata', p.get('durata')),
+                 ('tipologia', p['tipologia'][lang] if p.get('tipologia') else None), ('partenza', p.get('partenza'))]
+        dati = '<dl>' + ''.join(f'<div><dt>{t[k]}</dt><dd>{esc(v)}</dd></div>' for k, v in campi if v) + '</dl>'
+    qr = ''
+    if mappa:
+        url = 'https://www.google.com/maps/search/?api=1&query=' + quote(mappa, safe='')
+        qr = f'<div class="qr">{qr_svg(url, col)}<span>{t["mappa"]}</span></div>'
+    opz = f'<span class="opz">{t["facoltativa"]}</span>' if tp.get('facoltativa') else ''
+    stima = f'<p class="st">≈ {minuti} {t["min"]} · {km} km {t["da"]}</p>' if minuti else ''
+    return f'<li><span class="n">{n}</span><div class="tx"><h3>{esc(nome)}{opz}</h3>{stima}{f"<p>{esc(testo)}</p>" if testo else ""}{dati}</div>{qr}</li>'
 
 def html(it, lang):
     t = T[lang]
     col = COL[it['tono']]
-    righe = []
-    for n, tp in enumerate(it['tappe'], 1):
-        nome, testo, mappa = dettaglio(tp, lang)
-        p = tp.get('percorso')
-        dati = ''
-        if p:
-            campi = [('lunghezza', p.get('lunghezza')), ('dislivello', p.get('dislivello')),
-                     ('difficolta', p['difficolta'][lang] if p.get('difficolta') else None), ('durata', p.get('durata')),
-                     ('tipologia', p['tipologia'][lang] if p.get('tipologia') else None), ('partenza', p.get('partenza'))]
-            dati = '<dl>' + ''.join(f'<div><dt>{t[k]}</dt><dd>{esc(v)}</dd></div>' for k, v in campi if v) + '</dl>'
-        qr = ''
-        if mappa:
-            url = 'https://www.google.com/maps/search/?api=1&query=' + quote(mappa, safe='')
-            qr = f'<div class="qr">{qr_svg(url, col)}<span>{t["mappa"]}</span></div>'
-        righe.append(f'<li><span class="n">{n}</span><div class="tx"><h3>{esc(nome)}</h3>{f"<p>{esc(testo)}</p>" if testo else ""}{dati}</div>{qr}</li>')
+    g1 = [x for x in it['tappe'] if x.get('giorno', 1) == 1]
+    g2 = [x for x in it['tappe'] if x.get('giorno', 1) == 2]
+    r1 = ''.join(riga(n, tp, lang, col) for n, tp in enumerate(g1, 1))
     tag = ''.join(f'<li>{esc(x)}</li>' for x in it['ideale'][lang])
-    assaggi = ''
-    if it.get('assaggi'):
-        assaggi = f'<div class="assaggi"><h2>{esc(it["assaggi"]["titolo"][lang])}</h2><p>{esc(it["assaggi"]["testo"][lang])}</p></div>'
+    v = it.get('viaggio')
+    viaggio = f'<p class="vg">{t["dalla"]}: {t["fino"]} ≈ {v["minutiMax"]} {t["min"]} · {t["giro"]} ≈ {v["km"]} km</p>' if v else ''
+    luoghi = f'<p class="lu">{esc(it["luoghi"][lang])}</p>' if it.get('luoghi') else ''
+    pag2 = ''
+    if g2 and it.get('giorno2'):
+        r2 = ''.join(riga(n, tp, lang, col) for n, tp in enumerate(g2, 1))
+        pag2 += f'<h2 class="g2">{esc(it["giorno2"]["titolo"][lang])}</h2><p class="nota2">{esc(it["giorno2"]["nota"][lang])}</p><ol>{r2}</ol>'
+    if it.get('gastronomia'):
+        pr = ''.join(f'<li><b>{esc(x["nome"][lang])}.</b> {esc(x["testo"][lang])}</li>' for x in it['gastronomia']['prodotti'])
+        pag2 += f'<h2 class="g2">{esc(it["gastronomia"]["titolo"][lang])}</h2><ul class="pr">{pr}</ul>'
+    if it.get('consigli'):
+        cs = ''.join(f'<li>{esc(c)}</li>' for c in it['consigli'][lang])
+        pag2 += f'<h2 class="g2">{t["consigli"]}</h2><ul class="pr">{cs}</ul>'
+    foot = f'<footer><span><strong>{t["luogo"]}</strong><br>www.residenzaconti.it</span><span>{t["nota"]}</span></footer>'
+    pagina2 = f'<section class="pg p2"><main>{pag2}</main>{foot}</section>' if pag2 else ''
+    foot1 = foot if not pag2 else f'<footer><span><strong>{t["luogo"]}</strong><br>www.residenzaconti.it</span><span>{t["segue"]}</span></footer>'
     return f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><title>{esc(it["titolo"][lang])} – Residenza Conti</title>
 <style>
 @font-face {{ font-family: 'Cormorant Garamond'; src: url('{FONT}/cormorant-garamond-500.woff2'); font-weight: 500; }}
@@ -93,37 +113,47 @@ def html(it, lang):
 @page {{ size: A4; margin: 0 }}
 * {{ box-sizing: border-box; }}
 body {{ margin: 0; background: {AVORIO}; color: {BRUNO}; font-family: 'DM Sans', sans-serif; font-size: 10pt; line-height: 1.5; }}
-.pg {{ width: 210mm; height: 297mm; display: flex; flex-direction: column; }}
-header {{ background: {col}; color: {AVORIO}; padding: 10mm 16mm 8mm; }}
-.num {{ font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 40pt; line-height: .8; color: {PIETRA}; margin: 0; }}
-.et {{ font-size: 8pt; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: {PIETRA}; margin: 4mm 0 1.5mm; }}
-h1 {{ font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 28pt; line-height: 1; margin: 0 0 2mm; }}
-header p.d {{ margin: 0; font-size: 11.5pt; max-width: 130mm; }}
-main {{ padding: 6mm 16mm 0; flex: 1; }}
-h2 {{ font-size: 7.5pt; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #5E574B; margin: 0 0 2.5mm; }}
-.tag {{ display: flex; flex-wrap: wrap; gap: 2mm; margin: 0 0 5mm; padding: 0; list-style: none; }}
-.tag li {{ border: .3mm solid {col}; border-radius: 10mm; padding: .8mm 3mm; font-size: 9pt; }}
+.pg {{ width: 210mm; height: 297mm; display: flex; flex-direction: column; overflow: hidden; page-break-after: always; }}
+.pg:last-child {{ page-break-after: auto; }}
+header {{ background: {col}; color: {AVORIO}; padding: 9mm 16mm 6mm; }}
+.num {{ font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 36pt; line-height: .8; color: {PIETRA}; margin: 0; }}
+.et {{ font-size: 8pt; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: {PIETRA}; margin: 3mm 0 1.5mm; }}
+h1 {{ font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 26pt; line-height: 1; margin: 0 0 2mm; }}
+header p.d {{ margin: 0; font-size: 10.5pt; max-width: 150mm; }}
+.lu {{ margin: 2mm 0 0; font-size: 8pt; color: {PIETRA}; }}
+.vg {{ margin: 1.5mm 0 0; font-size: 8.5pt; font-weight: 600; }}
+main {{ padding: 5mm 16mm 0; flex: 1; }}
+.p2 main {{ padding-top: 12mm; }}
+h2 {{ font-size: 7.5pt; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #5E574B; margin: 0 0 2mm; }}
+h2.g2 {{ font-family: 'Cormorant Garamond', serif; font-size: 17pt; font-weight: 500; letter-spacing: 0; text-transform: none; color: {BRUNO}; margin: 5mm 0 1.5mm; }}
+.nota2 {{ margin: 0 0 2mm; font-size: 8.8pt; color: #5E574B; }}
+.tag {{ display: flex; flex-wrap: wrap; gap: 1.6mm; margin: 0 0 4mm; padding: 0; list-style: none; }}
+.tag li {{ border: .3mm solid {col}; border-radius: 10mm; padding: .5mm 2.6mm; font-size: 8.5pt; }}
 ol {{ margin: 0; padding: 0; list-style: none; }}
-ol > li {{ display: flex; gap: 4mm; align-items: flex-start; padding: 2.2mm 0; border-top: .25mm solid rgba(64,59,50,.22); break-inside: avoid; }}
-.n {{ flex: none; width: 8mm; height: 8mm; border-radius: 50%; border: .35mm solid {col}; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 13pt; }}
+ol > li {{ display: flex; gap: 4mm; align-items: flex-start; padding: 2mm 0; border-top: .25mm solid rgba(64,59,50,.22); break-inside: avoid; }}
+.n {{ flex: none; width: 7.5mm; height: 7.5mm; border-radius: 50%; border: .35mm solid {col}; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 12pt; }}
 .tx {{ flex: 1; }}
-h3 {{ font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 13.5pt; line-height: 1.1; margin: 0 0 .6mm; }}
-.tx p {{ margin: 0; font-size: 8.8pt; line-height: 1.4; }}
-dl {{ display: flex; flex-wrap: wrap; gap: 1mm 6mm; margin: 2mm 0 0; }}
-dt {{ font-size: 6.5pt; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #5E574B; }}
-dd {{ margin: 0; font-weight: 600; font-size: 9pt; }}
-.qr {{ flex: none; width: 19mm; text-align: center; }}
-.qr svg {{ width: 15mm; height: 15mm; display: block; margin: 0 auto 1mm; }}
-.qr span {{ font-size: 5.8pt; line-height: 1.2; display: block; color: #5E574B; }}
-.assaggi {{ margin-top: 3mm; padding: 2.5mm 4mm; border-left: 1mm solid #A66F50; background: rgba(216,203,183,.45); break-inside: avoid; }}
-.assaggi p {{ margin: 0; font-size: 9pt; }}
+h3 {{ font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 13pt; line-height: 1.1; margin: 0 0 .5mm; }}
+.opz {{ font-family: 'DM Sans', sans-serif; font-size: 6pt; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; border: .25mm solid #5E574B; border-radius: 6mm; padding: 0 1.6mm; margin-left: 2mm; vertical-align: middle; color: #5E574B; }}
+.st {{ margin: 0 0 .5mm; font-size: 7.6pt; font-weight: 600; color: {col}; }}
+.tx p {{ margin: 0; font-size: 8.4pt; line-height: 1.38; }}
+.tx p.st {{ font-size: 7.6pt; }}
+dl {{ display: flex; flex-wrap: wrap; gap: 1mm 6mm; margin: 1.6mm 0 0; }}
+dt {{ font-size: 6.2pt; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #5E574B; }}
+dd {{ margin: 0; font-weight: 600; font-size: 8.6pt; }}
+.qr {{ flex: none; width: 17mm; text-align: center; }}
+.qr svg {{ width: 14mm; height: 14mm; display: block; margin: 0 auto 1mm; }}
+.qr span {{ font-size: 5.4pt; line-height: 1.2; display: block; color: #5E574B; }}
+.pr {{ margin: 0; padding: 0; list-style: none; }}
+.pr li {{ margin: 0 0 1.6mm; font-size: 8.6pt; line-height: 1.4; }}
+.pr li b {{ font-weight: 600; }}
 footer {{ padding: 3mm 16mm 7mm; font-size: 7.5pt; color: #5E574B; display: flex; justify-content: space-between; gap: 8mm; }}
 footer strong {{ color: {BRUNO}; }}
-</style></head><body><div class="pg">
-<header><p class="num">{it["numero"]:02d}</p><p class="et">{t["itinerario"]} {it["numero"]:02d} · Val di Chio</p><h1>{esc(it["titolo"][lang])}</h1><p class="d">{esc(it["descrizione"][lang])}</p></header>
-<main><h2>{t["ideale"]}</h2><ul class="tag">{tag}</ul><h2>{t["tappe"]}</h2><ol>{"".join(righe)}</ol>{assaggi}</main>
-<footer><span><strong>{t["luogo"]}</strong><br>www.residenzaconti.it</span><span>{t["nota"]}</span></footer>
-</div></body></html>'''
+</style></head><body>
+<section class="pg"><header><p class="num">{it["numero"]:02d}</p><p class="et">{t["itinerario"]} {it["numero"]:02d}</p><h1>{esc(it["titolo"][lang])}</h1><p class="d">{esc(it["descrizione"][lang])}</p>{luoghi}{viaggio}</header>
+<main><h2>{t["ideale"]}</h2><ul class="tag">{tag}</ul><h2>{t["tappe"]}</h2><ol>{r1}</ol></main>{foot1}</section>
+{pagina2}
+</body></html>'''
 
 def main():
     out = RADICE / 'public/itinerari'

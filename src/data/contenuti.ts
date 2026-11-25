@@ -21,16 +21,24 @@ export interface DatiPercorso {
 }
 
 export type CategoriaScheda = 'borgo' | 'cultura' | 'natura' | 'trekking';
+export type Tema = 'borghi' | 'cultura' | 'gastronomia' | 'natura';
 
-/** Scheda "Da non perdere". */
+/** Luogo di una tappa o della sezione "Da non perdere". */
 export interface Scheda {
   id: string;
   nome: Nome;
   categoria: CategoriaScheda;
-  /** minuti in auto dalla struttura: null finché non verificato */
-  minutiAuto: number | null;
-  /** ricerca o coordinate per Google Maps */
+  /** true: compare anche nella sezione "Da non perdere" della pagina Dintorni */
+  vetrina?: boolean;
+  /** [longitudine, latitudine] (OpenStreetMap), per la mappa schematica */
+  coord: [number, number];
+  /** distanza e tempo in auto da Taragnano: stima con routing OpenStreetMap, senza traffico (vedi _nota in dintorni.json); null se non calcolata */
+  km: number | null;
+  minuti: number | null;
+  /** ricerca o coordinate per Google Maps (QR code e indicazioni) */
   mappa: string;
+  /** sito ufficiale (museo, comune, ente) per approfondire */
+  url?: string;
   descrizione: Tradotto;
 }
 
@@ -41,7 +49,13 @@ export interface Tappa {
   testo?: Tradotto | null;
   mappa?: string | null;
   percorso?: DatiPercorso;
+  /** tappa facoltativa (non indispensabile nella giornata) */
+  facoltativa?: boolean;
+  /** 2 = altra giornata (variante): ha la sua mappa */
+  giorno?: 1 | 2;
 }
+
+export interface Prodotto { nome: Tradotto; testo: Tradotto }
 
 export interface Itinerario {
   id: string;
@@ -50,14 +64,29 @@ export interface Itinerario {
   tono: 'terracotta' | 'salvia' | 'bruno';
   pdf: Tradotto;
   titolo: Tradotto;
+  /** località principali, in una riga (card) */
+  luoghi?: Tradotto;
   descrizione: Tradotto;
   ideale: Record<Lingua, string[]>;
+  /** indicatori grafici della card */
+  temi?: Tema[];
+  /** giornata principale: km del giro completo, minuti di guida del giro e fino alla tappa più lontana (stime da Taragnano) */
+  viaggio?: { km: number; minutiGiro: number; minutiMax: number };
+  /** introduzione (paragrafi) */
+  intro?: Record<Lingua, string[]>;
   tappe: Tappa[];
+  /** nome della seconda giornata (variante), se esiste */
+  giorno2?: { titolo: Tradotto; nota: Tradotto };
+  /** pannello "Da assaggiare" breve (itinerario Natura e movimento non lo usa) */
   assaggi?: { titolo: Tradotto; testo: Tradotto };
+  gastronomia?: { titolo: Tradotto; intro: Tradotto; prodotti: Prodotto[] };
+  consigli?: Record<Lingua, string[]>;
+  fonti?: { nome: Nome; url: string }[];
 }
 
-export const schede = dintorniJson.schede as Scheda[];
-export const itinerari = dintorniJson.itinerari as Itinerario[];
+export const origine = dintorniJson.origine as { nome: string; coord: [number, number] };
+export const schede = dintorniJson.schede as unknown as Scheda[];
+export const itinerari = dintorniJson.itinerari as unknown as Itinerario[];
 
 export function nomeScheda(s: Scheda, lang: Lingua): string {
   return typeof s.nome === 'string' ? s.nome : s.nome[lang];
@@ -66,6 +95,13 @@ export function nomeScheda(s: Scheda, lang: Lingua): string {
 /** Link a Google Maps: indicazioni verso il luogo (senza partenza: la sceglie chi clicca). */
 export function linkIndicazioni(mappa: string): string {
   return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mappa)}`;
+}
+/** Link a Google Maps: percorso in auto dalla partenza ([lon, lat]) attraverso le tappe, con ritorno alla partenza. */
+export function linkPercorso(partenza: [number, number], tappe: string[]): string {
+  const p = `${partenza[1]},${partenza[0]}`;
+  const params = new URLSearchParams({ api: '1', origin: p, destination: p, travelmode: 'driving' });
+  if (tappe.length) params.set('waypoints', tappe.join('|'));
+  return `https://www.google.com/maps/dir/?${params.toString()}`;
 }
 /** Link a Google Maps: il luogo sulla mappa (usato dai QR code dei PDF). */
 export function linkMappa(mappa: string): string {

@@ -1,0 +1,16 @@
+---
+// Logo della casa (monogramma RC in cartiglio). Decorativo: accanto c'è sempre il nome scritto.
+// Astro genera le versioni WebP a 1× e 2× (con trasparenza).
+import { Image } from 'astro:assets';
+import logo from '../assets/logo/logo-rc.png';
+
+interface Props {
+  /** lato in pixel (il logo è quadrato) */
+  lato?: number;
+  class?: string;
+  /** true se è la prima cosa visibile (hero): niente lazy load */
+  subito?: boolean;
+}
+const { lato = 40, class: classe = 'logo', subito = false } = Astro.props;
+---
+<Image src={logo} alt="" width={lato} height={lato} densities={[1, 2]} format="webp" class={classe} loading={subito ? 'eager' : 'lazy'} decoding="async" />

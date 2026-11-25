@@ -7,3 +7,4 @@ dist/
 # generato sul server dal job iCal
 public/disponibilita.json
 *.tmp
+__pycache__/
