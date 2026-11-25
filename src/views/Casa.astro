@@ -20,7 +20,7 @@ const interni = await Promise.all(
   tutteLeFoto.filter((f) => f.area === 'casa' && /-(soggiorno|cucina|cottura|camera)/.test(f.id)).map(async (f) => ({
     ...f,
     // versione grande da aprire nella lightbox
-    grande: (await getImage({ src: f.src, width: Math.min(1800, f.src.width), format: 'webp' })).src,
+    grande: (await getImage({ src: f.src, width: Math.min(1800, f.src.width), format: 'webp', quality: 72 })).src,
   })),
 );
 ---

@@ -1,4 +1,5 @@
 ---
+import Logo from './Logo.astro';
 import { url, type Lingua, type Pagina } from '../i18n/lingue';
 import { useT, nomePagina } from '../i18n/ui';
 import { struttura } from '../data/struttura';
@@ -12,6 +13,7 @@ const info: Pagina[] = ['galleria', 'recensioni', 'arrivare', 'faq', 'privacy', 
 <footer class="foot">
   <div class="wrap foot-in">
     <div>
+      <Logo lato={64} class="logo foot-logo" />
       <span class="brand">Residenza Conti</span>
       <p>{s.indirizzo.via}</p>
       <p>{s.indirizzo.cap} {s.indirizzo.citta} ({s.indirizzo.provincia})</p>

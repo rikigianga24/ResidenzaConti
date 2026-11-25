@@ -1,5 +1,6 @@
 ---
 import Icona from './Icona.astro';
+import Logo from './Logo.astro';
 import { LINGUE, url, type Lingua, type Pagina } from '../i18n/lingue';
 import { useT, nomePagina } from '../i18n/ui';
 
@@ -15,12 +16,12 @@ const corrente = (p: Pagina) => (p === pagina ? 'page' : undefined);
 ---
 <header class={sullaFoto ? 'hdr hdr--hero' : 'hdr'}>
   <div class="wrap hdr-in">
-    <a class="brand" href={url('home', lang)}>Residenza Conti</a>
+    <a class="brand" href={url('home', lang)}><Logo lato={40} class="logo brand-logo" subito /><span>Residenza Conti</span></a>
     <nav class="nav" aria-label={t('nav.principale')}>
       {principali.map((p) => <a href={url(p, lang)} aria-current={corrente(p)}>{nomePagina(p, lang)}</a>)}
     </nav>
     <div class="dx">
-      <ul class="lang" aria-label={t('nav.lingua')}>
+      <ul class="lang lang-top" aria-label={t('nav.lingua')}>
         {LINGUE.map((l) => (
           <li><a href={url(pagina, l)} lang={l} hreflang={l} aria-current={l === lang ? 'true' : undefined}>{l.toUpperCase()}</a></li>
         ))}
@@ -28,6 +29,14 @@ const corrente = (p: Pagina) => (p === pagina ? 'page' : undefined);
       <details class="menu-mob">
         <summary aria-label={t('nav.menu')}><Icona nome="menu" /></summary>
         <nav aria-label={t('nav.principale')}>
+          {/* su telefono le lingue stanno nel menu: nella testata non c'è spazio accanto a logo e nome */}
+          <div class="lang-menu">
+            <ul class="lang" aria-label={t('nav.lingua')}>
+              {LINGUE.map((l) => (
+                <li><a href={url(pagina, l)} lang={l} hreflang={l} aria-current={l === lang ? 'true' : undefined}>{l.toUpperCase()}</a></li>
+              ))}
+            </ul>
+          </div>
           <ul>
             {tutte.map((p) => <li><a href={url(p, lang)} aria-current={corrente(p)}>{nomePagina(p, lang)}</a></li>)}
           </ul>
