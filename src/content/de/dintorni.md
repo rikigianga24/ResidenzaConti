@@ -1,8 +1,7 @@
 ---
-seoTitolo: Umgebung – Ausflüge im Val di Chio und Valdichiana | Residenza Conti
-descrizione: Castiglion Fiorentino, Montecchio, Cortona, Arezzo und das Valdichiana. Dörfer, Wein und gutes Essen in der Nähe der Residenza Conti.
-titolo: Umgebung
-intro: Ein wenig bekanntes Tal, ideal als Ausgangspunkt für Ausflüge. Tagsüber Dörfer, Wein und gutes Essen; abends zurück in den Garten oder an den Pool.
+seoTitolo: "Umgebung – Ein Führer durch das Val di Chio und die Valdichiana | Residenza Conti"
+descrizione: "Ein Führer durch das Val di Chio: die Geschichte des Tals, zwei Routen (Genuss und Dörfer, Natur und Bewegung) und die Orte, die man nicht verpassen sollte, rund um Castiglion Fiorentino, Cortona und Arezzo."
+titolo: "Ein Tal zum Entdecken."
+intro: "Zwischen alten Dörfern, Landschaften, Pfaden und den Traditionen der toskanischen Landschaft."
+guida: {"storiaTitolo": "Die Geschichte des Tals", "storia": ["Das Val di Chio beginnt unmittelbar hinter Castiglion Fiorentino. Im Westen schließt es der Monte Castiglion Maggio ab; im Osten trennt ein Höhenzug es über den Passo della Montanina vom Tal des Nestore, eines Nebenflusses des Tiber.", "Jahrhundertelang war es ein Durchgangsland: Entlang der Route zwischen der Toskana und der Adria entstanden Hospize für Reisende, und um einige von ihnen wuchsen kleine Dörfer wie Polvano, Santo Stefano und Pieve di Chio. Andere begannen als Wehrburgen, von Mammi bis Tuori, von Castel d'Ernia bis La Montanina, oder als alte Landgüter, wie Santa Lucia, Collesecco und Pergognano.", "Wasser war hier immer wichtig. Die vielen Quellen nährten einen alten Wasserkult, der später zur Verehrung der Madonna del Latte wurde, und sie trieben die Mühlen an: Die Namen Mulin Nuovo, Mulino Bianco und Mulino dello Zoppo säumen noch heute den Weg der alten Mühlen.", "Heute besteht die Landschaft aus Olivenhainen, die ein kaltgepresstes Öl aus den Ölmühlen der Gegend liefern, und aus Hügeln, die man zu Fuß oder mit dem Rad erkunden kann."], "itinerariTitolo": "Zwei Routen", "itinerariIntro": "Zwei ganz unterschiedliche Tage, die man in Ruhe genießen sollte. Jede Route gibt es als PDF zum Mitnehmen.", "nonPerdereTitolo": "Nicht verpassen", "nonPerdereIntro": "Die Orte, von denen aus man die Gegend kennenlernt.", "mappaTitolo": "Die Gegend auf der Karte", "mappaTesto": "Um zu sehen, wo wir sind und wo die Orte liegen, öffnen Sie die Karte. Auf dieser Seite laden wir keine Karten von Drittanbietern: Sie öffnet sich nur, wenn Sie klicken.", "mappaLink": "Die Gegend in Google Maps öffnen", "qrNota": "Im PDF hat jeder Ort einen QR-Code, der die Karte öffnet."}
 ---
-
-[FOLGT: Ausflugstipps – Wein, Essen, Wanderungen, Veranstaltungen]

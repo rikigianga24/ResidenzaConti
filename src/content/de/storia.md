@@ -1,26 +1,9 @@
 ---
-seoTitolo: Unsere Geschichte – Ein kleines Jagdschloss in der Toskana | Residenza Conti
-descrizione: Die Residenza Conti war das kleine Jagdschloss der Familie Conti. Mündlicher Überlieferung nach reichen die Ursprünge in die Römerzeit zurück. Zypressenallee, Familienkapelle und eine natürliche Quelle.
-titolo: Unsere Geschichte
-intro: Das Gebäude war einst das kleine Jagdschloss der Familie Conti.
+seoTitolo: "Unsere Geschichte – Ein Haus, eine Familie, ein Tal | Residenza Conti"
+descrizione: "Die Geschichte der Residenza Conti, des kleinen Jagdschlosses der Familie Conti: die Ursprünge nach mündlicher Überlieferung, die Kapelle, die Quelle und die Generationen, die das Haus bewahrt haben."
+titolo: "Ein Haus, eine Familie, ein Tal."
+intro: "Die Geschichte eines Ortes, der Generationen verbindet."
+timeline: [{"etichetta": "Die Anfänge", "titolo": "Ein Haus für Jagd und Sommerfrische", "testo": "Nach den in der Familie überlieferten Erzählungen reichen die Ursprünge des Gebäudes in die römische Zeit zurück: Römische Patrizier sollen es als Jagd- und Ferienhaus besessen haben, fern vom Trubel Roms. Nach einer der Plünderungen Roms wurde das Haus, so die Erzählungen weiter, zu einem Wohnhaus.", "nota": "Mündliche Familienüberlieferung: keine belegte Datierung.", "foto": "casa/02-casa-portico-esterno"}, {"etichetta": "Im Lauf der Jahrhunderte", "titolo": "Die Kapelle und die Quelle", "testo": "Später wurde die geweihte Familienkapelle gebaut, die heute dem Laubengang gegenüberliegt. Im Wald am Hügel fand man eine Quelle: Sie wurde gefasst, und noch heute gibt es am Haus eine Quelle mit natürlichem Trinkwasser.", "nota": "Aus den Erzählungen der Familie.", "foto": "casa/03-cappella"}, {"etichetta": "Die Generation Conti", "titolo": "Die Familie Conti", "testo": "Jahrhundertelang wurde das Haus von der Familie Conti bewohnt, im Tal bekannt durch Leone Conti, einen Grundbesitzer der Gegend. Die Linie endete mit Maria Conti, der einzigen Tochter.", "foto": "casa/05-viale-cipressi"}, {"etichetta": "Heute", "titolo": "Ein Haus, das es zu bewahren gilt", "testo": "Heute kümmert sich die Generation Bernardinello und Giangani um das Haus: Mutter und Sohn. Ihr Anliegen ist es, es zu bewahren und aufzuwerten und es den Gästen näherzubringen.", "foto": "giardino/03-lettini-ulivi"}]
 ---
 
 Man erreicht es über eine **Zypressenallee**. Die geweihte **Familienkapelle** steht direkt gegenüber dem Laubengang.
-
-## Die Anfänge
-
-Mündlicher Überlieferung nach wurde das Haus in römischer Zeit gebaut: Römische Patrizier besaßen es als Jagd- und Ferienhaus, fern von der Hektik Roms.
-
-Nach einem der Plünderungen Roms wurde das Haus zu einer Wohnstätte.
-
-## Die Kapelle und das Wasser
-
-Später wurde die Kapelle gebaut. Im Wald am Hügel fand man eine Quelle: Sie wurde gefasst, und noch heute gibt es am Haus eine natürliche Trinkwasserquelle.
-
-## Die Familie Conti
-
-Jahrhundertelang wurde das Haus von der Familie Conti bewohnt, im Tal bekannt durch Leone Conti, einen Grundbesitzer der Gegend. Die Linie endete mit Maria Conti, der einzigen Tochter.
-
-## Heute
-
-Heute kümmert sich die Generation Bernardinello und Giangani um das Haus: Mutter und Sohn.

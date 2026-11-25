@@ -124,7 +124,7 @@ const catalogo: Record<string, VoceFoto> = {
     en: 'Deck chairs in the shade of the olive trees',
     de: 'Liegestühle im Schatten der Olivenbäume',
     fr: "Des chaises longues à l'ombre des oliviers" } },
-  'giardino/04-amaca': { area: 'giardino', pos: 'dx', alt: {
+  'giardino/04-amaca': { area: 'giardino', alt: {
     it: "L'amaca all'ombra degli alberi",
     en: 'The hammock in the shade of the trees',
     de: 'Die Hängematte im Schatten der Bäume',

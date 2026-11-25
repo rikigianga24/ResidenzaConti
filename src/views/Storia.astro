@@ -1,27 +1,43 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import Testo from './Testo.astro';
+// La nostra storia: racconto editoriale con timeline verticale.
+// Le date si usano solo se documentate: qui non ce n'è nessuna, quindi ogni tappa ha un'etichetta
+// ("Le origini", "Nel corso dei secoli", ...). La tradizione orale è segnalata con una nota.
+import { render, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import TestataPagina from '../components/TestataPagina.astro';
+import ChiamataContatti from '../components/ChiamataContatti.astro';
 import Foto from '../components/Foto.astro';
-import IconaNatura from '../components/IconaNatura.astro';
-import { getEntry } from 'astro:content';
 import type { Lingua } from '../i18n/lingue';
 
 interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
 const { lang, voce } = Astro.props;
-const s = (await getEntry('pagine', `${lang}/home`))!.data.storia!;
-const nature = [
-  { nome: 'viale', foto: 'casa/05-viale-cipressi', titolo: s.viale },
-  { nome: 'cappella', foto: 'casa/03-cappella', titolo: s.cappella },
-  { nome: 'portico', foto: 'casa/04-portico', titolo: s.portico },
-] as const;
+const d = voce.data;
+const tappe = d.timeline ?? [];
+const { Content } = await render(voce);
+const rapporti = ['r-4-3', 'r-4-5', 'r-3-4', 'r-4-5'];
 ---
-<Testo lang={lang} pagina="storia" voce={voce}>
-  <ul class="valle">
-    {nature.map((n) => (
-      <li class="natura">
-        <div class="ph entra"><div class="img"><Foto id={n.foto} lang={lang} /></div></div>
-        <h3><IconaNatura nome={n.nome} />{n.titolo}</h3>
-      </li>
-    ))}
-  </ul>
-</Testo>
+<Base lang={lang} pagina="storia" seoTitolo={d.seoTitolo} descrizione={d.descrizione} fotoOg="casa/02-casa-portico-esterno">
+  <TestataPagina titolo={d.titolo} intro={d.intro} />
+  <section class="sec sec-0">
+    <div class="wrap">
+      <div class="prosa prosa-apertura"><Content /></div>
+      <ol class="tl">
+        {tappe.map((x, i) => (
+          <li class="tl-voce">
+            <span class="tl-punto" aria-hidden="true"></span>
+            <div class="tl-testo">
+              <p class="tl-et">{x.etichetta}</p>
+              <h2 class="tl-tit">{x.titolo}</h2>
+              <p class="tl-p">{x.testo}</p>
+              {x.nota && <p class="tl-nota">{x.nota}</p>}
+            </div>
+            <div class={`tl-foto ph entra ${rapporti[i % rapporti.length]}`}>
+              <div class="img"><Foto id={x.foto} lang={lang} sizes="(min-width: 1040px) 520px, 92vw" /></div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+  <ChiamataContatti lang={lang} />
+</Base>

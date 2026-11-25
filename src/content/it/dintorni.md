@@ -1,8 +1,7 @@
 ---
-seoTitolo: Dintorni – Cosa fare in Val di Chio e Valdichiana | Residenza Conti
-descrizione: Castiglion Fiorentino, Montecchio, Cortona, Arezzo e la Valdichiana. Borghi, vino e cibo a poca distanza da Residenza Conti.
-titolo: Dintorni
-intro: Una valle poco conosciuta, comoda per girare la zona. Di giorno borghi, vino e cibo; la sera si torna in giardino o in piscina.
+seoTitolo: "Dintorni – Guida alla Val di Chio e alla Valdichiana | Residenza Conti"
+descrizione: "Una guida alla Val di Chio: la storia della valle, due itinerari (sapori e borghi, natura e movimento) e i luoghi da non perdere tra Castiglion Fiorentino, Cortona e Arezzo."
+titolo: "Una valle da scoprire."
+intro: "Tra borghi antichi, paesaggi, sentieri e tradizioni della campagna toscana."
+guida: {"storiaTitolo": "La storia della valle", "storia": ["La Val di Chio si apre appena oltre Castiglion Fiorentino. Il Monte Castiglion Maggio la chiude a ovest; a est un crinale la separa, attraverso il passo della Montanina, dalla valle del Nestore, affluente del Tevere.", "Per secoli è stata una terra di passaggio: lungo la via che univa la Toscana all'Adriatico sorsero spedali per i viandanti, e attorno ad alcuni nacquero piccoli borghi come Polvano, Santo Stefano e Pieve di Chio. Altri paesi cominciarono come castelli di difesa, da Mammi a Tuori, da Castel d'Ernia alla Montanina, o come antiche ville agricole, come Santa Lucia, Collesecco e Pergognano.", "Qui l'acqua ha sempre contato. Le molte sorgenti alimentarono un antico culto delle acque, poi diventato devozione per la Madonna del Latte, e fecero girare i mulini: i nomi Mulin Nuovo, Mulino Bianco e Mulino dello Zoppo segnano ancora il percorso degli Antichi Mulini.", "Oggi il paesaggio è fatto di oliveti, che danno un olio franto a freddo nei frantoi della zona, e di colline da percorrere a piedi o in bicicletta."], "itinerariTitolo": "Due itinerari", "itinerariIntro": "Due giornate molto diverse, da vivere con calma. Ogni itinerario si scarica in PDF, da portare con sé.", "nonPerdereTitolo": "Da non perdere", "nonPerdereIntro": "I luoghi da cui partire per conoscere la zona.", "mappaTitolo": "La zona sulla mappa", "mappaTesto": "Per vedere dove siamo e dove si trovano i luoghi, apri la mappa. In questa pagina non carichiamo mappe di terzi: si apre solo se clicchi.", "mappaLink": "Apri la zona in Google Maps", "qrNota": "Nel PDF ogni località ha un QR code che apre la mappa."}
 ---
-
-[DA FORNIRE: cosa fare – vino, cibo, passeggiate, eventi]

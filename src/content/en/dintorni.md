@@ -1,8 +1,7 @@
 ---
-seoTitolo: Surroundings – Things to do in the Val di Chio and Valdichiana | Residenza Conti
-descrizione: Castiglion Fiorentino, Montecchio, Cortona, Arezzo and the Valdichiana. Villages, wine and food close to Residenza Conti.
-titolo: Surroundings
-intro: A little-known valley that's handy for exploring the area. By day villages, wine and food; in the evening, back to the garden or the pool.
+seoTitolo: "Surroundings – A guide to the Val di Chio and the Valdichiana | Residenza Conti"
+descrizione: "A guide to the Val di Chio: the story of the valley, two itineraries (flavours and villages, nature and movement) and the places not to miss around Castiglion Fiorentino, Cortona and Arezzo."
+titolo: "A valley to discover."
+intro: "Among ancient villages, landscapes, trails and the traditions of the Tuscan countryside."
+guida: {"storiaTitolo": "The story of the valley", "storia": ["The Val di Chio opens just beyond Castiglion Fiorentino. Monte Castiglion Maggio closes it to the west; to the east a ridge separates it, through the Montanina pass, from the valley of the Nestore, a tributary of the Tiber.", "For centuries it was a land of passage: along the route linking Tuscany and the Adriatic, hospices for travellers sprang up, and small villages grew around some of them, such as Polvano, Santo Stefano and Pieve di Chio. Others began as defensive castles, from Mammi to Tuori, from Castel d'Ernia to La Montanina, or as old farm villas, like Santa Lucia, Collesecco and Pergognano.", "Water has always mattered here. The many springs fed an ancient cult of waters, later turned into devotion to the Madonna del Latte, and they turned the mill wheels: the names Mulin Nuovo, Mulino Bianco and Mulino dello Zoppo still mark the Ancient Mills trail.", "Today the landscape is made of olive groves, which give a cold-pressed oil from the local mills, and of hills to explore on foot or by bike."], "itinerariTitolo": "Two itineraries", "itinerariIntro": "Two very different days, to be enjoyed without hurry. Each itinerary can be downloaded as a PDF to take with you.", "nonPerdereTitolo": "Not to be missed", "nonPerdereIntro": "The places to start from to get to know the area.", "mappaTitolo": "The area on the map", "mappaTesto": "To see where we are and where the places are, open the map. We don't load third-party maps on this page: it only opens if you click.", "mappaLink": "Open the area in Google Maps", "qrNota": "In the PDF, every place has a QR code that opens the map."}
 ---
-
-[TO BE PROVIDED: things to do – wine, food, walks, events]

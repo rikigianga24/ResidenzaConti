@@ -1,26 +1,9 @@
 ---
-seoTitolo: Notre histoire – Un petit pavillon de chasse en Toscane | Residenza Conti
-descrizione: Residenza Conti était le petit pavillon de chasse de la famille Conti. Selon la tradition orale, ses origines remontent à l'époque romaine. Allée de cyprès, chapelle familiale et source naturelle.
-titolo: Notre histoire
-intro: Le bâtiment était autrefois le petit pavillon de chasse de la famille Conti.
+seoTitolo: "Notre histoire – Une maison, une famille, une vallée | Residenza Conti"
+descrizione: "L'histoire de Residenza Conti, le petit pavillon de chasse de la famille Conti : les origines selon la tradition orale, la chapelle, la source et les générations qui l'ont préservée."
+titolo: "Une maison, une famille, une vallée."
+intro: "L'histoire d'un lieu qui traverse les générations."
+timeline: [{"etichetta": "Les origines", "titolo": "Une maison de chasse et de villégiature", "testo": "Selon les récits transmis dans la famille, les origines du bâtiment remontent à l'époque romaine : des patriciens romains l'auraient possédé comme pavillon de chasse et maison de vacances, loin de l'agitation de Rome. Après l'un des sacs de Rome, toujours selon ces récits, la maison devint une habitation.", "nota": "Tradition orale familiale : ce n'est pas une datation documentée.", "foto": "casa/02-casa-portico-esterno"}, {"etichetta": "Au fil des siècles", "titolo": "La chapelle et la source", "testo": "Plus tard, la chapelle familiale fut construite ; consacrée, elle se trouve aujourd'hui face au portique. Dans le bois de la colline, on découvrit une source : elle fut canalisée, et aujourd'hui encore la maison dispose d'une source d'eau potable naturelle.", "nota": "D'après les récits de la famille.", "foto": "casa/03-cappella"}, {"etichetta": "La génération Conti", "titolo": "La famille Conti", "testo": "Pendant des siècles, la maison a été habitée par la famille Conti, connue dans la vallée grâce à Leone Conti, propriétaire terrien de la région. La descendance s'est achevée avec Maria Conti, la seule fille.", "foto": "casa/05-viale-cipressi"}, {"etichetta": "Aujourd'hui", "titolo": "Une maison à préserver", "testo": "Aujourd'hui, la maison est entretenue par la génération Bernardinello et Giangani : mère et fils. Leur but est de la conserver et de la valoriser, pour la faire connaître à ceux qui viennent nous voir.", "foto": "giardino/03-lettini-ulivi"}]
 ---
 
 On y arrive par une **allée de cyprès**. La **chapelle familiale**, consacrée, se trouve juste en face du portique.
-
-## Les origines
-
-Selon la tradition orale, la maison a été construite à l'époque romaine : des patriciens romains la possédaient comme pavillon de chasse et maison de vacances, loin de l'agitation de Rome.
-
-Après l'un des sacs de Rome, la maison devint une habitation.
-
-## La chapelle et l'eau
-
-La chapelle fut construite plus tard. Dans le bois, sur la colline, on trouva une source : elle fut canalisée, et aujourd'hui encore la maison dispose d'une source naturelle d'eau potable.
-
-## La famille Conti
-
-Pendant des siècles, la maison a été habitée par la famille Conti, connue dans la vallée grâce à Leone Conti, propriétaire terrien de la région. La lignée s'est éteinte avec Maria Conti, la seule fille.
-
-## Aujourd'hui
-
-La maison est aujourd'hui entretenue par la génération Bernardinello et Giangani : mère et fils.
