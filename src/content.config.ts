@@ -54,6 +54,31 @@ const pagine = defineCollection({
     dintorni: z.object({ titolo: z.string(), testo: z.string() }).optional(),
     contatti: z.object({ titolo: z.string(), testo: z.string(), bookingTesto: z.string() }).optional(),
 
+    // --- pagina Dintorni: testi della guida (itinerari e schede sono in content/dintorni.json) ---
+    guida: z.object({
+      storiaTitolo: z.string(),
+      storia: z.array(z.string()),
+      itinerariTitolo: z.string(),
+      itinerariIntro: z.string(),
+      nonPerdereTitolo: z.string(),
+      nonPerdereIntro: z.string(),
+      mappaTitolo: z.string(),
+      mappaTesto: z.string(),
+      mappaLink: z.string(),
+      qrNota: z.string(),
+    }).optional(),
+
+    // --- pagina La nostra storia: timeline verticale ---
+    timeline: z.array(z.object({
+      /** etichetta al posto della data (le date si usano solo se documentate) */
+      etichetta: z.string(),
+      titolo: z.string(),
+      testo: z.string(),
+      /** distingue la tradizione orale dalla storia documentata */
+      nota: z.string().optional(),
+      foto: z.string(),
+    })).optional(),
+
     // --- pagina La casa ---
     dotazioni: z.array(z.object({ titolo: z.string(), voci: z.array(z.string()) })).optional(),
 

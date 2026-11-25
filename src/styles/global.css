@@ -25,6 +25,7 @@
   --salvia-scuro: #5A6650;      /* 5,4:1 su avorio, 6,1:1 col bianco */
   --salvia-profondo: #4A5542;   /* hover dei pulsanti */
   --terracotta-scuro: #86563B;  /* 5,4:1 su avorio */
+  --terracotta-profondo: #6F4630; /* pannelli terracotta sulle foto */
   --bruno-profondo: #2E2A24;    /* footer */
   /* derivati */
   --muted: #5E574B;             /* testo secondario, 6,3:1 su avorio */
@@ -151,20 +152,44 @@ img { max-width: 100%; height: auto; display: block; }
 .r-16-9 { aspect-ratio: 16/9; } .r-4-3 { aspect-ratio: 4/3; } .r-1-1 { aspect-ratio: 1/1; } .r-4-5 { aspect-ratio: 4/5; } .r-3-4 { aspect-ratio: 3/4; } .r-21-9 { aspect-ratio: 21/9; }
 .nota-foto { font-size: .8125rem; color: var(--muted); margin: 8px 0 0; }
 
+
+/* ===== card fotografiche con testo sovrapposto ===== */
+.card { position: relative; margin: 0; overflow: hidden; border-radius: 2px; background: var(--bruno-profondo); color: var(--avorio); isolation: isolate; }
+.card .card-img { position: absolute; inset: 0; z-index: -1; }
+.card .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s cubic-bezier(.2, .7, .2, 1); }
+.card:hover .card-img img { transform: scale(1.04); }
+.card-pan { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 16px 18px 18px; background: color-mix(in srgb, var(--bruno-profondo) 78%, transparent); transition: background-color .5s ease; }
+.card:hover .card-pan { background: color-mix(in srgb, var(--bruno-profondo) 86%, transparent); }
+.tono-salvia .card-pan { background: color-mix(in srgb, var(--salvia-profondo) 88%, transparent); }
+.tono-salvia:hover .card-pan { background: color-mix(in srgb, var(--salvia-profondo) 94%, transparent); }
+.tono-terracotta .card-pan { background: color-mix(in srgb, var(--terracotta-profondo) 88%, transparent); }
+.tono-terracotta:hover .card-pan { background: color-mix(in srgb, var(--terracotta-profondo) 94%, transparent); }
+.card-cat { display: block; font-size: .6875rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--pietra); margin: 0 0 6px; }
+.card-tit { display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 1.625rem; line-height: 1.12; margin: 0; color: var(--avorio); }
+.card-tit svg { width: 32px; height: 32px; flex: none; color: var(--pietra); overflow: visible; }
+.card-txt { margin: 6px 0 0; font-size: .9375rem; line-height: 1.5; color: color-mix(in srgb, var(--avorio) 92%, transparent); max-width: 34ch; }
+.card-link { position: absolute; inset: 0; z-index: 2; }
+.card-link:focus-visible { outline: 3px solid var(--avorio); outline-offset: -6px; }
+.card:has(.card-link:focus-visible) { outline: 3px solid var(--terracotta-scuro); outline-offset: 3px; }
+.sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+/* card di solo testo (senza foto): pannello pieno */
+.card--testo { background: var(--salvia-profondo); }
+.card--testo.tono-bruno { background: color-mix(in srgb, var(--bruno) 92%, var(--bruno-profondo)); }
+.card--testo.tono-terracotta { background: var(--terracotta-profondo); }
+.card--testo .card-pan { background: transparent; left: 0; right: 0; bottom: 0; padding: 22px 22px 24px; }
+.card--testo:hover .card-pan { background: transparent; }
+/* nelle card più strette il titolo è un po' più piccolo */
+.valle .card-tit, .mosaico .card-tit { font-size: 1.5rem; }
+
 /* ===== sezione valle: testo e panoramica affiancati, poi tre foto sfalsate ===== */
 .intro-valle { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
 .motto { font-style: italic; font-weight: 400; font-size: 1.75rem; line-height: 1.2; color: var(--terracotta-scuro); margin: 28px 0 0; }
 .valle { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; margin: 48px 0 0; padding: 0; list-style: none; }
-.natura h3 { display: flex; align-items: center; gap: 12px; font-weight: 500; font-size: 1.875rem; line-height: 1.1; margin: 16px 0 0; }
-.natura h3 svg { width: 40px; height: 40px; color: var(--salvia-scuro); flex: none; overflow: visible; }
-.natura p { margin: 6px 0 0; font-size: 1rem; max-width: 30ch; color: var(--muted); }
 .natura:hover .a, .natura:active .a { animation-play-state: running; }
 .dafornire { font-size: .9375rem; margin: 14px 0 0; }
 
 /* ===== la casa: una foto grande, due più piccole, poi le altre ===== */
 .mosaico { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; margin: 40px 0 0; padding: 0; list-style: none; }
-.stanza figure { margin: 0; }
-.stanza figcaption { margin-top: 12px; font-size: 1rem; line-height: 1.45; max-width: 36ch; }
 .onesta { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 44px; }
 .onesta p { margin: 0; padding: 18px 20px; border-left: 3px solid var(--terracotta); background: var(--sup); font-size: 1rem; }
 .onesta b { font-weight: 600; }
@@ -229,16 +254,10 @@ img { max-width: 100%; height: auto; display: block; }
 .scuro a { color: var(--pietra); }
 .scuro a:hover { color: var(--bianco); }
 .scuro .eyebrow { color: var(--pietra); }
-.scuro .natura h3 { color: var(--avorio); }
-.scuro .natura h3 svg { color: var(--pietra); }
 .campo { display: block; width: 100%; height: 72px; margin-top: 28px; }
 .cipressi { color: color-mix(in srgb, var(--avorio) 16%, var(--bruno)); }
 .scuro .ph { background: color-mix(in srgb, var(--avorio) 12%, var(--bruno)); }
 
-/* ===== dintorni ===== */
-.luoghi { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; margin: 36px 0 0; padding: 0; list-style: none; }
-.luogo h3 { font-weight: 500; font-size: 1.5rem; line-height: 1.15; margin: 12px 0 2px; }
-.luogo p { margin: 0; font-size: .9375rem; color: var(--muted); }
 
 /* ===== recensioni ===== */
 .rec { background: var(--sup); border-left: 3px solid var(--terracotta); padding: 32px 24px; }
@@ -350,6 +369,104 @@ img { max-width: 100%; height: auto; display: block; }
 .spazio-sopra { margin-top: 20px; }
 .mappa { aspect-ratio: 16/9; margin-top: 24px; display: flex; align-items: center; justify-content: center; }
 
+/* numero grande e pulsante nelle card degli itinerari */
+.card-num { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 3.25rem; line-height: .9; color: var(--pietra); margin: 0 0 4px; }
+.card-cta { display: inline-block; margin-top: 14px; padding: 12px 18px; border: 1.5px solid color-mix(in srgb, var(--avorio) 80%, transparent); font-size: .8125rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; transition: background-color .3s ease, color .3s ease; }
+.card:hover .card-cta, .card:focus-within .card-cta { background: var(--avorio); color: var(--bruno); }
+.itin-cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: 36px; }
+.itin-card .card-tit { font-size: 2.125rem; }
+.itin-card .card-txt { max-width: 38ch; }
+
+/* ===== galleria: masonry editoriale con filtri ===== */
+.filtri { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 0; }
+.filtri[hidden] { display: none; }
+.filtro { font: inherit; font-size: .8125rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 12px 18px; min-height: 44px; border: 1.5px solid var(--bruno); border-radius: 2px; background: transparent; color: var(--bruno); cursor: pointer; transition: background-color .3s ease, color .3s ease; }
+.filtro:hover { background: color-mix(in srgb, var(--bruno) 10%, transparent); }
+.filtro[aria-pressed="true"] { background: var(--bruno); color: var(--avorio); }
+.masonry { column-count: 2; column-gap: 12px; margin: 24px 0 0; padding: 0; list-style: none; }
+.mas { break-inside: avoid; margin: 0 0 12px; }
+.mas[hidden] { display: none; }
+.mas a { display: block; overflow: hidden; border-radius: 2px; background: var(--pietra); }
+.mas img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2, .7, .2, 1); }
+.mas a:hover img { transform: scale(1.04); }
+.mas.grande { column-span: all; }
+.mas.grande a { aspect-ratio: 16/9; }
+.lb-n { margin: 0; font-size: .8125rem; letter-spacing: .12em; color: var(--pietra); }
+
+/* ===== storia: timeline verticale ===== */
+.prosa-apertura { margin-bottom: 8px; }
+.tl { position: relative; margin: 48px 0 0; padding: 0 0 0 36px; list-style: none; }
+.tl::before { content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 1px; background: var(--salvia); }
+.tl-voce { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; padding-bottom: 64px; }
+.tl-voce:last-child { padding-bottom: 0; }
+.tl-punto { position: absolute; left: -36px; top: 6px; width: 17px; height: 17px; border-radius: 50%; background: var(--avorio); border: 2px solid var(--terracotta); box-shadow: 0 0 0 5px var(--avorio); }
+.tl-et { margin: 0 0 8px; font-size: .75rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--terracotta-scuro); }
+.tl-tit { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 2.125rem; line-height: 1.08; margin: 0 0 14px; }
+.tl-p { margin: 0; max-width: 52ch; }
+.tl-nota { margin: 16px 0 0; max-width: 52ch; padding-left: 14px; border-left: 2px solid var(--terracotta); font-size: .9375rem; font-style: italic; color: var(--muted); }
+.tl-foto { width: 100%; }
+
+/* ===== dintorni ===== */
+.apertura { position: relative; display: flex; align-items: flex-end; min-height: 62svh; color: var(--bianco); background: var(--bruno-profondo); overflow: hidden; }
+.apertura-foto { position: absolute; inset: 0; }
+.apertura-foto picture, .apertura-foto img { width: 100%; height: 100%; display: block; }
+.apertura-foto img { object-fit: cover; animation: zoomIn 2.2s cubic-bezier(.2, .7, .2, 1) both; }
+.apertura-foto::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, color-mix(in srgb, var(--bruno-profondo) 82%, transparent) 0%, color-mix(in srgb, var(--bruno-profondo) 40%, transparent) 42%, transparent 75%); }
+.apertura-testo { position: relative; width: 100%; padding-top: 96px; padding-bottom: 44px; }
+.apertura .h1 { font-weight: 500; font-size: 3.25rem; line-height: .98; letter-spacing: -.015em; margin: 0; animation: sale .9s ease-out .2s both; }
+.apertura .lead { margin: 16px 0 0; max-width: 46ch; animation: sale .9s ease-out .4s both; }
+.storia-valle { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+.storia-testo .p { max-width: 60ch; }
+.storia-testo .p-apertura { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; line-height: 1.4; max-width: 44ch; margin-bottom: 20px; }
+
+.itin { padding: 64px 0; }
+.itin--1 { background: color-mix(in srgb, var(--terracotta) 14%, var(--avorio)); }
+.itin--2 { background: color-mix(in srgb, var(--salvia) 18%, var(--avorio)); }
+.itin-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+.itin-num { margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 6rem; line-height: .8; color: color-mix(in srgb, var(--bruno) 22%, transparent); }
+.itin--1 .itin-num { color: color-mix(in srgb, var(--terracotta) 55%, transparent); }
+.itin--2 .itin-num { color: color-mix(in srgb, var(--salvia) 70%, transparent); }
+.itin-sub { margin: 28px 0 12px; font-size: .75rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.tag { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.tag li { padding: 7px 14px; border: 1px solid color-mix(in srgb, var(--bruno) 35%, transparent); border-radius: 999px; font-size: .9375rem; }
+.itin--1 .tag li { border-color: var(--terracotta-scuro); }
+.itin--2 .tag li { border-color: var(--salvia-scuro); }
+.itin-pdf { margin-top: 32px; }
+.itin-qr { margin: 12px 0 0; font-size: .875rem; color: var(--muted); max-width: 34ch; }
+.itin--1 .btn-vino { background: var(--terracotta-profondo); border-color: var(--terracotta-profondo); }
+.itin--1 .btn-vino:hover { background: var(--bruno); border-color: var(--bruno); }
+.tappe { counter-reset: tappa; margin: 0; padding: 0; list-style: none; }
+.tappa { counter-increment: tappa; position: relative; padding: 0 0 26px 52px; }
+.tappa::before { content: counter(tappa); position: absolute; left: 0; top: 0; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1.5px solid var(--salvia-scuro); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.25rem; line-height: 1; }
+.itin--1 .tappa::before { border-color: var(--terracotta-scuro); }
+.tappa:not(:last-child)::after { content: ''; position: absolute; left: 17px; top: 40px; bottom: 6px; width: 1px; background: color-mix(in srgb, var(--bruno) 25%, transparent); }
+.tappa-nome { margin: 0 0 4px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 1.625rem; line-height: 1.15; }
+.tappa-txt { margin: 0; max-width: 56ch; }
+.percorso { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 12px 0 0; }
+.percorso div { display: block; }
+.percorso dt { font-size: .6875rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.percorso dd { margin: 0; font-weight: 600; }
+.tappa-link { display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 10px 0 0; font-size: .9375rem; }
+.tappa-link a { font-weight: 600; }
+.tappa-link:empty { display: none; }
+.assaggi { margin-top: 8px; padding: 18px 20px; background: color-mix(in srgb, var(--avorio) 70%, transparent); border-left: 3px solid var(--terracotta); max-width: 60ch; }
+.assaggi .itin-sub { margin-top: 0; }
+.assaggi p { margin: 0; }
+
+.schede { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin: 36px 0 0; padding: 0; list-style: none; }
+.scheda { display: flex; flex-direction: column; padding: 24px 22px 22px; color: var(--avorio); background: var(--salvia-profondo); }
+.scheda--borgo { background: var(--bruno); }
+.scheda--cultura { background: var(--terracotta-profondo); }
+.scheda--natura { background: var(--salvia-profondo); }
+.scheda--trekking { background: color-mix(in srgb, var(--salvia-profondo) 80%, var(--bruno)); }
+.scheda-cat { margin: 0 0 8px; font-size: .6875rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--pietra); }
+.scheda-nome { margin: 0 0 8px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 1.75rem; line-height: 1.1; }
+.scheda-txt { margin: 0; font-size: .9375rem; line-height: 1.55; flex: 1; }
+.scheda-auto { margin: 10px 0 0; font-size: .875rem; color: var(--pietra); }
+.scheda-link { margin-top: 18px; align-self: flex-start; color: var(--avorio); font-weight: 600; font-size: .875rem; letter-spacing: .06em; text-transform: uppercase; text-underline-offset: 5px; }
+.scheda-link:hover { color: var(--bianco); }
+.mappa-box { display: flex; flex-direction: column; gap: 20px; padding-top: 40px; border-top: 1px solid var(--linea); }
+
 /* comparsa allo scorrere (solo dove il browser supporta le scroll-driven animations):
    dissolvenza, piccolo movimento verticale, scala appena accennata. Su Firefox restano ferme e visibili. */
 @supports (animation-timeline: view()) {
@@ -357,6 +474,7 @@ img { max-width: 100%; height: auto; display: block; }
   @keyframes entraImg { from { opacity: .15; transform: translateY(22px) scale(1.05) } to { opacity: 1; transform: none } }
   .h2, .intro-valle .lead, .piscina .eyebrow { animation: entraTesto linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
   @keyframes entraTesto { from { opacity: 0; transform: translateY(18px) } to { opacity: 1; transform: none } }
+  .tl-testo, .tappa, .scheda { animation: entraTesto linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
   .tile { animation: entraTile linear both; animation-timeline: view(); animation-range: entry 0% entry 80%; }
   @keyframes entraTile { from { opacity: .2; transform: translateY(16px) } to { opacity: 1; transform: none } }
 }
@@ -375,7 +493,6 @@ img { max-width: 100%; height: auto; display: block; }
   .testata-pag .h1 { font-size: 4.25rem; }
   .servizi { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .tile { padding: 28px 22px; min-height: 190px; }
-  .luoghi { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 32px 20px; }
   .onesta { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .foot-in { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .rec { padding: 56px; }
@@ -395,6 +512,15 @@ img { max-width: 100%; height: auto; display: block; }
   .valle.inverso > li:nth-child(1) { margin-top: 48px; }
   .valle.inverso > li:nth-child(2) { margin-top: 0; }
   .valle.inverso > li:nth-child(3) { margin-top: 72px; }
+  .itin-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+  .itin-card--2 { margin-top: 56px; }
+  .masonry { column-count: 3; column-gap: 14px; }
+  .mas { margin-bottom: 14px; }
+  .apertura { min-height: 70svh; }
+  .apertura .h1 { font-size: 5rem; }
+  .schede { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .itin { padding: 96px 0; }
+  .mappa-box { flex-direction: row; justify-content: space-between; align-items: center; }
   .mosaico { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 40px 32px; align-items: start; }
   .mosaico > .stanza:nth-child(1) { grid-column: 1 / 8; grid-row: 1 / 3; }
   .mosaico > .stanza:nth-child(2) { grid-column: 8 / 13; grid-row: 1; }
@@ -416,6 +542,25 @@ img { max-width: 100%; height: auto; display: block; }
   .contatti { display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; }
   .contatti .ctas { margin-top: 0; justify-content: flex-end; }
   .griglia { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .masonry { column-count: 4; }
+  .mas.grande a { aspect-ratio: 21/9; }
+  .apertura .h1 { font-size: 6.5rem; }
+  .storia-valle { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0 36px; }
+  .storia-valle .h2 { grid-column: 1 / 5; }
+  .storia-valle .storia-testo { grid-column: 5 / 13; }
+  .itin-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0 48px; }
+  .itin-intro { grid-column: 1 / 6; }
+  .itin-tappe { grid-column: 6 / 13; padding-top: 12px; }
+  .schede { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .tl { max-width: none; padding-left: 0; margin-top: 72px; }
+  .tl::before { left: 50%; }
+  .tl-voce { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 88px; align-items: center; padding-bottom: 96px; }
+  .tl-punto { left: 50%; top: 50%; margin: -8px 0 0 -8px; }
+  .tl-voce:nth-child(even) .tl-testo { order: 2; }
+  .tl-voce:nth-child(even) .tl-foto { order: 1; }
+  .tl-voce:nth-child(odd) .tl-testo { text-align: right; justify-self: end; }
+  .tl-voce:nth-child(odd) .tl-testo .tl-p, .tl-voce:nth-child(odd) .tl-testo .tl-nota { margin-left: auto; }
+  .tl-voce:nth-child(odd) .tl-nota { border-left: 0; padding-left: 0; border-right: 2px solid var(--terracotta); padding-right: 14px; }
   .piscina-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0 36px; padding-top: 72px; }
   .piscina-grid > div:first-child { grid-column: 1 / 7; }
   .piscina-grid > .foto-duo { grid-column: 7 / 13; padding-left: 36px; }

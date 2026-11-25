@@ -1,8 +1,7 @@
 ---
-seoTitolo: Alentours – Que faire dans le Val di Chio et la Valdichiana | Residenza Conti
-descrizione: Castiglion Fiorentino, Montecchio, Cortone, Arezzo et la Valdichiana. Villages, vin et bonne cuisine à deux pas de Residenza Conti.
-titolo: Alentours
-intro: Une vallée peu connue, pratique pour visiter la région. Le jour, villages, vin et bonne cuisine ; le soir, retour au jardin ou à la piscine.
+seoTitolo: "Alentours – Guide du Val di Chio et de la Valdichiana | Residenza Conti"
+descrizione: "Un guide du Val di Chio : l'histoire de la vallée, deux itinéraires (saveurs et villages, nature et mouvement) et les lieux à ne pas manquer autour de Castiglion Fiorentino, Cortone et Arezzo."
+titolo: "Une vallée à découvrir."
+intro: "Entre villages anciens, paysages, sentiers et traditions de la campagne toscane."
+guida: {"storiaTitolo": "L'histoire de la vallée", "storia": ["Le Val di Chio s'ouvre juste après Castiglion Fiorentino. Le Monte Castiglion Maggio le ferme à l'ouest ; à l'est, une crête le sépare, par le col de la Montanina, de la vallée du Nestore, affluent du Tibre.", "Pendant des siècles, ce fut une terre de passage : le long de la route reliant la Toscane à l'Adriatique, des hospices pour voyageurs furent fondés, et de petits villages se développèrent autour de certains d'entre eux, comme Polvano, Santo Stefano et Pieve di Chio. D'autres naquirent comme châteaux de défense, de Mammi à Tuori, de Castel d'Ernia à la Montanina, ou comme anciennes villas agricoles, comme Santa Lucia, Collesecco et Pergognano.", "L'eau a toujours compté ici. Les nombreuses sources ont nourri un ancien culte des eaux, devenu plus tard dévotion à la Madonna del Latte, et elles ont fait tourner les moulins : les noms Mulin Nuovo, Mulino Bianco et Mulino dello Zoppo jalonnent encore le sentier des anciens moulins.", "Aujourd'hui, le paysage est fait d'oliveraies, qui donnent une huile pressée à froid dans les moulins de la région, et de collines à parcourir à pied ou à vélo."], "itinerariTitolo": "Deux itinéraires", "itinerariIntro": "Deux journées très différentes, à vivre sans hâte. Chaque itinéraire se télécharge en PDF, à emporter avec soi.", "nonPerdereTitolo": "À ne pas manquer", "nonPerdereIntro": "Les lieux par où commencer pour découvrir la région.", "mappaTitolo": "La région sur la carte", "mappaTesto": "Pour voir où nous sommes et où se trouvent les lieux, ouvrez la carte. Nous ne chargeons pas de cartes tierces sur cette page : elle ne s'ouvre que si vous cliquez.", "mappaLink": "Ouvrir la région dans Google Maps", "qrNota": "Dans le PDF, chaque lieu a un QR code qui ouvre la carte."}
 ---
-
-[À FOURNIR : que faire – vin, cuisine, promenades, événements]

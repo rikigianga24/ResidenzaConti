@@ -1,10 +1,340 @@
 {
-  "_nota": "Tempi in auto e descrizioni: [DA FORNIRE / da verificare]. Foto: solo foto proprie o con licenza.",
-  "luoghi": [
-    { "id": "castiglion-fiorentino", "nome": "Castiglion Fiorentino", "minutiAuto": null, "descrizione": { "it": "", "en": "", "de": "", "fr": "" } },
-    { "id": "montecchio", "nome": "Montecchio", "minutiAuto": null, "descrizione": { "it": "", "en": "", "de": "", "fr": "" } },
-    { "id": "cortona", "nome": { "it": "Cortona", "en": "Cortona", "de": "Cortona", "fr": "Cortone" }, "minutiAuto": null, "descrizione": { "it": "", "en": "", "de": "", "fr": "" } },
-    { "id": "arezzo", "nome": "Arezzo", "minutiAuto": null, "descrizione": { "it": "", "en": "", "de": "", "fr": "" } },
-    { "id": "valdichiana", "nome": "Valdichiana", "minutiAuto": null, "descrizione": { "it": "", "en": "", "de": "", "fr": "" } }
+  "_nota": "Guida dei dintorni. Fonti verificate: visitvaldichiana.it, uffizi.it/terredegliuffizi, rondaghibellina-trail.com (25/11/2026). Campi null = non verificato: non vanno inventati (lunghezze, dislivelli, tempi in auto, tracce). Foto: solo proprie o con licenza.",
+  "schede": [
+    {
+      "id": "castiglion-fiorentino",
+      "nome": "Castiglion Fiorentino",
+      "categoria": "borgo",
+      "minutiAuto": null,
+      "mappa": "Castiglion Fiorentino, Arezzo",
+      "descrizione": {
+        "it": "Borgo medievale su un colle della Valdichiana, con mura duecentesche e un centro storico dominato dalla Torre del Cassero. Anche il Rinascimento ha lasciato il segno, a partire dalle Logge del Vasari.",
+        "en": "A medieval hill town in the Valdichiana, with thirteenth-century walls and a historic centre dominated by the Cassero tower. The Renaissance left its mark here too, starting with Vasari's loggia.",
+        "de": "Mittelalterliches Hügelstädtchen in der Valdichiana, mit Mauern aus dem 13. Jahrhundert und einem Zentrum, das vom Turm des Cassero überragt wird. Auch die Renaissance hat Spuren hinterlassen, allen voran die Loggia von Vasari.",
+        "fr": "Village médiéval perché sur une colline de la Valdichiana, avec des remparts du XIIIe siècle et un centre historique dominé par la tour du Cassero. La Renaissance y a aussi laissé sa marque, à commencer par la loggia de Vasari."
+      }
+    },
+    {
+      "id": "montecchio-vesponi",
+      "nome": {
+        "it": "Castello di Montecchio Vesponi",
+        "en": "Montecchio Vesponi Castle",
+        "de": "Burg Montecchio Vesponi",
+        "fr": "Château de Montecchio Vesponi"
+      },
+      "categoria": "cultura",
+      "minutiAuto": null,
+      "mappa": "Castello di Montecchio Vesponi, Castiglion Fiorentino",
+      "descrizione": {
+        "it": "Fortezza privata all'ingresso della Val di Chio, lungo il sentiero che porta nella valle. Fu la dimora del capitano di ventura Giovanni Acuto. Prima di andare, verificate se e quando è visitabile.",
+        "en": "A private fortress at the entrance to the Val di Chio, along the path into the valley. It was once the home of the mercenary captain Giovanni Acuto (John Hawkwood). Check beforehand whether and when it can be visited.",
+        "de": "Private Festung am Eingang des Val di Chio, am Weg ins Tal. Sie war der Wohnsitz des Söldnerführers Giovanni Acuto (John Hawkwood). Bitte vorher klären, ob und wann eine Besichtigung möglich ist.",
+        "fr": "Forteresse privée à l'entrée du Val di Chio, sur le chemin qui mène dans la vallée. Elle fut la demeure du condottiere Giovanni Acuto (John Hawkwood). Avant d'y aller, vérifiez si et quand elle se visite."
+      }
+    },
+    {
+      "id": "cortona",
+      "nome": {
+        "it": "Cortona",
+        "en": "Cortona",
+        "de": "Cortona",
+        "fr": "Cortone"
+      },
+      "categoria": "borgo",
+      "minutiAuto": null,
+      "mappa": "Cortona, Arezzo",
+      "descrizione": {
+        "it": "Sulla collina: Piazza della Repubblica con il Palazzo Comunale duecentesco, il MAEC con il Lampadario Etrusco e la Tabula Cortonensis, la Fortezza del Girifalco con il suo parco di ulivi.",
+        "en": "On the hillside: Piazza della Repubblica with its thirteenth-century town hall, the MAEC museum with the Etruscan Lamp and the Tabula Cortonensis, and the Girifalco Fortress with its olive park.",
+        "de": "Auf dem Hügel: die Piazza della Repubblica mit dem Rathaus aus dem 13. Jahrhundert, das MAEC mit dem Etruskischen Leuchter und der Tabula Cortonensis und die Festung Girifalco mit ihrem Olivenpark.",
+        "fr": "Sur la colline : la Piazza della Repubblica avec son palais communal du XIIIe siècle, le MAEC avec le Lustre étrusque et la Tabula Cortonensis, la forteresse du Girifalco et son parc d'oliviers."
+      }
+    },
+    {
+      "id": "arezzo",
+      "nome": "Arezzo",
+      "categoria": "cultura",
+      "minutiAuto": null,
+      "mappa": "Arezzo",
+      "descrizione": {
+        "it": "Il capoluogo della provincia, tra le città storiche della zona: una gita fuori dalla valle, da dedicare a una giornata a parte.",
+        "en": "The provincial capital, one of the historic cities of the area: a trip beyond the valley, worth a day of its own.",
+        "de": "Die Provinzhauptstadt, eine der historischen Städte der Gegend: ein Ausflug über das Tal hinaus, der einen eigenen Tag verdient.",
+        "fr": "Le chef-lieu de la province, l'une des villes historiques de la région : une excursion hors de la vallée, à consacrer à une journée entière."
+      }
+    },
+    {
+      "id": "parco-del-cilone",
+      "nome": {
+        "it": "Parco del Cilone",
+        "en": "Cilone Park",
+        "de": "Cilone-Park",
+        "fr": "Parc du Cilone"
+      },
+      "categoria": "natura",
+      "minutiAuto": null,
+      "mappa": "Parco del Cilone, Castiglion Fiorentino",
+      "descrizione": {
+        "it": "Il parco lungo il corso del Cilone, attraversato dal percorso degli Antichi Mulini: un luogo da vivere a piedi, senza fretta.",
+        "en": "The park along the course of the Cilone, crossed by the Ancient Mills trail: a place to enjoy on foot, without hurry.",
+        "de": "Der Park entlang des Cilone, den der Weg der alten Mühlen durchquert: ein Ort, den man zu Fuß und ohne Eile erleben sollte.",
+        "fr": "Le parc qui longe le cours du Cilone, traversé par le sentier des anciens moulins : un lieu à parcourir à pied, sans se presser."
+      }
+    },
+    {
+      "id": "antichi-mulini",
+      "nome": {
+        "it": "Percorso degli Antichi Mulini",
+        "en": "Ancient Mills Trail",
+        "de": "Weg der alten Mühlen",
+        "fr": "Sentier des anciens moulins"
+      },
+      "categoria": "trekking",
+      "minutiAuto": null,
+      "mappa": "43.340569,11.842158",
+      "descrizione": {
+        "it": "Un trekking facile di circa 10 km, con circa 35 m di dislivello, che segue il corso del Cilone. Lungo il cammino i nomi dei luoghi ricordano i mulini: Mulin Nuovo, Mulino Bianco, Mulino dello Zoppo.",
+        "en": "An easy hike of about 10 km with roughly 35 m of elevation gain, following the course of the Cilone. Along the way, place names recall the mills: Mulin Nuovo, Mulino Bianco, Mulino dello Zoppo.",
+        "de": "Eine leichte Wanderung von etwa 10 km mit rund 35 Höhenmetern, die dem Lauf des Cilone folgt. Unterwegs erinnern Ortsnamen an die Mühlen: Mulin Nuovo, Mulino Bianco, Mulino dello Zoppo.",
+        "fr": "Une randonnée facile d'environ 10 km, avec environ 35 m de dénivelé, qui suit le cours du Cilone. En chemin, les noms de lieux rappellent les moulins : Mulin Nuovo, Mulino Bianco, Mulino dello Zoppo."
+      }
+    },
+    {
+      "id": "monte-castiglion-maggio",
+      "nome": "Monte Castiglion Maggio",
+      "categoria": "natura",
+      "minutiAuto": null,
+      "mappa": "Monte Castiglion Maggio, Castiglion Fiorentino",
+      "descrizione": {
+        "it": "Il monte che delimita a ovest la Val di Chio: un riferimento per capire la forma della valle.",
+        "en": "The mountain that closes the Val di Chio to the west: a landmark for understanding the shape of the valley.",
+        "de": "Der Berg, der das Val di Chio im Westen begrenzt: ein Orientierungspunkt, um die Form des Tals zu verstehen.",
+        "fr": "La montagne qui ferme le Val di Chio à l'ouest : un repère pour comprendre la forme de la vallée."
+      }
+    }
+  ],
+  "itinerari": [
+    {
+      "id": "sapori-e-borghi",
+      "numero": 1,
+      "foto": "casa/05-viale-cipressi",
+      "tono": "terracotta",
+      "pdf": {
+        "it": "/itinerari/01-sapori-e-borghi-it.pdf",
+        "en": "/itinerari/01-flavours-and-villages-en.pdf",
+        "de": "/itinerari/01-genuss-und-doerfer-de.pdf",
+        "fr": "/itinerari/01-saveurs-et-villages-fr.pdf"
+      },
+      "titolo": {
+        "it": "Sapori e borghi",
+        "en": "Flavours and villages",
+        "de": "Genuss und Dörfer",
+        "fr": "Saveurs et villages"
+      },
+      "descrizione": {
+        "it": "Una giornata senza fretta tra piccoli borghi, cucina toscana, prodotti locali e panorami suggestivi.",
+        "en": "An unhurried day among small villages, Tuscan cooking, local produce and evocative views.",
+        "de": "Ein Tag ohne Eile zwischen kleinen Dörfern, toskanischer Küche, lokalen Produkten und stimmungsvollen Ausblicken.",
+        "fr": "Une journée sans hâte entre petits villages, cuisine toscane, produits locaux et panoramas envoûtants."
+      },
+      "ideale": {
+        "it": [
+          "Borghi storici",
+          "Cucina tipica",
+          "Prodotti locali",
+          "Paesaggi",
+          "Passeggiate tranquille",
+          "Cultura e tradizioni"
+        ],
+        "en": [
+          "Historic villages",
+          "Local cuisine",
+          "Local produce",
+          "Landscapes",
+          "Easy strolls",
+          "Culture and traditions"
+        ],
+        "de": [
+          "Historische Dörfer",
+          "Regionale Küche",
+          "Lokale Produkte",
+          "Landschaften",
+          "Gemütliche Spaziergänge",
+          "Kultur und Traditionen"
+        ],
+        "fr": [
+          "Villages historiques",
+          "Cuisine du terroir",
+          "Produits locaux",
+          "Paysages",
+          "Promenades tranquilles",
+          "Culture et traditions"
+        ]
+      },
+      "tappe": [
+        {
+          "scheda": "castiglion-fiorentino"
+        },
+        {
+          "nome": {
+            "it": "Logge Vasariane e Cassero",
+            "en": "Vasari Loggia and the Cassero",
+            "de": "Vasari-Loggia und Cassero",
+            "fr": "Loggia de Vasari et Cassero"
+          },
+          "mappa": "Logge Vasariane, Castiglion Fiorentino",
+          "testo": {
+            "it": "Le Logge, costruite nel 1513 e legate al nome di Giorgio Vasari, si affacciano sulla valle. Il Cassero occupa la parte più alta del paese: dalla torre la vista arriva fino alla Val di Chio.",
+            "en": "The loggia, built in 1513 and linked to the name of Giorgio Vasari, looks out over the valley. The Cassero occupies the highest part of the town: from the tower the view reaches the Val di Chio.",
+            "de": "Die 1513 erbaute Loggia, mit dem Namen Giorgio Vasaris verbunden, öffnet sich zum Tal. Der Cassero nimmt den höchsten Teil des Ortes ein: vom Turm reicht der Blick bis ins Val di Chio.",
+            "fr": "La loggia, construite en 1513 et liée au nom de Giorgio Vasari, s'ouvre sur la vallée. Le Cassero occupe la partie la plus haute du village : depuis la tour, la vue porte jusqu'au Val di Chio."
+          }
+        },
+        {
+          "scheda": "montecchio-vesponi"
+        },
+        {
+          "scheda": "cortona"
+        },
+        {
+          "nome": {
+            "it": "Rientro nella Val di Chio",
+            "en": "Back to the Val di Chio",
+            "de": "Zurück ins Val di Chio",
+            "fr": "Retour au Val di Chio"
+          },
+          "mappa": null,
+          "testo": {
+            "it": "La valle si apre appena oltre Castiglion Fiorentino: si rientra con calma, e la sera ci si ferma in giardino o in piscina.",
+            "en": "The valley opens just beyond Castiglion Fiorentino: you head back unhurried, and spend the evening in the garden or by the pool.",
+            "de": "Das Tal beginnt gleich hinter Castiglion Fiorentino: man kehrt ohne Eile zurück und verbringt den Abend im Garten oder am Pool.",
+            "fr": "La vallée s'ouvre juste après Castiglion Fiorentino : on rentre sans se presser, et le soir on reste au jardin ou à la piscine."
+          }
+        }
+      ],
+      "assaggi": {
+        "titolo": {
+          "it": "Da assaggiare",
+          "en": "To taste",
+          "de": "Zum Probieren",
+          "fr": "À goûter"
+        },
+        "testo": {
+          "it": "Il pecorino toscano DOP, fresco o stagionato, con pane sciocco, miele e confetture; l'olio extravergine, per cui la Val di Chio è nota (franto a freddo nei frantoi della zona); e altre specialità della Valdichiana, come la Chianina e l'aglione.",
+          "en": "Tuscan pecorino DOP, fresh or aged, with unsalted bread, honey and preserves; extra virgin olive oil, for which the Val di Chio is known (cold-pressed in the local mills); and other Valdichiana specialities, such as Chianina beef and aglione.",
+          "de": "Toskanischer Pecorino DOP, frisch oder gereift, mit ungesalzenem Brot, Honig und Konfitüren; das native Olivenöl extra, für das das Val di Chio bekannt ist (kalt gepresst in den örtlichen Ölmühlen); und weitere Spezialitäten der Valdichiana, etwa Chianina-Rind und Aglione.",
+          "fr": "Le pecorino toscan DOP, frais ou affiné, avec du pain sans sel, du miel et des confitures ; l'huile d'olive extra vierge, dont le Val di Chio est réputé (pressée à froid dans les moulins de la région) ; et d'autres spécialités de la Valdichiana, comme la Chianina et l'aglione."
+        }
+      }
+    },
+    {
+      "id": "natura-e-movimento",
+      "numero": 2,
+      "foto": "giardino/09-aiuola",
+      "tono": "salvia",
+      "pdf": {
+        "it": "/itinerari/02-natura-e-movimento-it.pdf",
+        "en": "/itinerari/02-nature-and-movement-en.pdf",
+        "de": "/itinerari/02-natur-und-bewegung-de.pdf",
+        "fr": "/itinerari/02-nature-et-mouvement-fr.pdf"
+      },
+      "titolo": {
+        "it": "Natura e movimento",
+        "en": "Nature and movement",
+        "de": "Natur und Bewegung",
+        "fr": "Nature et mouvement"
+      },
+      "descrizione": {
+        "it": "Sentieri, colline e panorami: scopri la Val di Chio a piedi o in bicicletta.",
+        "en": "Trails, hills and views: discover the Val di Chio on foot or by bike.",
+        "de": "Pfade, Hügel und Ausblicke: entdecken Sie das Val di Chio zu Fuß oder mit dem Fahrrad.",
+        "fr": "Sentiers, collines et panoramas : découvrez le Val di Chio à pied ou à vélo."
+      },
+      "ideale": {
+        "it": [
+          "Trekking",
+          "Passeggiate",
+          "Bicicletta",
+          "MTB",
+          "Natura e fotografia"
+        ],
+        "en": [
+          "Hiking",
+          "Walks",
+          "Cycling",
+          "MTB",
+          "Nature and photography"
+        ],
+        "de": [
+          "Wandern",
+          "Spaziergänge",
+          "Radfahren",
+          "MTB",
+          "Natur und Fotografie"
+        ],
+        "fr": [
+          "Randonnée",
+          "Promenades",
+          "Vélo",
+          "VTT",
+          "Nature et photographie"
+        ]
+      },
+      "tappe": [
+        {
+          "scheda": "antichi-mulini",
+          "percorso": {
+            "lunghezza": "≈ 10 km",
+            "dislivello": "≈ 35 m",
+            "difficolta": {
+              "it": "Facile",
+              "en": "Easy",
+              "de": "Leicht",
+              "fr": "Facile"
+            },
+            "durata": null,
+            "tipologia": {
+              "it": "Trekking, anche in E-bike",
+              "en": "Hiking, also by e-bike",
+              "de": "Wandern, auch mit E-Bike",
+              "fr": "Randonnée, aussi à vélo électrique"
+            },
+            "partenza": null,
+            "traccia": "https://www.visitvaldichiana.it/esplora/trekking-tra-gli-antichi-mulini-della-val-di-chio/"
+          }
+        },
+        {
+          "scheda": "parco-del-cilone"
+        },
+        {
+          "nome": {
+            "it": "Sentiero degli Olivi",
+            "en": "Olive Trail",
+            "de": "Olivenpfad",
+            "fr": "Sentier des oliviers"
+          },
+          "mappa": "Sentiero degli Olivi, Castiglion Fiorentino",
+          "testo": {
+            "it": "Gli oliveti sono uno dei tratti più riconoscibili del paesaggio della Val di Chio.",
+            "en": "Olive groves are one of the most recognisable features of the Val di Chio landscape.",
+            "de": "Olivenhaine gehören zu den markantesten Merkmalen der Landschaft des Val di Chio.",
+            "fr": "Les oliveraies sont l'un des traits les plus reconnaissables du paysage du Val di Chio."
+          }
+        },
+        {
+          "nome": {
+            "it": "Santa Cristina e Taragnano",
+            "en": "Santa Cristina and Taragnano",
+            "de": "Santa Cristina und Taragnano",
+            "fr": "Santa Cristina et Taragnano"
+          },
+          "mappa": "Santa Cristina Taragnano, Castiglion Fiorentino",
+          "testo": null
+        },
+        {
+          "scheda": "monte-castiglion-maggio"
+        }
+      ]
+    }
   ]
 }

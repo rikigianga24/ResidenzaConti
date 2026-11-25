@@ -5,12 +5,13 @@ import type { Lingua } from '../i18n/lingue';
 interface Props { lang: Lingua }
 const t = useT(Astro.props.lang);
 ---
-<dialog class="lb" aria-label={t('pag.galleria')}>
+<dialog class="lb" aria-label={t('pag.galleria')} data-di={t('galleria.di')}>
   <button type="button" class="lb-x" aria-label={t('lightbox.chiudi')}>×</button>
   <button type="button" class="lb-p" aria-label={t('lightbox.prec')}>‹</button>
   <figure>
     <img src="" alt="" />
     <figcaption></figcaption>
+    <p class="lb-n" aria-hidden="true"></p>
   </figure>
   <button type="button" class="lb-s" aria-label={t('lightbox.succ')}>›</button>
 </dialog>

@@ -5,7 +5,11 @@ export function avviaLightbox(): void {
   if (!dialogo || typeof dialogo.showModal !== 'function') return;
   const img = dialogo.querySelector<HTMLImageElement>('img')!;
   const didascalia = dialogo.querySelector<HTMLElement>('figcaption')!;
-  const link = Array.from(document.querySelectorAll<HTMLAnchorElement>('a[data-lightbox]'));
+  const contatore = dialogo.querySelector<HTMLElement>('.lb-n')!;
+  const tutti = Array.from(document.querySelectorAll<HTMLAnchorElement>('a[data-lightbox]'));
+  // solo le foto visibili (i filtri della galleria nascondono le altre)
+  let link = tutti;
+  const visibili = () => tutti.filter((a) => !a.closest('[hidden]'));
   let corrente = 0;
   let ultimoFocus: HTMLElement | null = null;
 
@@ -17,6 +21,7 @@ export function avviaLightbox(): void {
       img.src = a.href;
       img.alt = alt;
       didascalia.textContent = alt;
+      contatore.textContent = `${corrente + 1} ${di} ${link.length}`;
       img.classList.remove('cambia');
     };
     if (animato) {
@@ -28,13 +33,15 @@ export function avviaLightbox(): void {
     }
   };
 
-  link.forEach((a, i) => {
+  const di = dialogo.dataset.di ?? '/';
+  tutti.forEach((a) => {
     a.addEventListener('click', (e) => {
       // clic normale: lightbox; clic con tasto modificatore: comportamento del browser
       if (e.metaKey || e.ctrlKey || e.shiftKey) return;
       e.preventDefault();
       ultimoFocus = a;
-      mostra(i, false);
+      link = visibili();
+      mostra(link.indexOf(a), false);
       dialogo.showModal();
     });
   });

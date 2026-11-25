@@ -1,0 +1,39 @@
+---
+// Card fotografica editoriale: la foto riempie tutta la card e il testo sta in un pannello
+// leggermente trasparente in basso (etichetta di categoria, titolo in Cormorant, descrizione in DM Sans).
+// Senza foto diventa una card di solo testo, senza segnaposto. Con href l'intera card è un link.
+import Foto from './Foto.astro';
+import type { Lingua } from '../i18n/lingue';
+
+interface Props {
+  lang: Lingua;
+  foto?: string | null;
+  /** classe del rapporto (r-4-5, r-4-3, r-1-1, ...) */
+  ratio?: string;
+  categoria?: string;
+  titolo: string;
+  testo?: string;
+  /** colore del pannello */
+  tono?: 'bruno' | 'salvia' | 'terracotta';
+  href?: string;
+  sizes?: string;
+  /** testo del link (solo per href): letto dagli screen reader */
+  etichetta?: string;
+  /** numero grande (itinerari) e testo del pulsante, solo con href */
+  numero?: string;
+  cta?: string;
+  class?: string;
+}
+const { lang, foto = null, ratio = 'r-4-3', categoria, titolo, testo, tono = 'bruno', href, sizes, etichetta, numero, cta, class: classe } = Astro.props;
+---
+<figure class={['card entra', ratio, `tono-${tono}`, !foto && 'card--testo', classe].filter(Boolean).join(' ')}>
+  {foto && <div class="img card-img"><Foto id={foto} lang={lang} sizes={sizes} /></div>}
+  <figcaption class="card-pan">
+    {numero && <span class="card-num" aria-hidden="true">{numero}</span>}
+    {categoria && <span class="card-cat">{categoria}</span>}
+    <h3 class="card-tit"><slot name="icona" />{titolo}</h3>
+    {testo && <p class="card-txt">{testo}</p>}
+    {cta && <span class="card-cta" aria-hidden="true">{cta}</span>}
+    {href && <a class="card-link" href={href}><span class="sr">{etichetta ?? titolo}</span></a>}
+  </figcaption>
+</figure>

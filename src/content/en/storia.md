@@ -1,26 +1,9 @@
 ---
-seoTitolo: Our story – A little hunting lodge in Tuscany | Residenza Conti
-descrizione: Residenza Conti was once the Conti family's little hunting lodge. According to oral tradition, its origins go back to Roman times. Cypress avenue, family chapel and a natural spring.
-titolo: Our story
-intro: The building was once the Conti family's little hunting lodge.
+seoTitolo: "Our story – One house, one family, one valley | Residenza Conti"
+descrizione: "The story of Residenza Conti, the Conti family's little hunting lodge: its origins according to oral tradition, the chapel, the spring and the generations who looked after it."
+titolo: "One house, one family, one valley."
+intro: "The story of a place that spans generations."
+timeline: [{"etichetta": "The origins", "titolo": "A hunting lodge and holiday retreat", "testo": "According to stories handed down in the family, the building dates back to Roman times: Roman patricians are said to have owned it as a hunting lodge and holiday house, far from the bustle of Rome. After one of the sacks of Rome, the stories go on, the house became a dwelling.", "nota": "Family oral tradition: not a documented date.", "foto": "casa/02-casa-portico-esterno"}, {"etichetta": "Over the centuries", "titolo": "The chapel and the spring", "testo": "Later the family chapel was built; it is consecrated and stands opposite the portico today. In the woods on the hill a natural spring was found: it was channelled, and to this day the house has a source of natural drinking water.", "nota": "From the family's stories.", "foto": "casa/03-cappella"}, {"etichetta": "The Conti generation", "titolo": "The Conti family", "testo": "For centuries the house was home to the Conti family, known in the valley for Leone Conti, a local landowner. The line ended with Maria Conti, the only daughter.", "foto": "casa/05-viale-cipressi"}, {"etichetta": "Today", "titolo": "A house to look after", "testo": "Today the house is looked after by the Bernardinello and Giangani generation: mother and son. Their aim is to preserve it and bring out its value, and to share it with the people who come to stay.", "foto": "giardino/03-lettini-ulivi"}]
 ---
 
 You arrive along a **cypress avenue**. The consecrated **family chapel** stands right in front of the portico.
-
-## The origins
-
-According to oral tradition, the house was built in Roman times: Roman patricians owned it as a hunting lodge and holiday home, far from the frenzy of Rome.
-
-After one of the sacks of Rome, the house became a dwelling.
-
-## The chapel and the water
-
-The chapel was built later. In the woods on the hill a spring was found: it was channelled, and to this day the house has a natural source of drinking water.
-
-## The Conti family
-
-For centuries the house was lived in by the Conti family, known in the valley for Leone Conti, a landowner of the area. The line ended with Maria Conti, the only daughter.
-
-## Today
-
-The house is now looked after by the Bernardinello and Giangani generation: mother and son.

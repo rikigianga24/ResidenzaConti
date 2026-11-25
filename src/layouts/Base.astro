@@ -22,8 +22,10 @@ interface Props {
   /** dati strutturati schema.org (solo in home) */
   schema?: boolean;
   noindex?: boolean;
+  /** altri dati strutturati schema.org (es. itinerari nella pagina Dintorni) */
+  datiExtra?: Record<string, unknown>;
 }
-const { lang, pagina, seoTitolo, descrizione, fotoOg = 'piscina/01-piscina-ulivi', schema = false, noindex = false } = Astro.props;
+const { lang, pagina, seoTitolo, descrizione, fotoOg = 'piscina/01-piscina-ulivi', schema = false, noindex = false, datiExtra } = Astro.props;
 const t = useT(lang);
 const sito = Astro.site!;
 const canonico = new URL(url(pagina, lang), sito).href;
@@ -101,6 +103,7 @@ const datiStrutturati = schema && {
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     {datiStrutturati && <script type="application/ld+json" set:html={JSON.stringify(datiStrutturati)} />}
+    {datiExtra && <script type="application/ld+json" set:html={JSON.stringify(datiExtra)} />}
   </head>
   <body>
     <div class="rc">

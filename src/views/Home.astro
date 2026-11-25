@@ -6,12 +6,13 @@ import IconaNatura from '../components/IconaNatura.astro';
 import NomeHero from '../components/NomeHero.astro';
 import Servizi from '../components/Servizi.astro';
 import Cipressi from '../components/Cipressi.astro';
+import CardFoto from '../components/CardFoto.astro';
 import BottoniContatto from '../components/BottoniContatto.astro';
 import { url, type Lingua } from '../i18n/lingue';
 import { useT } from '../i18n/ui';
 import { struttura } from '../data/struttura';
 import { esisteFoto } from '../data/foto';
-import { luoghi, nomeLuogo, recensioni, recensioniPerLingua } from '../data/contenuti';
+import { itinerari, recensioni, recensioniPerLingua } from '../data/contenuti';
 
 interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
 const { lang, voce } = Astro.props;
@@ -31,7 +32,7 @@ const carteValle = [
 const fotoStanze = ['casa/07-soggiorno-cucina', 'casa/09-camera-1', null, 'casa/13-camera-2-travi', 'casa/06-soggiorno'];
 // rapporti diversi per ogni foto: una grande, due più piccole, poi le altre (vedi .mosaico in global.css)
 const rapportiStanze = ['r-4-5', 'r-4-3', 'r-4-3', 'r-4-3', 'r-16-9'];
-const rapportiValle = ['r-4-5', 'r-4-3', 'r-1-1'];
+const rapportiValle = ['r-4-5', 'r-1-1', 'r-3-4'];
 const recInEvidenza = recensioniPerLingua(lang)[0];
 ---
 <Base lang={lang} pagina="home" seoTitolo={d.seoTitolo} descrizione={d.descrizione} fotoOg={fotoHero} schema>
@@ -64,9 +65,9 @@ const recInEvidenza = recensioniPerLingua(lang)[0];
       <ul class="valle">
         {valle.punti.map((p, i) => (
           <li class="natura">
-            <div class={`ph entra ${rapportiValle[i]}`}><div class="img"><Foto id={carteValle[i].foto} lang={lang} sizes="(min-width: 1240px) 500px, (min-width: 720px) 40vw, 92vw" /></div></div>
-            <h3><IconaNatura nome={carteValle[i].icona} />{p.titolo}</h3>
-            <p>{p.testo}</p>
+            <CardFoto lang={lang} foto={carteValle[i].foto} ratio={rapportiValle[i]} categoria={t('cat.valle')} titolo={p.titolo} testo={p.testo} tono={i === 1 ? 'salvia' : 'bruno'} sizes="(min-width: 1240px) 500px, (min-width: 720px) 40vw, 92vw">
+              <IconaNatura slot="icona" nome={carteValle[i].icona} />
+            </CardFoto>
           </li>
         ))}
       </ul>
@@ -81,14 +82,7 @@ const recInEvidenza = recensioniPerLingua(lang)[0];
       <ul class="mosaico">
         {casa.stanze.map((testo, i) => (
           <li class="stanza">
-            <figure>
-              <div class={`ph entra ${rapportiStanze[i]}`}>
-                {fotoStanze[i]
-                  ? <div class="img"><Foto id={fotoStanze[i]!} lang={lang} sizes="(min-width: 1040px) 70vw, 92vw" /></div>
-                  : <span class="ph-lbl">[FOTO DA FORNIRE]</span>}
-              </div>
-              <figcaption>{testo}</figcaption>
-            </figure>
+            <CardFoto lang={lang} foto={fotoStanze[i]} ratio={rapportiStanze[i]} categoria={t('cat.casa')} titolo={testo} tono={i % 2 ? 'salvia' : 'bruno'} sizes="(min-width: 1040px) 70vw, 92vw" />
           </li>
         ))}
       </ul>
@@ -109,7 +103,8 @@ const recInEvidenza = recensioniPerLingua(lang)[0];
         <h2 class="h2">{piscina.titolo}</h2>
         <p class="lead">{piscina.testo}</p>
         <ul class="dati">
-          {piscina.dati.map((r) => <li><b>{r.etichetta}</b><span>{r.valore}</span></li>)}
+          {/* i dati ancora da fornire (valore tra parentesi quadre) restano nel .md ma non si mostrano agli ospiti */}
+          {piscina.dati.filter((r) => !r.valore.startsWith('[')).map((r) => <li><b>{r.etichetta}</b><span>{r.valore}</span></li>)}
         </ul>
       </div>
       <div class="foto-duo">
@@ -134,16 +129,13 @@ const recInEvidenza = recensioniPerLingua(lang)[0];
       <Cipressi />
       <ul class="valle inverso">
         <li class="natura">
-          <div class="ph entra r-3-4"><div class="img"><Foto id="casa/05-viale-cipressi" lang={lang} sizes="(min-width: 1240px) 400px, (min-width: 720px) 30vw, 92vw" /></div></div>
-          <h3><IconaNatura nome="viale" />{storia.viale}</h3>
+          <CardFoto lang={lang} foto="casa/05-viale-cipressi" ratio="r-3-4" categoria={t('cat.storia')} titolo={storia.viale} tono="terracotta" sizes="(min-width: 1240px) 400px, (min-width: 720px) 30vw, 92vw"><IconaNatura slot="icona" nome="viale" /></CardFoto>
         </li>
         <li class="natura">
-          <div class="ph entra r-1-1"><div class="img"><Foto id="casa/03-cappella" lang={lang} sizes="(min-width: 1240px) 480px, (min-width: 720px) 36vw, 92vw" /></div></div>
-          <h3><IconaNatura nome="cappella" />{storia.cappella}</h3>
+          <CardFoto lang={lang} foto="casa/03-cappella" ratio="r-1-1" categoria={t('cat.storia')} titolo={storia.cappella} tono="terracotta" sizes="(min-width: 1240px) 480px, (min-width: 720px) 36vw, 92vw"><IconaNatura slot="icona" nome="cappella" /></CardFoto>
         </li>
         <li class="natura">
-          <div class="ph entra r-4-3"><div class="img"><Foto id="casa/02-casa-portico-esterno" lang={lang} sizes="(min-width: 1240px) 600px, (min-width: 720px) 44vw, 92vw" /></div></div>
-          <h3><IconaNatura nome="portico" />{storia.portico}</h3>
+          <CardFoto lang={lang} foto="casa/02-casa-portico-esterno" ratio="r-4-3" categoria={t('cat.storia')} titolo={storia.portico} tono="terracotta" sizes="(min-width: 1240px) 600px, (min-width: 720px) 44vw, 92vw"><IconaNatura slot="icona" nome="portico" /></CardFoto>
         </li>
       </ul>
       <a class="link" href={url('storia', lang)}>{t('link.storia')}</a>
@@ -154,15 +146,25 @@ const recInEvidenza = recensioniPerLingua(lang)[0];
     <div class="wrap">
       <h2 class="h2">{dint.titolo}</h2>
       <p class="lead lead-largo">{dint.testo}</p>
-      <ul class="luoghi">
-        {luoghi.map((l) => (
-          <li class="luogo">
-            <div class="ph r-1-1"><span class="ph-lbl">[FOTO]</span></div>
-            <h3>{nomeLuogo(l, lang)}</h3>
-            <p>{l.minutiAuto ? `${l.minutiAuto} min ${t('auto.tempo')}` : t('foot.daFornire')}</p>
-          </li>
+      <div class="itin-cards">
+        {itinerari.map((it) => (
+          <CardFoto
+            lang={lang}
+            foto={it.foto}
+            ratio="r-4-5"
+            tono={it.tono}
+            numero={String(it.numero).padStart(2, '0')}
+            categoria={t('cat.itinerario')}
+            titolo={it.titolo[lang]}
+            testo={it.descrizione[lang]}
+            cta={t('it.scopri')}
+            href={`${url('dintorni', lang)}#itinerario-${it.numero}`}
+            etichetta={`${t('it.scopri')}: ${it.titolo[lang]}`}
+            sizes="(min-width: 1040px) 560px, 92vw"
+            class={`itin-card itin-card--${it.numero}`}
+          />
         ))}
-      </ul>
+      </div>
       <a class="link" href={url('dintorni', lang)}>{t('link.dintorni')}</a>
     </div>
   </section>

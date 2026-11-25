@@ -1,26 +1,9 @@
 ---
-seoTitolo: La nostra storia – Un piccolo castello di caccia | Residenza Conti
-descrizione: Residenza Conti era il piccolo castello di caccia della famiglia Conti. Da racconti orali, le origini risalgono all'epoca romana. Viale di cipressi, cappella di famiglia e una sorgente d'acqua naturale.
-titolo: La nostra storia
-intro: L'edificio era il piccolo castello di caccia della famiglia Conti.
+seoTitolo: "La nostra storia – Una casa, una famiglia, una valle | Residenza Conti"
+descrizione: "La storia di Residenza Conti, il piccolo castello di caccia della famiglia Conti: le origini secondo la tradizione orale, la cappella, la sorgente e le generazioni che l'hanno custodita."
+titolo: "Una casa, una famiglia, una valle."
+intro: "La storia di un luogo che attraversa generazioni."
+timeline: [{"etichetta": "Le origini", "titolo": "Una casa di caccia e di villeggiatura", "testo": "Secondo i racconti tramandati in famiglia, le origini dell'edificio risalgono all'epoca romana: dei patrizi romani l'avrebbero posseduto come casa di caccia e di vacanza, lontano dalla frenesia di Roma. Dopo uno dei sacchi di Roma, sempre secondo i racconti, la casa divenne un'abitazione.", "nota": "Tradizione orale della famiglia: non è una datazione documentata.", "foto": "casa/02-casa-portico-esterno"}, {"etichetta": "Nel corso dei secoli", "titolo": "La cappella e la sorgente", "testo": "Più tardi fu costruita la cappella di famiglia, consacrata, che oggi sta di fronte al portico. Nel bosco, sulla collina, fu trovata una fonte di acqua sorgiva: venne incanalata e ancora oggi alla casa c'è una sorgente di acqua potabile naturale.", "nota": "Dai racconti di famiglia.", "foto": "casa/03-cappella"}, {"etichetta": "La generazione Conti", "titolo": "La famiglia Conti", "testo": "Per secoli la casa è stata abitata dalla famiglia Conti, nota nella valle per Leone Conti, proprietario terriero della zona. La discendenza si è chiusa con Maria Conti, l'unica figlia femmina.", "foto": "casa/05-viale-cipressi"}, {"etichetta": "Oggi", "titolo": "Una casa da custodire", "testo": "Oggi a mantenere la casa c'è la generazione Bernardinello e Giangani: madre e figlio. Il loro impegno è conservarla e valorizzarla, per farla conoscere a chi viene a trovarci.", "foto": "giardino/03-lettini-ulivi"}]
 ---
 
 Si arriva da un **viale di cipressi**. La **cappella di famiglia**, consacrata, è proprio di fronte al portico.
-
-## Le origini
-
-Da racconti orali si dice che la casa sia stata costruita in epoca romana: dei patrizi romani la possedevano come casa di caccia e di vacanza, lontano dalla frenesia di Roma.
-
-Dopo uno dei sacchi di Roma la casa divenne un'abitazione.
-
-## La cappella e l'acqua
-
-Più tardi fu costruita la cappella. Nel bosco, sulla collina, fu trovata una fonte di acqua sorgiva: venne incanalata e ancora oggi alla casa c'è una sorgente di acqua potabile naturale.
-
-## La famiglia Conti
-
-Per secoli la casa è stata abitata dalla famiglia Conti, nota nella valle per Leone Conti, proprietario terriero della zona. La discendenza si è chiusa con Maria Conti, l'unica figlia femmina.
-
-## Oggi
-
-A mantenere la casa c'è oggi la generazione Bernardinello e Giangani: madre e figlio.
