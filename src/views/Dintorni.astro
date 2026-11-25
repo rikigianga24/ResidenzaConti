@@ -12,11 +12,11 @@ const t = useT(lang);
 ---
 <Testo lang={lang} pagina="dintorni" voce={voce}>
   <div slot="prima">
-    <div class="ph entra vista"><div class="img"><Foto id="giardino/01-vista-valle" lang={lang} sizes="(min-width: 1240px) 1170px, 92vw" /></div></div>
-    <ul class="luoghi" tabindex="0" aria-label={t('scorri.dintorni')}>
+    <div class="ph entra r-16-9"><div class="img"><Foto id="giardino/10-prato-cipressi" lang={lang} sizes="(min-width: 1240px) 1170px, 92vw" /></div></div>
+    <ul class="luoghi">
       {luoghi.map((l) => (
         <li class="luogo">
-          <div class="ph"><span class="ph-lbl">[FOTO]</span></div>
+          <div class="ph r-1-1"><span class="ph-lbl">[FOTO]</span></div>
           <h3>{nomeLuogo(l, lang)}</h3>
           <p>{l.minutiAuto ? `${l.minutiAuto} min ${t('auto.tempo')}` : t('foot.daFornire')}</p>
           {l.descrizione[lang] && <p>{l.descrizione[lang]}</p>}

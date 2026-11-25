@@ -1,6 +1,5 @@
 ---
 import Icona from './Icona.astro';
-import BottoniContatto from './BottoniContatto.astro';
 import { LINGUE, url, type Lingua, type Pagina } from '../i18n/lingue';
 import { useT, nomePagina } from '../i18n/ui';
 
@@ -8,11 +7,13 @@ interface Props { lang: Lingua; pagina: Pagina }
 const { lang, pagina } = Astro.props;
 const t = useT(lang);
 // menu principale su desktop (il resto è nel footer e nel menu su telefono)
-const principali: Pagina[] = ['casa', 'storia', 'dintorni', 'disponibilita'];
+const principali: Pagina[] = ['casa', 'galleria', 'storia', 'dintorni'];
 const tutte: Pagina[] = ['home', 'casa', 'galleria', 'storia', 'dintorni', 'disponibilita', 'recensioni', 'arrivare', 'faq', 'contatti'];
+// in home la testata è trasparente sopra la foto e diventa avorio allo scroll (scripts/header.ts)
+const sullaFoto = pagina === 'home';
 const corrente = (p: Pagina) => (p === pagina ? 'page' : undefined);
 ---
-<header class="hdr">
+<header class={sullaFoto ? 'hdr hdr--hero' : 'hdr'}>
   <div class="wrap hdr-in">
     <a class="brand" href={url('home', lang)}>Residenza Conti</a>
     <nav class="nav" aria-label={t('nav.principale')}>
@@ -33,6 +34,6 @@ const corrente = (p: Pagina) => (p === pagina ? 'page' : undefined);
         </nav>
       </details>
     </div>
-    <BottoniContatto lang={lang} class="hdr-cta" />
+    <div class="hdr-cta"><a class="btn btn-vino" href={url('disponibilita', lang)}>{t('cta.disponibilita')}</a></div>
   </div>
 </header>

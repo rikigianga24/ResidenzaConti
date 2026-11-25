@@ -1,5 +1,6 @@
 ---
 import { render, type CollectionEntry } from 'astro:content';
+import { getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import TestataPagina from '../components/TestataPagina.astro';
 import ChiamataContatti from '../components/ChiamataContatti.astro';
@@ -7,6 +8,7 @@ import Foto from '../components/Foto.astro';
 import { url, type Lingua } from '../i18n/lingue';
 import { useT } from '../i18n/ui';
 import { struttura } from '../data/struttura';
+import Lightbox from '../components/Lightbox.astro';
 import { tutteLeFoto } from '../data/foto';
 
 interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
@@ -14,15 +16,21 @@ const { lang, voce } = Astro.props;
 const d = voce.data;
 const t = useT(lang);
 const { Content } = await render(voce);
-const interni = tutteLeFoto.filter((f) => f.area === 'casa' && /-(soggiorno|cucina|cottura|camera)/.test(f.id));
+const interni = await Promise.all(
+  tutteLeFoto.filter((f) => f.area === 'casa' && /-(soggiorno|cucina|cottura|camera)/.test(f.id)).map(async (f) => ({
+    ...f,
+    // versione grande da aprire nella lightbox
+    grande: (await getImage({ src: f.src, width: Math.min(1800, f.src.width), format: 'webp' })).src,
+  })),
+);
 ---
 <Base lang={lang} pagina="casa" seoTitolo={d.seoTitolo} descrizione={d.descrizione} fotoOg="casa/07-soggiorno-cucina">
   <TestataPagina titolo={d.titolo} intro={d.intro} />
   <section class="sec sec-0">
     <div class="wrap">
-      <ul class="scorri" tabindex="0" aria-label={t('scorri.casa')}>
+      <ul class="griglia griglia-casa">
         {interni.map((f) => (
-          <li class="stanza"><div class="ph"><div class="img"><Foto id={f.id} lang={lang} sizes="(min-width: 1040px) 31vw, (min-width: 720px) 44vw, 78vw" /></div></div></li>
+          <li><a href={f.grande} data-lightbox><Foto id={f.id} lang={lang} sizes="(min-width: 1040px) 25vw, (min-width: 720px) 33vw, 50vw" /></a></li>
         ))}
       </ul>
       <div class="prosa"><Content /></div>
@@ -45,5 +53,6 @@ const interni = tutteLeFoto.filter((f) => f.area === 'casa' && /-(soggiorno|cuci
       <a class="link" href={url('galleria', lang)}>{t('link.galleria')}</a>
     </div>
   </section>
+  <Lightbox lang={lang} />
   <ChiamataContatti lang={lang} />
 </Base>

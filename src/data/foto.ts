@@ -9,9 +9,13 @@ const file = import.meta.glob<{ default: ImageMetadata }>('../assets/foto/*/*.{j
 export type Area = 'casa' | 'giardino' | 'piscina' | 'dintorni' | 'stagioni';
 type Testi = Record<Lingua, string>;
 
+/** Punto della foto da tenere nel ritaglio (object-position): per le foto larghe mostrate in riquadri stretti. */
+export type Pos = 'sx' | 'dx' | 'alto' | 'basso';
+
 interface VoceFoto {
   area: Area;
   alt: Testi;
+  pos?: Pos;
 }
 
 const catalogo: Record<string, VoceFoto> = {
@@ -20,7 +24,7 @@ const catalogo: Record<string, VoceFoto> = {
     en: 'The stone building with its arch, cypress trees and the gravel drive',
     de: 'Das Steingebäude mit dem Bogen, Zypressen und der Schotterzufahrt',
     fr: "Le bâtiment en pierre avec son arche, les cyprès et l'allée de gravier" } },
-  'casa/02-casa-portico-esterno': { area: 'casa', alt: {
+  'casa/02-casa-portico-esterno': { area: 'casa', pos: 'dx', alt: {
     it: 'La casa in pietra con il portico ad arco, sotto il cielo azzurro',
     en: 'The stone house with its arched portico under a blue sky',
     de: 'Das Steinhaus mit dem Bogengang unter blauem Himmel',
@@ -35,7 +39,7 @@ const catalogo: Record<string, VoceFoto> = {
     en: 'The portico with seating, looking out through the brick arch',
     de: 'Der Laubengang mit Sitzplätzen und Blick durch den Ziegelbogen',
     fr: "Le portique avec ses sièges, ouvert sur l'arche en briques" } },
-  'casa/05-viale-cipressi': { area: 'casa', alt: {
+  'casa/05-viale-cipressi': { area: 'casa', pos: 'dx', alt: {
     it: 'Il viale di cipressi tra i prati della valle',
     en: 'The cypress avenue through the meadows of the valley',
     de: 'Die Zypressenallee durch die Wiesen des Tals',
@@ -90,7 +94,7 @@ const catalogo: Record<string, VoceFoto> = {
     en: 'The pool with its wooden deck, among olive trees and hills',
     de: 'Der Pool mit Holzdeck zwischen Olivenbäumen und Hügeln',
     fr: 'La piscine et sa terrasse en bois, entre oliviers et collines' } },
-  'piscina/02-piscina-bordo': { area: 'piscina', alt: {
+  'piscina/02-piscina-bordo': { area: 'piscina', pos: 'basso', alt: {
     it: "L'acqua della piscina vista dal bordo in legno",
     en: 'The pool water seen from the wooden deck',
     de: 'Das Poolwasser vom Holzdeck aus gesehen',
@@ -100,7 +104,7 @@ const catalogo: Record<string, VoceFoto> = {
     en: 'The pool reflecting the sky, surrounded by olive trees',
     de: 'Der Pool spiegelt den Himmel, umgeben von Olivenbäumen',
     fr: 'La piscine reflétant le ciel, entourée d’oliviers' } },
-  'piscina/04-piscina-cipressi': { area: 'piscina', alt: {
+  'piscina/04-piscina-cipressi': { area: 'piscina', pos: 'basso', alt: {
     it: 'La piscina con i cipressi sullo sfondo',
     en: 'The pool with cypress trees in the background',
     de: 'Der Pool mit Zypressen im Hintergrund',
@@ -120,7 +124,7 @@ const catalogo: Record<string, VoceFoto> = {
     en: 'Deck chairs in the shade of the olive trees',
     de: 'Liegestühle im Schatten der Olivenbäume',
     fr: "Des chaises longues à l'ombre des oliviers" } },
-  'giardino/04-amaca': { area: 'giardino', alt: {
+  'giardino/04-amaca': { area: 'giardino', pos: 'dx', alt: {
     it: "L'amaca all'ombra degli alberi",
     en: 'The hammock in the shade of the trees',
     de: 'Die Hängematte im Schatten der Bäume',
@@ -150,7 +154,7 @@ const catalogo: Record<string, VoceFoto> = {
     en: 'A flower bed edged with wood, among the olive trees',
     de: 'Ein mit Holz eingefasstes Blumenbeet zwischen Olivenbäumen',
     fr: 'Un parterre fleuri bordé de bois, parmi les oliviers' } },
-  'giardino/10-prato-cipressi': { area: 'giardino', alt: {
+  'giardino/10-prato-cipressi': { area: 'giardino', pos: 'dx', alt: {
     it: 'Il prato con i cipressi e il bordo del laghetto',
     en: 'The lawn with cypress trees and the edge of the pond',
     de: 'Die Wiese mit Zypressen und dem Rand des Teichs',
@@ -169,6 +173,7 @@ export interface Foto {
   area: Area;
   src: ImageMetadata;
   alt: Testi;
+  pos?: Pos;
 }
 
 /** Tutte le foto del catalogo, nell'ordine dei nomi file. */
@@ -177,7 +182,7 @@ export const tutteLeFoto: Foto[] = Object.entries(file)
     const id = percorso.replace('../assets/foto/', '').replace(/\.[a-z]+$/i, '');
     const voce = catalogo[id];
     if (!voce) throw new Error(`Foto senza voce nel catalogo (src/data/foto.ts): ${id}`);
-    return { id, area: voce.area, src: mod.default, alt: voce.alt };
+    return { id, area: voce.area, src: mod.default, alt: voce.alt, pos: voce.pos };
   })
   .sort((a, b) => a.id.localeCompare(b.id));
 

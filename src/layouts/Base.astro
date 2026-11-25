@@ -85,10 +85,11 @@ const datiStrutturati = schema && {
     {LINGUE.map((l) => <link rel="alternate" hreflang={l} href={new URL(url(pagina, l), sito).href} />)}
     <link rel="alternate" hreflang="x-default" href={new URL(url(pagina, LINGUA_DEFAULT), sito).href} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preload" href="/fonts/fraunces-500.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/parisienne-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/cormorant-garamond-500.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/dm-sans-variable.woff2" as="font" type="font/woff2" crossorigin />
-    <meta name="theme-color" content="#F7F2E5" />
+    <meta name="theme-color" content="#F4F0E7" />
+    {/* senza JavaScript la testata della home resta avorio (non cambia colore allo scroll) */}
+    <noscript><link rel="stylesheet" href="/nojs.css" /></noscript>
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Residenza Conti" />
     <meta property="og:title" content={seoTitolo} />
@@ -111,5 +112,6 @@ const datiStrutturati = schema && {
       <Footer lang={lang} />
       <Dock lang={lang} />
     </div>
+    {pagina === 'home' && <script>import '../scripts/header';</script>}
   </body>
 </html>

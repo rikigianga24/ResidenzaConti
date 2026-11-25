@@ -33,6 +33,15 @@ casa:
     - { titolo: D'estate, testo: "le mura spesse tengono la casa fresca. L'aria condizionata non c'è: meglio dirlo subito." }
     - { titolo: "Animali:", testo: purtroppo non sono ammessi. }
     - { titolo: Noi, testo: "abitiamo al piano di sopra: se vi serve qualcosa, ci trovate." }
+piscina:
+  titolo: "La piscina privata"
+  testo: "La piscina privata è a disposizione degli ospiti, in mezzo al giardino e agli ulivi."
+  dati:
+    - { etichetta: "Dimensioni", valore: "6×3 m" }
+    - { etichetta: "Teli", valore: "forniti" }
+    - { etichetta: "Lettini e ombrelloni", valore: "in giardino" }
+    - { etichetta: "Stagione e orari", valore: "[DA FORNIRE]" }
+    - { etichetta: "Come si usa", valore: "[DA FORNIRE]" }
 fuori:
   titolo: Fuori c'è spazio
   testo: Il giardino, la piscina e gli ulivi sono a vostra disposizione.

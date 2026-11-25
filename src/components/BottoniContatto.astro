@@ -3,6 +3,7 @@
 import Icona from './Icona.astro';
 import { useT } from '../i18n/ui';
 import type { Lingua } from '../i18n/lingue';
+import { url } from '../i18n/lingue';
 import { struttura, linkWhatsApp } from '../data/struttura';
 
 interface Props {
@@ -11,13 +12,16 @@ interface Props {
   lungo?: boolean;
   email?: boolean;
   booking?: boolean;
+  /** solo il pulsante "Disponibilità" (header e barra su telefono) */
+  disp?: boolean | 'breve';
   class?: string;
 }
-const { lang, lungo = false, email = false, booking = false, class: classe = 'ctas' } = Astro.props;
+const { lang, lungo = false, email = false, booking = false, disp = false, class: classe = 'ctas' } = Astro.props;
 const t = useT(lang);
 ---
 <div class={classe}>
-  <a class="btn btn-vino" href={linkWhatsApp(t('wa.messaggio'))}><Icona nome="whatsapp" class="ic ic-wa" />{lungo ? t('cta.whatsappLungo') : t('cta.whatsapp')}</a>
+  {disp && <a class="btn btn-vino" href={url('disponibilita', lang)}>{disp === 'breve' ? t('cta.disponibilitaBreve') : t('cta.disponibilita')}</a>}
+  <a class={disp ? 'btn btn-filo' : 'btn btn-vino'} href={linkWhatsApp(t('wa.messaggio'))}><Icona nome="whatsapp" class="ic ic-wa" />{lungo ? t('cta.whatsappLungo') : t('cta.whatsapp')}</a>
   {!booking && <a class="btn btn-filo" href={`tel:${struttura.telefono}`}><Icona nome="tel" class="ic ic-tel" />{t('cta.chiama')}</a>}
   {email && <a class="btn btn-filo" href={`mailto:${struttura.email}`}><Icona nome="mail" class="ic" />{t('cta.email')}</a>}
   {booking && struttura.bookingUrl && <a class="btn btn-filo" href={struttura.bookingUrl} rel="noopener">{t('cta.booking')}</a>}

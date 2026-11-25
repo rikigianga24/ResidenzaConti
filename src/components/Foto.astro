@@ -11,19 +11,22 @@ interface Props {
   sizes?: string;
   /** true per le foto visibili subito (hero): niente lazy load */
   subito?: boolean;
+  /** foto a tutta larghezza (hero, panorama): aggiunge la versione da 2400px per gli schermi grandi */
+  larga?: boolean;
   class?: string;
 }
-const { id, lang, sizes = '(min-width: 1040px) 33vw, 80vw', subito = false, class: classe } = Astro.props;
+const { id, lang, sizes = '(min-width: 1040px) 33vw, 80vw', subito = false, larga = false, class: classe } = Astro.props;
 const f = foto(id);
+const classi = [classe, f.pos && `pos-${f.pos}`].filter(Boolean).join(' ') || undefined;
 ---
 <Picture
   src={f.src}
   alt={f.alt[lang]}
   formats={['avif', 'webp']}
-  widths={[480, 800, 1200, 1800].filter((w) => w <= f.src.width)}
+  widths={[480, 800, 1200, 1800, ...(larga ? [2400] : [])].filter((w) => w <= f.src.width)}
   sizes={sizes}
   loading={subito ? 'eager' : 'lazy'}
   fetchpriority={subito ? 'high' : 'auto'}
   decoding="async"
-  class={classe}
+  class={classi}
 />
