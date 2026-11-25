@@ -2,7 +2,6 @@
 import type { CollectionEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Foto from '../components/Foto.astro';
-import Icona from '../components/Icona.astro';
 import IconaNatura from '../components/IconaNatura.astro';
 import NomeHero from '../components/NomeHero.astro';
 import Servizi from '../components/Servizi.astro';
@@ -18,11 +17,11 @@ interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
 const { lang, voce } = Astro.props;
 const d = voce.data;
 const t = useT(lang);
-const hero = d.hero!, nastro = d.nastro!, valle = d.valle!, casa = d.casa!, fuori = d.fuori!, storia = d.storia!, dint = d.dintorni!, cont = d.contatti!;
+const hero = d.hero!, nastro = d.nastro!, valle = d.valle!, casa = d.casa!, piscina = d.piscina!, fuori = d.fuori!, storia = d.storia!, dint = d.dintorni!, cont = d.contatti!;
 
-// Foto dell'hero: quella serale con le luci accese, se è stata aggiunta;
-// finché non c'è, la casa vista dal viale.
-const fotoHero = esisteFoto('casa/00-casa-sera') ? 'casa/00-casa-sera' : 'casa/01-casa-e-viale';
+// Foto dell'hero (a tutta larghezza, quindi orizzontale): quella serale con le luci accese,
+// se è stata aggiunta; finché non c'è, il viale di cipressi nella valle.
+const fotoHero = esisteFoto('casa/00-casa-sera') ? 'casa/00-casa-sera' : 'casa/05-viale-cipressi';
 // Le tre carte della valle: natura, passeggiate, rilassamento
 const carteValle = [
   { icona: 'ulivo', foto: 'giardino/06-tramonto-ulivi' },
@@ -30,49 +29,42 @@ const carteValle = [
   { icona: 'amaca', foto: 'giardino/04-amaca' },
 ] as const;
 const fotoStanze = ['casa/07-soggiorno-cucina', 'casa/09-camera-1', null, 'casa/13-camera-2-travi', 'casa/06-soggiorno'];
+// rapporti diversi per ogni foto: una grande, due più piccole, poi le altre (vedi .mosaico in global.css)
+const rapportiStanze = ['r-4-5', 'r-4-3', 'r-4-3', 'r-4-3', 'r-16-9'];
+const rapportiValle = ['r-4-5', 'r-4-3', 'r-1-1'];
 const recInEvidenza = recensioniPerLingua(lang)[0];
 ---
 <Base lang={lang} pagina="home" seoTitolo={d.seoTitolo} descrizione={d.descrizione} fotoOg={fotoHero} schema>
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <p class="eyebrow">{hero.eyebrow}</p>
-        <NomeHero />
-        <p class="sub">{hero.sottotitolo}</p>
-        <BottoniContatto lang={lang} lungo booking={!!struttura.bookingUrl} />
-      </div>
-      <div class="arco-box">
-        <div class="arco">
-          <div class="img"><Foto id={fotoHero} lang={lang} sizes="(min-width: 1040px) 40vw, 92vw" subito /></div>
-        </div>
-        <div class="badge" aria-hidden="true">
-          <svg class="giro" viewBox="0 0 150 150">
-            <defs><path id="cerchio" d="M75 75 m-56 0 a56 56 0 1 1 112 0 a56 56 0 1 1 -112 0"></path></defs>
-            <text font-family="DM Sans, sans-serif" font-size="13.2" font-weight="600" letter-spacing="1.6"><textPath href="#cerchio">{t('badge.giro')}</textPath></text>
-          </svg>
-          <Icona nome="foglia" class="foglia" />
-        </div>
-      </div>
-    </div>
-
-    <div class="nastro" aria-hidden="true">
-      <div class="nastro-in">
-        {[0, 1].map(() => (
-          <ul>{nastro.map((v) => <li>{v}<Icona nome="fogliaNastro" /></li>)}</ul>
-        ))}
+    <div class="hero-foto"><Foto id={fotoHero} lang={lang} sizes="100vw" subito larga /></div>
+    <div class="wrap hero-testo">
+      <p class="eyebrow">{hero.eyebrow}</p>
+      <NomeHero />
+      <p class="sub">{hero.sottotitolo}</p>
+      <div class="ctas">
+        <a class="btn btn-vino" href={url('disponibilita', lang)}>{t('cta.disponibilita')}</a>
+        <a class="btn btn-filo" href={url('casa', lang)}>{t('cta.scopri')}</a>
       </div>
     </div>
   </section>
 
+  <div class="nastro" aria-hidden="true">
+    <ul>{nastro.map((v) => <li>{v}</li>)}</ul>
+  </div>
+
   <section class="sec" id="valle">
     <div class="wrap">
-      <h2 class="h2">{valle.titolo}</h2>
-      <p class="lead">{valle.testo}</p>
-      <div class="ph entra vista"><div class="img"><Foto id="giardino/01-vista-valle" lang={lang} sizes="(min-width: 1240px) 1170px, 92vw" /></div></div>
+      <div class="intro-valle">
+        <div>
+          <h2 class="h2">{valle.titolo}</h2>
+          <p class="lead">{valle.testo}</p>
+        </div>
+        <div class="ph entra r-4-3"><div class="img"><Foto id="giardino/10-prato-cipressi" lang={lang} sizes="(min-width: 1240px) 700px, (min-width: 720px) 58vw, 92vw" /></div></div>
+      </div>
       <ul class="valle">
         {valle.punti.map((p, i) => (
           <li class="natura">
-            <div class="ph entra"><div class="img"><Foto id={carteValle[i].foto} lang={lang} /></div></div>
+            <div class={`ph entra ${rapportiValle[i]}`}><div class="img"><Foto id={carteValle[i].foto} lang={lang} sizes="(min-width: 1240px) 500px, (min-width: 720px) 40vw, 92vw" /></div></div>
             <h3><IconaNatura nome={carteValle[i].icona} />{p.titolo}</h3>
             <p>{p.testo}</p>
           </li>
@@ -82,17 +74,17 @@ const recInEvidenza = recensioniPerLingua(lang)[0];
     </div>
   </section>
 
-  <section class="sec sec-0" id="casa">
+  <section class="sec sec-pietra" id="casa">
     <div class="wrap">
       <h2 class="h2">{casa.titolo}</h2>
       <p class="lead">{casa.testo}</p>
-      <ul class="scorri" tabindex="0" aria-label={t('scorri.casa')}>
+      <ul class="mosaico">
         {casa.stanze.map((testo, i) => (
           <li class="stanza">
             <figure>
-              <div class="ph entra">
+              <div class={`ph entra ${rapportiStanze[i]}`}>
                 {fotoStanze[i]
-                  ? <div class="img"><Foto id={fotoStanze[i]!} lang={lang} sizes="(min-width: 1040px) 31vw, (min-width: 720px) 44vw, 78vw" /></div>
+                  ? <div class="img"><Foto id={fotoStanze[i]!} lang={lang} sizes="(min-width: 1040px) 70vw, 92vw" /></div>
                   : <span class="ph-lbl">[FOTO DA FORNIRE]</span>}
               </div>
               <figcaption>{testo}</figcaption>
@@ -103,11 +95,31 @@ const recInEvidenza = recensioniPerLingua(lang)[0];
       <div class="onesta">
         {casa.onesta.map((o) => <p><b>{o.titolo}</b> {o.testo}</p>)}
       </div>
-      <a class="link" href={url('casa', lang)}>{t('link.tuttoCasa')}</a>
+      <div class="links">
+        <a class="link" href={url('casa', lang)}>{t('link.tuttoCasa')}</a>
+        <a class="link" href={url('galleria', lang)}>{t('link.galleria')}</a>
+      </div>
     </div>
   </section>
 
-  <section class="sec">
+  <section class="piscina" id="piscina">
+    <div class="panorama"><Foto id="piscina/04-piscina-cipressi" lang={lang} sizes="100vw" larga /></div>
+    <div class="wrap piscina-grid">
+      <div>
+        <h2 class="h2">{piscina.titolo}</h2>
+        <p class="lead">{piscina.testo}</p>
+        <ul class="dati">
+          {piscina.dati.map((r) => <li><b>{r.etichetta}</b><span>{r.valore}</span></li>)}
+        </ul>
+      </div>
+      <div class="foto-duo">
+        <div class="ph entra r-3-4"><div class="img"><Foto id="piscina/01-piscina-ulivi" lang={lang} sizes="(min-width: 1040px) 20vw, 46vw" /></div></div>
+        <div class="ph entra r-4-5"><div class="img"><Foto id="piscina/03-piscina-cielo" lang={lang} sizes="(min-width: 1040px) 20vw, 46vw" /></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-0">
     <div class="wrap">
       <h2 class="h2">{fuori.titolo}</h2>
       <p class="lead">{fuori.testo}</p>
@@ -120,17 +132,17 @@ const recInEvidenza = recensioniPerLingua(lang)[0];
       <h2 class="h2">{storia.titolo}</h2>
       <p class="lead lead-largo">{storia.testo}</p>
       <Cipressi />
-      <ul class="valle">
+      <ul class="valle inverso">
         <li class="natura">
-          <div class="ph entra"><div class="img"><Foto id="casa/05-viale-cipressi" lang={lang} /></div></div>
+          <div class="ph entra r-3-4"><div class="img"><Foto id="casa/05-viale-cipressi" lang={lang} sizes="(min-width: 1240px) 400px, (min-width: 720px) 30vw, 92vw" /></div></div>
           <h3><IconaNatura nome="viale" />{storia.viale}</h3>
         </li>
         <li class="natura">
-          <div class="ph entra"><div class="img"><Foto id="casa/03-cappella" lang={lang} /></div></div>
+          <div class="ph entra r-1-1"><div class="img"><Foto id="casa/03-cappella" lang={lang} sizes="(min-width: 1240px) 480px, (min-width: 720px) 36vw, 92vw" /></div></div>
           <h3><IconaNatura nome="cappella" />{storia.cappella}</h3>
         </li>
         <li class="natura">
-          <div class="ph entra"><div class="img"><Foto id="casa/02-casa-portico-esterno" lang={lang} /></div></div>
+          <div class="ph entra r-4-3"><div class="img"><Foto id="casa/02-casa-portico-esterno" lang={lang} sizes="(min-width: 1240px) 600px, (min-width: 720px) 44vw, 92vw" /></div></div>
           <h3><IconaNatura nome="portico" />{storia.portico}</h3>
         </li>
       </ul>
@@ -142,10 +154,10 @@ const recInEvidenza = recensioniPerLingua(lang)[0];
     <div class="wrap">
       <h2 class="h2">{dint.titolo}</h2>
       <p class="lead lead-largo">{dint.testo}</p>
-      <ul class="luoghi" tabindex="0" aria-label={t('scorri.dintorni')}>
+      <ul class="luoghi">
         {luoghi.map((l) => (
           <li class="luogo">
-            <div class="ph"><span class="ph-lbl">[FOTO]</span></div>
+            <div class="ph r-1-1"><span class="ph-lbl">[FOTO]</span></div>
             <h3>{nomeLuogo(l, lang)}</h3>
             <p>{l.minutiAuto ? `${l.minutiAuto} min ${t('auto.tempo')}` : t('foot.daFornire')}</p>
           </li>

@@ -33,6 +33,15 @@ casa:
     - { titolo: Im Sommer, testo: "halten die dicken Mauern das Haus kühl. Eine Klimaanlage gibt es nicht – das sagen wir lieber gleich." }
     - { titolo: "Haustiere:", testo: sind leider nicht erlaubt. }
     - { titolo: Wir, testo: "wohnen im Stockwerk darüber: Wenn Sie etwas brauchen, sind wir da." }
+piscina:
+  titolo: "Der private Pool"
+  testo: "Der private Pool steht den Gästen zur Verfügung, mitten im Garten zwischen den Olivenbäumen."
+  dati:
+    - { etichetta: "Abmessungen", valore: "6×3 m" }
+    - { etichetta: "Handtücher", valore: "werden gestellt" }
+    - { etichetta: "Liegen und Sonnenschirme", valore: "im Garten" }
+    - { etichetta: "Saison und Öffnungszeiten", valore: "[FOLGT]" }
+    - { etichetta: "Nutzung", valore: "[FOLGT]" }
 fuori:
   titolo: Draußen ist viel Platz
   testo: Der Garten, der Pool und die Olivenbäume stehen Ihnen zur Verfügung.

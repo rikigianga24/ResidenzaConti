@@ -45,6 +45,12 @@ const pagine = defineCollection({
       stanze: z.array(z.string()).length(5),
       onesta: z.array(testoBreve),
     }).optional(),
+    // sezione piscina: dati come elenco etichetta/valore (i dati mancanti restano [DA FORNIRE])
+    piscina: z.object({
+      titolo: z.string(),
+      testo: z.string(),
+      dati: z.array(z.object({ etichetta: z.string(), valore: z.string() })),
+    }).optional(),
     dintorni: z.object({ titolo: z.string(), testo: z.string() }).optional(),
     contatti: z.object({ titolo: z.string(), testo: z.string(), bookingTesto: z.string() }).optional(),
 

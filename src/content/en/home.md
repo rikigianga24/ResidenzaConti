@@ -33,6 +33,15 @@ casa:
     - { titolo: In summer, testo: "the thick walls keep the house cool. There's no air conditioning – better to say so up front." }
     - { titolo: "Pets:", testo: sorry, they're not allowed. }
     - { titolo: We, testo: "live upstairs: if you need anything, we're here." }
+piscina:
+  titolo: "The private pool"
+  testo: "The private pool is for our guests, set in the garden among the olive trees."
+  dati:
+    - { etichetta: "Size", valore: "6×3 m" }
+    - { etichetta: "Towels", valore: "provided" }
+    - { etichetta: "Sun loungers and umbrellas", valore: "in the garden" }
+    - { etichetta: "Season and hours", valore: "[TO BE PROVIDED]" }
+    - { etichetta: "How to use it", valore: "[TO BE PROVIDED]" }
 fuori:
   titolo: Plenty of space outside
   testo: The garden, the pool and the olive trees are all yours to enjoy.

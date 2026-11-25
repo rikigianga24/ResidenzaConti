@@ -5,6 +5,7 @@ import Base from '../layouts/Base.astro';
 import TestataPagina from '../components/TestataPagina.astro';
 import ChiamataContatti from '../components/ChiamataContatti.astro';
 import Foto from '../components/Foto.astro';
+import Lightbox from '../components/Lightbox.astro';
 import type { Lingua } from '../i18n/lingue';
 import { useT, type ChiaveUi } from '../i18n/ui';
 import { tutteLeFoto, type Area } from '../data/foto';
@@ -37,7 +38,7 @@ const gruppi = await Promise.all(
           {g.foto.length > 0 ? (
             <ul class="griglia">
               {g.foto.map((f) => (
-                <li><a href={f.grande}><Foto id={f.id} lang={lang} sizes="(min-width: 1040px) 25vw, (min-width: 720px) 33vw, 50vw" /></a></li>
+                <li><a href={f.grande} data-lightbox><Foto id={f.id} lang={lang} sizes="(min-width: 1040px) 25vw, (min-width: 720px) 33vw, 50vw" /></a></li>
               ))}
             </ul>
           ) : (
@@ -47,5 +48,6 @@ const gruppi = await Promise.all(
       ))}
     </div>
   </section>
+  <Lightbox lang={lang} />
   <ChiamataContatti lang={lang} />
 </Base>

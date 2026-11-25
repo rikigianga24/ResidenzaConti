@@ -33,6 +33,15 @@ casa:
     - { titolo: En été, testo: "les murs épais gardent la maison au frais. Il n'y a pas de climatisation : autant le dire tout de suite." }
     - { titolo: "Animaux :", testo: malheureusement, ils ne sont pas admis. }
     - { titolo: Nous, testo: "habitons à l'étage : si vous avez besoin de quelque chose, nous sommes là." }
+piscina:
+  titolo: "La piscine privée"
+  testo: "La piscine privée est à la disposition des hôtes, au milieu du jardin et des oliviers."
+  dati:
+    - { etichetta: "Dimensions", valore: "6×3 m" }
+    - { etichetta: "Serviettes", valore: "fournies" }
+    - { etichetta: "Transats et parasols", valore: "dans le jardin" }
+    - { etichetta: "Saison et horaires", valore: "[À FOURNIR]" }
+    - { etichetta: "Règles d'utilisation", valore: "[À FOURNIR]" }
 fuori:
   titolo: Dehors, il y a de la place
   testo: Le jardin, la piscine et les oliviers sont à votre disposition.

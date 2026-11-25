@@ -1,0 +1,20 @@
+---
+// Finestra della lightbox (vuota): la riempie scripts/lightbox.ts quando si clicca una foto con data-lightbox.
+import { useT } from '../i18n/ui';
+import type { Lingua } from '../i18n/lingue';
+interface Props { lang: Lingua }
+const t = useT(Astro.props.lang);
+---
+<dialog class="lb" aria-label={t('pag.galleria')}>
+  <button type="button" class="lb-x" aria-label={t('lightbox.chiudi')}>×</button>
+  <button type="button" class="lb-p" aria-label={t('lightbox.prec')}>‹</button>
+  <figure>
+    <img src="" alt="" />
+    <figcaption></figcaption>
+  </figure>
+  <button type="button" class="lb-s" aria-label={t('lightbox.succ')}>›</button>
+</dialog>
+<script>
+  import { avviaLightbox } from '../scripts/lightbox';
+  avviaLightbox();
+</script>

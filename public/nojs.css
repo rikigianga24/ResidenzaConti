@@ -1,0 +1,4 @@
+/* Solo senza JavaScript: la testata della home resta avorio e non si sovrappone alla foto. */
+.rc .hdr.hdr--hero { position: sticky; --hdr-fg: #403B32; background: #F4F0E7; border-bottom-color: rgba(64, 59, 50, .16); }
+.rc .hdr.hdr--hero::before { display: none; }
+.rc .hdr.hdr--hero .hdr-cta .btn-vino { background: #5A6650; border-color: #5A6650; color: #fff; }
