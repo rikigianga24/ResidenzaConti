@@ -1,21 +1,24 @@
 ---
-import { render, type CollectionEntry } from 'astro:content';
+// La casa (restyling V3): hero, introduzione narrativa, ambienti, spazi esterni, dettagli, informazioni utili, CTA finale.
+// I testi sono nel frontmatter di content/{lingua}/casa.md (campo "dimora"); le foto sono solo quelle reali della casa.
+import type { CollectionEntry } from 'astro:content';
 import { getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import TestataPagina from '../components/TestataPagina.astro';
-import ChiamataContatti from '../components/ChiamataContatti.astro';
 import Foto from '../components/Foto.astro';
+import CardFoto from '../components/CardFoto.astro';
+import IconaDettaglio from '../components/IconaDettaglio.astro';
+import BottoniContatto from '../components/BottoniContatto.astro';
+import Lightbox from '../components/Lightbox.astro';
 import { url, type Lingua } from '../i18n/lingue';
 import { useT } from '../i18n/ui';
 import { struttura } from '../data/struttura';
-import Lightbox from '../components/Lightbox.astro';
 import { tutteLeFoto } from '../data/foto';
 
 interface Props { lang: Lingua; voce: CollectionEntry<'pagine'> }
 const { lang, voce } = Astro.props;
 const d = voce.data;
+const c = d.dimora!;
 const t = useT(lang);
-const { Content } = await render(voce);
 const interni = await Promise.all(
   tutteLeFoto.filter((f) => f.area === 'casa' && /-(soggiorno|cucina|cottura|camera)/.test(f.id)).map(async (f) => ({
     ...f,
@@ -23,36 +26,119 @@ const interni = await Promise.all(
     grande: (await getImage({ src: f.src, width: Math.min(1800, f.src.width), format: 'webp', quality: 72 })).src,
   })),
 );
+// rapporti diversi per ogni card degli ambienti (layout editoriale, non una griglia uniforme)
+const rapportiAmbienti = ['r-4-3', 'r-4-5', 'r-4-3', 'r-16-9'];
+const toni = ['bruno', 'salvia', 'terracotta', 'bruno'] as const;
 ---
-<Base lang={lang} pagina="casa" seoTitolo={d.seoTitolo} descrizione={d.descrizione} fotoOg="casa/07-soggiorno-cucina">
-  <TestataPagina titolo={d.titolo} intro={d.intro} />
-  <section class="sec sec-0">
+<Base lang={lang} pagina="casa" seoTitolo={d.seoTitolo} descrizione={d.descrizione} fotoOg="casa/00b-casa-giardino-fontana">
+  {/* A. hero */}
+  <header class="apertura apertura-casa">
+    <div class="apertura-foto"><Foto id="casa/00b-casa-giardino-fontana" lang={lang} sizes="100vw" subito larga /></div>
+    <div class="wrap apertura-testo">
+      <h1 class="h1">{d.titolo}</h1>
+      <p class="lead">{c.hero.sottotitolo}</p>
+      <p class="hero-desc">{c.hero.descrizione}</p>
+      <ul class="indicatori">
+        <li><b>{struttura.alloggio.ospitiMax}</b> {t('casa.indOspiti')}</li>
+        <li><b>{struttura.alloggio.camere}</b> {t('casa.indCamere')}</li>
+        <li><b>{struttura.alloggio.metriQuadri}</b> m²</li>
+      </ul>
+    </div>
+  </header>
+
+  {/* B. introduzione narrativa */}
+  <section class="sec" id="dimora">
+    <div class="wrap casa-intro">
+      <div class="casa-intro-testo">
+        <h2 class="h2">{c.intro.titolo}</h2>
+        {c.intro.testo.map((p, i) => <p class={i === 0 ? 'p p-apertura' : 'p'}>{p}</p>)}
+        <ul class="distintivi">
+          {c.intro.distintivi.map((x) => <li>{x}</li>)}
+        </ul>
+      </div>
+      <div class="ph entra r-4-5 casa-intro-foto"><div class="img"><Foto id="casa/06-soggiorno" lang={lang} sizes="(min-width: 1040px) 520px, 92vw" /></div></div>
+    </div>
+  </section>
+
+  {/* C. gli ambienti */}
+  <section class="sec sec-pietra" id="ambienti">
     <div class="wrap">
+      <h2 class="h2">{c.ambienti.titolo}</h2>
+      <div class="ambienti">
+        {c.ambienti.schede.map((s, i) => (
+          <CardFoto lang={lang} foto={s.foto ?? null} ratio={rapportiAmbienti[i % rapportiAmbienti.length]} categoria={t('cat.casa')} titolo={s.titolo} testo={s.testo} tono={toni[i % toni.length]} sizes="(min-width: 1040px) 640px, 92vw" class={`ambiente ambiente-${i + 1}`} />
+        ))}
+      </div>
+      <h3 class="casa-sub">{c.interniTitolo}</h3>
       <ul class="griglia griglia-casa">
         {interni.map((f) => (
           <li><a href={f.grande} data-lightbox><Foto id={f.id} lang={lang} sizes="(min-width: 1040px) 25vw, (min-width: 720px) 33vw, 50vw" /></a></li>
         ))}
       </ul>
-      <div class="prosa"><Content /></div>
-      <div class="dotazioni">
-        {d.dotazioni?.map((g) => (
-          <section>
-            <h2>{g.titolo}</h2>
-            <ul>{g.voci.map((v) => <li>{v}</li>)}</ul>
-          </section>
-        ))}
+    </div>
+  </section>
+
+  {/* D. gli spazi esterni */}
+  <section class="sec" id="esterni">
+    <div class="wrap esterni">
+      <div class="esterni-testo">
+        <h2 class="h2">{c.esterni.titolo}</h2>
+        <p class="lead">{c.esterni.testo}</p>
+        <ul class="voci-esterni">
+          {c.esterni.voci.map((v) => <li><b>{v.titolo}</b><span>{v.testo}</span></li>)}
+        </ul>
       </div>
-      {d.regole && d.regole.length > 0 && (
-        <section class="regole" aria-labelledby="tit-regole">
-          <h2 class="h2 h2-piccolo" id="tit-regole">{t('casa.regole')}</h2>
-          <ul>{d.regole.map((r) => <li>{r}</li>)}</ul>
+      <div class="esterni-foto">
+        <div class="ph entra r-4-3 ef-1"><div class="img"><Foto id="piscina/04-piscina-cipressi" lang={lang} sizes="(min-width: 1040px) 640px, 92vw" /></div></div>
+        <div class="ph entra r-4-5 ef-2"><div class="img"><Foto id="giardino/03-lettini-ulivi" lang={lang} sizes="(min-width: 1040px) 300px, 46vw" /></div></div>
+        <div class="ph entra r-1-1 ef-3"><div class="img"><Foto id="giardino/06-tramonto-ulivi" lang={lang} sizes="(min-width: 1040px) 300px, 46vw" /></div></div>
+      </div>
+    </div>
+  </section>
+
+  {/* E. i dettagli che fanno la differenza */}
+  <section class="sec sec-0" id="dettagli">
+    <div class="wrap">
+      <h2 class="h2">{c.dettagli.titolo}</h2>
+      <ul class="dettagli">
+        {c.dettagli.voci.map((v) => <li><IconaDettaglio nome={v.icona} /><span>{v.titolo}</span></li>)}
+      </ul>
+    </div>
+  </section>
+
+  {/* F. informazioni utili */}
+  <section class="sec sec-pietra" id="utili">
+    <div class="wrap">
+      <h2 class="h2">{c.utili.titolo}</h2>
+      <div class="utili">
+        <section class="utili-box" aria-labelledby="tit-sapere">
+          <h3 id="tit-sapere">{c.utili.saperTitolo}</h3>
+          <ul>{c.utili.sapere.map((x) => <li>{x}</li>)}</ul>
         </section>
-      )}
+        {d.regole && d.regole.length > 0 && (
+          <section class="utili-box" aria-labelledby="tit-regole">
+            <h3 id="tit-regole">{t('casa.regole')}</h3>
+            <ul>{d.regole.map((r) => <li>{r}</li>)}</ul>
+          </section>
+        )}
+      </div>
       {/* CIN e CIR anche qui, oltre che nel footer (obbligo di legge negli annunci) */}
       <p class="codici">CIN {struttura.cin || t('foot.daFornire')} · CIR {struttura.cir || t('foot.daFornire')}</p>
-      <a class="link" href={url('galleria', lang)}>{t('link.galleria')}</a>
+    </div>
+  </section>
+
+  {/* G. CTA finale */}
+  <section class="sec scuro cta-finale" id="contatti-casa">
+    <div class="wrap cta-box">
+      <div>
+        <h2 class="h2">{c.cta.titolo}</h2>
+        <p class="lead">{c.cta.testo}</p>
+      </div>
+      <div class="cta-azioni">
+        <BottoniContatto lang={lang} lungo disp />
+        <a class="link" href={url('galleria', lang)}>{t('link.galleria')}</a>
+      </div>
     </div>
   </section>
   <Lightbox lang={lang} />
-  <ChiamataContatti lang={lang} />
 </Base>

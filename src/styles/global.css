@@ -53,7 +53,7 @@ img { max-width: 100%; height: auto; display: block; }
 .griglia-casa { margin-bottom: 40px; }
 
 /* gerarchia tipografica: titoli in Cormorant Garamond, testi in DM Sans */
-.h1, .h2, .nome, .brand, .motto, .natura h3, .luogo h3, .rec blockquote, .lista-rec blockquote, .prosa h2, .dotazioni h2, .cal-mese h3, .voto b, .nastro li {
+.h1, .h2, .nome, .brand, .motto, .natura h3, .luogo h3, .rec blockquote, .lista-rec blockquote, .prosa h2, .cal-mese h3, .voto b, .nastro li {
   font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
 }
 .h2 { font-weight: 500; font-size: 2.5rem; line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 20px; }
@@ -307,14 +307,6 @@ img { max-width: 100%; height: auto; display: block; }
 .prosa p, .prosa ul { margin: 0 0 14px; }
 .prosa blockquote { margin: 0 0 24px; padding: 14px 18px; border-left: 3px solid var(--terracotta); background: var(--sup); }
 .prosa blockquote p { margin: 0; }
-.dotazioni { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 36px; }
-.dotazioni section { background: var(--sup); padding: 24px; border-top: 2px solid var(--salvia); }
-.dotazioni h2 { font-weight: 500; font-size: 1.75rem; margin: 0 0 10px; }
-.dotazioni ul { margin: 0; padding-left: 1.1em; }
-.dotazioni li { margin: 0 0 6px; }
-.regole { margin-top: 40px; max-width: 62ch; }
-.regole ul { margin: 0; padding-left: 1.1em; }
-.regole li { margin: 0 0 10px; }
 .codici { font-size: .9375rem; color: var(--muted); margin-top: 24px; }
 
 /* galleria a griglia: ogni foto si apre in lightbox */
@@ -531,6 +523,46 @@ img { max-width: 100%; height: auto; display: block; }
 .fonti-nota { margin: 14px 0 0; font-size: .875rem; color: var(--muted); }
 .torna { margin: 40px 0 0; }
 
+/* ===== pagina La casa ===== */
+.apertura-casa { min-height: 66svh; }
+.hero-desc { margin: 14px 0 0; max-width: 46ch; font-size: 1.0625rem; animation: sale .9s ease-out .5s both; }
+.indicatori { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 20px 0 0; padding: 0; list-style: none; font-size: .8125rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--pietra); animation: sale .9s ease-out .65s both; }
+.indicatori b { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.625rem; font-weight: 500; letter-spacing: 0; color: var(--avorio); margin-right: 4px; }
+.casa-intro { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; }
+.casa-intro-testo .p-apertura { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; line-height: 1.4; max-width: 38ch; margin-bottom: 20px; }
+.distintivi { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; margin: 28px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--linea); max-width: 52ch; }
+.distintivi li { position: relative; padding: 11px 0 11px 22px; border-bottom: 1px solid var(--linea); font-size: .9688rem; }
+.distintivi li::before { content: ''; position: absolute; left: 2px; top: 1.15em; width: 7px; height: 7px; border-radius: 50%; background: var(--terracotta); }
+.ambienti { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; margin-top: 36px; }
+.casa-sub { margin: 56px 0 0; font-size: .75rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.griglia-casa { margin-bottom: 0; }
+.griglia.griglia-casa li a { aspect-ratio: 4/3; }
+.esterni { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+.voci-esterni { margin: 28px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--linea); }
+.voci-esterni li { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 13px 0; border-bottom: 1px solid var(--linea); }
+.voci-esterni b { font-weight: 600; }
+.voci-esterni span { text-align: right; color: var(--muted); font-size: .9688rem; }
+.esterni-foto { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: start; }
+.ef-1 { grid-column: 1 / -1; }
+.ef-3 { margin-top: 28px; }
+.dettagli { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; margin: 36px 0 0; padding: 0; list-style: none; }
+.dettagli li { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 22px 0 24px; border-top: 1px solid var(--linea); font-weight: 500; line-height: 1.35; }
+.ico-dett { width: 38px; height: 38px; color: var(--salvia-scuro); }
+.utili { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; margin-top: 32px; }
+.utili-box { padding: 26px 26px 22px; background: var(--avorio); border-top: 2px solid var(--salvia); }
+.utili-box:nth-child(2) { border-top-color: var(--terracotta); }
+.utili-box h3 { margin: 0 0 14px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 1.75rem; line-height: 1.1; }
+.utili-box ul { margin: 0; padding-left: 1.1em; }
+.utili-box li { margin: 0 0 9px; font-size: .9688rem; }
+.cta-box { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: end; }
+.cta-finale .h2 { max-width: 18ch; }
+.cta-finale .lead { color: var(--pietra); }
+.cta-azioni { display: flex; flex-direction: column; align-items: flex-start; }
+.cta-finale .btn-vino { background: var(--avorio); border-color: var(--avorio); color: var(--bruno); }
+.cta-finale .btn-vino:hover { background: var(--bianco); border-color: var(--bianco); }
+.cta-finale .btn-filo { border-color: color-mix(in srgb, var(--bianco) 80%, transparent); color: var(--bianco); }
+.cta-finale .btn-filo:hover { background: var(--bianco); color: var(--bruno); }
+
 /* comparsa allo scorrere (solo dove il browser supporta le scroll-driven animations):
    dissolvenza, piccolo movimento verticale, scala appena accennata. Su Firefox restano ferme e visibili. */
 @supports (animation-timeline: view()) {
@@ -538,6 +570,7 @@ img { max-width: 100%; height: auto; display: block; }
   @keyframes entraImg { from { opacity: .15; transform: translateY(22px) scale(1.05) } to { opacity: 1; transform: none } }
   .h2, .intro-valle .lead, .piscina .eyebrow { animation: entraTesto linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
   @keyframes entraTesto { from { opacity: 0; transform: translateY(18px) } to { opacity: 1; transform: none } }
+  .casa-intro-testo, .voci-esterni li, .dettagli li, .utili-box, .distintivi li { animation: entraTesto linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
   .tl-testo, .tappa, .scheda { animation: entraTesto linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
   .tile { animation: entraTile linear both; animation-timeline: view(); animation-range: entry 0% entry 80%; }
   @keyframes entraTile { from { opacity: .2; transform: translateY(16px) } to { opacity: 1; transform: none } }
@@ -563,7 +596,6 @@ img { max-width: 100%; height: auto; display: block; }
   .foot-in { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .rec { padding: 56px; }
   .rec blockquote { font-size: 2.25rem; max-width: 32ch; }
-  .dotazioni { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .griglia { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
   .cal-mesi { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
   .lista-rec { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -578,6 +610,16 @@ img { max-width: 100%; height: auto; display: block; }
   .valle.inverso > li:nth-child(1) { margin-top: 48px; }
   .valle.inverso > li:nth-child(2) { margin-top: 0; }
   .valle.inverso > li:nth-child(3) { margin-top: 72px; }
+  .apertura-casa { min-height: 72svh; }
+  .distintivi { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 28px; max-width: none; }
+  .dettagli { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .utili { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+  .ambienti { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 28px; align-items: start; }
+  .ambiente-1 { grid-column: 1 / 8; }
+  .ambiente-2 { grid-column: 8 / 13; }
+  .ambiente-3 { grid-column: 1 / 6; }
+  .ambiente-4 { grid-column: 6 / 13; }
+  .esterni-foto { gap: 16px; }
   .itin-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
   .itin-card:nth-child(even) { margin-top: 56px; }
   .masonry { column-count: 3; column-gap: 14px; }
@@ -613,6 +655,13 @@ img { max-width: 100%; height: auto; display: block; }
   .masonry { column-count: 4; }
   .mas.grande a { aspect-ratio: 21/9; }
   .apertura .h1 { font-size: 6.5rem; }
+  .casa-intro { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0 56px; align-items: center; }
+  .casa-intro-testo { grid-column: 1 / 7; }
+  .casa-intro-foto { grid-column: 8 / 13; }
+  .esterni { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0 56px; align-items: start; }
+  .esterni-testo { grid-column: 1 / 6; }
+  .esterni-foto { grid-column: 6 / 13; }
+  .cta-box { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; }
   .storia-valle { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0 36px; }
   .storia-valle .h2 { grid-column: 1 / 5; }
   .storia-valle .storia-testo { grid-column: 5 / 13; }

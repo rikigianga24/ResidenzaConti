@@ -1,0 +1,15 @@
+---
+// Icone sottili (tratto 1.4) per "I dettagli che fanno la differenza" della pagina La casa.
+interface Props { nome: 'mq' | 'ospiti' | 'camere' | 'wifi' | 'welcome' | 'piscina' | 'giardino' | 'parcheggio' }
+const { nome } = Astro.props;
+---
+<svg class="ico-dett" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  {nome === 'mq' && <path d="M5 5h22v22H5zM5 11h6M5 16h4M5 21h6M11 27v-6M16 27v-4M21 27v-6" />}
+  {nome === 'ospiti' && <path d="M12 14a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 26c0-4.4 3.6-8 8-8s8 3.6 8 8M21.5 14.5a3.5 3.5 0 1 0-1-6.9M23 18.4c3 .9 5 3.6 5 7.6" />}
+  {nome === 'camere' && <path d="M4 25V8M4 19h24v6M28 19v-4a3 3 0 0 0-3-3H14v7M8.5 16.5a2 2 0 1 0 0-.01" />}
+  {nome === 'wifi' && <path d="M4 12c6.6-5.5 17.4-5.5 24 0M8 16.8c4.6-3.7 11.4-3.7 16 0M12 21.4c2.3-1.8 5.7-1.8 8 0M16 26h.01" />}
+  {nome === 'welcome' && <path d="M5 13h22v14H5zM3 9h26v4H3zM16 9v18M16 9c-1.5-4-6-5.5-6-2.5 0 2 3.5 2.500 6 2.500zM16 9c1.5-4 6-5.5 6-2.500 0 2-3.500 2.500-6 2.500z" />}
+  {nome === 'piscina' && <path d="M10 20V7a3 3 0 0 1 6 0M20 20V7a3 3 0 0 1 6 0M10 12h10M10 16h10M3 24c2.200 0 2.200-1.500 4.500-1.500S9.700 24 12 24s2.200-1.500 4.500-1.500S18.700 24 21 24s2.200-1.500 4.500-1.500S27.700 24 30 24M3 29c2.200 0 2.200-1.500 4.500-1.500S9.700 29 12 29s2.200-1.500 4.500-1.500S18.700 29 21 29s2.200-1.500 4.500-1.500S27.700 29 30 29" />}
+  {nome === 'giardino' && <path d="M16 29V15M16 15c0-5 3-9 9-9 0 6-3 9-9 9zM16 21c0-4-2.500-7-8-7 0 5 2.500 7 8 7zM9 29h14" />}
+  {nome === 'parcheggio' && <path d="M16 28a12 12 0 1 0 0-24 12 12 0 0 0 0 24zM12.500 22V10.500H17a3.500 3.500 0 0 1 0 7h-4.500" />}
+</svg>
