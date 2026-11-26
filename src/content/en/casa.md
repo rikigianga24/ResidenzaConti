@@ -3,39 +3,10 @@ seoTitolo: The house – Apartment for 4 with private pool in Tuscany | Residenz
 descrizione: "75 m² ground-floor apartment: two double bedrooms, living room with kitchenette onto the portico, handmade terracotta and chestnut beams. Private 6×3 m pool."
 titolo: The house
 intro: A 75 m² ground-floor apartment for up to 4 people, with its entrance on the portico and the garden all around.
-dotazioni:
-  - titolo: Inside
-    voci:
-      - 2 double bedrooms
-      - 1 bathroom, with the original rock left exposed
-      - Living room with equipped kitchenette, opening onto the portico
-      - Wi-Fi
-      - Welcome kit on arrival
-  - titolo: Outside
-    voci:
-      - Private pool 6×3 m, towels included
-      - Large garden among the olive trees, with sun loungers and parasols
-      - Barbecue
-      - Parking at the house
-      - A natural source of drinking water
-  - titolo: Good to know
-    voci:
-      - No air conditioning, but the thick walls keep the house cool in summer
-      - Pets are not allowed
-      - Check-in from 4:00 pm, check-out by 10:00 am
 regole:
   - "At check-in, guests must show a photo ID and a credit card. Special requests are subject to availability and may involve an extra charge."
   - "Please tell us in advance what time you expect to arrive, on WhatsApp or in the special requests of your booking."
   - "The property is not available for hen or stag parties or similar events."
   - "Guests under 18 can only check in if accompanied by a parent or legal guardian."
+dimora: {"hero": {"sottotitolo": "An authentic home in the heart of the Val di Chio", "descrizione": "75 m² of peace, history and Tuscan tradition, with garden and pool."}, "intro": {"titolo": "A house made of real things", "testo": ["Handmade terracotta underfoot, centuries-old chestnut beams overhead and, in the bathroom, the original rock left exposed: the house doesn't pretend to be anything other than what it is.", "The living room with its kitchenette opens onto the portico. In summer you eat outside, with the family chapel opposite and the garden all around.", "We live upstairs. If you need anything, we're here; otherwise the house and the garden are yours."], "distintivi": ["Handmade terracotta floors", "Ceilings with centuries-old chestnut beams", "Original rock exposed in the bathroom", "Portico overlooking the garden", "Family chapel opposite the house", "Natural spring of drinking water"]}, "ambienti": {"titolo": "The rooms", "schede": [{"titolo": "The living room", "testo": "Living room with an equipped kitchenette and direct access to the portico.", "foto": "casa/07-soggiorno-cucina"}, {"titolo": "The bedrooms", "testo": "Two double bedrooms designed for quiet and rest.", "foto": "casa/09-camera-1"}, {"titolo": "The bathroom", "testo": "A characterful room, enriched by the original rock left exposed."}, {"titolo": "The portico", "testo": "An outdoor space for meals and moments of relaxation in the warm season.", "foto": "casa/04-portico"}]}, "interniTitolo": "The interiors in pictures", "esterni": {"titolo": "The outdoor spaces", "testo": "The garden, the pool and the olive trees are at the guests' disposal.", "voci": [{"titolo": "Private pool", "testo": "6×3 m, towels included"}, {"titolo": "Garden among the olive trees", "testo": "Large"}, {"titolo": "Sun loungers and parasols", "testo": "In the garden"}, {"titolo": "Barbecue", "testo": "For the evening"}, {"titolo": "Portico", "testo": "Onto the garden, facing the chapel"}, {"titolo": "Parking", "testo": "At the house"}, {"titolo": "Natural spring", "testo": "Drinking water from the hill"}]}, "dettagli": {"titolo": "The details that make the difference", "voci": [{"icona": "mq", "titolo": "75 m² apartment"}, {"icona": "ospiti", "titolo": "Up to 4 guests"}, {"icona": "camere", "titolo": "2 double bedrooms"}, {"icona": "wifi", "titolo": "Wi-Fi"}, {"icona": "welcome", "titolo": "Welcome kit on arrival"}, {"icona": "piscina", "titolo": "Private pool"}, {"icona": "giardino", "titolo": "Garden"}, {"icona": "parcheggio", "titolo": "Parking"}]}, "utili": {"titolo": "Useful information", "saperTitolo": "Good to know", "sapere": ["The house has no air conditioning", "The thick walls keep the apartment cool in summer", "Pets are not allowed", "Check-in from 4:00 pm", "Check-out by 10:00 am"]}, "cta": {"titolo": "Your stay in the Val di Chio starts here.", "testo": "Send us your dates: we reply directly, and booking with us means no commission."}}
 ---
-
-The house is made of real things: **handmade terracotta floors**, **ceilings with centuries-old chestnut beams**, and in the bathroom the **original rock**, left exposed.
-
-The living room with its kitchenette opens onto the portico: in summer you eat outside, facing the family chapel.
-
-The house also has a natural spring of drinking water, coming down from the hill in the woods and channelled.
-
-We live upstairs. If you need anything, we're here; otherwise the house and the garden are yours.
-
-Floor plan: [TO BE PROVIDED, optional]

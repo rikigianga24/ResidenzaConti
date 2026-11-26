@@ -3,39 +3,10 @@ seoTitolo: La maison – Appartement pour 4 avec piscine privée | Residenza Con
 descrizione: "Appartement de 75 m² en rez-de-chaussée : deux chambres doubles, séjour avec coin cuisine sur le portique, terre cuite faite main et poutres en châtaignier. Piscine privée 6×3 m."
 titolo: La maison
 intro: Un appartement de 75 m² en rez-de-chaussée, pour 4 personnes maximum, avec l'entrée sur le portique et le jardin tout autour.
-dotazioni:
-  - titolo: À l'intérieur
-    voci:
-      - 2 chambres avec lit double
-      - 1 salle de bains, avec la roche d'origine laissée apparente
-      - Séjour avec coin cuisine équipé, ouvert sur le portique
-      - Wi-Fi
-      - Kit de bienvenue à l'arrivée
-  - titolo: À l'extérieur
-    voci:
-      - Piscine privée 6×3 m, serviettes fournies
-      - Grand jardin parmi les oliviers, avec transats et parasols
-      - Barbecue
-      - Parking à la maison
-      - Une source naturelle d'eau potable
-  - titolo: Bon à savoir
-    voci:
-      - Pas de climatisation, mais les murs épais gardent la maison au frais en été
-      - Les animaux ne sont pas admis
-      - Arrivée à partir de 16 h, départ avant 10 h
 regole:
   - "À l'arrivée, les hôtes doivent présenter une pièce d'identité avec photo et une carte de crédit. Les demandes spéciales sont soumises à disponibilité et peuvent entraîner un supplément."
   - "Merci de nous indiquer à l'avance votre heure d'arrivée prévue, sur WhatsApp ou dans les demandes spéciales de la réservation."
   - "L'établissement n'est pas disponible pour les enterrements de vie de jeune fille ou de garçon et autres fêtes similaires."
   - "Les hôtes de moins de 18 ans ne peuvent s'enregistrer que s'ils sont accompagnés d'un parent ou d'un tuteur légal."
+dimora: {"hero": {"sottotitolo": "Une demeure authentique au cœur du Val di Chio", "descrizione": "75 m² de calme, d'histoire et de tradition toscane, avec jardin et piscine."}, "intro": {"titolo": "Une maison faite de choses vraies", "testo": ["De la terre cuite faite à la main sous les pieds, des poutres de châtaignier centenaires au-dessus de la tête et, dans la salle de bains, la roche d'origine laissée apparente : la maison ne prétend pas être autre chose que ce qu'elle est.", "Le séjour avec coin cuisine s'ouvre sur le portique. En été, on mange dehors, face à la chapelle familiale, avec le jardin tout autour.", "Nous habitons à l'étage. Si vous avez besoin de quelque chose, nous sommes là ; sinon, la maison et le jardin sont à vous."], "distintivi": ["Sols en terre cuite faite à la main", "Plafonds aux poutres de châtaignier centenaires", "Roche d'origine apparente dans la salle de bains", "Portique sur le jardin", "Chapelle familiale face à la maison", "Source naturelle d'eau potable"]}, "ambienti": {"titolo": "Les espaces", "schede": [{"titolo": "Le séjour", "testo": "Séjour avec coin cuisine équipé et accès direct au portique.", "foto": "casa/07-soggiorno-cucina"}, {"titolo": "Les chambres", "testo": "Deux chambres avec lit double, pensées pour le calme et le repos.", "foto": "casa/09-camera-1"}, {"titolo": "La salle de bains", "testo": "Une pièce de caractère, embellie par la roche d'origine laissée apparente."}, {"titolo": "Le portique", "testo": "Un espace extérieur pour les repas et les moments de détente à la belle saison.", "foto": "casa/04-portico"}]}, "interniTitolo": "Les intérieurs en photos", "esterni": {"titolo": "Les espaces extérieurs", "testo": "Le jardin, la piscine et les oliviers sont à la disposition des hôtes.", "voci": [{"titolo": "Piscine privée", "testo": "6×3 m, serviettes fournies"}, {"titolo": "Jardin parmi les oliviers", "testo": "Grand"}, {"titolo": "Transats et parasols", "testo": "Dans le jardin"}, {"titolo": "Barbecue", "testo": "Pour le soir"}, {"titolo": "Portique", "testo": "Sur le jardin, face à la chapelle"}, {"titolo": "Parking", "testo": "À la maison"}, {"titolo": "Source naturelle", "testo": "Eau potable de la colline"}]}, "dettagli": {"titolo": "Les détails qui font la différence", "voci": [{"icona": "mq", "titolo": "Appartement de 75 m²"}, {"icona": "ospiti", "titolo": "4 hôtes maximum"}, {"icona": "camere", "titolo": "2 chambres avec lit double"}, {"icona": "wifi", "titolo": "Wi-Fi"}, {"icona": "welcome", "titolo": "Kit de bienvenue à l'arrivée"}, {"icona": "piscina", "titolo": "Piscine privée"}, {"icona": "giardino", "titolo": "Jardin"}, {"icona": "parcheggio", "titolo": "Parking"}]}, "utili": {"titolo": "Informations utiles", "saperTitolo": "Bon à savoir", "sapere": ["La maison n'a pas de climatisation", "Les murs épais gardent l'appartement au frais en été", "Les animaux ne sont pas admis", "Arrivée à partir de 16 h", "Départ avant 10 h"]}, "cta": {"titolo": "Votre séjour dans le Val di Chio commence ici.", "testo": "Écrivez-nous vos dates : nous répondons directement, et réserver chez nous ne coûte aucune commission."}}
 ---
-
-La maison est faite de choses vraies : des **sols en terre cuite faite à la main**, des **plafonds aux poutres en châtaignier centenaires**, et dans la salle de bains la **roche d'origine**, laissée apparente.
-
-Le séjour avec coin cuisine s'ouvre sur le portique : en été, on mange dehors, face à la chapelle familiale.
-
-La maison dispose aussi d'une source naturelle d'eau potable, qui vient de la colline dans le bois et a été canalisée.
-
-Nous habitons à l'étage. Si vous avez besoin de quelque chose, nous sommes là ; sinon, la maison et le jardin sont à vous.
-
-Plan : [À FOURNIR, facultatif]

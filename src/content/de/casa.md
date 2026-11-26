@@ -3,39 +3,10 @@ seoTitolo: Das Haus – Ferienwohnung für 4 mit privatem Pool | Residenza Conti
 descrizione: "75 m² Wohnung im Erdgeschoss: zwei Doppelzimmer, Wohnraum mit Kochnische zum Laubengang, handgefertigte Terrakotta und Kastanienbalken. Privater Pool 6×3 m."
 titolo: Das Haus
 intro: Eine 75 m² große Wohnung im Erdgeschoss für bis zu 4 Personen, mit Eingang am Laubengang und dem Garten ringsum.
-dotazioni:
-  - titolo: Drinnen
-    voci:
-      - 2 Doppelzimmer
-      - 1 Bad, mit dem originalen, sichtbar gelassenen Fels
-      - Wohnraum mit ausgestatteter Kochnische, zum Laubengang hin offen
-      - WLAN
-      - Willkommenspaket bei der Ankunft
-  - titolo: Draußen
-    voci:
-      - Privater Pool 6×3 m, mit Badetüchern
-      - Großer Garten zwischen Olivenbäumen, mit Liegen und Sonnenschirmen
-      - Grill
-      - Parkplatz am Haus
-      - Eine natürliche Trinkwasserquelle
-  - titolo: Gut zu wissen
-    voci:
-      - Keine Klimaanlage, aber die dicken Mauern halten das Haus im Sommer kühl
-      - Haustiere sind nicht erlaubt
-      - Check-in ab 16:00 Uhr, Check-out bis 10:00 Uhr
 regole:
   - "Beim Check-in müssen die Gäste einen Lichtbildausweis und eine Kreditkarte vorzeigen. Sonderwünsche unterliegen der Verfügbarkeit und können mit einem Aufpreis verbunden sein."
   - "Bitte teilen Sie uns Ihre voraussichtliche Ankunftszeit im Voraus mit, per WhatsApp oder in den Sonderwünschen der Buchung."
   - "Die Unterkunft steht für Junggesellenabschiede und ähnliche Feiern nicht zur Verfügung."
   - "Gäste unter 18 Jahren können nur in Begleitung eines Elternteils oder gesetzlichen Vormunds einchecken."
+dimora: {"hero": {"sottotitolo": "Ein authentisches Haus im Herzen des Val di Chio", "descrizione": "75 m² Ruhe, Geschichte und toskanische Tradition, mit Garten und Pool."}, "intro": {"titolo": "Ein Haus aus echten Dingen", "testo": ["Handgefertigte Terrakotta unter den Füßen, jahrhundertealte Kastanienbalken über dem Kopf und im Bad der originale Fels, sichtbar gelassen: Das Haus gibt nicht vor, etwas anderes zu sein, als es ist.", "Der Wohnraum mit Kochnische öffnet sich zum Laubengang. Im Sommer isst man draußen, mit der Familienkapelle gegenüber und dem Garten ringsum.", "Wir wohnen im Stockwerk darüber. Wenn Sie etwas brauchen, sind wir da; ansonsten gehören Haus und Garten Ihnen."], "distintivi": ["Handgefertigte Terrakottaböden", "Decken mit jahrhundertealten Kastanienbalken", "Originaler Fels im Bad sichtbar belassen", "Laubengang zum Garten", "Familienkapelle gegenüber dem Haus", "Natürliche Trinkwasserquelle"]}, "ambienti": {"titolo": "Die Räume", "schede": [{"titolo": "Der Wohnraum", "testo": "Wohnraum mit ausgestatteter Kochnische und direktem Zugang zum Laubengang.", "foto": "casa/07-soggiorno-cucina"}, {"titolo": "Die Schlafzimmer", "testo": "Zwei Doppelzimmer, gedacht für Ruhe und Erholung.", "foto": "casa/09-camera-1"}, {"titolo": "Das Bad", "testo": "Ein charaktervoller Raum, bereichert durch den originalen, sichtbar belassenen Fels."}, {"titolo": "Der Laubengang", "testo": "Ein Außenbereich für Mahlzeiten und entspannte Momente in der warmen Jahreszeit.", "foto": "casa/04-portico"}]}, "interniTitolo": "Die Innenräume in Bildern", "esterni": {"titolo": "Die Außenbereiche", "testo": "Garten, Pool und Olivenbäume stehen den Gästen zur Verfügung.", "voci": [{"titolo": "Privater Pool", "testo": "6×3 m, mit Badetüchern"}, {"titolo": "Garten zwischen Olivenbäumen", "testo": "Groß"}, {"titolo": "Liegen und Sonnenschirme", "testo": "Im Garten"}, {"titolo": "Grill", "testo": "Für den Abend"}, {"titolo": "Laubengang", "testo": "Zum Garten, der Kapelle gegenüber"}, {"titolo": "Parkplatz", "testo": "Am Haus"}, {"titolo": "Natürliche Quelle", "testo": "Trinkwasser vom Hügel"}]}, "dettagli": {"titolo": "Die Details, die den Unterschied machen", "voci": [{"icona": "mq", "titolo": "75 m² Wohnung"}, {"icona": "ospiti", "titolo": "Höchstens 4 Gäste"}, {"icona": "camere", "titolo": "2 Doppelzimmer"}, {"icona": "wifi", "titolo": "WLAN"}, {"icona": "welcome", "titolo": "Willkommenspaket bei der Ankunft"}, {"icona": "piscina", "titolo": "Privater Pool"}, {"icona": "giardino", "titolo": "Garten"}, {"icona": "parcheggio", "titolo": "Parkplatz"}]}, "utili": {"titolo": "Nützliche Informationen", "saperTitolo": "Gut zu wissen", "sapere": ["Das Haus hat keine Klimaanlage", "Die dicken Mauern halten die Wohnung im Sommer kühl", "Haustiere sind nicht erlaubt", "Check-in ab 16:00 Uhr", "Check-out bis 10:00 Uhr"]}, "cta": {"titolo": "Ihr Aufenthalt im Val di Chio beginnt hier.", "testo": "Schreiben Sie uns Ihre Reisedaten: Wir antworten direkt, und bei Buchung bei uns fällt keine Provision an."}}
 ---
-
-Das Haus besteht aus echten Dingen: **handgefertigte Terrakottaböden**, **Decken mit jahrhundertealten Kastanienbalken** und im Bad der **originale Fels**, sichtbar gelassen.
-
-Der Wohnraum mit Kochnische öffnet sich zum Laubengang: Im Sommer isst man draußen, mit Blick auf die Familienkapelle.
-
-Zum Haus gehört auch eine natürliche Trinkwasserquelle, die vom Hügel im Wald kommt und gefasst wurde.
-
-Wir wohnen im Stockwerk darüber. Wenn Sie etwas brauchen, sind wir da; ansonsten gehören Haus und Garten Ihnen.
-
-Grundriss: [FOLGT, optional]

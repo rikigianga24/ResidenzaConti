@@ -79,8 +79,24 @@ const pagine = defineCollection({
       foto: z.string(),
     })).optional(),
 
-    // --- pagina La casa ---
-    dotazioni: z.array(z.object({ titolo: z.string(), voci: z.array(z.string()) })).optional(),
+    // --- pagina La casa (restyling V3): hero, introduzione, ambienti, spazi esterni, dettagli, informazioni utili, CTA ---
+    dimora: z.object({
+      hero: z.object({ sottotitolo: z.string(), descrizione: z.string() }),
+      intro: z.object({ titolo: z.string(), testo: z.array(z.string()), distintivi: z.array(z.string()) }),
+      ambienti: z.object({
+        titolo: z.string(),
+        // la foto è opzionale: senza foto la card è di solo testo (nessuna foto di stanze sbagliate o inventate)
+        schede: z.array(z.object({ titolo: z.string(), testo: z.string(), foto: z.string().optional() })),
+      }),
+      interniTitolo: z.string(),
+      esterni: z.object({ titolo: z.string(), testo: z.string(), voci: z.array(z.object({ titolo: z.string(), testo: z.string() })) }),
+      dettagli: z.object({
+        titolo: z.string(),
+        voci: z.array(z.object({ icona: z.enum(['mq', 'ospiti', 'camere', 'wifi', 'welcome', 'piscina', 'giardino', 'parcheggio']), titolo: z.string() })),
+      }),
+      utili: z.object({ titolo: z.string(), saperTitolo: z.string(), sapere: z.array(z.string()) }),
+      cta: z.object({ titolo: z.string(), testo: z.string() }),
+    }).optional(),
 
     // regole della casa (pagina La casa)
     regole: z.array(z.string()).optional(),
